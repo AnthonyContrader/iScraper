@@ -25,7 +25,6 @@ public class StatsboxInsertView extends AbstractView{
 
 	public StatsboxInsertView() {
 	}
-	
 	/**
 	 * Se la request non è nulla (ovvero se si arriva dalla mode INSERT del controller) mostra
 	 * l'esito dell'operazione
