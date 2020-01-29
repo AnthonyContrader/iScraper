@@ -1,0 +1,166 @@
+package it.contrader.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import it.contrader.main.ConnectionSingleton;
+import it.contrader.model.Player;
+import it.contrader.model.User;
+
+
+
+public class PlayerDAO {
+
+	private final String QUERY_ALL = "select * from players";
+	
+	private final String QUERY_INSERT = " insert into players (player_id, player_name, player_surname, age, actualMarketValue, previousMarketValue, accidents, position, goals, minutesPlayed)"
+		        + " values (?,?,?,?,?,?,?,?,?,?)";
+	private final String QUERY_READ = "select * from player where player_name=?";
+
+	private final String QUERY_UPDATE = "UPDATE player SET player_name=? WHERE player_id=?";
+	private final String QUERY_DELETE = "DELETE from players WHERE player_id=?";
+	
+	
+	
+	public PlayerDAO() {
+	}
+
+	public List<Player> getAllPlayers() {
+		List<Player> playerList = new ArrayList<>();
+		Connection connection = ConnectionSingleton.getInstance();
+		try {
+			Statement statement = connection.createStatement();
+			ResultSet resultSet = statement.executeQuery(QUERY_ALL);
+		//	Player player;
+			while (resultSet.next()) {
+//				player = new Player();
+//				int playerId = resultSet.getInt("player_id");
+//			
+//				player.setId(playerId);
+//				
+//				String playerName = resultSet.getString("player_name");
+//				player.setName(playerName);
+//				String surname=resultSet.getString("player_surname");
+//				player.setSurname(surname);
+				
+				Player player=new Player();
+				
+				player.setId(resultSet.getInt("player_id"));
+				player.setName(resultSet.getString("player_name"));
+				player.setSurname(resultSet.getString("player_surname"));
+				player.setAge(resultSet.getInt("age"));
+				player.setActualMarketValue(resultSet.getInt("actualMarketValue"));
+				player.setActualMarketValue(resultSet.getInt("previousMarketValue"));
+				player.setActualMarketValue(resultSet.getInt("accidents"));
+				player.setActualMarketValue(resultSet.getInt("position"));
+				player.setActualMarketValue(resultSet.getInt("goals"));
+				player.setActualMarketValue(resultSet.getInt("minutesPlayed"));
+				playerList.add(player);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return playerList;
+	}
+	
+
+	public boolean insertPlayer(Player player) {
+		Connection connection = ConnectionSingleton.getInstance();
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_INSERT);
+			preparedStatement.setInt(1, player.getId());
+			preparedStatement.setString(2, player.getName());
+			preparedStatement.setString(3, player.getSurname());
+			preparedStatement.setInt(4, player.getAge());
+			preparedStatement.setInt(5, player.getActualMarketValue());
+			preparedStatement.setInt(6, player.getPreviousMarketValue());
+			preparedStatement.setInt(7, player.getAccidents());
+			preparedStatement.setString(8, player.getPosition());
+			preparedStatement.setInt(9, player.getGoals());
+			preparedStatement.setInt(10, player.getMinutesPlayed());
+			
+			return preparedStatement.execute();
+		} catch (SQLException e) {
+			//GestoreEccezioni.getInstance().gestisciEccezione(e);
+			return false;
+		}
+
+	}
+
+	public Player readPlayer(String playerName) {
+		Connection connection = ConnectionSingleton.getInstance();
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_READ);
+			preparedStatement.setString(1, playerName);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			resultSet.next();
+			Player player=new Player();
+			
+			player.setId(resultSet.getInt("player_id"));
+			player.setName(resultSet.getString("player_name"));
+			player.setSurname(resultSet.getString("player_surname"));
+			player.setAge(resultSet.getInt("age"));
+			player.setActualMarketValue(resultSet.getInt("actualMarketValue"));
+			player.setActualMarketValue(resultSet.getInt("previousMarketValue"));
+			player.setActualMarketValue(resultSet.getInt("accidents"));
+			player.setActualMarketValue(resultSet.getInt("position"));
+			player.setActualMarketValue(resultSet.getInt("goals"));
+			player.setActualMarketValue(resultSet.getInt("minutesPlayed"));
+			
+			
+			
+			
+			
+			return player;
+		} catch (SQLException e) {
+	
+		}
+		return null;
+
+	}
+
+	public boolean updateClient(Player player) {
+		Connection connection = ConnectionSingleton.getInstance();
+
+		// Check if id is present
+		if (player.getId() == 0)
+			return false;
+
+		
+		try {
+			PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
+			preparedStatement.setString(1, player.getName());
+			preparedStatement.setInt(3, player.getId());
+			int a = preparedStatement.executeUpdate();
+			if (a > 0)
+				return true;
+			else
+				return false;
+		} catch (SQLException e) {
+			return false;
+		}
+
+	
+	}
+
+	public boolean deletePlayer(Integer id) {
+			Connection connection = ConnectionSingleton.getInstance();
+			
+			try {
+				PreparedStatement preparedStatement = connection.prepareStatement(QUERY_DELETE);
+				preparedStatement.setInt(1, id);
+				int n = preparedStatement.executeUpdate();
+				if (n != 0)
+					return true;
+			} catch (SQLException e) {
+			}
+			return false;
+		
+
+	}
+	}
