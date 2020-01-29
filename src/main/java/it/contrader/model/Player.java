@@ -99,6 +99,13 @@ public class Player {
 	public void setMinutesPlayed(int minutesPlayed) {
 		this.minutesPlayed = minutesPlayed;
 	}
+	@Override
+	public String toString() {
+		return "Player [player_id=" + player_id + ", player_name=" + player_name + ", player_surname=" + player_surname
+				+ ", age=" + age + ", actualMarketValue=" + actualMarketValue + ", previousMarketValue="
+				+ previousMarketValue + ", accidents=" + accidents + ", position=" + position + ", goals=" + goals
+				+ ", minutesPlayed=" + minutesPlayed + "]";
+	}
 	
 	
 }

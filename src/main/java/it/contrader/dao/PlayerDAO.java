@@ -20,7 +20,7 @@ public class PlayerDAO {
 	
 	private final String QUERY_INSERT = " insert into players (player_id, player_name, player_surname, age, actualMarketValue, previousMarketValue, accidents, position, goals, minutesPlayed)"
 		        + " values (?,?,?,?,?,?,?,?,?,?)";
-	private final String QUERY_READ = "select * from player where player_name=?";
+	private final String QUERY_READ = "select * from player where player_id=?";
 
 	private final String QUERY_UPDATE = "UPDATE player SET player_name=? WHERE player_id=?";
 	private final String QUERY_DELETE = "DELETE from players WHERE player_id=?";
@@ -92,11 +92,12 @@ public class PlayerDAO {
 
 	}
 
-	public Player readPlayer(String playerName) {
+	public Player readPlayer(int player_id) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_READ);
-			preparedStatement.setString(1, playerName);
+			preparedStatement.setInt(1, player_id);
+			
 			ResultSet resultSet = preparedStatement.executeQuery();
 			resultSet.next();
 			Player player=new Player();
@@ -124,7 +125,7 @@ public class PlayerDAO {
 
 	}
 
-	public boolean updateClient(Player player) {
+	public boolean updatePlayer(Player player) {
 		Connection connection = ConnectionSingleton.getInstance();
 
 		// Check if id is present
