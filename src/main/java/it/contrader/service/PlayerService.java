@@ -30,7 +30,7 @@ public class PlayerService {
 	public boolean updatePlayer(Player player) {
 		return this.playerDAO.updatePlayer(player);
 	}
-	public boolean deletePlayer(Integer id) {
+	public boolean deletePlayer(int id) {
 		return this.playerDAO.deletePlayer(id);
 	}
 }

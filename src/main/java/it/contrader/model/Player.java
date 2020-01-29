@@ -9,23 +9,21 @@ public class Player {
 	private int age;
 	private int actualMarketValue;
 	private int previousMarketValue;
-	private int accidents;
+	
 	private String position;
-	private int goals;
-	private int minutesPlayed;
+	
+	
 	public Player(int id, String name, String surname, int age, int actualMarketValue, int previousMarketValue,
-			int accidents, String position, int goals, int minutesPlayed) {
-		super();
+			 String position) {
+		
 		this.player_id = id;
 		this.player_name = name;
 		this.player_surname=surname;
 		this.age = age;
 		this.actualMarketValue = actualMarketValue;
 		this.previousMarketValue = previousMarketValue;
-		this.accidents = accidents;
 		this.position = position;
-		this.goals = goals;
-		this.minutesPlayed = minutesPlayed;
+		
 	}
 	public Player(int player_id, String player_name, String player_surname) {
 		super();
@@ -75,36 +73,22 @@ public class Player {
 	public void setPreviousMarketValue(int previousMarketValue) {
 		this.previousMarketValue = previousMarketValue;
 	}
-	public int getAccidents() {
-		return accidents;
-	}
-	public void setAccidents(int accidents) {
-		this.accidents = accidents;
-	}
+	
 	public String getPosition() {
 		return position;
 	}
 	public void setPosition(String position) {
 		this.position = position;
 	}
-	public int getGoals() {
-		return goals;
-	}
-	public void setGoals(int goals) {
-		this.goals = goals;
-	}
-	public int getMinutesPlayed() {
-		return minutesPlayed;
-	}
-	public void setMinutesPlayed(int minutesPlayed) {
-		this.minutesPlayed = minutesPlayed;
-	}
+	
+	
+	
 	@Override
 	public String toString() {
 		return "Player [player_id=" + player_id + ", player_name=" + player_name + ", player_surname=" + player_surname
 				+ ", age=" + age + ", actualMarketValue=" + actualMarketValue + ", previousMarketValue="
-				+ previousMarketValue + ", accidents=" + accidents + ", position=" + position + ", goals=" + goals
-				+ ", minutesPlayed=" + minutesPlayed + "]";
+				+ previousMarketValue  + ", position=" + position 
+				+  "]";
 	}
 	
 	
