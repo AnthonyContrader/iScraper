@@ -127,10 +127,10 @@ public class Statsbox {
 
 	@Override
 	public String toString() {
-		return "Stats: playerId=" + playerId + ", season=" + season + ", team=" + team + ", /ncaps=" + caps
-				+ ", contribution/90min=" + contribution + ", shots%=" + shotsper + ", /nkey passes=" + keypass + ", passprecision="
-				+ passprec + ", dribblings=" + dribbling + ", /nfoulssuffered=" + foulssub + ", foulscommitted=" + foulscomm
-				+ ", tackles=" + tackles + ", tackleswon%=" + tacklesper + ", breaks=" + breaks + "";
+		return playerId + "\t" + season + "\t" + team + "\t" + caps
+				+ "\t" + contribution + "\t" + shotsper + "\t" + keypass + "\t" 
+				+ passprec + "\t" + dribbling + "\t" + foulssub + "\t" + foulscomm
+				+ "\t" + tackles + "\t" + tacklesper + "\t" + breaks;
 	}
 	
 	
