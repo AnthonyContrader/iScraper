@@ -1,12 +1,12 @@
 package it.contrader.model;
 
 public class Statsbox {
-	private String playerId;
+	private int playerId;
 	private String season;
 	private String team;
 	private int caps; //questo campo indica le presenze in questa stagione in campionato
 	private float contribution; //questo campo indica le contribuzioni (gol o assist, che valgono rispettivamente 1 e 0.5) per 90 minuti di quel giocatore
-	private float shots; //questo campo indica la percentuale di tiri in porta su tiri totali del giocatore, su 90 minuti
+	private float shotsper; //questo campo indica la percentuale di tiri in porta su tiri totali del giocatore, su 90 minuti
 	private float keypass; //questo campo indica i passaggi chiave effettuati, su 90 minuti
 	private float passprec; //questo campo indica la precisione dei passaggi (passaggi riusciti/passaggi effettuati)
 	private float dribbling; //questo campo indica il numero di dribbling riusciti per partita
@@ -20,7 +20,7 @@ public class Statsbox {
 		
 	}
 	
-	public Statsbox(String playerId, String season, String team, int caps, float contribution, float shots,
+	public Statsbox(int playerId, String season, String team, int caps, float contribution, float shotsper,
 			float keypass, float passprec, float dribbling, float foulssub, float foulscomm, float tackles,
 			float tacklesper, float breaks) {
 		super();
@@ -29,7 +29,7 @@ public class Statsbox {
 		this.team = team;
 		this.caps = caps;
 		this.contribution = contribution;
-		this.shots = shots;
+		this.shotsper = shotsper;
 		this.keypass = keypass;
 		this.passprec = passprec;
 		this.dribbling = dribbling;
@@ -40,10 +40,10 @@ public class Statsbox {
 		this.breaks = breaks;
 	}
 	
-	public String getPlayerId() {
+	public int getPlayerId() {
 		return playerId;
 	}
-	public void setPlayerId(String playerId) {
+	public void setPlayerId(int playerId) {
 		this.playerId = playerId;
 	}
 	public String getSeason() {
@@ -70,11 +70,11 @@ public class Statsbox {
 	public void setContribution(float contribution) {
 		this.contribution = contribution;
 	}
-	public float getShots() {
-		return shots;
+	public float getShotsper() {
+		return shotsper;
 	}
-	public void setShots(float shots) {
-		this.shots = shots;
+	public void setShotsper(float shotsper) {
+		this.shotsper = shotsper;
 	}
 	public float getKeypass() {
 		return keypass;
@@ -124,6 +124,16 @@ public class Statsbox {
 	public void setBreaks(float breaks) {
 		this.breaks = breaks;
 	}
+
+	@Override
+	public String toString() {
+		return "Stats: playerId=" + playerId + ", season=" + season + ", team=" + team + ", /ncaps=" + caps
+				+ ", contribution/90min=" + contribution + ", shots%=" + shotsper + ", /nkey passes=" + keypass + ", passprecision="
+				+ passprec + ", dribblings=" + dribbling + ", /nfoulssuffered=" + foulssub + ", foulscommitted=" + foulscomm
+				+ ", tackles=" + tackles + ", tackleswon%=" + tacklesper + ", breaks=" + breaks + "";
+	}
+	
+	
 	
 	
 }
