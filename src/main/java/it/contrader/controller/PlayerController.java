@@ -1,5 +1,4 @@
 package it.contrader.controller;
-
 import java.util.List;
 
 import it.contrader.main.MainDispatcher;
