@@ -10,15 +10,15 @@ public class HomeUserView extends AbstractView{
 
 	@Override
 	public void showResults(Request request) {
-		System.out.println("\n-----Purtroppo in questo sample l'utente non puà fare nulla, ci scusiamo per il disagio.-----");
+		System.out.println("Benvenuto in IScraper");
 
 	}
 
 	@Override
 	public void showOptions() {
 		System.out.println("-------------MENU------------\n");
-		System.out.println("NESSUNA OPZIONE DISPONIBILE!");
-		System.out.println("\n Esatto, puoi solo uscire...");
+		System.out.println("Seleziona su che tabella lavorare");
+		System.out.println("\n[G]iocatori [I]nfortuni [T]eams [S]tatistiche [E]sci");
 		choice = this.getInput();
 
 	}
@@ -28,10 +28,21 @@ public class HomeUserView extends AbstractView{
 
 		switch (choice) {
 
+		case "g":
+			MainDispatcher.getInstance().callAction("Player", "doControl", null);
+			break;
+		case "i":
+			MainDispatcher.getInstance().callAction("Injuries", "doControl", null);
+			break;
+		case "t":
+			MainDispatcher.getInstance().callAction("Teams", "doControl", null);
+			break;
+		case "s":
+			MainDispatcher.getInstance().callAction("Statsbox", "doControl", null);
+			break;
+			
 		case "e":
 			MainDispatcher.getInstance().callAction("Login", "doControl", null);
-			break;
-
 		default:
 			MainDispatcher.getInstance().callAction("Login", "doControl", null);
 		}
