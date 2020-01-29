@@ -121,7 +121,7 @@ public class SearchDAO {
 			} catch (SQLException e) {
 				return false;
 			}
-		}
+		} else return false;
 	}
 	
 	public boolean delete(long id) {
