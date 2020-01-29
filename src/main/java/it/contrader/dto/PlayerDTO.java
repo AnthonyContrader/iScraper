@@ -12,8 +12,7 @@ public class PlayerDTO {
 
 	private String position;
 	
-	public PlayerDTO(int id, String name, String surname, int age, int actualMarketValue, int previousMarketValue,
-			 String position ) {
+	public PlayerDTO(int id, String name, String surname, int age, int actualMarketValue, int previousMarketValue, String position ) {
 		
 		this.player_id = id;
 		this.player_name = name;
