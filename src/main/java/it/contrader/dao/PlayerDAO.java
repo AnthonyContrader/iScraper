@@ -10,7 +10,7 @@ import java.util.List;
 
 import it.contrader.main.ConnectionSingleton;
 import it.contrader.model.Player;
-import it.contrader.model.User;
+
 
 
 
@@ -36,17 +36,9 @@ public class PlayerDAO {
 		try {
 			Statement statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery(QUERY_ALL);
-		//	Player player;
+	
 			while (resultSet.next()) {
-//				player = new Player();
-//				int playerId = resultSet.getInt("player_id");
-//			
-//				player.setId(playerId);
-//				
-//				String playerName = resultSet.getString("player_name");
-//				player.setName(playerName);
-//				String surname=resultSet.getString("player_surname");
-//				player.setSurname(surname);
+
 				
 				Player player=new Player();
 				
