@@ -18,7 +18,7 @@ public class PlayerDAO {
 
 	private final String QUERY_ALL = "select * from players";
 	
-	private final String QUERY_INSERT = " insert into players (player_id, player_name, player_surname, age, actualMarketValue, previousMarketValue, accidents, position, goals, minutesPlayed)"
+	private final String QUERY_INSERT = " insert into players (player_id, player_name, player_surname, age, actualMarketValue, previousMarketValue, position)"
 		        + " values (?,?,?,?,?,?,?,?,?,?)";
 	private final String QUERY_READ = "select * from player where player_id=?";
 
@@ -48,10 +48,9 @@ public class PlayerDAO {
 				player.setAge(resultSet.getInt("age"));
 				player.setActualMarketValue(resultSet.getInt("actualMarketValue"));
 				player.setActualMarketValue(resultSet.getInt("previousMarketValue"));
-				player.setActualMarketValue(resultSet.getInt("accidents"));
+				
 				player.setActualMarketValue(resultSet.getInt("position"));
-				player.setActualMarketValue(resultSet.getInt("goals"));
-				player.setActualMarketValue(resultSet.getInt("minutesPlayed"));
+				
 				playerList.add(player);
 			}
 		} catch (SQLException e) {
@@ -71,10 +70,9 @@ public class PlayerDAO {
 			preparedStatement.setInt(4, player.getAge());
 			preparedStatement.setInt(5, player.getActualMarketValue());
 			preparedStatement.setInt(6, player.getPreviousMarketValue());
-			preparedStatement.setInt(7, player.getAccidents());
+			
 			preparedStatement.setString(8, player.getPosition());
-			preparedStatement.setInt(9, player.getGoals());
-			preparedStatement.setInt(10, player.getMinutesPlayed());
+	
 			
 			return preparedStatement.execute();
 		} catch (SQLException e) {
@@ -100,10 +98,9 @@ public class PlayerDAO {
 			player.setAge(resultSet.getInt("age"));
 			player.setActualMarketValue(resultSet.getInt("actualMarketValue"));
 			player.setActualMarketValue(resultSet.getInt("previousMarketValue"));
-			player.setActualMarketValue(resultSet.getInt("accidents"));
+			
 			player.setActualMarketValue(resultSet.getInt("position"));
-			player.setActualMarketValue(resultSet.getInt("goals"));
-			player.setActualMarketValue(resultSet.getInt("minutesPlayed"));
+	
 			
 			
 			

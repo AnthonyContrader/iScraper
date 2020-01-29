@@ -13,23 +13,25 @@ public class PlayerConverter {
 		PlayerDTO playerDTO = null;
 		if (player != null) {
 			playerDTO = new PlayerDTO();
+			
 			playerDTO.setId(player.getId());
 			playerDTO.setName(player.getName());
 			playerDTO.setSurname(player.getSurname());
 			playerDTO.setAge(player.getAge());
 			playerDTO.setActualMarketValue(player.getActualMarketValue());
 			playerDTO.setPreviousMarketValue(player.getPreviousMarketValue());
-			playerDTO.setAccidents(player.getAccidents());
+		
 			playerDTO.setPosition(player.getPosition());
-			playerDTO.setGoals(player.getGoals());
-			playerDTO.setMinutesPlayed(player.getMinutesPlayed());
+			
+			
 		}
 		return playerDTO;
 	}
+	
 	public static Player toEntity(PlayerDTO playerDTO) {
 		
-		return new Player(playerDTO.getId(), playerDTO.getName(), playerDTO.getSurname(), playerDTO.getAge(), playerDTO.getActualMarketValue(), playerDTO.getPreviousMarketValue(), playerDTO.getAccidents(),
-				playerDTO.getPosition(), playerDTO.getGoals(), playerDTO.getMinutesPlayed());
+		return new Player(playerDTO.getId(), playerDTO.getName(), playerDTO.getSurname(), playerDTO.getAge(), playerDTO.getActualMarketValue(), playerDTO.getPreviousMarketValue(),
+				playerDTO.getPosition());
 	}
 	public static List<PlayerDTO>  toListDTO(List<Player> list){
 		List<PlayerDTO> listPlayerDTOs= new ArrayList<PlayerDTO>();
