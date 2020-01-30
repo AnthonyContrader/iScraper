@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mysql.cj.protocol.Message;
+
 import it.contrader.main.ConnectionSingleton;
 import it.contrader.model.Player;
 
@@ -146,8 +148,10 @@ public class PlayerDAO {
 				preparedStatement.setInt(1, id);
 				int n = preparedStatement.executeUpdate();
 				if (n != 0)
+					System.out.println("Player removed");
 					return true;
 			} catch (SQLException e) {
+			System.out.println(e.getMessage());
 			}
 			return false;
 		

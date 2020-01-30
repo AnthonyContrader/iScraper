@@ -33,6 +33,7 @@ import it.contrader.view.View;
 
 			if (playerId != null && StringUtils.isStrictlyNumeric(playerId)) {
 				playerController.deletePlayer(Integer.parseInt(playerId));
+				//System.out.println("Player removed");
 				
 			} else {
 				System.out.println("Valore inserito errato");

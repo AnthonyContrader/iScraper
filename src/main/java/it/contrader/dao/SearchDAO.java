@@ -1,6 +1,5 @@
 package it.contrader.dao;
 
-import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -33,7 +32,7 @@ public class SearchDAO {
 			while (resultSet.next()) {
 				long search_id = resultSet.getInt("ID");
 				Date search_date = resultSet.getDate("search_date");
-				BigDecimal value = resultSet.getBigDecimal("player_value");
+				int value = resultSet.getInt("player_value");
 				int index = resultSet.getInt("player_index");
 				int user = resultSet.getInt("user");
 				short player = resultSet.getShort("player");
@@ -52,7 +51,7 @@ public class SearchDAO {
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_CREATE);
 			preparedStatement.setDate(1, searchToInsert.getDate());
-			preparedStatement.setBigDecimal(2, searchToInsert.getValue());
+			preparedStatement.setInt(2, searchToInsert.getValue());
 			preparedStatement.setInt(3, searchToInsert.getIndex());
 			preparedStatement.setInt(4, searchToInsert.getUser());
 			preparedStatement.setShort(5, searchToInsert.getPlayer());
@@ -71,7 +70,7 @@ public class SearchDAO {
 			ResultSet resultSet = preparedStatement.executeQuery();
 			resultSet.next();
 			Date search_date = resultSet.getDate("search_date");
-			BigDecimal value = resultSet.getBigDecimal("player_value");
+			int value = resultSet.getInt("player_value");
 			int index = resultSet.getInt("player_index");
 			int user = resultSet.getInt("user");
 			short player = resultSet.getShort("player");
@@ -92,7 +91,7 @@ public class SearchDAO {
 				if (searchToUpdate.getDate() == null) {
 					searchToUpdate.setDate(searchRead.getDate());
 				}
-				if (searchToUpdate.getValue() == null) {
+				if (searchToUpdate.getValue() == 0) {
 					searchToUpdate.setValue(searchRead.getValue());
 				}
 				if (searchToUpdate.getIndex() == 0) {
@@ -107,7 +106,7 @@ public class SearchDAO {
 				//perché qui il casting?
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
 				preparedStatement.setDate(1, searchToUpdate.getDate());
-				preparedStatement.setBigDecimal(2, searchToUpdate.getValue());
+				preparedStatement.setInt(2, searchToUpdate.getValue());
 				preparedStatement.setInt(3, searchToUpdate.getIndex());
 				preparedStatement.setInt(4, searchToUpdate.getUser());
 				preparedStatement.setShort(5, searchToUpdate.getPlayer());

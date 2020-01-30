@@ -1,19 +1,17 @@
 package it.contrader.dto;
 
-import java.math.BigDecimal;
 import java.sql.Date;
 
 public class SearchDTO {
 	
 	private long search_id;
-	private int index, user_id;
-	private Date search_date; 
-	private BigDecimal value;
+	private int value, index, user_id;
+	private Date search_date;
 	private short player;
 	
 	public SearchDTO() {}
 
-	public SearchDTO(Date search_date, BigDecimal value, int index, int user_id, short player) {
+	public SearchDTO(Date search_date, int value, int index, int user_id, short player) {
 		this.search_date = search_date;
 		this.value = value;
 		this.index = index;
@@ -21,7 +19,7 @@ public class SearchDTO {
 		this.player = player;
 	}
 	
-	public SearchDTO(long search_id, Date search_date, BigDecimal value, int index, int user_id, short player) {
+	public SearchDTO(long search_id, Date search_date, int value, int index, int user_id, short player) {
 		this.search_id = search_id;
 		this.search_date = search_date;
 		this.value = value;
@@ -46,11 +44,11 @@ public class SearchDTO {
 		this.search_date = search_date;
 	}
 	
-	public BigDecimal getValue() {
+	public int getValue() {
 		return value;
 	}
 	
-	public void setValue(BigDecimal value) {
+	public void setValue(int value) {
 		this.value = value;
 	}
 	

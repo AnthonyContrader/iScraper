@@ -1,6 +1,8 @@
 package it.contrader.controller;
 import java.util.List;
 
+import it.contrader.dto.PlayerDTO;
+import it.contrader.dto.StatsboxDTO;
 import it.contrader.main.MainDispatcher;
 import it.contrader.model.Player;
 import it.contrader.service.PlayerService;
@@ -41,14 +43,25 @@ public class PlayerController implements Controller{
 	}
 	
 	
-	
-	
-	
 	@Override
 	public void doControl(Request request) {
 		String mode = (String) request.get("mode");
 		String choice = (String) request.get("choice");
 		
+		
+		switch (mode) {
+		case "PLAYERLIST":
+			List<PlayerDTO> playerDTO = playerService.getAll();
+			//Impacchetta la request con la lista degli user
+			request.put("player", playerDTO);
+			MainDispatcher.getInstance().callView("Player", request);
+			break;
+		
+			
+
+		default:
+			break;
+		}
 		if (mode == "menu") {
 			MainDispatcher.getInstance().callView("Player", null);
 		} else {
@@ -66,6 +79,7 @@ public class PlayerController implements Controller{
 			case "E":
 				MainDispatcher.getInstance().callView("Login", null);
 				break;
+			
 			default:
 				MainDispatcher.getInstance().callView("Login", null);
 				break;
@@ -76,3 +90,4 @@ public class PlayerController implements Controller{
 	}
 	
 }
+
