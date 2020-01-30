@@ -29,7 +29,7 @@ public class HomeUserView extends AbstractView{
 		switch (choice) {
 
 		case "g":
-			MainDispatcher.getInstance().callAction("Player", "doControl", null);
+			MainDispatcher.getInstance().callAction("Players", "doControl", null);
 			break;
 		case "i":
 			MainDispatcher.getInstance().callAction("Injuries", "doControl", null);

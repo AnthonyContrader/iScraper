@@ -1,10 +1,11 @@
-package it.contrader.view;
+package it.contrader.view.player;
 
 import java.util.Scanner;
 
 import it.contrader.controller.PlayerController;
 import it.contrader.controller.Request;
 import it.contrader.main.MainDispatcher;
+import it.contrader.view.View;
 
 public class GetPlayersView implements View {
 
