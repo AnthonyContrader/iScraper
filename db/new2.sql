@@ -1,0 +1,1 @@
+Create table if not exists tb_players (player_id int, player_name char, player_surname char, age int, actualMarketValue int, previousMarketValue int, position char ) ;

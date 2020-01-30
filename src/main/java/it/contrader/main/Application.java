@@ -14,10 +14,13 @@ import it.contrader.model.Player;
 public class Application {
 
     public static void main(String[] args) {
-//    	Player player= new Player(1, , hhhh, age, actualMarketValue, previousMarketValue, position)
-//    	PlayerDAO playerDAO=new PlayerDAO();
-//    	playerDAO.insertPlayer(player)
-//    	playerDAO.i
+    	Player player= new Player(1, "h", "s", 1, 2,4, "e");
+    	PlayerDAO playerDAO=new PlayerDAO();
+    	playerDAO.insertPlayer(player);
+    	System.out.println("---------------------");
+//    	System.out.println(playerDAO.readPlayer(0));;
+//    	System.out.println(playerDAO.getAllPlayers());
+    	
         MainDispatcher.getInstance().callAction("Login", "doControl", null);
     }
 

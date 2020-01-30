@@ -1,11 +1,11 @@
 package it.contrader.controller;
-import java.util.List;
 
 import it.contrader.dto.PlayerDTO;
-import it.contrader.dto.StatsboxDTO;
 import it.contrader.main.MainDispatcher;
 import it.contrader.model.Player;
 import it.contrader.service.PlayerService;
+
+import java.util.List;
 
 
 public class PlayerController implements Controller{
@@ -25,9 +25,9 @@ public class PlayerController implements Controller{
 		return this.playerService.getAllPlayers();
 	}
 	
-//	public boolean insertPlayer(Player player) {
-//		return this.playerService.insertPlayer(player);
-//	}
+	public boolean insertPlayer(Player player) {
+		return this.playerService.insertPlayer(player);
+	}
 	
 	public Player readPlayer(int player_id) {
 		return this.playerService.readPlayer(player_id);

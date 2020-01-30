@@ -1,9 +1,10 @@
 package it.contrader.controller;
 
-import java.util.List;
 import it.contrader.dto.InjuryDTO;
 import it.contrader.main.MainDispatcher;
 import it.contrader.service.InjuryService;
+
+import java.util.List;
 
 public class InjuryController implements Controller {
 
@@ -113,6 +114,7 @@ switch (choice.toUpperCase()) {
 			}
 		default:
 			MainDispatcher.getInstance().callView("Login", null);
+			break;
 		}
 	}
 }

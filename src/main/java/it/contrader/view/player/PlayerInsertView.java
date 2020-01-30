@@ -1,25 +1,22 @@
 package it.contrader.view.player;
 
-import java.util.Scanner;
-
-import com.mysql.cj.util.StringUtils;
-
 import it.contrader.controller.PlayerController;
 import it.contrader.controller.Request;
 import it.contrader.main.MainDispatcher;
 import it.contrader.view.View;
 
-public class PlayerInsertView  implements View {
+import java.util.Scanner;
 
-	
-	 int player_id;
-	 String player_name;
-	 String player_surname;
-	 int age;
-	 int actualMarketValue;
-	 int previousMarketValue;
-	 String position;
-	 private final String mode = "INSERT";
+public class PlayerInsertView implements View {
+
+	int player_id;
+	String player_name;
+	String player_surname;
+	int age;
+	int actualMarketValue;
+	int previousMarketValue;
+	String position;
+	private final String mode = "INSERT";
 	private PlayerController playerController;
 	private Request request;
 
@@ -29,36 +26,38 @@ public class PlayerInsertView  implements View {
 
 	@Override
 	public void showResults(Request request) {
-		if (request!=null) {
+		if (request != null) {
 			System.out.println("Inserimento andato a buon fine.\n");
 			MainDispatcher.getInstance().callView("Player", null);
-		}else System.out.println("Error");
-	
+		} else {
+			System.out.println("Error");
+		}
+
 	}
 
 	@Override
 	public void showOptions() {
-			System.out.println("Inserisci playerID:");
-			player_id = Integer.parseInt(getInput());
-			System.out.println("Inserisci nome:");
-			player_name = getInput();
-			System.out.println("Inserisci cognome:");
-			player_surname = getInput();
-			System.out.println("Inserisci eta:");
-			age = Integer.parseInt(getInput());
-			System.out.println("Inserisci valore attuale di mercato:");
-			actualMarketValue = Integer.parseInt(getInput());
-			System.out.println("Inserisci valore precedente:");
-			previousMarketValue = Integer.parseInt(getInput());
-			System.out.println("Inserisci posizione:");
-			position = getInput();
-			
+		System.out.println("Inserisci playerID:");
+		player_id = Integer.parseInt(getInput());
+		System.out.println("Inserisci nome:");
+		player_name = getInput();
+		System.out.println("Inserisci cognome:");
+		player_surname = getInput();
+		System.out.println("Inserisci eta:");
+		age = Integer.parseInt(getInput());
+		System.out.println("Inserisci valore attuale di mercato:");
+		actualMarketValue = Integer.parseInt(getInput());
+		System.out.println("Inserisci valore precedente:");
+		previousMarketValue = Integer.parseInt(getInput());
+		System.out.println("Inserisci posizione:");
+		position = getInput();
+
 	}
-	
+
 	public String getInput() {
 		Scanner scanner = new Scanner(System.in);
 		return scanner.nextLine().trim();
-		
+
 	}
 
 	@Override
@@ -71,11 +70,9 @@ public class PlayerInsertView  implements View {
 		request.put("actualMarketValue", actualMarketValue);
 		request.put("previousMarketValue", previousMarketValue);
 		request.put("position", position);
-		
+
 		request.put("mode", mode);
 		MainDispatcher.getInstance().callAction("Player", "doControl", request);
 	}
-
-
 
 }

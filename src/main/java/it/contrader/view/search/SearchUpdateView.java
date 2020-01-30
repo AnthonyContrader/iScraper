@@ -1,11 +1,11 @@
 package it.contrader.view.search;
 
-import java.sql.Date;
-import java.text.SimpleDateFormat;
-
 import it.contrader.controller.Request;
 import it.contrader.main.MainDispatcher;
 import it.contrader.view.AbstractView;
+
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 public class SearchUpdateView extends AbstractView{
 	Request request;
@@ -42,7 +42,7 @@ public class SearchUpdateView extends AbstractView{
 			index = Integer.parseInt(getInput());
 			System.out.println("Inserisci l'id dell'utente che ha effettuato la ricerca: ");
 			user = Integer.parseInt(getInput());
-			System.out.println("Inserisci l'id del giocatore su cui si è effettuata la ricerca: ");
+			System.out.println("Inserisci l'id del giocatore su cui si ï¿½ effettuata la ricerca: ");
 			player = Short.parseShort(getInput());
 		} catch (Exception e) {}
 	}

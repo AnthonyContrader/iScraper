@@ -1,12 +1,11 @@
 package it.contrader.service;
 
-import java.util.List;
-
 import it.contrader.converter.PlayerConverter;
 import it.contrader.dao.PlayerDAO;
 import it.contrader.dto.PlayerDTO;
-
 import it.contrader.model.Player;
+
+import java.util.List;
 
 public class PlayerService {
 
@@ -42,6 +41,6 @@ public class PlayerService {
 	}
 	
 	public PlayerDTO read(int playerId) {
-		return playerConverter.toTDO((playerDAO.readPlayer(playerId)));
+		return PlayerConverter.toTDO((playerDAO.readPlayer(playerId)));
 	}
 }

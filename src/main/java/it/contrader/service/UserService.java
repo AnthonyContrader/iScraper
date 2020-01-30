@@ -1,17 +1,16 @@
 package it.contrader.service;
 
-import java.util.List;
-
-
 import it.contrader.converter.UserConverter;
 import it.contrader.dao.UserDAO;
 import it.contrader.dto.UserDTO;
+
+import java.util.List;
 
 /**
  * 
  * @author Vittorio, De Santis
  *
- *Grazie all'ereditarietà mi basta specificare i tipi di questa classe per
+ *Grazie all'ereditarietï¿½ mi basta specificare i tipi di questa classe per
  *ereditare i metodi della clase AbstractService. Pertanto la classe risulta meno complicata
  *da scrivere, facendoci risparmiare tempo e fatica!
  */
@@ -28,25 +27,25 @@ public class UserService {
 	
 
 	public List<UserDTO> getAll() {
-		// Ottiene una lista di entità e le restituisce convertendole in DTO
+		// Ottiene una lista di entitï¿½ e le restituisce convertendole in DTO
 		return userConverter.toDTOList(userDAO.getAll());
 	}
 
 
 	public UserDTO read(int id) {
-		// Ottiene un'entità e la restituisce convertendola in DTO
+		// Ottiene un'entitï¿½ e la restituisce convertendola in DTO
 		return userConverter.toDTO(userDAO.read(id));
 	}
 
 
 	public boolean insert(UserDTO dto) {
-		// Converte un DTO in entità e lo passa al DAO per l'inserimento
+		// Converte un DTO in entitï¿½ e lo passa al DAO per l'inserimento
 		return userDAO.insert(userConverter.toEntity(dto));
 	}
 
 
 	public boolean update(UserDTO dto) {
-		// Converte un userDTO in entità e lo passa allo userDAO per la modifica
+		// Converte un userDTO in entitï¿½ e lo passa allo userDAO per la modifica
 		return userDAO.update(userConverter.toEntity(dto));
 	}
 

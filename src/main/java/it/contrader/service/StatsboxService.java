@@ -1,10 +1,10 @@
 package it.contrader.service;
 
-import java.util.List;
-
 import it.contrader.converter.StatsboxConverter;
 import it.contrader.dao.StatsboxDAO;
 import it.contrader.dto.StatsboxDTO;
+
+import java.util.List;
 
 public class StatsboxService {
 

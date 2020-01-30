@@ -1,7 +1,6 @@
 package it.contrader.view.user;
 
 import it.contrader.controller.Request;
-
 import it.contrader.dto.UserDTO;
 import it.contrader.main.MainDispatcher;
 import it.contrader.view.AbstractView;
@@ -22,8 +21,8 @@ public class UserReadView extends AbstractView {
 	}
 
 	/**
-	 * Se la request è null (ovvero quando arriva dal controller con mode GETCHOICE e choice L 
-	 * il metodo è vuoto.
+	 * Se la request ï¿½ null (ovvero quando arriva dal controller con mode GETCHOICE e choice L 
+	 * il metodo ï¿½ vuoto.
 	 * 
 	 * Altrimenti se arriva con uno user nella request (ovvero quando arriva
 	 * dal controller con mode READ) mostra lo user. In questo caso torna alla UserView senza eseguire

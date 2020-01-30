@@ -1,12 +1,11 @@
 package it.contrader.view;
 
 
-import java.util.List;
-
 import it.contrader.controller.Request;
 import it.contrader.dto.PlayerDTO;
-
 import it.contrader.main.MainDispatcher;
+
+import java.util.List;
 
 
 public class PlayerView extends AbstractView{

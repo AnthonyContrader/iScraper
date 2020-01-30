@@ -1,11 +1,10 @@
 package it.contrader.controller;
 
-import java.util.List;
-
 import it.contrader.dto.StatsboxDTO;
-
 import it.contrader.main.MainDispatcher;
 import it.contrader.service.StatsboxService;
+
+import java.util.List;
 
 
 public class StatsboxController implements Controller{
@@ -21,10 +20,10 @@ private static String sub_package = "statsbox.";
 	
 	/**
 	 * Metodo dell'interfaccia Controller. Estrae dalla request la mode
-	 * (che riceve dalle view specifiche e può essere la richesta di una 
+	 * (che riceve dalle view specifiche e puï¿½ essere la richesta di una 
 	 * scelta da parte dell'utente "GETCHOICE") e la scelta dell'utente.
 	 * 
-	 * Se la modalità corrisponde ad una CRUD il controller chiama i service,
+	 * Se la modalitï¿½ corrisponde ad una CRUD il controller chiama i service,
 	 * altrimenti rimanda alla View della CRUD per richiedere i parametri
 	 */
 	@Override

@@ -1,10 +1,10 @@
 package it.contrader.converter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import it.contrader.dto.PlayerDTO;
 import it.contrader.model.Player;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class PlayerConverter {
@@ -33,7 +33,7 @@ public class PlayerConverter {
 		return new Player(playerDTO.getId(), playerDTO.getName(), playerDTO.getSurname(), playerDTO.getAge(), playerDTO.getActualMarketValue(), playerDTO.getPreviousMarketValue(),
 				playerDTO.getPosition());
 	}
-	public static List<PlayerDTO>  toListDTO(List<Player> list){
+	public  List<PlayerDTO>  toListDTO(List<Player> list){
 		List<PlayerDTO> listPlayerDTOs= new ArrayList<PlayerDTO>();
 		if(!list.isEmpty()) {
 			for(Player player:list) {
@@ -43,7 +43,7 @@ public class PlayerConverter {
 		return listPlayerDTOs;
 	}
 	
-	public static List<Player> toListEntity(List<PlayerDTO> listPlayerDTO) {
+	public  List<Player> toListEntity(List<PlayerDTO> listPlayerDTO) {
 		List<Player> list = new ArrayList<>();
 		if (!listPlayerDTO.isEmpty()) {
 			for (PlayerDTO playerDTO : listPlayerDTO) {

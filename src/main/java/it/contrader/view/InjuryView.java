@@ -1,9 +1,10 @@
 package it.contrader.view;
 
-import java.util.List;
 import it.contrader.controller.Request;
 import it.contrader.dto.InjuryDTO;
 import it.contrader.main.MainDispatcher;
+
+import java.util.List;
 
 
 public class InjuryView extends AbstractView {
