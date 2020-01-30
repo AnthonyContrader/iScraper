@@ -6,14 +6,13 @@ import java.sql.Date;
 public class Search {
 	
 	private long search_id;
-	private int index, user_id;
-	private Date search_date; 
-	private BigDecimal value;
+	private int value, index, user_id;
+	private Date search_date;
 	private short player;
 	
 	public Search() {}
 
-	public Search(Date search_date, BigDecimal value, int index, int user_id, short player) {
+	public Search(Date search_date, int value, int index, int user_id, short player) {
 		this.search_date = search_date;
 		this.value = value;
 		this.index = index;
@@ -21,7 +20,7 @@ public class Search {
 		this.player = player;
 	}
 	
-	public Search(long search_id, Date search_date, BigDecimal value, int index, int user_id, short player) {
+	public Search(long search_id, Date search_date, int value, int index, int user_id, short player) {
 		this.search_id = search_id;
 		this.search_date = search_date;
 		this.value = value;
@@ -46,11 +45,11 @@ public class Search {
 		this.search_date = search_date;
 	}
 	
-	public BigDecimal getValue() {
+	public int getValue() {
 		return value;
 	}
 	
-	public void setValue(BigDecimal value) {
+	public void setValue(int value) {
 		this.value = value;
 	}
 	
