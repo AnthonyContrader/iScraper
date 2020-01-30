@@ -177,7 +177,6 @@ public class StatsboxDAO {
 				preparedStatement.setString(14, statsboxToUpdate.getSeason());
 				preparedStatement.setString(1, statsboxToUpdate.getTeam());
 				preparedStatement.setInt(2, statsboxToUpdate.getCaps());
-				preparedStatement.setFloat(3, statsboxToUpdate.getContributions());
 				preparedStatement.setFloat(4, statsboxToUpdate.getShotsper());
 				preparedStatement.setFloat(5, statsboxToUpdate.getKeypass());
 				preparedStatement.setFloat(6, statsboxToUpdate.getPassprec());
@@ -187,7 +186,7 @@ public class StatsboxDAO {
 				preparedStatement.setFloat(10, statsboxToUpdate.getTackles());
 				preparedStatement.setFloat(11, statsboxToUpdate.getTacklesper());
 				preparedStatement.setFloat(12, statsboxToUpdate.getBreaks());
-				preparedStatement.execute();
+				preparedStatement.setObject(3, statsboxToUpdate.getContributions());
 				int a = preparedStatement.executeUpdate();
 				if (a > 0)
 					return true;

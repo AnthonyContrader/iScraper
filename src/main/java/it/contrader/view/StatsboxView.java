@@ -29,7 +29,7 @@ public class StatsboxView extends AbstractView {
 	public void showResults(Request request) {
 		if (request != null) {
 			System.out.println("\n------------------- Statistiche ----------------\n");
-			System.out.println("PlayerID\tStagione\tSquadra\tPresenze\tContribuzioni\tPercentuale Tiri\tPassChiave\tDribbling\tFalliSub\tFalliComm\tTackles\tTackles%");
+			System.out.println("PlayerID\tStagione\tSquadra\tPresenze\tContribuzioni\tPercentuale Tiri\tPassChiave\tPrecisionePass\tDribbling\tFalliSub\tFalliComm\tTackles\tTackles%\tbreaks");
 			System.out.println("----------------------------------------------------\n");
 			
 			@SuppressWarnings("unchecked")
