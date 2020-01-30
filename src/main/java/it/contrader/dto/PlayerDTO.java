@@ -1,18 +1,20 @@
 package it.contrader.dto;
 
+import java.sql.Date;
+
 public class PlayerDTO {
 
 	
 	private int player_id;
 	private String player_name;
 	private String player_surname;
-	private int age;
+	private Date age;
 	private int actualMarketValue;
 	private int previousMarketValue;
 
 	private String position;
 	
-	public PlayerDTO(int id, String name, String surname, int age, int actualMarketValue, int previousMarketValue, String position ) {
+	public PlayerDTO(int id, String name, String surname, Date age, int actualMarketValue, int previousMarketValue, String position ) {
 		
 		this.player_id = id;
 		this.player_name = name;
@@ -54,10 +56,10 @@ public class PlayerDTO {
 	public void setSurname(String surname) {
 		this.player_surname=surname;
 	}
-	public int getAge() {
+	public Date getAge() {
 		return age;
 	}
-	public void setAge(int age) {
+	public void setAge(Date age) {
 		this.age = age;
 	}
 	public int getActualMarketValue() {
