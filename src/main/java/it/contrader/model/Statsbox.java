@@ -2,7 +2,7 @@ package it.contrader.model;
 
 public class Statsbox {
 	private int playerId;
-	private String season;
+	private int season;
 	private String team;
 	private int caps; //questo campo indica le presenze in questa stagione in campionato
 	private float contributions; //questo campo indica le contribuzioni (gol o assist, che valgono rispettivamente 1 e 0.5) per 90 minuti di quel giocatore
@@ -20,7 +20,7 @@ public class Statsbox {
 		
 	}
 	
-	public Statsbox(int playerId, String season, String team, int caps, float contributions, float shotsper,
+	public Statsbox(int playerId, int season, String team, int caps, float contributions, float shotsper,
 			float keypass, float passprec, float dribbling, float foulssub, float foulscomm, float tackles,
 			float tacklesper, float breaks) {
 		super();
@@ -46,10 +46,10 @@ public class Statsbox {
 	public void setPlayerId(int playerId) {
 		this.playerId = playerId;
 	}
-	public String getSeason() {
+	public int getSeason() {
 		return season;
 	}
-	public void setSeason(String season) {
+	public void setSeason(int season) {
 		this.season = season;
 	}
 	public String getTeam() {
