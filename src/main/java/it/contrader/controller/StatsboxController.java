@@ -117,8 +117,7 @@ private static String sub_package = "statsbox.";
 			tacklesper = Float.parseFloat(request.get("season").toString());
 			breaks = Float.parseFloat(request.get("season").toString());
 			StatsboxDTO statstoupdate = new StatsboxDTO(playerId, season, team, caps, contributions, shotsper, keypass, passprec, dribbling, foulssub, foulscomm, tackles, tacklesper, breaks);
-			statstoupdate.setPlayerId(playerId);
-			statstoupdate.setSeason(season);
+			
 			statsboxService.update(statstoupdate);
 			request = new Request();
 			request.put("mode", "mode");
