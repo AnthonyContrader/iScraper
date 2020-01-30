@@ -8,7 +8,7 @@ public class StatsboxDeleteView extends AbstractView {
 	private Request request;
 	private String season;
 
-	private int id;
+	private int playerId;
 	private final String mode = "DELETE";
 
 	public StatsboxDeleteView() {
@@ -32,7 +32,7 @@ public class StatsboxDeleteView extends AbstractView {
 	@Override
 	public void showOptions() {
 			System.out.println("Inserisci id del giocatore:");
-			id = Integer.parseInt(getInput());
+			playerId = Integer.parseInt(getInput());
 			System.out.println("Inserisci stagione di interesse:");
 			season = getInput();
 
@@ -44,7 +44,7 @@ public class StatsboxDeleteView extends AbstractView {
 	@Override
 	public void submit() {
 		request = new Request();
-		request.put("id", id);
+		request.put("playerId", playerId);
 		request.put("season", season);
 		request.put("mode", mode);
 		MainDispatcher.getInstance().callAction("Statsbox", "doControl", request);

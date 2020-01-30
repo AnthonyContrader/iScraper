@@ -7,10 +7,13 @@ import it.contrader.main.MainDispatcher;
 public class HomeUserView extends AbstractView{
 
 	String choice;
+	private Request request;
 
 	@Override
 	public void showResults(Request request) {
+		if (request!=null) {
 		System.out.println("Benvenuto in IScraper");
+		}
 
 	}
 
@@ -25,26 +28,32 @@ public class HomeUserView extends AbstractView{
 
 	@Override
 	public void submit() {
+		request = new Request();
 
 		switch (choice) {
 
 		case "g":
-			MainDispatcher.getInstance().callAction("Player", "doControl", null);
+			this.request.put("mode", "PLAYERLIST");
+			MainDispatcher.getInstance().callAction("Players", "doControl", request);
 			break;
 		case "i":
-			MainDispatcher.getInstance().callAction("Injuries", "doControl", null);
+			this.request.put("mode", "INJURYLIST");
+			MainDispatcher.getInstance().callAction("Injuries", "doControl", request);
 			break;
 		case "t":
-			MainDispatcher.getInstance().callAction("Teams", "doControl", null);
+			this.request.put("mode", "TEAMLIST");
+			MainDispatcher.getInstance().callAction("Teams", "doControl", request);
 			break;
 		case "s":
-			MainDispatcher.getInstance().callAction("Statsbox", "doControl", null);
+			this.request.put("mode", "STATSBOXLIST");
+			MainDispatcher.getInstance().callAction("Statsbox", "doControl", request);
 			break;
 			
 		case "e":
 			MainDispatcher.getInstance().callAction("Login", "doControl", null);
 		default:
-			MainDispatcher.getInstance().callAction("Login", "doControl", null);
+			request.put("choice", choice);
+			MainDispatcher.getInstance().callAction("Login", "doControl", request);
 		}
 	}
 

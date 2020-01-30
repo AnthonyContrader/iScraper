@@ -44,7 +44,7 @@ public class InjuryDAO {
 			return injuryList;
 	}
 	
-	public boolean create(Injury injuryToUpdate) {
+	public boolean insert(Injury injuryToUpdate) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_CREATE);
