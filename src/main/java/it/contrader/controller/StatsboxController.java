@@ -68,16 +68,16 @@ private static String sub_package = "statsbox.";
 			season = request.get("season").toString();
 			team = request.get("team").toString();
 			caps = Integer.parseInt(request.get("caps").toString());
-			contributions = Float.parseFloat(request.get("season").toString());
-			shotsper = Float.parseFloat(request.get("season").toString());
-			keypass = Float.parseFloat(request.get("season").toString());
-			passprec = Float.parseFloat(request.get("season").toString());
-			dribbling = Float.parseFloat(request.get("season").toString());
-			foulssub = Float.parseFloat(request.get("season").toString());
-			foulscomm = Float.parseFloat(request.get("season").toString());
-			tackles = Float.parseFloat(request.get("season").toString());
-			tacklesper = Float.parseFloat(request.get("season").toString());
-			breaks = Float.parseFloat(request.get("season").toString());
+			contributions = Float.parseFloat(request.get("contributions").toString());
+			shotsper = Float.parseFloat(request.get("shotsper").toString());
+			keypass = Float.parseFloat(request.get("keypass").toString());
+			passprec = Float.parseFloat(request.get("passprec").toString());
+			dribbling = Float.parseFloat(request.get("dribbling").toString());
+			foulssub = Float.parseFloat(request.get("foulssub").toString());
+			foulscomm = Float.parseFloat(request.get("foulscomm").toString());
+			tackles = Float.parseFloat(request.get("tackles").toString());
+			tacklesper = Float.parseFloat(request.get("tacklesper").toString());
+			breaks = Float.parseFloat(request.get("breaks").toString());
 			
 			//costruisce l'oggetto user da inserire
 			StatsboxDTO statstoinsert = new StatsboxDTO(playerId, season, team, caps, contributions, shotsper, keypass, passprec, dribbling, foulssub, foulscomm, tackles, tacklesper, breaks);

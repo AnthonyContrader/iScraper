@@ -23,7 +23,7 @@ public class HomeAdminView extends AbstractView {
 	 */
     public void showResults(Request request) {
     	if(request!=null) {
-    	System.out.println("\n Benvenuto in SAMPLE PROJECT "+request.get("username").toString() + "\n");
+    	System.out.println("\n Benvenuto in IScraper "+request.get("username").toString() + "\n");
     	}
     }
 
@@ -41,7 +41,7 @@ public class HomeAdminView extends AbstractView {
     }
 
     /**
-     * Impacchetta una request (in base alla scelta sarà diversa) che invia ai controller tramite il
+     * Impacchetta una adminrequest (in base alla scelta sarà diversa) che invia ai controller tramite il
      * Dispatcher
      */
     public void submit() {    
