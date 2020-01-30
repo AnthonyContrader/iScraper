@@ -71,7 +71,7 @@ public class PlayerInsertView implements View {
 		request.put("previousMarketValue", previousMarketValue);
 		request.put("position", position);
 
-		request.put("mode", mode);
+		request.put("mode", "menu");
 		MainDispatcher.getInstance().callAction("Player", "doControl", request);
 	}
 

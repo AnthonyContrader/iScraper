@@ -8,50 +8,47 @@ import it.contrader.view.View;
 
 import java.util.Scanner;
 
+public class PlayerDeleteView implements View {
 
+	private PlayerController playerController;
+	private Request request;
 
-	public class PlayerDeleteView implements View {
+	public PlayerDeleteView() {
+		this.playerController = new PlayerController();
+	}
 
-		private PlayerController playerController;
-		private Request request;
+	@Override
+	public void showResults(Request request) {
+	}
 
-		public PlayerDeleteView() {
-			this.playerController = new PlayerController();
+	@Override
+	public void showOptions() {
+
+		System.out.println("Inserisci l'ID dell'player da cancellare: ");
+
+		String playerId = getInput();
+
+		if (playerId != null && StringUtils.isStrictlyNumeric(playerId)) {
+			playerController.deletePlayer(Integer.parseInt(playerId));
+			// System.out.println("Player removed");
+
+		} else {
+			System.out.println("Valore inserito errato");
 		}
+	}
 
-		@Override
-		public void showResults(Request request) {
-		}
-
-		@Override
-		public void showOptions() {
-			
-			System.out.println("Inserisci l'ID dell'player da cancellare: ");
-		
-			String playerId = getInput();
-
-			if (playerId != null && StringUtils.isStrictlyNumeric(playerId)) {
-				playerController.deletePlayer(Integer.parseInt(playerId));
-				//System.out.println("Player removed");
-				
-			} else {
-				System.out.println("Valore inserito errato");
-			}
-		}
-
-		
-		public String getInput() {
-			Scanner scanner = new Scanner(System.in);
-			return scanner.nextLine().trim();
-			
-		}
-
-		@Override
-		public void submit() {
-			request = new Request();
-			request.put("mode", "menu");
-			request.put("choice", "");
-			MainDispatcher.getInstance().callAction("Player", "doControl", request);
-		}
+	public String getInput() {
+		Scanner scanner = new Scanner(System.in);
+		return scanner.nextLine().trim();
 
 	}
+
+	@Override
+	public void submit() {
+		request = new Request();
+		request.put("mode", "menu");
+		request.put("choice", "");
+		MainDispatcher.getInstance().callAction("Player", "doControl", request);
+	}
+
+}

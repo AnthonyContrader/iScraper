@@ -87,21 +87,27 @@ public class PlayerDAO {
 			ResultSet resultSet = preparedStatement.executeQuery();
 			resultSet.next();
 			Player player=new Player();
+			try {
+				player.setId(resultSet.getInt("player_id"));
+				player.setName(resultSet.getString("player_name"));
+				player.setSurname(resultSet.getString("player_surname"));
+				player.setAge(resultSet.getInt("age"));
+				player.setActualMarketValue(resultSet.getInt("actualMarketValue"));
+				player.setActualMarketValue(resultSet.getInt("previousMarketValue"));
+				player.setPosition(resultSet.getString("position"));
+			} catch (Exception e) {
+				// TODO: handle exception
+			//	GestoreEccezzioni.getInstance().gestisciEccezione(e);
+			}
 			
-			player.setId(resultSet.getInt("player_id"));
-			player.setName(resultSet.getString("player_name"));
-			player.setSurname(resultSet.getString("player_surname"));
-			player.setAge(resultSet.getInt("age"));
-			player.setActualMarketValue(resultSet.getInt("actualMarketValue"));
-			player.setActualMarketValue(resultSet.getInt("previousMarketValue"));
-			player.setPosition(resultSet.getString("position"));
 	
 			
 			return player;
 		} catch (SQLException e) {
-	
+			GestoreEccezzioni.getInstance().gestisciEccezione(e);
+			return null;
 		}
-		return null;
+		
 
 	}
 

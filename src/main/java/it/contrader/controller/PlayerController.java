@@ -1,6 +1,7 @@
 package it.contrader.controller;
 
 import it.contrader.dto.PlayerDTO;
+import it.contrader.dto.StatsboxDTO;
 import it.contrader.main.MainDispatcher;
 import it.contrader.model.Player;
 import it.contrader.service.PlayerService;
@@ -57,7 +58,31 @@ public class PlayerController implements Controller{
 			MainDispatcher.getInstance().callView("Player", request);
 			break;
 		
-			
+//		case "INSERT":
+//			playerId = Integer.parseInt(request.get("playerId").toString());
+//			season = Integer.parseInt(request.get("season").toString());
+//			team = request.get("team").toString();
+//			caps = Integer.parseInt(request.get("caps").toString());
+//			contributions = Float.parseFloat(request.get("contributions").toString());
+//			shotsper = Float.parseFloat(request.get("shotsper").toString());
+//			keypass = Float.parseFloat(request.get("keypass").toString());
+//			passprec = Float.parseFloat(request.get("passprec").toString());
+//			dribbling = Float.parseFloat(request.get("dribbling").toString());
+//			foulssub = Float.parseFloat(request.get("foulssub").toString());
+//			foulscomm = Float.parseFloat(request.get("foulscomm").toString());
+//			tackles = Float.parseFloat(request.get("tackles").toString());
+//			tacklesper = Float.parseFloat(request.get("tacklesper").toString());
+//			breaks = Float.parseFloat(request.get("breaks").toString());
+//			
+//			//costruisce l'oggetto user da inserire
+//			StatsboxDTO statstoinsert = new StatsboxDTO(playerId, season, team, caps, contributions, shotsper, keypass, passprec, dribbling, foulssub, foulscomm, tackles, tacklesper, breaks);
+//			//invoca il service
+//			statsboxService.insert(statstoinsert);
+//			request = new Request();
+//			request.put("mode", "mode");
+//			//Rimanda alla view con la risposta
+//			MainDispatcher.getInstance().callView(sub_package + "StatsboxInsert", request);
+//			break;
 
 		default:
 			break;
