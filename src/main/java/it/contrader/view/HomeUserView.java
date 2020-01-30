@@ -34,7 +34,7 @@ public class HomeUserView extends AbstractView{
 
 		case "g":
 			this.request.put("mode", "PLAYERLIST");
-			MainDispatcher.getInstance().callAction("Players", "doControl", request);
+			MainDispatcher.getInstance().callAction("Player", "doControl", request);
 			break;
 		case "i":
 			this.request.put("mode", "INJURYLIST");

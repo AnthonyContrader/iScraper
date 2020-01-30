@@ -77,7 +77,7 @@ public class PlayerDAO {
 			
 			return preparedStatement.execute();
 		} catch (SQLException e) {
-			//GestoreEccezioni.getInstance().gestisciEccezione(e);
+			GestoreEccezioni.getInstance().gestisciEccezione(e);
 			return false;
 		}
 
@@ -99,13 +99,8 @@ public class PlayerDAO {
 			player.setAge(resultSet.getInt("age"));
 			player.setActualMarketValue(resultSet.getInt("actualMarketValue"));
 			player.setActualMarketValue(resultSet.getInt("previousMarketValue"));
-			
 			player.setActualMarketValue(resultSet.getInt("position"));
 	
-			
-			
-			
-			
 			
 			return player;
 		} catch (SQLException e) {
