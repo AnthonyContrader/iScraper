@@ -40,7 +40,7 @@ private static String sub_package = "statsbox.";
 		 String season;
 		 String team;
 		 int caps; //questo campo indica le presenze in questa stagione in campionato
-		 float contribution; //questo campo indica le contribuzioni (gol o assist, che valgono rispettivamente 1 e 0.5) per 90 minuti di quel giocatore
+		 float contributions; //questo campo indica le contribuzioni (gol o assist, che valgono rispettivamente 1 e 0.5) per 90 minuti di quel giocatore
 		 float shotsper; //questo campo indica la percentuale di tiri in porta su tiri totali del giocatore, su 90 minuti
 		 float keypass; //questo campo indica i passaggi chiave effettuati, su 90 minuti
 		 float passprec; //questo campo indica la precisione dei passaggi (passaggi riusciti/passaggi effettuati)
@@ -68,7 +68,7 @@ private static String sub_package = "statsbox.";
 			season = request.get("season").toString();
 			team = request.get("team").toString();
 			caps = Integer.parseInt(request.get("caps").toString());
-			contribution = Float.parseFloat(request.get("season").toString());
+			contributions = Float.parseFloat(request.get("season").toString());
 			shotsper = Float.parseFloat(request.get("season").toString());
 			keypass = Float.parseFloat(request.get("season").toString());
 			passprec = Float.parseFloat(request.get("season").toString());
@@ -80,7 +80,7 @@ private static String sub_package = "statsbox.";
 			breaks = Float.parseFloat(request.get("season").toString());
 			
 			//costruisce l'oggetto user da inserire
-			StatsboxDTO statstoinsert = new StatsboxDTO(playerId, season, team, caps, contribution, shotsper, keypass, passprec, dribbling, foulssub, foulscomm, tackles, tacklesper, breaks);
+			StatsboxDTO statstoinsert = new StatsboxDTO(playerId, season, team, caps, contributions, shotsper, keypass, passprec, dribbling, foulssub, foulscomm, tackles, tacklesper, breaks);
 			//invoca il service
 			statsboxService.insert(statstoinsert);
 			request = new Request();
@@ -106,7 +106,7 @@ private static String sub_package = "statsbox.";
 			season = request.get("season").toString();
 			team = request.get("team").toString();
 			caps = Integer.parseInt(request.get("caps").toString());
-			contribution = Float.parseFloat(request.get("season").toString());
+			contributions = Float.parseFloat(request.get("season").toString());
 			shotsper = Float.parseFloat(request.get("season").toString());
 			keypass = Float.parseFloat(request.get("season").toString());
 			passprec = Float.parseFloat(request.get("season").toString());
@@ -116,7 +116,7 @@ private static String sub_package = "statsbox.";
 			tackles = Float.parseFloat(request.get("season").toString());
 			tacklesper = Float.parseFloat(request.get("season").toString());
 			breaks = Float.parseFloat(request.get("season").toString());
-			StatsboxDTO statstoupdate = new StatsboxDTO(playerId, season, team, caps, contribution, shotsper, keypass, passprec, dribbling, foulssub, foulscomm, tackles, tacklesper, breaks);
+			StatsboxDTO statstoupdate = new StatsboxDTO(playerId, season, team, caps, contributions, shotsper, keypass, passprec, dribbling, foulssub, foulscomm, tackles, tacklesper, breaks);
 			statstoupdate.setPlayerId(playerId);
 			statstoupdate.setSeason(season);
 			statsboxService.update(statstoupdate);

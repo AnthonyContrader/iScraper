@@ -11,7 +11,7 @@ public class StatsboxInsertView extends AbstractView{
 	private String season;
 	private String team;
 	private int caps; //questo campo indica le presenze in questa stagione in campionato
-	private float contribution; //questo campo indica le contribuzioni (gol o assist, che valgono rispettivamente 1 e 0.5) per 90 minuti di quel giocatore
+	private float contributions; //questo campo indica le contribuzioni (gol o assist, che valgono rispettivamente 1 e 0.5) per 90 minuti di quel giocatore
 	private float shotsper; //questo campo indica la percentuale di tiri in porta su tiri totali del giocatore, su 90 minuti
 	private float keypass; //questo campo indica i passaggi chiave effettuati, su 90 minuti
 	private float passprec; //questo campo indica la precisione dei passaggi (passaggi riusciti/passaggi effettuati)
@@ -51,7 +51,7 @@ public class StatsboxInsertView extends AbstractView{
 			System.out.println("Inserisci presenze:");
 			caps = Integer.parseInt(getInput());
 			System.out.println("Inserisci contribuzioni:");
-			contribution = Float.parseFloat(getInput());
+			contributions = Float.parseFloat(getInput());
 			System.out.println("Inserisci percentuale tiri:");
 			shotsper = Float.parseFloat(getInput());
 			System.out.println("Inserisci passaggi chiave:");
@@ -82,7 +82,7 @@ public class StatsboxInsertView extends AbstractView{
 		request.put("season", season);
 		request.put("team", team);
 		request.put("caps", caps);
-		request.put("contribution", contribution);
+		request.put("contributions", contributions);
 		request.put("shotsper", shotsper);
 		request.put("keypass", keypass);
 		request.put("passprec", passprec);

@@ -24,7 +24,7 @@ public class StatsboxConverter {
 	}
 
 	public StatsboxDTO toDTO(Statsbox statsbox) {
-		return new StatsboxDTO(statsbox.getPlayerId(),statsbox.getSeason(),statsbox.getTeam(), statsbox.getCaps(), statsbox.getContribution(), statsbox.getShotsper(), statsbox.getKeypass(), statsbox.getPassprec(), statsbox.getDribbling(), statsbox.getFoulssub(), statsbox.getFoulscomm(), statsbox.getTackles(), statsbox.getTacklesper(), statsbox.getBreaks());
+		return new StatsboxDTO(statsbox.getPlayerId(),statsbox.getSeason(),statsbox.getTeam(), statsbox.getCaps(), statsbox.getContributions(), statsbox.getShotsper(), statsbox.getKeypass(), statsbox.getPassprec(), statsbox.getDribbling(), statsbox.getFoulssub(), statsbox.getFoulscomm(), statsbox.getTackles(), statsbox.getTacklesper(), statsbox.getBreaks());
 	}
 	
 	public Statsbox toEntity(StatsboxDTO dto) {

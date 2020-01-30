@@ -12,11 +12,11 @@ import it.contrader.main.ConnectionSingleton;
 import it.contrader.model.Statsbox;
 
 public class StatsboxDAO {
-	private final String QUERY_ALL = "SELECT * FROM statsbox";
-	private final String QUERY_CREATE = "INSERT INTO statsbox (playerID, season, team, caps, contributions, shotsper, keypass, passprec, dribbling, foulssub, tackles, tacklesper, breaks) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-	private final String QUERY_READ = "SELECT * FROM statsbox WHERE id=? AND season=?";
-	private final String QUERY_UPDATE = "UPDATE statsbox SET team=?, caps=?, contributions=?, shotsper=?, keypass=?, passprec=?, dribbling=?, foulssub=?, foulscomm=?,  WHERE playerID=? AND season=?";
-	private final String QUERY_DELETE = "DELETE FROM statsbox WHERE playerID=? AND season=?";
+	private final String QUERY_ALL = "SELECT * FROM tb_stats";
+	private final String QUERY_CREATE = "INSERT INTO tb_stats (player_id, season, team, caps, contributions, shotsper, keypass, passprec, dribbling, foulssub, foulscomm, tackles, tacklesper, breaks) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+	private final String QUERY_READ = "SELECT * FROM tb_stats WHERE player_id=? AND season=?";
+	private final String QUERY_UPDATE = "UPDATE tb_stats SET team=?, caps=?, contributions=?, shotsper=?, keypass=?, passprec=?, dribbling=?, foulssub=?, foulscomm=?, tackles=?, tacklesper=?, breaks=? WHERE player_id=? AND season=?";
+	private final String QUERY_DELETE = "DELETE FROM tb_stats WHERE player_id=? AND season=?";
 	
 	public StatsboxDAO() {
 		
@@ -30,11 +30,11 @@ public class StatsboxDAO {
 				ResultSet resultSet = statement.executeQuery(QUERY_ALL);
 				Statsbox statsbox;
 				while (resultSet.next()) {
-					int playerId = resultSet.getInt("playerId");
+					int playerId = resultSet.getInt("player_id");
 					String season = resultSet.getString("season");
 					String team = resultSet.getString("team");
 					int caps = resultSet.getInt("caps");
-					float contribution = resultSet.getFloat("contribution");
+					float contributions = resultSet.getFloat("contributions");
 					float shotsper = resultSet.getFloat("shotsper");
 					float keypass = resultSet.getFloat("keypass");
 					float passprec = resultSet.getFloat("passprec");
@@ -45,7 +45,7 @@ public class StatsboxDAO {
 					float tacklesper = resultSet.getFloat("tacklesper");
 					float breaks = resultSet.getFloat("breaks");
 					
-					statsbox = new Statsbox(playerId, season, team, caps, contribution, shotsper, keypass, passprec, dribbling, foulssub, foulscomm, tackles, tacklesper, breaks);
+					statsbox = new Statsbox(playerId, season, team, caps, contributions, shotsper, keypass, passprec, dribbling, foulssub, foulscomm, tackles, tacklesper, breaks);
 					statsList.add(statsbox);
 				}
 			} catch (SQLException e) {
@@ -62,7 +62,7 @@ public class StatsboxDAO {
 			preparedStatement.setString(2, statsboxToUpdate.getSeason());
 			preparedStatement.setString(3, statsboxToUpdate.getTeam());
 			preparedStatement.setInt(4, statsboxToUpdate.getCaps());
-			preparedStatement.setFloat(5, statsboxToUpdate.getContribution());
+			preparedStatement.setFloat(5, statsboxToUpdate.getContributions());
 			preparedStatement.setFloat(6, statsboxToUpdate.getShotsper());
 			preparedStatement.setFloat(7, statsboxToUpdate.getKeypass());
 			preparedStatement.setFloat(8, statsboxToUpdate.getPassprec());
@@ -92,7 +92,7 @@ public class StatsboxDAO {
 			resultSet.next();
 			String team = resultSet.getString("team");
 			int caps = resultSet.getInt("caps");
-			float contribution = resultSet.getFloat("contribution");
+			float contributions = resultSet.getFloat("contributions");
 			float shotsper = resultSet.getFloat("shotsper");
 			float keypass = resultSet.getFloat("keypass");
 			float passprec = resultSet.getFloat("passprec");
@@ -103,7 +103,7 @@ public class StatsboxDAO {
 			float tacklesper = resultSet.getFloat("tacklesper");
 			float breaks = resultSet.getFloat("breaks");
 			
-			Statsbox statsbox = new Statsbox(playerId, season, team, caps, contribution, shotsper, keypass, passprec, dribbling, foulssub, foulscomm, tackles, tacklesper, breaks);
+			Statsbox statsbox = new Statsbox(playerId, season, team, caps, contributions, shotsper, keypass, passprec, dribbling, foulssub, foulscomm, tackles, tacklesper, breaks);
 
 			return statsbox;
 		} catch (SQLException e) {
@@ -131,8 +131,8 @@ public class StatsboxDAO {
 					statsboxToUpdate.setCaps(statsboxRead.getCaps());
 				}
 
-				if (statsboxToUpdate.getContribution() == 0) {
-					statsboxToUpdate.setContribution(statsboxRead.getContribution());
+				if (statsboxToUpdate.getContributions() == 0) {
+					statsboxToUpdate.setContributions(statsboxRead.getContributions());
 				}
 				
 				if (statsboxToUpdate.getShotsper() == 0) {
@@ -173,20 +173,20 @@ public class StatsboxDAO {
 
 				// Update the statsbox
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
-				preparedStatement.setInt(1, statsboxToUpdate.getPlayerId());
-				preparedStatement.setString(2, statsboxToUpdate.getSeason());
-				preparedStatement.setString(3, statsboxToUpdate.getTeam());
-				preparedStatement.setInt(4, statsboxToUpdate.getCaps());
-				preparedStatement.setFloat(5, statsboxToUpdate.getContribution());
-				preparedStatement.setFloat(6, statsboxToUpdate.getShotsper());
-				preparedStatement.setFloat(7, statsboxToUpdate.getKeypass());
-				preparedStatement.setFloat(8, statsboxToUpdate.getPassprec());
-				preparedStatement.setFloat(9, statsboxToUpdate.getDribbling());
-				preparedStatement.setFloat(10, statsboxToUpdate.getFoulssub());
-				preparedStatement.setFloat(11, statsboxToUpdate.getFoulscomm());
-				preparedStatement.setFloat(12, statsboxToUpdate.getTackles());
-				preparedStatement.setFloat(13, statsboxToUpdate.getTacklesper());
-				preparedStatement.setFloat(14, statsboxToUpdate.getBreaks());
+				preparedStatement.setInt(13, statsboxToUpdate.getPlayerId());
+				preparedStatement.setString(14, statsboxToUpdate.getSeason());
+				preparedStatement.setString(1, statsboxToUpdate.getTeam());
+				preparedStatement.setInt(2, statsboxToUpdate.getCaps());
+				preparedStatement.setFloat(3, statsboxToUpdate.getContributions());
+				preparedStatement.setFloat(4, statsboxToUpdate.getShotsper());
+				preparedStatement.setFloat(5, statsboxToUpdate.getKeypass());
+				preparedStatement.setFloat(6, statsboxToUpdate.getPassprec());
+				preparedStatement.setFloat(7, statsboxToUpdate.getDribbling());
+				preparedStatement.setFloat(8, statsboxToUpdate.getFoulssub());
+				preparedStatement.setFloat(9, statsboxToUpdate.getFoulscomm());
+				preparedStatement.setFloat(10, statsboxToUpdate.getTackles());
+				preparedStatement.setFloat(11, statsboxToUpdate.getTacklesper());
+				preparedStatement.setFloat(12, statsboxToUpdate.getBreaks());
 				preparedStatement.execute();
 				int a = preparedStatement.executeUpdate();
 				if (a > 0)
