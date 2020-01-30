@@ -18,14 +18,13 @@ import it.contrader.model.Player;
 
 public class PlayerDAO {
 
-	private final String QUERY_ALL = "select * from players";
+	private final String QUERY_ALL = "select * from tb_players";
 	
-	private final String QUERY_INSERT = " insert into players (player_id, player_name, player_surname, age, actualMarketValue, previousMarketValue, position)"
-		        + " values (?,?,?,?,?,?,?,?,?,?)";
-	private final String QUERY_READ = "select * from player where player_id=?";
+	private final String QUERY_INSERT = " insert into tb_players (player_id, player_name, player_surname, age, actualMarketValue, previousMarketValue, position) values (?,?,?,?,?,?,?)";
+	private final String QUERY_READ = "select * from tb_players where player_id=?";
 
-	private final String QUERY_UPDATE = "UPDATE player SET player_name=? WHERE player_id=?";
-	private final String QUERY_DELETE = "DELETE from players WHERE player_id=?";
+	private final String QUERY_UPDATE = "UPDATE tb_players SET player_name=? WHERE player_id=?";
+	private final String QUERY_DELETE = "DELETE from tb_players WHERE player_id=?";
 	
 	
 	
@@ -78,7 +77,7 @@ public class PlayerDAO {
 			
 			return preparedStatement.execute();
 		} catch (SQLException e) {
-			//GestoreEccezioni.getInstance().gestisciEccezione(e);
+			GestoreEccezioni.getInstance().gestisciEccezione(e);
 			return false;
 		}
 
@@ -100,13 +99,8 @@ public class PlayerDAO {
 			player.setAge(resultSet.getInt("age"));
 			player.setActualMarketValue(resultSet.getInt("actualMarketValue"));
 			player.setActualMarketValue(resultSet.getInt("previousMarketValue"));
-			
 			player.setActualMarketValue(resultSet.getInt("position"));
 	
-			
-			
-			
-			
 			
 			return player;
 		} catch (SQLException e) {

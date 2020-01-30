@@ -69,6 +69,9 @@ public class PlayerController implements Controller{
 			case "L":
 				MainDispatcher.getInstance().callView(sub_package + "PlayerRead", null);
 				break;
+			case "I":
+				MainDispatcher.getInstance().callView(sub_package + "PlayerInsert", null);
+				break;
 			case "C":
 				MainDispatcher.getInstance().callView(sub_package + "PlayerDelete", null);
 				break;

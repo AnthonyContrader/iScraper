@@ -36,8 +36,9 @@ public class PlayerReadView implements View{
 		}
 	}
 	public String getInput() {
-		Scanner scanner = new Scanner(System.in);
-		return scanner.nextLine().trim();
+		try (Scanner scanner = new Scanner(System.in)) {
+			return scanner.nextLine().trim();
+		}
 		
 	}
 
