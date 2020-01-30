@@ -11,7 +11,6 @@ import it.contrader.view.View;
 public class PlayerReadView implements View{
 
 	private PlayerController playerController;
-	private Request request;
 
 	public PlayerReadView() {
 		this.playerController = new PlayerController();

@@ -10,7 +10,6 @@ public class PlayerController implements Controller{
 
 	private static String sub_package = "player.";
 	private PlayerService playerService;
-	private Request request;
 	
 	
 	public  PlayerController() {

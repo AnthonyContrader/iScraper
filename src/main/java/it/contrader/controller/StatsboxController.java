@@ -3,10 +3,10 @@ package it.contrader.controller;
 import java.util.List;
 
 import it.contrader.dto.StatsboxDTO;
-import it.contrader.dto.UserDTO;
+
 import it.contrader.main.MainDispatcher;
 import it.contrader.service.StatsboxService;
-import it.contrader.service.UserService;
+
 
 public class StatsboxController implements Controller{
 private static String sub_package = "statsbox.";

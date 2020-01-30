@@ -2,8 +2,6 @@ package it.contrader.view;
 
 import java.util.Scanner;
 
-import com.mysql.cj.util.StringUtils;
-
 import it.contrader.controller.PlayerController;
 import it.contrader.controller.Request;
 import it.contrader.main.MainDispatcher;
