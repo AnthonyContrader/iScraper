@@ -33,6 +33,8 @@ public class StatsboxReadView extends AbstractView {
 	public void showResults(Request request) {
 		if (request != null) {
 			StatsboxDTO statsbox = (StatsboxDTO) request.get("statsbox");
+			System.out.println("PlayerID\tStagione\tSquadra\tPresenze\tContribuzioni\tPercentuale Tiri\tPassChiave\tPrecisionePass\tDribbling\tFalliSub\tFalliComm\tTackles\tTackles%\tbreaks");
+			System.out.println("----------------------------------------------------\n");
 			System.out.println(statsbox);
 			MainDispatcher.getInstance().callView("Statsbox", null);
 		}
@@ -46,7 +48,7 @@ public class StatsboxReadView extends AbstractView {
 	public void showOptions() {
 		System.out.println("Inserisci l'ID del giocatore:");
 		playerId = Integer.parseInt(getInput());
-		System.out.println("Inserisci la stagione di interesse");
+		System.out.println("Inserisci la stagione di interesse (scrivi * per tutte le stagioni)");
 		season=getInput();
 	}
 

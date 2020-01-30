@@ -37,7 +37,7 @@ private static String sub_package = "statsbox.";
 
 		//Definisce i campi della classe (serviranno sempre, tanto vale definirli una sola volta)
 		 int playerId;
-		 String season;
+		 int season;
 		 String team;
 		 int caps; //questo campo indica le presenze in questa stagione in campionato
 		 float contributions; //questo campo indica le contribuzioni (gol o assist, che valgono rispettivamente 1 e 0.5) per 90 minuti di quel giocatore
@@ -56,7 +56,8 @@ private static String sub_package = "statsbox.";
 		
 		case "READ":
 			playerId = Integer.parseInt(request.get("playerId").toString());
-			season = request.get("season").toString();
+			season = Integer.parseInt(request.get("season").toString());
+			
 			StatsboxDTO statsboxDTO = statsboxService.read(playerId, season);
 			request.put("statsbox", statsboxDTO);
 			MainDispatcher.getInstance().callView(sub_package + "StatsboxRead", request);
@@ -65,7 +66,7 @@ private static String sub_package = "statsbox.";
 		// Arriva qui dalla UserInsertView. Estrae i parametri da inserire e chiama il service per inserire uno user con questi parametri
 		case "INSERT":
 			playerId = Integer.parseInt(request.get("playerId").toString());
-			season = request.get("season").toString();
+			season = Integer.parseInt(request.get("season").toString());
 			team = request.get("team").toString();
 			caps = Integer.parseInt(request.get("caps").toString());
 			contributions = Float.parseFloat(request.get("contributions").toString());
@@ -92,7 +93,7 @@ private static String sub_package = "statsbox.";
 		// Arriva qui dalla UserDeleteView. Estrae l'id dell'utente da cancellare e lo passa al Service
 		case "DELETE":
 			playerId = Integer.parseInt(request.get("playerId").toString());
-			season = request.get("season").toString();
+			season = Integer.parseInt(request.get("season").toString());
 			//Qui chiama il service
 			statsboxService.delete(playerId, season);
 			request = new Request();
@@ -103,7 +104,7 @@ private static String sub_package = "statsbox.";
 		// Arriva qui dalla UserUpdateView
 		case "UPDATE":
 			playerId = Integer.parseInt(request.get("playerId").toString());
-			season = request.get("season").toString();
+			season = Integer.parseInt(request.get("season").toString());
 			team = request.get("team").toString();
 			caps = Integer.parseInt(request.get("caps").toString());
 			contributions = Float.parseFloat(request.get("contributions").toString());

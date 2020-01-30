@@ -31,7 +31,7 @@ public class StatsboxDAO {
 				Statsbox statsbox;
 				while (resultSet.next()) {
 					int playerId = resultSet.getInt("player_id");
-					String season = resultSet.getString("season");
+					int season = Integer.parseInt(resultSet.getString("season"));
 					String team = resultSet.getString("team");
 					int caps = resultSet.getInt("caps");
 					float contributions = resultSet.getFloat("contributions");
@@ -59,7 +59,7 @@ public class StatsboxDAO {
 		try {	
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_CREATE);
 			preparedStatement.setInt(1, statsboxToUpdate.getPlayerId());
-			preparedStatement.setString(2, statsboxToUpdate.getSeason());
+			preparedStatement.setInt(2, statsboxToUpdate.getSeason());
 			preparedStatement.setString(3, statsboxToUpdate.getTeam());
 			preparedStatement.setInt(4, statsboxToUpdate.getCaps());
 			preparedStatement.setFloat(5, statsboxToUpdate.getContributions());
@@ -80,14 +80,14 @@ public class StatsboxDAO {
 
 	}
 	
-	public Statsbox read(int playerId, String season) {
+	public Statsbox read(int playerId, int season) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 
 
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_READ);
 			preparedStatement.setInt(1, playerId);
-			preparedStatement.setString(2, season);
+			preparedStatement.setInt(2, season);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			resultSet.next();
 			String team = resultSet.getString("team");
@@ -116,7 +116,7 @@ public class StatsboxDAO {
 		Connection connection = ConnectionSingleton.getInstance();
 
 		// Check if id is present
-		if (statsboxToUpdate.getPlayerId() == 0 || statsboxToUpdate.getSeason() == "" || statsboxToUpdate.getSeason()==null)
+		if (statsboxToUpdate.getPlayerId() == 0 || statsboxToUpdate.getSeason() == 0)
 			return false;
 
 		Statsbox statsboxRead = read(statsboxToUpdate.getPlayerId(), statsboxToUpdate.getSeason());
@@ -174,7 +174,7 @@ public class StatsboxDAO {
 				// Update the statsbox
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
 				preparedStatement.setInt(13, statsboxToUpdate.getPlayerId());
-				preparedStatement.setString(14, statsboxToUpdate.getSeason());
+				preparedStatement.setInt(14, statsboxToUpdate.getSeason());
 				preparedStatement.setString(1, statsboxToUpdate.getTeam());
 				preparedStatement.setInt(2, statsboxToUpdate.getCaps());
 				preparedStatement.setFloat(4, statsboxToUpdate.getShotsper());
@@ -202,12 +202,12 @@ public class StatsboxDAO {
 
 	}
 	
-	public boolean delete(int playerId, String season) {
+	public boolean delete(int playerId, int season) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_DELETE);
 			preparedStatement.setInt(1, playerId);
-			preparedStatement.setString(2, season);
+			preparedStatement.setInt(2, season);
 			int n = preparedStatement.executeUpdate();
 			if (n != 0)
 				return true;
