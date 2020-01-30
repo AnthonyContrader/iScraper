@@ -1,6 +1,5 @@
 package it.contrader.controller;
 
-import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.List;
 
@@ -31,7 +30,7 @@ public class SearchController implements Controller {
 		switch(mode) {
 		
 		case "READ":
-			id = Long.parseLong(request.get("ID").toString());
+			id = Long.parseLong(request.get("search_id").toString());
 			SearchDTO searchDTO = searchService.read(id);
 			request.put("search", searchDTO);
 			MainDispatcher.getInstance().callView(sub_package + "SearchRead", request);
@@ -59,11 +58,11 @@ public class SearchController implements Controller {
 			break;
 		
 		case "UPDATE":
-			id = Long.parseLong(request.get("ID").toString());
+			id = Long.parseLong(request.get("id").toString());
 			search_date = (Date) request.get("search_date");
 			value = Integer.parseInt(request.get("player_value").toString());
 			index = Integer.parseInt(request.get("player_index").toString());
-			user = Integer.parseInt(request.get("user_id").toString());
+			user = Integer.parseInt(request.get("user").toString());
 			player = Short.parseShort(request.get("player_id").toString());
 			SearchDTO searchUpdate = new SearchDTO(id, search_date, value, index, user, player);
 			searchService.update(searchUpdate);

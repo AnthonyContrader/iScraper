@@ -34,7 +34,7 @@ public class HomeAdminView extends AbstractView {
     public void showOptions() {
         System.out.println("-------------MENU------------\n");
         System.out.println(" Seleziona cosa vuoi gestire:");
-        System.out.println("[U]tenti [G]iocatori [I]nfortuni [S]tatistiche [T]eam [E]sci");
+        System.out.println("[U]tenti [G]iocatori [I]nfortuni [S]tatistiche [R]icerche [T]eam [E]sci");
         //Il metodo che salva l'input nella stringa choice.
         //getInput() è definito in AbstractView.
         choice = this.getInput();
@@ -63,6 +63,10 @@ public class HomeAdminView extends AbstractView {
         case "s":
         	this.request.put("mode", "STATSBOXLIST");
         	MainDispatcher.getInstance().callAction("Statsbox", "doControl", request);
+        	break;
+        case "r":
+        	this.request.put("mode", "SEARCHLIST");
+        	MainDispatcher.getInstance().callAction("Search", "doControl", request);
         	break;
         case "t":
         	this.request.put("mode", "TEAMLIST");

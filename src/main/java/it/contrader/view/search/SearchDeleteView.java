@@ -28,7 +28,7 @@ public class SearchDeleteView extends AbstractView{
 	@Override
 	public void submit() {
 		request = new Request();
-		request.put("ID", id);
+		request.put("search_id", id);
 		request.put("mode", mode);
 		MainDispatcher.getInstance().callAction("Search", "doControl", request);
 	}

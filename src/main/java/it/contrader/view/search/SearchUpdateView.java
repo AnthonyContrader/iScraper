@@ -27,6 +27,7 @@ public class SearchUpdateView extends AbstractView{
 	
 	@Override
 	public void showOptions() {
+		String str;
 		try {
 			System.out.println("Inserisci l'id della ricerca: ");
 			id = Long.parseLong(getInput());
@@ -35,22 +36,47 @@ public class SearchUpdateView extends AbstractView{
 				SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 				java.util.Date parsed = format.parse(getInput());
 				search_date = new Date(parsed.getTime());
-			} catch (Exception e) {} //Cercare eccezione specifica
+			} catch (Exception e) {
+				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+				java.util.Date parsed = format.parse("2020-02-02");
+				search_date = new Date(parsed.getTime());
+			} //Cercare eccezione specifica
 			System.out.println("Inserisci il valore del giocatore: ");
-			value = Integer.parseInt(getInput());
+			str=getInput();
+			if (str.isEmpty() || str == null) {
+				value = 0;
+			} else {
+				value = Integer.parseInt(str);
+			}
 			System.out.println("Inserisci l'indice del giocatore: ");
-			index = Integer.parseInt(getInput());
+			str=getInput();
+			if (str.isEmpty() || str == null) {
+				index = 0;
+			} else {
+				index = Integer.parseInt(str);
+			}
 			System.out.println("Inserisci l'id dell'utente che ha effettuato la ricerca: ");
-			user = Integer.parseInt(getInput());
+			str=getInput();
+			if (str.isEmpty() || str == null) {
+				user = 0;
+			} else {
+				user = Integer.parseInt(str);
+			}
 			System.out.println("Inserisci l'id del giocatore su cui si è effettuata la ricerca: ");
-			player = Short.parseShort(getInput());
+			str=getInput();
+			if (str.isEmpty() || str == null) {
+				value = 0;
+			} else {
+				player = Short.parseShort(str);
+			}
 		} catch (Exception e) {}
 	}
 	
 	@Override
 	public void submit() {
+		System.out.println("submit");
 		request = new Request();
-		request.put("ID", id);
+		request.put("search_id", id);
 		request.put("search_date", search_date);
 		request.put("player_value", value);
 		request.put("player_index", index);

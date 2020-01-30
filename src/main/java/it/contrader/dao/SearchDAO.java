@@ -14,11 +14,11 @@ import it.contrader.model.Search;
 
 public class SearchDAO {
 	
-	private final String QUERY_ALL = "SELECT * FROM tb_Searches";
-	private final String QUERY_CREATE = "INSERT INTO tb_Searches (search_date, player_value, player_index, user, player) VALUES (?,?,?,?,?)";
-	private final String QUERY_READ = "SELECT * FROM tb_Searches WHERE ID=?";
-	private final String QUERY_UPDATE = "UPDATE tb_Searches SET search_date=?. player_value=?, player_index=?, user=?, player=? WHERE ID=?";
-	private final String QUERY_DELETE = "DELETE FROM tb_Searches WHERE ID=?";
+	private final String QUERY_ALL = "SELECT * FROM tb_searches";
+	private final String QUERY_CREATE = "INSERT INTO tb_searches (search_date, player_value, player_index, user, playerId) VALUES (?,?,?,?,?)";
+	private final String QUERY_READ = "SELECT * FROM tb_searches WHERE id=?";
+	private final String QUERY_UPDATE = "UPDATE tb_searches SET search_date=?. player_value=?, player_index=?, user=?, playerId=? WHERE id=?";
+	private final String QUERY_DELETE = "DELETE FROM tb_searches WHERE id=?";
 	
 	public SearchDAO(){}
 	
@@ -30,12 +30,12 @@ public class SearchDAO {
 			ResultSet resultSet = statement.executeQuery(QUERY_ALL);
 			Search search;
 			while (resultSet.next()) {
-				long search_id = resultSet.getInt("ID");
+				long search_id = resultSet.getInt("id");
 				Date search_date = resultSet.getDate("search_date");
 				int value = resultSet.getInt("player_value");
 				int index = resultSet.getInt("player_index");
 				int user = resultSet.getInt("user");
-				short player = resultSet.getShort("player");
+				short player = resultSet.getShort("playerId");
 				search = new Search(search_date, value, index, user, player);
 				search.setID(search_id);
 				searchesList.add(search);
@@ -73,9 +73,9 @@ public class SearchDAO {
 			int value = resultSet.getInt("player_value");
 			int index = resultSet.getInt("player_index");
 			int user = resultSet.getInt("user");
-			short player = resultSet.getShort("player");
+			short player = resultSet.getShort("playerId");
 			Search search = new Search(search_date, value, index, user, player);
-			search.setID(resultSet.getLong("ID"));
+			search.setID(resultSet.getLong("id"));
 			return search;
 		} catch (SQLException e) {
 			return null;
@@ -83,9 +83,11 @@ public class SearchDAO {
 	}
 	
 	public boolean update(Search searchToUpdate) {
+		System.out.println("fefe");
 		Connection connection = ConnectionSingleton.getInstance();
 		if (searchToUpdate.getID()==0) return false;
 		Search searchRead = read(searchToUpdate.getID());
+		System.out.println("fefe");
 		if (!searchRead.equals(searchToUpdate)) {
 			try {
 				if (searchToUpdate.getDate() == null) {
