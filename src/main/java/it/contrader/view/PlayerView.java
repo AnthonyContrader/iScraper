@@ -9,12 +9,12 @@ import it.contrader.dto.PlayerDTO;
 import it.contrader.main.MainDispatcher;
 import it.contrader.model.Player;
 
-public class PlayersView extends AbstractView{
+public class PlayerView extends AbstractView{
 	
 		private Request request;
 		private String choice;
 
-		public PlayersView() {
+		public PlayerView() {
 			
 		}
 
@@ -61,4 +61,6 @@ public class PlayersView extends AbstractView{
 			MainDispatcher.getInstance().callAction("Player", "doControl", this.request);
 		}
 
+		
+		
 	}
