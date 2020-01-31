@@ -12,7 +12,7 @@ public class SearchDAO {
 	private final String QUERY_ALL = "SELECT * FROM tb_searches";
 	private final String QUERY_CREATE = "INSERT INTO tb_searches (search_date, player_value, player_index, user, playerId) VALUES (?,?,?,?,?)";
 	private final String QUERY_READ = "SELECT * FROM tb_searches WHERE id=?";
-	private final String QUERY_UPDATE = "UPDATE tb_searches SET search_date=?. player_value=?, player_index=?, user=?, playerId=? WHERE id=?";
+	private final String QUERY_UPDATE = "UPDATE tb_searches SET search_date=? player_value=?, player_index=?, user=?, playerId=? WHERE id=?";
 	private final String QUERY_DELETE = "DELETE FROM tb_searches WHERE id=?";
 	
 	public SearchDAO(){}
@@ -108,6 +108,7 @@ public class SearchDAO {
 				preparedStatement.setInt(4, searchToUpdate.getUser());
 				preparedStatement.setShort(5, searchToUpdate.getPlayer());
 				preparedStatement.setLong (6, searchToUpdate.getID());
+				System.out.println(preparedStatement.toString());
 				int a = preparedStatement.executeUpdate();
 				if (a < 0) {
 					return true;

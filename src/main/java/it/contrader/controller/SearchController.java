@@ -58,11 +58,11 @@ public class SearchController implements Controller {
 			break;
 		
 		case "UPDATE":
-			id = Long.parseLong(request.get("id").toString());
+			id = Long.parseLong(request.get("search_id").toString());
 			search_date = (Date) request.get("search_date");
 			value = Integer.parseInt(request.get("player_value").toString());
 			index = Integer.parseInt(request.get("player_index").toString());
-			user = Integer.parseInt(request.get("user").toString());
+			user = Integer.parseInt(request.get("user_id").toString());
 			player = Short.parseShort(request.get("player_id").toString());
 			SearchDTO searchUpdate = new SearchDTO(id, search_date, value, index, user, player);
 			searchService.update(searchUpdate);
