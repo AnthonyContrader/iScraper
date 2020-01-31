@@ -8,12 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InjuryDAO {
-	
-	private final String QUERY_ALL = "SELECT * FROM Injury";
-	private final String QUERY_CREATE = "INSERT into Injury (playerName, typology, duration, gravityIndex, season) values (?,?,?,?,?)";
-	private final String QUERY_READ = "SELECT * FROM Injury WHERE playerID=?";
-	private final String QUERY_UPDATE= "UPDATE Injury SET typology=?, duration=?, gravityIndex=?, season=? WHERE playerName=?";
-	private final String QUERY_DELETE= "DELETE FROM Indury WHERE playerName=?";
+	private final String QUERY_ALL = "SELECT * FROM tb_injuries";
+	private final String QUERY_CREATE = "INSERT into tb_injuries (playerName, typology, duration, gravityIndex, season) values (?,?,?,?,?)";
+	private final String QUERY_READ = "SELECT * FROM tb_injuries WHERE playerID=?";
+	private final String QUERY_UPDATE= "UPDATE tb_injuries SET typology=?, duration=?, gravityIndex=?, season=? WHERE playerName=?";
+	private final String QUERY_DELETE= "DELETE FROM tb_injuries WHERE playerName=?";
 
 	public InjuryDAO() {}
 	
