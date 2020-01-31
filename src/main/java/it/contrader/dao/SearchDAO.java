@@ -10,9 +10,11 @@ import java.util.List;
 public class SearchDAO {
 	
 	private final String QUERY_ALL = "SELECT * FROM tb_searches";
-	private final String QUERY_CREATE = "INSERT INTO tb_searches (search_date, player_value, player_index, user, playerId) VALUES (?,?,?,?,?)";
+	private final String QUERY_CREATE = "INSERT INTO tb_searches (search_date, player_value, player_index, user_id, player_id) VALUES (?,?,?,?,?)";
 	private final String QUERY_READ = "SELECT * FROM tb_searches WHERE id=?";
-	private final String QUERY_UPDATE = "UPDATE tb_searches SET search_date=? player_value=?, player_index=?, user=?, playerId=? WHERE id=?";
+
+	private final String QUERY_UPDATE = "UPDATE tb_searches SET search_date=?. player_value=?, player_index=?, user_id=?, player_id=? WHERE id=?";
+
 	private final String QUERY_DELETE = "DELETE FROM tb_searches WHERE id=?";
 	
 	public SearchDAO(){}
@@ -29,8 +31,8 @@ public class SearchDAO {
 				Date search_date = resultSet.getDate("search_date");
 				int value = resultSet.getInt("player_value");
 				int index = resultSet.getInt("player_index");
-				int user = resultSet.getInt("user");
-				short player = resultSet.getShort("playerId");
+				int user = resultSet.getInt("user_id");
+				short player = resultSet.getShort("player_id");
 				search = new Search(search_date, value, index, user, player);
 				search.setID(search_id);
 				searchesList.add(search);
@@ -67,8 +69,8 @@ public class SearchDAO {
 			Date search_date = resultSet.getDate("search_date");
 			int value = resultSet.getInt("player_value");
 			int index = resultSet.getInt("player_index");
-			int user = resultSet.getInt("user");
-			short player = resultSet.getShort("playerId");
+			int user = resultSet.getInt("user_id");
+			short player = resultSet.getShort("player_id");
 			Search search = new Search(search_date, value, index, user, player);
 			search.setID(resultSet.getLong("id"));
 			return search;

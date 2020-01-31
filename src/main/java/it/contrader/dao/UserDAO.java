@@ -19,11 +19,11 @@ import java.util.List;
  */
 public class UserDAO {
 
-	private final String QUERY_ALL = "SELECT * FROM user";
-	private final String QUERY_CREATE = "INSERT INTO user (username, password, usertype) VALUES (?,?,?)";
-	private final String QUERY_READ = "SELECT * FROM user WHERE id=?";
-	private final String QUERY_UPDATE = "UPDATE user SET username=?, password=?, usertype=? WHERE id=?";
-	private final String QUERY_DELETE = "DELETE FROM user WHERE id=?";
+	private final String QUERY_ALL = "SELECT * FROM tb_users";
+	private final String QUERY_CREATE = "INSERT INTO tb_users (username, password, usertype) VALUES (?,?,?)";
+	private final String QUERY_READ = "SELECT * FROM tb_users WHERE id=?";
+	private final String QUERY_UPDATE = "UPDATE tb_users SET username=?, password=?, usertype=? WHERE id=?";
+	private final String QUERY_DELETE = "DELETE FROM tb_users WHERE id=?";
 
 	public UserDAO() {
 

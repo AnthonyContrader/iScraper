@@ -15,11 +15,12 @@ public class PlayerDAO {
 
 	private final String QUERY_ALL = "select * from tb_players";
 	
-	private final String QUERY_INSERT = "insert into tb_players ( player_id, player_name, player_surname, age, actualMarketValue, previousMarketValue, position) values (?,?,?,?,?,?,?)";
-	private final String QUERY_READ = "select * from tb_players where player_id=?";
 
-	private final String QUERY_UPDATE = "UPDATE tb_players SET player_name=? WHERE player_id=?";
-	private final String QUERY_DELETE = "DELETE from tb_players WHERE player_id=?";
+	private final String QUERY_INSERT = "insert into tb_players (id, player_name, player_surname, age, actual_value, previous_value, position) values (?,?,?,?,?,?,?)";
+	private final String QUERY_READ = "select * from tb_players where id=?";
+
+	private final String QUERY_UPDATE = "UPDATE tb_players SET player_name=? WHERE id=?";
+	private final String QUERY_DELETE = "DELETE from tb_players WHERE id=?";
 	
 	
 	
@@ -38,12 +39,12 @@ public class PlayerDAO {
 				
 				Player player=new Player();
 				
-				player.setId(resultSet.getInt("player_id"));
+				player.setId(resultSet.getInt("id"));
 				player.setName(resultSet.getString("player_name"));
 				player.setSurname(resultSet.getString("player_surname"));
 				player.setAge(resultSet.getInt("age"));
-				player.setActualMarketValue(resultSet.getInt("actualMarketValue"));
-				player.setActualMarketValue(resultSet.getInt("previousMarketValue"));
+				player.setActualMarketValue(resultSet.getInt("actual_value"));
+				player.setActualMarketValue(resultSet.getInt("previous_value"));
 				
 				player.setPosition(resultSet.getString("position"));
 				
@@ -88,12 +89,12 @@ public class PlayerDAO {
 			resultSet.next();
 			Player player=new Player();
 			try {
-				player.setId(resultSet.getInt("player_id"));
+				player.setId(resultSet.getInt("id"));
 				player.setName(resultSet.getString("player_name"));
 				player.setSurname(resultSet.getString("player_surname"));
 				player.setAge(resultSet.getInt("age"));
-				player.setActualMarketValue(resultSet.getInt("actualMarketValue"));
-				player.setActualMarketValue(resultSet.getInt("previousMarketValue"));
+				player.setActualMarketValue(resultSet.getInt("actual_value"));
+				player.setActualMarketValue(resultSet.getInt("previous_value"));
 				player.setPosition(resultSet.getString("position"));
 			} catch (Exception e) {
 				// TODO: handle exception

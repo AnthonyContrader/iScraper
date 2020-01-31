@@ -23,10 +23,10 @@ public class InjuryConverter {
 	}
 	
 	public InjuryDTO toDTO(Injury injury) {
-		return new InjuryDTO(injury.getPlayerID(),injury.getTypology(),injury.getDuration(),injury.getGravityIndex(),injury.getSeason());
+		return new InjuryDTO(injury.getId(),injury.getSeverity(),injury.getDescription(),injury.getDuration(),injury.getDate(),injury.getPlayer_id());
 	}
 	
 	public Injury toEntity(InjuryDTO dto) {
-		return new Injury(dto.getPlayerID(),dto.getTypology(),dto.getDuration(),dto.getGravityIndex(),dto.getSeason());
+		return new Injury(dto.getId(),dto.getSeverity(),dto.getDescription(),dto.getDuration(),dto.getDate(), dto.getPlayer_id());
 	}
 }

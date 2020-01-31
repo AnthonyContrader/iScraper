@@ -19,7 +19,7 @@ public class InjuryView extends AbstractView {
 	@Override
 	public void showResults(Request request) {
 		if(request!=null) {
-			System.out.println("\n------------------- Statistiche ----------------\n");
+			System.out.println("\n------------------- Infortuni ----------------\n");
 			System.out.println("PlayerID\tTypology\tDuration\tGravityIndex\tSeason");
 			System.out.println("----------------------------------------------------\n");
 			
@@ -45,7 +45,7 @@ public class InjuryView extends AbstractView {
 		request = new Request();
 		request.put("choice", choice);
 		request.put("mode", "GETCHOICE");
-		MainDispatcher.getInstance().callAction("Injuries","doControl",this.request);
+		MainDispatcher.getInstance().callAction("Injury","doControl",this.request);
 	}
 
 }

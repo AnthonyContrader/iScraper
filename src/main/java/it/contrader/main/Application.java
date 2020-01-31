@@ -15,13 +15,18 @@ public class Application {
 
     public static void main(String[] args) {
 //    	Player player= new Player(1, "h", "s", 1, 2,4, "e");
+
 //    	PlayerDAO playerDAO=new PlayerDAO();
 //    	playerDAO.insertPlayer(player);
-    	System.out.println("---------------------");
+
+   // 	PlayerDAO playerDAO=new PlayerDAO();
+   //	playerDAO.insertPlayer(player);
+   //	System.out.println("---------------------");
+
 //    	System.out.println(playerDAO.readPlayer(0));;
 //    	System.out.println(playerDAO.getAllPlayers());
     	
-        MainDispatcher.getInstance().callAction("Login", "doControl", null);
+    	MainDispatcher.getInstance().callAction("Login", "doControl", null);
     }
 
 }

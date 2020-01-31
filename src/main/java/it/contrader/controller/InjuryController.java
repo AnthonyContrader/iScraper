@@ -4,6 +4,7 @@ import it.contrader.dto.InjuryDTO;
 import it.contrader.main.MainDispatcher;
 import it.contrader.service.InjuryService;
 
+import java.sql.Date;
 import java.util.List;
 
 public class InjuryController implements Controller {
@@ -15,36 +16,38 @@ public class InjuryController implements Controller {
 		this.injuryService=new InjuryService();
 	}
 	
+	private int id;
+	private int severity;
+	private String description;
+	private int duration;
+	private Date date;
+	private int player_id;
+	
 	@Override
 	public void doControl(Request request) {
 		
 		String mode = (String) request.get("mode");
 		String choice = (String) request.get("choice");
 		
-		int playerID;
-		String typology;
-		int duration;
-		int gravityIndex;
-		int season;
-		
 		switch(mode) {
 		
 		case "READ":
-			playerID = Integer.parseInt(request.get("playerID").toString());
-			season = Integer.parseInt(request.get("season").toString());
-			InjuryDTO injuryDTO = injuryService.read(playerID, season);
+			id = Integer.parseInt(request.get("id").toString());
+			severity = Integer.parseInt(request.get("severity").toString());
+			InjuryDTO injuryDTO = injuryService.read(id);
 			request.put("injury", injuryDTO);
 			MainDispatcher.getInstance().callView(sub_package+"InjuryRead", request);
 			break;
 		
 		case "INSERT":
-			playerID = Integer.parseInt(request.get("playerID").toString());
-			typology = request.get("typology").toString();
+			id = Integer.parseInt(request.get("id").toString());
+			severity = Integer.parseInt(request.get("severity").toString());
+			description = request.get("description").toString();
 			duration = Integer.parseInt(request.get("duration").toString());
-			gravityIndex = Integer.parseInt(request.get("gravityIndex").toString());
-			season = Integer.parseInt(request.get("season").toString());
+			date = Date.valueOf((request.get("date").toString()));
+			player_id = Integer.parseInt(request.get("player_id").toString());
 			
-			InjuryDTO injuryToInsert = new InjuryDTO(playerID,typology,duration,gravityIndex,season);
+			InjuryDTO injuryToInsert = new InjuryDTO(id,severity,description,duration,date,player_id);
 			injuryService.insert(injuryToInsert);
 			request = new Request();
 			request.put("mode", "mode");
@@ -52,22 +55,22 @@ public class InjuryController implements Controller {
 			break;
 			
 		case "DELETE":
-			playerID = Integer.parseInt(request.get("playerID").toString());
-			season = Integer.parseInt(request.get("season").toString());
-			injuryService.delete(playerID, season);
+			id = Integer.parseInt(request.get("id").toString());;
+			injuryService.delete(id);
 			request = new Request();
 			request.put("mode", "mode");
 			MainDispatcher.getInstance().callView(sub_package + "InjuryDelete", request);
 			break;
 			
 		case "UPDATE":
-			playerID = Integer.parseInt(request.get("playerID").toString());
-			typology = request.get("typology").toString();
+			id = Integer.parseInt(request.get("id").toString());
+			severity = Integer.parseInt(request.get("severity").toString());
+			description = request.get("description").toString();
 			duration = Integer.parseInt(request.get("duration").toString());
-			gravityIndex = Integer.parseInt(request.get("gravityIndex").toString());
-			season = Integer.parseInt(request.get("season").toString());
+			date = Date.valueOf((request.get("date").toString()));
+			player_id = Integer.parseInt(request.get("player_id").toString());
 			
-			InjuryDTO injuryToUpdate = new InjuryDTO(playerID,typology,duration,gravityIndex,season);
+			InjuryDTO injuryToUpdate = new InjuryDTO(id,severity,description,duration,date,player_id);
 			injuryService.update(injuryToUpdate);
 			request = new Request();
 			request.put("mode", "mode");
@@ -76,7 +79,7 @@ public class InjuryController implements Controller {
 			
 		case "INJURYLIST":
 			List<InjuryDTO> dto = injuryService.getAll();
-			request.put("statsbox", dto);
+			request.put("Injuries", dto);
 			MainDispatcher.getInstance().callView("Injury", request);
 			break;
 			

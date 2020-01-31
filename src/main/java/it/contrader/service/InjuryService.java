@@ -20,8 +20,8 @@ public class InjuryService {
 		return injuryConverter.toDTOList(injuryDAO.getAllInjury());
 	}
 	
-	public InjuryDTO read(int playerID, int season) {
-		return injuryConverter.toDTO(injuryDAO.read(playerID, season));
+	public InjuryDTO read(int id) {
+		return injuryConverter.toDTO(injuryDAO.read(id));
 	}
 	
 	public boolean insert (InjuryDTO dto) {
@@ -32,8 +32,8 @@ public class InjuryService {
 		return injuryDAO.update(injuryConverter.toEntity(dto));
 	}
 	
-	public boolean delete (int playerID,int season) {
-		return injuryDAO.delete(playerID, season);
+	public boolean delete (int id) {
+		return injuryDAO.delete(id);
 	}
 
 }

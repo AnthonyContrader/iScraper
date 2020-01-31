@@ -15,7 +15,7 @@ import java.sql.SQLException;
  */
 public class LoginDAO {
 
-	private final String QUERY_LOGIN = "SELECT * FROM user WHERE username = ? AND password = ?";
+	private final String QUERY_LOGIN = "SELECT * FROM tb_users WHERE username = ? AND password = ?";
 
 	
 	public String login (String username, String password) {

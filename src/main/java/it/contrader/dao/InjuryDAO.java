@@ -9,10 +9,10 @@ import java.util.List;
 
 public class InjuryDAO {
 	private final String QUERY_ALL = "SELECT * FROM tb_injuries";
-	private final String QUERY_CREATE = "INSERT into tb_injuries (playerName, typology, duration, gravityIndex, season) values (?,?,?,?,?)";
-	private final String QUERY_READ = "SELECT * FROM tb_injuries WHERE playerID=?";
-	private final String QUERY_UPDATE= "UPDATE tb_injuries SET typology=?, duration=?, gravityIndex=?, season=? WHERE playerName=?";
-	private final String QUERY_DELETE= "DELETE FROM tb_injuries WHERE playerName=?";
+	private final String QUERY_CREATE = "INSERT into tb_injuries (id, severity, description, date, duration, player_id) values (?,?,?,?,?,)";
+	private final String QUERY_READ = "SELECT * FROM tb_injuries WHERE id=?";
+	private final String QUERY_UPDATE= "UPDATE tb_injuries SET severity=?, description=?, date=?, duration=?, player_id=? WHERE id=?";
+	private final String QUERY_DELETE= "DELETE FROM tb_injuries WHERE id=?";
 
 	public InjuryDAO() {}
 	
@@ -22,15 +22,17 @@ public class InjuryDAO {
 			try {
 				Statement statement = connection.createStatement();
 				ResultSet resultSet = statement.executeQuery(QUERY_ALL);
+				///////
 				Injury injury;
 				while (resultSet.next()) {
-					int playerID = resultSet.getInt("playerID");
-					String typology = resultSet.getString("typology");
+					int id = resultSet.getInt("id");
+					int severity = resultSet.getInt("severity");
+					String description = resultSet.getString("description");
 					int duration = resultSet.getInt("duration");
-					int gravityIndex = resultSet.getInt("gravityIndex");
-					int season = resultSet.getInt("season");
+					Date date = resultSet.getDate("date");
+					int player_id = resultSet.getInt("player_id");
 					
-					injury = new Injury(playerID, typology, duration, gravityIndex, season);
+					injury = new Injury(id, severity, description, duration, date, player_id);
 					injuryList.add(injury);
 				}
 			} catch(SQLException e) {
@@ -43,29 +45,32 @@ public class InjuryDAO {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_CREATE);
-			preparedStatement.setInt(1,injuryToUpdate.getPlayerID());
-			preparedStatement.setString(2,injuryToUpdate.getTypology());
-			preparedStatement.setInt(3,injuryToUpdate.getDuration());
-			preparedStatement.setInt(4,injuryToUpdate.getGravityIndex());
-			preparedStatement.setInt(5,injuryToUpdate.getSeason());
+			preparedStatement.setInt(1,injuryToUpdate.getId());
+			preparedStatement.setInt(2,injuryToUpdate.getSeverity());
+			preparedStatement.setString(3,injuryToUpdate.getDescription());
+			preparedStatement.setInt(4,injuryToUpdate.getDuration());
+			preparedStatement.setDate(5,injuryToUpdate.getDate());
+			preparedStatement.setInt(6,injuryToUpdate.getPlayer_id());
 			return true;
 		} catch(SQLException e) {
 			return false;
 		}
 	}
 	
-	public Injury read(int playerID,int season) {
+	public Injury read(int id) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_READ);
-			preparedStatement.setInt(1,playerID);
+			preparedStatement.setInt(1, id);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			resultSet.next();
-			String typology = resultSet.getString("typology");
+			int player_id = resultSet.getInt("player_id");
+			int severity = resultSet.getInt("severity");
+			String description = resultSet.getString("description");
+			Date date = resultSet.getDate("date");
 			int duration = resultSet.getInt("duration");
-			int gravityIndex = resultSet.getInt("gravityIndex");
 			
-			Injury injury = new Injury(playerID, typology, duration, gravityIndex, season);
+			Injury injury = new Injury(id, severity, description, duration, date, player_id);
 			
 			return injury;
 		} catch(SQLException e) {
@@ -73,12 +78,11 @@ public class InjuryDAO {
 		}
 	}
 	
-	public boolean delete(int playerID, int season) {
+	public boolean delete(int id) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_DELETE);
-			preparedStatement.setInt(1, playerID);
-			preparedStatement.setInt(2, season);
+			preparedStatement.setInt(1, id);
 			int n = preparedStatement.executeUpdate();
 			if (n != 0)
 				return true;
@@ -90,31 +94,35 @@ public class InjuryDAO {
 	public boolean update(Injury injuryToUpdate) {
 		Connection connection = ConnectionSingleton.getInstance();
 		
-		if(injuryToUpdate.getPlayerID() == 0)
+		if(injuryToUpdate.getId() == 0)
 			return false;
 		
-		Injury injuryRead = read(injuryToUpdate.getPlayerID(),injuryToUpdate.getSeason());
+		Injury injuryRead = read(injuryToUpdate.getId());
 		if(!injuryRead.equals(injuryToUpdate)) {
 			try {
-				if(injuryToUpdate.getTypology() == null || injuryToUpdate.getTypology().equals("")) {
-					injuryToUpdate.setTypology(injuryRead.getTypology());
+				if(injuryToUpdate.getSeverity() == 0) {
+					injuryToUpdate.setSeverity(injuryRead.getSeverity());
 				}
 				if(injuryToUpdate.getDuration() == 0) {
 					injuryToUpdate.setDuration(injuryRead.getDuration());
 				}
-				if(injuryToUpdate.getGravityIndex() == 0) {
-					injuryToUpdate.setGravityIndex(injuryRead.getGravityIndex());
+				if(injuryToUpdate.getDescription() == null || injuryToUpdate.getDescription() == "") {
+					injuryToUpdate.setDescription(injuryRead.getDescription());
 				}
-				if(injuryToUpdate.getSeason() == 0) {
-					injuryToUpdate.setSeason(injuryRead.getSeason());
+				if(injuryToUpdate.getDate() == null) {
+					injuryToUpdate.setDate(injuryRead.getDate());
+				}
+				if(injuryToUpdate.getPlayer_id() == 0) {
+					injuryToUpdate.setPlayer_id(injuryToUpdate.getPlayer_id());
 				}
 				
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
-				preparedStatement.setInt(1, injuryToUpdate.getPlayerID());
-				preparedStatement.setString(2, injuryToUpdate.getTypology());
-				preparedStatement.setInt(3, injuryToUpdate.getDuration());
-				preparedStatement.setInt(4, injuryToUpdate.getGravityIndex());
-				preparedStatement.setInt(5, injuryToUpdate.getSeason());
+				preparedStatement.setInt(6,injuryToUpdate.getId());
+				preparedStatement.setInt(1,injuryToUpdate.getSeverity());
+				preparedStatement.setString(2,injuryToUpdate.getDescription());
+				preparedStatement.setInt(3,injuryToUpdate.getDuration());
+				preparedStatement.setDate(4,injuryToUpdate.getDate());
+				preparedStatement.setInt(5,injuryToUpdate.getPlayer_id());
 				int a = preparedStatement.executeUpdate();
 				if (a > 0)
 					return true;
