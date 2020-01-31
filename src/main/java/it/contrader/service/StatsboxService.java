@@ -1,10 +1,10 @@
 package it.contrader.service;
 
-import java.util.List;
-
 import it.contrader.converter.StatsboxConverter;
 import it.contrader.dao.StatsboxDAO;
 import it.contrader.dto.StatsboxDTO;
+
+import java.util.List;
 
 public class StatsboxService {
 
@@ -20,7 +20,7 @@ public class StatsboxService {
 		return statsboxConverter.toDTOList(statsboxDAO.getAll());
 	}
 	
-	public StatsboxDTO read(int playerId, String season) {
+	public StatsboxDTO read(int playerId, int season) {
 		return statsboxConverter.toDTO(statsboxDAO.read(playerId, season));
 	}
 	
@@ -32,7 +32,7 @@ public class StatsboxService {
 		return statsboxDAO.update(statsboxConverter.toEntity(dto));
 	}
 	
-	public boolean delete (int playerId, String season) {
+	public boolean delete (int playerId, int season) {
 		return statsboxDAO.delete(playerId, season);
 	}
 }

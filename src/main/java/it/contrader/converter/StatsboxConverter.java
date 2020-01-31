@@ -1,10 +1,10 @@
 package it.contrader.converter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import it.contrader.dto.StatsboxDTO;
 import it.contrader.model.Statsbox;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class StatsboxConverter {

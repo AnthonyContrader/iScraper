@@ -1,10 +1,10 @@
 package it.contrader.view;
 
-import java.util.List;
-
 import it.contrader.controller.Request;
 import it.contrader.dto.UserDTO;
 import it.contrader.main.MainDispatcher;
+
+import java.util.List;
 
 
 /**
@@ -42,7 +42,7 @@ public class UserView extends AbstractView {
 
 	/**
 	 * Chiede all'utente un input (lettera da tastiera) per la choice (vedi UserController). 
-	 * Mette la modalità GETCHOICE nella mode.
+	 * Mette la modalitï¿½ GETCHOICE nella mode.
 	 */
 	@Override
 	public void showOptions() {

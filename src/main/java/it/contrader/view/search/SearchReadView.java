@@ -1,7 +1,6 @@
 package it.contrader.view.search;
 
 import it.contrader.controller.Request;
-
 import it.contrader.dto.SearchDTO;
 import it.contrader.main.MainDispatcher;
 import it.contrader.view.AbstractView;

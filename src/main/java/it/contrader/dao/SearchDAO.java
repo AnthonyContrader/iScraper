@@ -1,16 +1,11 @@
 package it.contrader.dao;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
-
 import it.contrader.main.ConnectionSingleton;
 import it.contrader.model.Search;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SearchDAO {
 	
@@ -105,7 +100,7 @@ public class SearchDAO {
 				if (searchToUpdate.getPlayer() == 0) {
 					searchToUpdate.setPlayer(searchRead.getPlayer());
 				}
-				//perché qui il casting?
+				//perchï¿½ qui il casting?
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
 				preparedStatement.setDate(1, searchToUpdate.getDate());
 				preparedStatement.setInt(2, searchToUpdate.getValue());

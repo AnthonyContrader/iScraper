@@ -1,17 +1,18 @@
 package it.contrader.view.player;
 
-import java.util.Scanner;
-
 import com.mysql.cj.util.StringUtils;
-
 import it.contrader.controller.PlayerController;
 import it.contrader.controller.Request;
+import it.contrader.main.MainDispatcher;
 import it.contrader.view.View;
+
+import java.util.Scanner;
 
 public class PlayerReadView implements View{
 
 	private PlayerController playerController;
-
+	private Request request;
+	
 	public PlayerReadView() {
 		this.playerController = new PlayerController();
 	}
@@ -36,14 +37,18 @@ public class PlayerReadView implements View{
 		}
 	}
 	public String getInput() {
-		Scanner scanner = new Scanner(System.in);
-		return scanner.nextLine().trim();
+		 Scanner scanner = new Scanner(System.in) ;
+			return scanner.nextLine().trim();
 		
+		 
 	}
 
 	@Override
 	public void submit() {
-		// TODO Auto-generated method stub
+		request = new Request();
+		request.put("mode", "menu");
+		request.put("choice", "");
+		MainDispatcher.getInstance().callAction("Player", "doControl", request);
 		
 	}
 	

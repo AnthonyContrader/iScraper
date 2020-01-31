@@ -1,7 +1,7 @@
 package it.contrader.converter;
 
-import it.contrader.model.Search;
 import it.contrader.dto.SearchDTO;
+import it.contrader.model.Search;
 
 import java.util.ArrayList;
 import java.util.List;

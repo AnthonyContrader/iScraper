@@ -1,5 +1,4 @@
 package it.contrader.controller;
-import java.util.List;
 
 import it.contrader.dto.PlayerDTO;
 import it.contrader.dto.StatsboxDTO;
@@ -7,12 +6,22 @@ import it.contrader.main.MainDispatcher;
 import it.contrader.model.Player;
 import it.contrader.service.PlayerService;
 
+import java.util.List;
+
 
 public class PlayerController implements Controller{
 
 	private static String sub_package = "player.";
 	private PlayerService playerService;
 	
+	 int player_id;
+	 String player_name;
+	 String player_surname;
+	 int age;
+	 int actualMarketValue;
+	 int previousMarketValue;
+	 private String position;
+	 private final String mode = "INSERT";
 	
 	public  PlayerController() {
 		// TODO Auto-generated constructor stub
@@ -57,17 +66,40 @@ public class PlayerController implements Controller{
 			MainDispatcher.getInstance().callView("Player", request);
 			break;
 		
+		case "INSERT":
+			player_id = Integer.parseInt(request.get("player_id").toString());
 			
+			player_name = request.get("player_name").toString();
+			player_surname = request.get("player_surname").toString();
+			age = Integer.parseInt(request.get("age").toString());
+			actualMarketValue = Integer.parseInt(request.get("actualMarketValue").toString());
+			previousMarketValue = Integer.parseInt(request.get("previousMarketValue").toString());
+			position = request.get("position").toString();
+			
+			
+			//costruisce l'oggetto user da inserire
+			PlayerDTO playertoinsert = new PlayerDTO(player_id, player_name, player_surname, age, actualMarketValue, previousMarketValue, position);
+			//invoca il service
+			playerService.insert(playertoinsert);
+			request = new Request();
+			request.put("mode", mode);
+			//Rimanda alla view con la risposta
+			MainDispatcher.getInstance().callView(sub_package + "PlayerInsert", request);
+			break;
 
 		default:
 			break;
 		}
+		
 		if (mode == "menu") {
 			MainDispatcher.getInstance().callView("Player", null);
 		} else {
 			switch (choice.toUpperCase()) {
 			case "L":
 				MainDispatcher.getInstance().callView(sub_package + "PlayerRead", null);
+				break;
+			case "I":
+				MainDispatcher.getInstance().callView(sub_package + "PlayerInsert", null);
 				break;
 			case "C":
 				MainDispatcher.getInstance().callView(sub_package + "PlayerDelete", null);

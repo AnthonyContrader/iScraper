@@ -1,31 +1,25 @@
 package it.contrader.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
-
-import com.mysql.cj.protocol.Message;
-
+import it.contrader.controller.GestoreEccezzioni;
 import it.contrader.main.ConnectionSingleton;
 import it.contrader.model.Player;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 
 
 public class PlayerDAO {
 
-	private final String QUERY_ALL = "select * from players";
+	private final String QUERY_ALL = "select * from tb_players";
 	
-	private final String QUERY_INSERT = " insert into players (player_id, player_name, player_surname, age, actualMarketValue, previousMarketValue, position)"
-		        + " values (?,?,?,?,?,?,?,?,?,?)";
-	private final String QUERY_READ = "select * from player where player_id=?";
+	private final String QUERY_INSERT = "insert into tb_players (player_id, player_name, player_surname, age, actualMarketValue, previousMarketValue, position) values (?,?,?,?,?,?,?)";
+	private final String QUERY_READ = "select * from tb_players where player_id=?";
 
-	private final String QUERY_UPDATE = "UPDATE player SET player_name=? WHERE player_id=?";
-	private final String QUERY_DELETE = "DELETE from players WHERE player_id=?";
+	private final String QUERY_UPDATE = "UPDATE tb_players SET player_name=? WHERE player_id=?";
+	private final String QUERY_DELETE = "DELETE from tb_players WHERE player_id=?";
 	
 	
 	
@@ -51,7 +45,7 @@ public class PlayerDAO {
 				player.setActualMarketValue(resultSet.getInt("actualMarketValue"));
 				player.setActualMarketValue(resultSet.getInt("previousMarketValue"));
 				
-				player.setActualMarketValue(resultSet.getInt("position"));
+				player.setPosition(resultSet.getString("position"));
 				
 				playerList.add(player);
 			}
@@ -73,12 +67,12 @@ public class PlayerDAO {
 			preparedStatement.setInt(5, player.getActualMarketValue());
 			preparedStatement.setInt(6, player.getPreviousMarketValue());
 			
-			preparedStatement.setString(8, player.getPosition());
+			preparedStatement.setString(7, player.getPosition());
 	
-			
-			return preparedStatement.execute();
+			preparedStatement.execute();
+			return true;
 		} catch (SQLException e) {
-			//GestoreEccezioni.getInstance().gestisciEccezione(e);
+			GestoreEccezzioni.getInstance().gestisciEccezione(e);
 			return false;
 		}
 
@@ -93,26 +87,27 @@ public class PlayerDAO {
 			ResultSet resultSet = preparedStatement.executeQuery();
 			resultSet.next();
 			Player player=new Player();
+			try {
+				player.setId(resultSet.getInt("player_id"));
+				player.setName(resultSet.getString("player_name"));
+				player.setSurname(resultSet.getString("player_surname"));
+				player.setAge(resultSet.getInt("age"));
+				player.setActualMarketValue(resultSet.getInt("actualMarketValue"));
+				player.setActualMarketValue(resultSet.getInt("previousMarketValue"));
+				player.setPosition(resultSet.getString("position"));
+			} catch (Exception e) {
+				// TODO: handle exception
+			//	GestoreEccezzioni.getInstance().gestisciEccezione(e);
+			}
 			
-			player.setId(resultSet.getInt("player_id"));
-			player.setName(resultSet.getString("player_name"));
-			player.setSurname(resultSet.getString("player_surname"));
-			player.setAge(resultSet.getInt("age"));
-			player.setActualMarketValue(resultSet.getInt("actualMarketValue"));
-			player.setActualMarketValue(resultSet.getInt("previousMarketValue"));
-			
-			player.setActualMarketValue(resultSet.getInt("position"));
 	
-			
-			
-			
-			
 			
 			return player;
 		} catch (SQLException e) {
-	
+			GestoreEccezzioni.getInstance().gestisciEccezione(e);
+			return null;
 		}
-		return null;
+		
 
 	}
 

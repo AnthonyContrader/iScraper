@@ -1,9 +1,10 @@
 package it.contrader.service;
 
-import java.util.List;
 import it.contrader.converter.InjuryConverter;
 import it.contrader.dao.InjuryDAO;
 import it.contrader.dto.InjuryDTO;
+
+import java.util.List;
 
 public class InjuryService {
 	

@@ -1,10 +1,10 @@
 package it.contrader.view;
 
-import java.util.List;
-
 import it.contrader.controller.Request;
 import it.contrader.dto.SearchDTO;
 import it.contrader.main.MainDispatcher;
+
+import java.util.List;
 
 public class SearchView extends AbstractView{
 	private Request request;
