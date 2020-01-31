@@ -23,6 +23,8 @@ public class InjuryController implements Controller {
 	private Date date;
 	private int player_id;
 	
+	
+	
 	@Override
 	public void doControl(Request request) {
 		
@@ -36,7 +38,7 @@ public class InjuryController implements Controller {
 			severity = Integer.parseInt(request.get("severity").toString());
 			InjuryDTO injuryDTO = injuryService.read(id);
 			request.put("injury", injuryDTO);
-			MainDispatcher.getInstance().callView(sub_package+"InjuryRead", request);
+			MainDispatcher.getInstance().callView(sub_package + "InjuryRead", request);
 			break;
 		
 		case "INSERT":
