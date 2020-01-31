@@ -14,6 +14,14 @@ public class PlayerController implements Controller{
 	private static String sub_package = "player.";
 	private PlayerService playerService;
 	
+	 int player_id;
+	 String player_name;
+	 String player_surname;
+	 int age;
+	 int actualMarketValue;
+	 int previousMarketValue;
+	 private String position;
+	 private final String mode = "INSERT";
 	
 	public  PlayerController() {
 		// TODO Auto-generated constructor stub
@@ -26,9 +34,9 @@ public class PlayerController implements Controller{
 		return this.playerService.getAllPlayers();
 	}
 	
-	public boolean insertPlayer(Player player) {
-		return this.playerService.insertPlayer(player);
-	}
+//	public boolean insertPlayer(Player player) {
+//		return this.playerService.insertPlayer(player);
+//	}
 	
 	public Player readPlayer(int player_id) {
 		return this.playerService.readPlayer(player_id);
@@ -58,35 +66,31 @@ public class PlayerController implements Controller{
 			MainDispatcher.getInstance().callView("Player", request);
 			break;
 		
-//		case "INSERT":
-//			playerId = Integer.parseInt(request.get("playerId").toString());
-//			season = Integer.parseInt(request.get("season").toString());
-//			team = request.get("team").toString();
-//			caps = Integer.parseInt(request.get("caps").toString());
-//			contributions = Float.parseFloat(request.get("contributions").toString());
-//			shotsper = Float.parseFloat(request.get("shotsper").toString());
-//			keypass = Float.parseFloat(request.get("keypass").toString());
-//			passprec = Float.parseFloat(request.get("passprec").toString());
-//			dribbling = Float.parseFloat(request.get("dribbling").toString());
-//			foulssub = Float.parseFloat(request.get("foulssub").toString());
-//			foulscomm = Float.parseFloat(request.get("foulscomm").toString());
-//			tackles = Float.parseFloat(request.get("tackles").toString());
-//			tacklesper = Float.parseFloat(request.get("tacklesper").toString());
-//			breaks = Float.parseFloat(request.get("breaks").toString());
-//			
-//			//costruisce l'oggetto user da inserire
-//			StatsboxDTO statstoinsert = new StatsboxDTO(playerId, season, team, caps, contributions, shotsper, keypass, passprec, dribbling, foulssub, foulscomm, tackles, tacklesper, breaks);
-//			//invoca il service
-//			statsboxService.insert(statstoinsert);
-//			request = new Request();
-//			request.put("mode", "mode");
-//			//Rimanda alla view con la risposta
-//			MainDispatcher.getInstance().callView(sub_package + "StatsboxInsert", request);
-//			break;
+		case "INSERT":
+			player_id = Integer.parseInt(request.get("player_id").toString());
+			
+			player_name = request.get("player_name").toString();
+			player_surname = request.get("player_surname").toString();
+			age = Integer.parseInt(request.get("age").toString());
+			actualMarketValue = Integer.parseInt(request.get("actualMarketValue").toString());
+			previousMarketValue = Integer.parseInt(request.get("previousMarketValue").toString());
+			position = request.get("position").toString();
+			
+			
+			//costruisce l'oggetto user da inserire
+			PlayerDTO playertoinsert = new PlayerDTO(player_id, player_name, player_surname, age, actualMarketValue, previousMarketValue, position);
+			//invoca il service
+			playerService.insert(playertoinsert);
+			request = new Request();
+			request.put("mode", mode);
+			//Rimanda alla view con la risposta
+			MainDispatcher.getInstance().callView(sub_package + "PlayerInsert", request);
+			break;
 
 		default:
 			break;
 		}
+		
 		if (mode == "menu") {
 			MainDispatcher.getInstance().callView("Player", null);
 		} else {

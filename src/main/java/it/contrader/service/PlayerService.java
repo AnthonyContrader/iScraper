@@ -3,6 +3,7 @@ package it.contrader.service;
 import it.contrader.converter.PlayerConverter;
 import it.contrader.dao.PlayerDAO;
 import it.contrader.dto.PlayerDTO;
+import it.contrader.dto.StatsboxDTO;
 import it.contrader.model.Player;
 
 import java.util.List;
@@ -21,9 +22,13 @@ public class PlayerService {
 		return this.playerDAO.getAllPlayers();
 	}
 	
-	public boolean insertPlayer(Player player) {
-		return this.playerDAO.insertPlayer(player);
+//	public boolean insertPlayer(PlayerDTO dto) {
+//		return this.playerDAO.(dto);
+//	}
+	public boolean insert (PlayerDTO dto) {
+		return playerDAO.insertPlayer(playerConverter.toEntity(dto));
 	}
+	
 	
 	public Player readPlayer(int player_id) {
 		return this.playerDAO.readPlayer(player_id);
@@ -41,6 +46,6 @@ public class PlayerService {
 	}
 	
 	public PlayerDTO read(int playerId) {
-		return PlayerConverter.toTDO((playerDAO.readPlayer(playerId)));
+		return playerConverter.toTDO((playerDAO.readPlayer(playerId)));
 	}
 }

@@ -27,7 +27,7 @@ public class GetPlayersView implements View {
 	@Override
 	public void showOptions() {
 		// TODO Auto-generated method stub
-		System.out.println("Sei sicuro di stampare intera lista? yes per si ");
+	//	System.out.println("Sei sicuro di stampare intera lista? yes per si ");
 		
 		
 		

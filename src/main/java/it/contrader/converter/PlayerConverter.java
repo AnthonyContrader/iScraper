@@ -8,8 +8,12 @@ import java.util.List;
 
 
 public class PlayerConverter {
+	
+	public PlayerConverter() {
+		
+	}
 
-	public static  PlayerDTO toTDO(Player player) {
+	public   PlayerDTO toTDO(Player player) {
 		PlayerDTO playerDTO = null;
 		if (player != null) {
 			playerDTO = new PlayerDTO();
@@ -28,28 +32,32 @@ public class PlayerConverter {
 		return playerDTO;
 	}
 	
-	public static Player toEntity(PlayerDTO playerDTO) {
+	public  Player toEntity(PlayerDTO playerDTO) {
 		
 		return new Player(playerDTO.getId(), playerDTO.getName(), playerDTO.getSurname(), playerDTO.getAge(), playerDTO.getActualMarketValue(), playerDTO.getPreviousMarketValue(),
 				playerDTO.getPosition());
 	}
+	
+	
+	
 	public  List<PlayerDTO>  toListDTO(List<Player> list){
 		List<PlayerDTO> listPlayerDTOs= new ArrayList<PlayerDTO>();
-		if(!list.isEmpty()) {
+		
 			for(Player player:list) {
-				listPlayerDTOs.add(PlayerConverter.toTDO(player));
+				
+				listPlayerDTOs.add(this.toTDO(player));
 			}
-		}
+		
 		return listPlayerDTOs;
 	}
 	
-	public  List<Player> toListEntity(List<PlayerDTO> listPlayerDTO) {
-		List<Player> list = new ArrayList<>();
-		if (!listPlayerDTO.isEmpty()) {
-			for (PlayerDTO playerDTO : listPlayerDTO) {
-				list.add(PlayerConverter.toEntity(playerDTO));
-			}
-		}
-		return list;
-	}
+//	public  List<Player> toListEntity(List<PlayerDTO> listPlayerDTO) {
+//		List<Player> list = new ArrayList<>();
+//		if (!listPlayerDTO.isEmpty()) {
+//			for (PlayerDTO playerDTO : listPlayerDTO) {
+//				list.add(PlayerConverter.toEntity(playerDTO));
+//			}
+//		}
+//		return list;
+//	}
 }
