@@ -1,5 +1,6 @@
 package it.contrader.view.player;
 
+import it.contrader.controller.GestoreEccezzioni;
 import it.contrader.controller.PlayerController;
 import it.contrader.controller.Request;
 import it.contrader.main.MainDispatcher;
@@ -30,7 +31,8 @@ public class PlayerInsertView implements View {
 			System.out.println("Inserimento andato a buon fine.\n");
 			MainDispatcher.getInstance().callView("Player", null);
 		} else {
-			System.out.println("Error");
+			
+			//System.out.println("Error");
 		}
 
 	}

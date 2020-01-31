@@ -23,7 +23,7 @@ public class PlayerView extends AbstractView{
 		@Override
 		public void showResults(Request request) {
 			if (request != null) {
-				System.out.println("\n------------------- Players ----------------\n");
+				System.out.println("\n---------------------------------------------- Players ----------------------------------------------\n");
 		
 				
 				

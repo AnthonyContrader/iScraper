@@ -3,9 +3,13 @@ package it.contrader.view.player;
 import it.contrader.controller.PlayerController;
 import it.contrader.controller.Request;
 import it.contrader.main.MainDispatcher;
+import it.contrader.model.Player;
 import it.contrader.view.View;
 
+import java.util.ArrayList;
 import java.util.Scanner;
+
+
 
 public class GetPlayersView implements View {
 
@@ -27,18 +31,22 @@ public class GetPlayersView implements View {
 	@Override
 	public void showOptions() {
 		// TODO Auto-generated method stub
-	//	System.out.println("Sei sicuro di stampare intera lista? yes per si ");
-		
-		
-		
-		String response = getInput();
-
-		if (response != null && response.equals("yes")) {
-			System.out.println(playerController.getPlayers().toString());
-			
-		} else {
-			System.out.println("Valore inserito errato");
+		//System.out.println("Sei sicuro di stampare intera lista? yes per si ");
+		ArrayList<Player> lista= new ArrayList<Player>(playerController.getPlayers());
+		for(Player player:lista) {
+			System.out.println(player);
 		}
+		
+	//	System.out.println(playerController.getPlayers().toString());
+		
+//		String response = getInput();
+//
+//		if (response != null && response.equals("yes")) {
+//			System.out.println(playerController.getPlayers().toString());
+//			
+//		} else {
+//			System.out.println("Valore inserito errato");
+//		}
 	}
 		
 	public String getInput() {
