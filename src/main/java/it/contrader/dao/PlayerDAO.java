@@ -15,7 +15,7 @@ public class PlayerDAO {
 
 	private final String QUERY_ALL = "select * from tb_players";
 	
-	private final String QUERY_INSERT = "insert into tb_players (player_id, player_name, player_surname, age, actualMarketValue, previousMarketValue, position) values (?,?,?,?,?,?,?)";
+	private final String QUERY_INSERT = "insert into tb_players ( player_id, player_name, player_surname, age, actualMarketValue, previousMarketValue, position) values (?,?,?,?,?,?,?)";
 	private final String QUERY_READ = "select * from tb_players where player_id=?";
 
 	private final String QUERY_UPDATE = "UPDATE tb_players SET player_name=? WHERE player_id=?";
