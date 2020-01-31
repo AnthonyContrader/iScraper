@@ -39,8 +39,8 @@ public class PlayerInsertView implements View {
 
 	@Override
 	public void showOptions() {
-		System.out.println("Inserisci playerID:");
-		player_id = Integer.parseInt(getInput());
+//		System.out.println("Inserisci playerID:");
+//		player_id = Integer.parseInt(getInput());
 		System.out.println("Inserisci nome:");
 		player_name = getInput();
 		System.out.println("Inserisci cognome:");

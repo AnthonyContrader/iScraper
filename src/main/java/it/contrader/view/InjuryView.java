@@ -23,11 +23,11 @@ public class InjuryView extends AbstractView {
 			System.out.println("PlayerID\tTypology\tDuration\tGravityIndex\tSeason");
 			System.out.println("----------------------------------------------------\n");
 			
-			@SuppressWarnings("unchecked")
-			List<InjuryDTO> injuries = (List<InjuryDTO>) request.get("injury");
-			for(InjuryDTO s: injuries)
-				System.out.println(s);
-			System.out.println();
+//			@SuppressWarnings("unchecked")
+//			List<InjuryDTO> injuries = (List<InjuryDTO>) request.get("injury");
+//			for(InjuryDTO s: injuries)
+//				System.out.println(s);
+//			System.out.println();
 		}
 	}
 	

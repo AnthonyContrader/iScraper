@@ -13,6 +13,16 @@ public class Player {
 	private String position;
 	
 	
+	public Player(String player_name, String player_surname, int age, int actualMarketValue, int previousMarketValue,
+			String position) {
+		super();
+		this.player_name = player_name;
+		this.player_surname = player_surname;
+		this.age = age;
+		this.actualMarketValue = actualMarketValue;
+		this.previousMarketValue = previousMarketValue;
+		this.position = position;
+	}
 	public Player(int id, String name, String surname, int age, int actualMarketValue, int previousMarketValue,
 			 String position) {
 		
@@ -85,6 +95,7 @@ public class Player {
 	
 	@Override
 	public String toString() {
+		System.out.println();
 		return "Player [player_id=" + player_id + ", player_name=" + player_name + ", player_surname=" + player_surname
 				+ ", age=" + age + ", actualMarketValue=" + actualMarketValue + ", previousMarketValue="
 				+ previousMarketValue  + ", position=" + position 

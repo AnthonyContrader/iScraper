@@ -22,17 +22,17 @@ public class PlayerView extends AbstractView{
 		 */
 		@Override
 		public void showResults(Request request) {
-			if (request != null) {
-				System.out.println("\n---------------------------------------------- Players ----------------------------------------------\n");
-		
-				
-				
-				@SuppressWarnings("unchecked")
-				List<PlayerDTO> players = (List<PlayerDTO>) request.get("player");
-				for (PlayerDTO p: players)
-					System.out.println(p);
-				System.out.println();
-			}
+//			if (request != null) {
+				System.out.println("\n--------------------------------------------------------- Players Section -------------------------------------------------------\n");
+//		
+//				
+//				
+//				@SuppressWarnings("unchecked")
+//				List<PlayerDTO> players = (List<PlayerDTO>) request.get("player");
+//				for (PlayerDTO p: players)
+//					System.out.println(p);
+//				System.out.println();
+		//	}
 		}
 
 		/**

@@ -107,6 +107,9 @@ public class PlayerController implements Controller{
 			case "V":
 				MainDispatcher.getInstance().callView(sub_package + "GetPlayers", null);
 				break;
+			case "B":
+				MainDispatcher.getInstance().callView("HomeAdmin", null);
+				break;
 			
 			case "E":
 				MainDispatcher.getInstance().callView("Login", null);
