@@ -90,19 +90,19 @@ public class InjuryController implements Controller {
 switch (choice.toUpperCase()) {
 			
 			case "L":
-				MainDispatcher.getInstance().callView(sub_package + "injuryRead", null);
+				MainDispatcher.getInstance().callView(sub_package + "InjuryRead", null);
 				break;
 				
 			case "I":
-				MainDispatcher.getInstance().callView(sub_package + "injuryInsert", null);
+				MainDispatcher.getInstance().callView(sub_package + "InjuryInsert", null);
 				break;
 				
 			case "M":
-				MainDispatcher.getInstance().callView(sub_package + "injuryUpdate", null);
+				MainDispatcher.getInstance().callView(sub_package + "InjuryUpdate", null);
 				break;
 				
 			case "C":
-				MainDispatcher.getInstance().callView(sub_package + "injuryDelete", null);
+				MainDispatcher.getInstance().callView(sub_package + "InjuryDelete", null);
 				break;
 				
 			case "E":

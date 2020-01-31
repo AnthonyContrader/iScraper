@@ -1,4 +1,4 @@
-package it.contrader.view.user;
+package it.contrader.view.injury;
 
 import java.util.Scanner;
 
