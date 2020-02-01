@@ -18,10 +18,9 @@ public class Application {
 //
 //   	PlayerDAO playerDAO=new PlayerDAO();
 //   	playerDAO.insertPlayer(player);
-
-   // 	PlayerDAO playerDAO=new PlayerDAO();
-   //	playerDAO.insertPlayer(player);
-   //	System.out.println("---------------------");
+// 	PlayerDAO playerDAO=new PlayerDAO();
+//	playerDAO.insertPlayer(player);
+//	System.out.println("---------------------");
 
 //    	System.out.println(playerDAO.readPlayer(0));;
 //    	System.out.println(playerDAO.getAllPlayers());
