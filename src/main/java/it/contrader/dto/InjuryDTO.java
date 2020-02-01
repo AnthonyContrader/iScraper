@@ -23,6 +23,15 @@ public class InjuryDTO {
 			this.player_id = player_id;
 		}
 		
+		public InjuryDTO(int severity, String description, int duration, Date date, int player_id) {
+			super();
+			this.severity = severity;
+			this.description = description;
+			this.duration = duration;
+			this.date = date;
+			this.player_id = player_id;
+		}
+
 		public int getId() {
 			return id;
 		}

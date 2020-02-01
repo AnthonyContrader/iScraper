@@ -22,6 +22,15 @@ public class Injury {
 		this.player_id = player_id;
 	}
 	
+	public Injury(int severity, String description, Date date, int duration,  int player_id) {
+		super();
+		this.severity = severity;
+		this.description = description;
+		this.duration = duration;
+		this.date = date;
+		this.player_id = player_id;
+	}
+
 	public int getId() {
 		return id;
 	}

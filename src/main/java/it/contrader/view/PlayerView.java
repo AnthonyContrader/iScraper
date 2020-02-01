@@ -42,7 +42,7 @@ public class PlayerView extends AbstractView{
 		@Override
 		public void showOptions() {
 			System.out.println("          Scegli l'operazione da effettuare:");
-			System.out.println("[L]eggiPlayer [I]nserisci player [V]edi Lista interra [C]ancella [B]ack [E]sci");
+			System.out.println("[L]eggiPlayer [I]nserisci player [V]edi Lista interra [U]pdate player [C]ancella [B]ack [E]sci");
 
 			this.choice = getInput();
 

@@ -9,10 +9,10 @@ import java.util.List;
 
 public class InjuryDAO {
 	private final String QUERY_ALL = "SELECT * FROM tb_injuries";
-	private final String QUERY_CREATE = "INSERT into tb_injuries (id, severity, description, date, duration, player_id) values (?,?,?,?,?,)";
-	private final String QUERY_READ = "SELECT * FROM tb_injuries WHERE id=?";
+	private final String QUERY_CREATE = "INSERT into tb_injuries (severity, description, date, duration, player_id) values (?,?,?,?,?)";
+	private final String QUERY_READ = "SELECT * FROM tb_injuries WHERE player_id=?";
 	private final String QUERY_UPDATE= "UPDATE tb_injuries SET severity=?, description=?, date=?, duration=?, player_id=? WHERE id=?";
-	private final String QUERY_DELETE= "DELETE FROM tb_injuries WHERE id=?";
+	private final String QUERY_DELETE= "DELETE FROM tb_injuries WHERE player_id=?";
 
 	public InjuryDAO() {}
 	
@@ -22,7 +22,7 @@ public class InjuryDAO {
 			try {
 				Statement statement = connection.createStatement();
 				ResultSet resultSet = statement.executeQuery(QUERY_ALL);
-				///////
+				
 				Injury injury;
 				while (resultSet.next()) {
 					int id = resultSet.getInt("id");
@@ -43,28 +43,34 @@ public class InjuryDAO {
 	
 	public boolean insert(Injury injuryToUpdate) {
 		Connection connection = ConnectionSingleton.getInstance();
+
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_CREATE);
-			preparedStatement.setInt(1,injuryToUpdate.getId());
-			preparedStatement.setInt(2,injuryToUpdate.getSeverity());
-			preparedStatement.setString(3,injuryToUpdate.getDescription());
+		//	preparedStatement.setInt(1,injuryToUpdate.getId());
+			preparedStatement.setInt(1,injuryToUpdate.getSeverity());
+			preparedStatement.setString(2,injuryToUpdate.getDescription());
+			preparedStatement.setDate(3,injuryToUpdate.getDate());
 			preparedStatement.setInt(4,injuryToUpdate.getDuration());
-			preparedStatement.setDate(5,injuryToUpdate.getDate());
-			preparedStatement.setInt(6,injuryToUpdate.getPlayer_id());
+			
+			
+		//	severity, description, date, duration, player_id
+			preparedStatement.setInt(5,injuryToUpdate.getPlayer_id());
 			return true;
 		} catch(SQLException e) {
+			System.out.println("error");
 			return false;
 		}
 	}
 	
-	public Injury read(int id) {
+	public Injury read(int player_id) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_READ);
-			preparedStatement.setInt(1, id);
+			preparedStatement.setInt(1, player_id);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			resultSet.next();
-			int player_id = resultSet.getInt("player_id");
+			int id=resultSet.getInt("id");
+			 player_id = resultSet.getInt("player_id");
 			int severity = resultSet.getInt("severity");
 			String description = resultSet.getString("description");
 			Date date = resultSet.getDate("date");

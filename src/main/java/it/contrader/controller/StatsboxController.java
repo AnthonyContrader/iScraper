@@ -56,7 +56,6 @@ private static String sub_package = "statsbox.";
 		case "READ":
 			playerId = Integer.parseInt(request.get("playerId").toString());
 			season = Integer.parseInt(request.get("season").toString());
-			
 			StatsboxDTO statsboxDTO = statsboxService.read(playerId, season);
 			request.put("statsbox", statsboxDTO);
 			MainDispatcher.getInstance().callView(sub_package + "StatsboxRead", request);

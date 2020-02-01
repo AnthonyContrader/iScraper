@@ -1,0 +1,1 @@
+INSERT into tb_injuries (severity, description, date, duration, player_id) values (?,?,?,?,?)

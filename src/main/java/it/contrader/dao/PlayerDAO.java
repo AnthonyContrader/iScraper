@@ -4,6 +4,7 @@ import it.contrader.controller.GestoreEccezzioni;
 import it.contrader.main.ConnectionSingleton;
 import it.contrader.model.Player;
 
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ public class PlayerDAO {
 	private final String QUERY_INSERT = "insert into tb_players (id, player_name, player_surname, age, actual_value, previous_value, position) values (?,?,?,?,?,?,?)";
 	private final String QUERY_READ = "select * from tb_players where id=?";
 
-	private final String QUERY_UPDATE = "UPDATE tb_players SET player_name=? WHERE id=?";
+	private final String QUERY_UPDATE = "UPDATE tb_players SET player_name=?, player_surname=?, age=?, actual_value=?, previous_value=?, position=? WHERE id=?";
 	private final String QUERY_DELETE = "DELETE from tb_players WHERE id=?";
 	
 	
@@ -44,7 +45,7 @@ public class PlayerDAO {
 				player.setSurname(resultSet.getString("player_surname"));
 				player.setAge(resultSet.getInt("age"));
 				player.setActualMarketValue(resultSet.getInt("actual_value"));
-				player.setActualMarketValue(resultSet.getInt("previous_value"));
+				player.setPreviousMarketValue(resultSet.getInt("previous_value"));
 				
 				player.setPosition(resultSet.getString("position"));
 				
@@ -114,28 +115,70 @@ public class PlayerDAO {
 
 	public boolean updatePlayer(Player player) {
 		Connection connection = ConnectionSingleton.getInstance();
-
-		// Check if id is present
 		if (player.getId() == 0)
 			return false;
 
 		
-		try {
-			PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
-			preparedStatement.setString(1, player.getName());
-			preparedStatement.setInt(3, player.getId());
+		Player playerRead = readPlayer(player.getId());
+		System.out.println(player);
+		if(!playerRead.equals(player)) {
+			try {
+			if (player.getName() == null || player.getName().equals("")) {
+				player.setName(playerRead.getName());
+			}
+
+			if (player.getSurname() == null || player.getSurname().equals("")) {
+				player.setSurname(playerRead.getSurname());
+			}
+
+			if (player.getAge() == 0) {
+				player.setAge(playerRead.getAge());
+			}
+			
+			if (player.getActualMarketValue()== 0) {
+				player.setActualMarketValue(playerRead.getActualMarketValue());
+			}
+			
+			if (player.getPreviousMarketValue()== 0) {
+				player.setPreviousMarketValue(playerRead.getPreviousMarketValue());
+			}
+			
+			if (player.getPosition() == null || player.getPosition().equals("")) {
+				player.setPosition(playerRead.getPosition());
+			}
+			
+		System.out.println(player);
+			PreparedStatement preparedStatement =(PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
+			preparedStatement.setInt(1, player.getId());
+			preparedStatement.setString(2, player.getName());
+			preparedStatement.setString(3, player.getSurname());
+			preparedStatement.setInt(4, player.getAge());
+			preparedStatement.setInt(5, player.getActualMarketValue());
+			preparedStatement.setInt(6, player.getPreviousMarketValue());
+			
+			preparedStatement.setString(7, player.getPosition());
+	
 			int a = preparedStatement.executeUpdate();
-			if (a > 0)
-				return true;
+			if (a > 0) {
+				System.out.println("All good");
+				return true;}
 			else
+				System.out.println("Nooooooo");
 				return false;
+
 		} catch (SQLException e) {
+			
+			System.out.println("error");
 			return false;
 		}
-
-	
 	}
 
+	return false;
+
+}
+
+	
+	
 	public boolean deletePlayer(Integer id) {
 			Connection connection = ConnectionSingleton.getInstance();
 			
