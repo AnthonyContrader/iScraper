@@ -14,7 +14,7 @@ public class InjuryDAO {
 	private final String QUERY_READ = "SELECT * FROM tb_injuries WHERE id=?";
 
 	private final String QUERY_UPDATE= "UPDATE tb_injuries SET severity=?, description=?, date=?, duration=?, player_id=? WHERE id=?";
-	private final String QUERY_DELETE= "DELETE FROM tb_injuries WHERE player_id=?";
+	private final String QUERY_DELETE= "DELETE FROM tb_injuries WHERE id=?";
 
 	public InjuryDAO() {}
 	
@@ -62,15 +62,14 @@ public class InjuryDAO {
 		}
 	}
 	
-	public Injury read(int player_id) {
+	public Injury read(int id) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_READ);
-			preparedStatement.setInt(1, player_id);
+			preparedStatement.setInt(1, id);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			resultSet.next();
-			int id=resultSet.getInt("id");
-			 player_id = resultSet.getInt("player_id");
+			int player_id = resultSet.getInt("player_id");
 			int severity = resultSet.getInt("severity");
 			String description = resultSet.getString("description");
 			String date = resultSet.getString("date");
@@ -126,8 +125,8 @@ public class InjuryDAO {
 				preparedStatement.setInt(6,injuryToUpdate.getId());
 				preparedStatement.setInt(1,injuryToUpdate.getSeverity());
 				preparedStatement.setString(2,injuryToUpdate.getDescription());
-				preparedStatement.setInt(3,injuryToUpdate.getDuration());
-				preparedStatement.setString(4,injuryToUpdate.getDate());
+				preparedStatement.setInt(4,injuryToUpdate.getDuration());
+				preparedStatement.setString(3,injuryToUpdate.getDate());
 				preparedStatement.setInt(5,injuryToUpdate.getPlayer_id());
 				int a = preparedStatement.executeUpdate();
 				if (a > 0)

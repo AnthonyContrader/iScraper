@@ -9,10 +9,11 @@ import it.contrader.controller.PlayerController;
 import it.contrader.controller.Request;
 import it.contrader.dto.InjuryDTO;
 import it.contrader.main.MainDispatcher;
+import it.contrader.view.AbstractView;
 import it.contrader.view.View;
 
-public class InjuryReadView implements View{
-	private int player_id;
+public class InjuryReadView extends AbstractView{
+	private int id;
 	private InjuryController injuryController;
 	private Request request;
 	private final String mode = "READ";
@@ -45,26 +46,18 @@ public class InjuryReadView implements View{
 	 */
 	@Override
 	public void showOptions() {
-		System.out.println("Inserisci l'ID del giocatore:");
-		player_id = Integer.parseInt(getInput());
-		System.out.println(injuryController.readInjury(player_id).toString());
-		//injuryController.doControl(request);
+		System.out.println("Inserisci l'ID infortunio:");
+		id = Integer.parseInt(getInput());
 		}
 		
 	
-	public String getInput() {
-		 Scanner scanner = new Scanner(System.in) ;
-			return scanner.nextLine().trim();
-		
-		 
-	}
 	/**
 	 * impacchetta una request con l'id dell'utente da leggere e la manda al controller tramite il Dispatcher
 	 */
 	@Override
 	public void submit() {
 		request = new Request();
-		request.put("player_id", player_id);
+		request.put("id", id);
 	
 		request.put("mode", mode);
 		MainDispatcher.getInstance().callAction("Injury", "doControl", request);

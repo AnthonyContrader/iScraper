@@ -48,7 +48,7 @@ public class StatsboxReadView extends AbstractView {
 	public void showOptions() {
 		System.out.println("Inserisci l'ID del giocatore:");
 		playerId = Integer.parseInt(getInput());
-		System.out.println("Inserisci la stagione di interesse (scrivi * per tutte le stagioni)");
+		System.out.println("Inserisci la stagione di interesse");
 		season=getInput();
 	}
 

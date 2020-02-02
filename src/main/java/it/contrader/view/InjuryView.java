@@ -20,7 +20,7 @@ public class InjuryView extends AbstractView {
 	public void showResults(Request request) {
 		if(request!=null) {
 			System.out.println("\n------------------- Infortuni ----------------\n");
-			System.out.println("id\tseverity\tdescription\tduration\tdate\tplayer_id");
+			System.out.println("id\tseverity\tdescription\t\tduration\tdate\tplayer_id");
 			System.out.println("----------------------------------------------------\n");
 			
 		@SuppressWarnings("unchecked")

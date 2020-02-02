@@ -18,7 +18,7 @@ public class InjuryController implements Controller {
 		this.injuryService=new InjuryService();
 	}
 	
-	//private int id;
+	private int id;
 	private int severity;
 	private String description;
 	private int duration;
@@ -56,9 +56,8 @@ public class InjuryController implements Controller {
 		switch(mode) {
 		
 		case "READ":
-			player_id = Integer.parseInt(request.get("player_id").toString());
-			//severity = Integer.parseInt(request.get("severity").toString());
-			InjuryDTO injuryDTO = injuryService.read(player_id);
+			id = Integer.parseInt(request.get("id").toString());
+			InjuryDTO injuryDTO = injuryService.read(id);
 			request.put("injury", injuryDTO);
 			MainDispatcher.getInstance().callView(sub_package + "InjuryRead", request);
 			break;
@@ -79,15 +78,15 @@ public class InjuryController implements Controller {
 			break;
 			
 		case "DELETE":
-			player_id = Integer.parseInt(request.get("player_id").toString());;
-			injuryService.delete(player_id);
+			id = Integer.parseInt(request.get("id").toString());;
+			injuryService.delete(id);
 			request = new Request();
 			request.put("mode", "mode");
 			MainDispatcher.getInstance().callView(sub_package + "InjuryDelete", request);
 			break;
 			
 		case "UPDATE":
-			player_id = Integer.parseInt(request.get("player_id").toString());
+			id = Integer.parseInt(request.get("id").toString());
 			severity = Integer.parseInt(request.get("severity").toString());
 			description = request.get("description").toString();
 			duration = Integer.parseInt(request.get("duration").toString());
@@ -95,7 +94,7 @@ public class InjuryController implements Controller {
 			player_id = Integer.parseInt(request.get("player_id").toString());
 
 			
-			InjuryDTO injuryToUpdate = new InjuryDTO(severity,description,duration,date,player_id);
+			InjuryDTO injuryToUpdate = new InjuryDTO(id,severity,description,duration,date,player_id);
 			injuryService.update(injuryToUpdate);
 			request = new Request();
 			request.put("mode", "mode");
@@ -117,7 +116,6 @@ switch (choice.toUpperCase()) {
 				break;
 				
 			case "I":
-				System.out.println("ok");
 				MainDispatcher.getInstance().callView(sub_package + "InjuryInsert", null);
 				break;
 				

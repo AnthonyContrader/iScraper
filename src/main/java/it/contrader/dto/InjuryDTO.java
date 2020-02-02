@@ -72,7 +72,7 @@ public class InjuryDTO {
 
 		@Override
 		public String toString() {
-			return "Injury [id=" + id + ", severity=" + severity + ", description=" + description + ", duration=" + duration
-					+ ", date=" + date + ", player_id=" + player_id + "]";
+			return id + "\t" + severity + "\t\t" + description + "\t\t" + duration
+					+ "\t" + date + "\t" + player_id;
 		}
 }
