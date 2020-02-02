@@ -9,7 +9,6 @@ public class Player {
 	private int age;
 	private int actualMarketValue;
 	private int previousMarketValue;
-	
 	private String position;
 	
 	

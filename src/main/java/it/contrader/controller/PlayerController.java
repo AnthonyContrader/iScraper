@@ -95,8 +95,8 @@ public class PlayerController implements Controller{
 			player_name = request.get("player_name").toString();
 			player_surname = request.get("player_surname").toString();
 			age = Integer.parseInt(request.get("age").toString());
-			actualMarketValue = Integer.parseInt(request.get("actualMarketValue").toString());
-			previousMarketValue = Integer.parseInt(request.get("previousMarketValue").toString());
+			actualMarketValue = Integer.parseInt(request.get("actualValue").toString());
+			previousMarketValue = Integer.parseInt(request.get("previousValue").toString());
 			position = request.get("position").toString();
 			
 			

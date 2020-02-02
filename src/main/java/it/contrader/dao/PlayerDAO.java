@@ -149,14 +149,14 @@ public class PlayerDAO {
 			
 			
 			PreparedStatement preparedStatement =(PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
-			preparedStatement.setInt(1, player.getId());
-			preparedStatement.setString(2, player.getName());
-			preparedStatement.setString(3, player.getSurname());
-			preparedStatement.setInt(4, player.getAge());
-			preparedStatement.setInt(5, player.getActualMarketValue());
-			preparedStatement.setInt(6, player.getPreviousMarketValue());
+			preparedStatement.setInt(7, player.getId());
+			preparedStatement.setString(1, player.getName());
+			preparedStatement.setString(2, player.getSurname());
+			preparedStatement.setInt(3, player.getAge());
+			preparedStatement.setInt(4, player.getActualMarketValue());
+			preparedStatement.setInt(5, player.getPreviousMarketValue());
 			
-			preparedStatement.setString(7, player.getPosition());
+			preparedStatement.setString(6, player.getPosition());
 	
 			int a = preparedStatement.executeUpdate();
 			if (a > 0) 

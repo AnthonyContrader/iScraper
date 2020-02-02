@@ -10,22 +10,34 @@ import it.contrader.view.View;
 
 public class PlayerUpdateView implements View {
 
-	private PlayerController playerController;
+	 int player_id;
+	 String player_name;
+	 String player_surname;
+	 int age;
+	 int actualValue;
+	 int previousValue;
+	 String position;
+	 private final String mode = "UPDATE";
+	
+	
+	
+	
+//	private PlayerController playerController;
 	private Request request;
 
-	public PlayerUpdateView() {
-		this.playerController = new PlayerController();
-	}
+	
 
 	@Override
 	public void showResults(Request request) {
+		if (request!=null) {
+			System.out.println("Aggiornamento andato a buon fine.\n");
+			MainDispatcher.getInstance().callView("Player", null);
+		}
 	}
 
 	@Override
 	public void showOptions() {
-		int playerIdToUpdate;
-		String player_name, player_surname, position;
-		int age, actualValue, previousValue;
+		
 		/*
 		 * List<User> users; Integer usersId; String password; users =
 		 * usersController.getAllUsers();
@@ -34,49 +46,42 @@ public class PlayerUpdateView implements View {
 		// System.out.println();
 		// users.forEach(us_type -> System.out.println(us_type.toString()));
 		// System.out.println();
-		Player player = new Player();
-
-		System.out.println("Digita l'Id dell'player da modificare:");
+		
+		
 		try {
-			playerIdToUpdate = Integer.parseInt(getInput());
-			if (playerIdToUpdate != 0) {
-				 player.setId(playerIdToUpdate);
-
+			System.out.println("Digita l'Id dell'player da modificare:");
+			player_id = Integer.parseInt(getInput());
+			
+		
 				System.out.println("Digita il nuovo nome:");
 				player_name = getInput();
-				if (!player_name.equals(""))
-					player.setName(player_name);
+				
 
 				System.out.println("Digita il nuovo cognome:");
 				player_surname = getInput();
-				if (!player_surname.equals(""))
-					player.setSurname(player_name);
+				
 
 				System.out.println("Digita la nuova eta:");
 				age = Integer.parseInt(getInput());
-				if (age != 0)
-					player.setAge(age);
+				
 
 				System.out.println("Digita il nuovo valore actuale di mercato:");
 				actualValue = Integer.parseInt(getInput());
-				if (actualValue != 0)
-					player.setActualMarketValue(actualValue);
+				
 
 				System.out.println("Digita il nuovo valore precedente di mercato:");
 				previousValue = Integer.parseInt(getInput());
-				if (previousValue != 0)
-					player.setPreviousMarketValue(previousValue);
-
+				
 				System.out.println("Digita la nuova posizione: ");
 				position = getInput();
-				if (!position.equals(""))
-					player.setPosition(position);
-				System.out.println(player);
-				playerController.updatePlayer(player);
+				
+				//System.out.println(player);
+			
 				
 
-			}
+			
 		} catch (Exception e) {
+			System.out.println(e.toString());
 			System.out.println("Hai inserito un valore errato");
 		}
 
@@ -89,9 +94,20 @@ public class PlayerUpdateView implements View {
 
 	@Override
 	public void submit() {
+		
+		
 		request = new Request();
-		request.put("mode", "menu");
-		request.put("choice", "");
+		request.put("player_id", player_id);
+		request.put("player_name", player_name);
+		request.put("player_surname", player_surname);
+		request.put("age", age);
+		request.put("actualValue", actualValue);
+		request.put("previousValue", previousValue);
+		request.put("position", position);
+		
+		
+		request.put("mode", mode);
+	//	request.put("choice", "");
 		MainDispatcher.getInstance().callAction("Player", "doControl", request);
 	}
 

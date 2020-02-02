@@ -19,7 +19,7 @@ import it.contrader.model.Player;
 public class Application {
 
     public static void main(String[] args) {
-//   	Player player= new Player(20, "h", "i");
+//   	Player player= new Player(1, "h", "i",23,33,232,"ss");
 ////
 //
 //   	PlayerDAO playerDAO=new PlayerDAO();
