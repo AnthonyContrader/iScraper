@@ -4,7 +4,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<!-- See http://maven.apache.org/pom.html for a full description of all 
+	<!-- See http://maven.apache.org/pom.html for a full description of all
 		supported values -->
 
 	<!-- GroupID - identifies WHO is making the project -->
@@ -19,7 +19,7 @@
 	<!-- How are we packaging - jar, war, ear -->
 	<packaging>war</packaging>
 
-	<!-- This is optional, used for any local names for the project. Can be 
+	<!-- This is optional, used for any local names for the project. Can be
 		"softer" than the artifactId -->
 	<name>JspApp</name>
 
@@ -100,4 +100,3 @@
 		</plugins>
 	</build>
 </project>
-
