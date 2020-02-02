@@ -147,7 +147,7 @@ public class PlayerDAO {
 				player.setPosition(playerRead.getPosition());
 			}
 			
-		System.out.println(player);
+			
 			PreparedStatement preparedStatement =(PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
 			preparedStatement.setInt(1, player.getId());
 			preparedStatement.setString(2, player.getName());
@@ -159,16 +159,16 @@ public class PlayerDAO {
 			preparedStatement.setString(7, player.getPosition());
 	
 			int a = preparedStatement.executeUpdate();
-			if (a > 0) {
-				System.out.println("All good");
-				return true;}
+			if (a > 0) 
+				
+				return true;
 			else
-				System.out.println("Nooooooo");
+				
 				return false;
 
 		} catch (SQLException e) {
 			
-			System.out.println("error");
+		//	System.out.println("error");
 			return false;
 		}
 	}

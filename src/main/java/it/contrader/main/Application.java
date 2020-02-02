@@ -19,25 +19,19 @@ import it.contrader.model.Player;
 public class Application {
 
     public static void main(String[] args) {
-   	Player player= new Player(10, "h", "s", 1, 2,4, "e");
+//   	Player player= new Player(20, "h", "i");
+////
 //
-<<<<<<< HEAD
-   	PlayerDAO playerDAO=new PlayerDAO();
-   	playerDAO.updatePlayer(player);
+//   	PlayerDAO playerDAO=new PlayerDAO();
+//   	playerDAO.updatePlayer(player);
 
    // 	PlayerDAO playerDAO=new PlayerDAO();
    //	playerDAO.insertPlayer(player);
    //	System.out.println("---------------------");
-=======
-//   	PlayerDAO playerDAO=new PlayerDAO();
-//   	playerDAO.insertPlayer(player);
-// 	PlayerDAO playerDAO=new PlayerDAO();
-//	playerDAO.insertPlayer(player);
-//	System.out.println("---------------------");
->>>>>>> 12105d5d52b2721f4c0ed3c1a649d330c83cf01a
+
 
 //    	System.out.println(playerDAO.readPlayer(0));;
-   	System.out.println(playerDAO.getAllPlayers());
+  // 	System.out.println(playerDAO.getAllPlayers());
 //    	Date date= new Date(2000-12-22);
 // //   
 //    	Injury injury=new Injury(12, "weww", date,2, 12);

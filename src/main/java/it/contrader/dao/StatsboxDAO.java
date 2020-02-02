@@ -114,7 +114,7 @@ public class StatsboxDAO {
 		// Check if id is present
 		if (statsboxToUpdate.getPlayerId() == 0 || statsboxToUpdate.getSeason() == 0)
 			return false;
-System.out.println(statsboxToUpdate);
+
 		Statsbox statsboxRead = read(statsboxToUpdate.getPlayerId(), statsboxToUpdate.getSeason());
 		if (!statsboxRead.equals(statsboxToUpdate)) {
 			try {
@@ -166,7 +166,7 @@ System.out.println(statsboxToUpdate);
 				if (statsboxToUpdate.getBreaks() == 0) {
 					statsboxToUpdate.setBreaks(statsboxRead.getBreaks());
 				}
-System.out.println(statsboxToUpdate);
+
 				// Update the statsbox
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
 				preparedStatement.setInt(13, statsboxToUpdate.getPlayerId());
