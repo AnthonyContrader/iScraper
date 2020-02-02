@@ -11,7 +11,7 @@ import java.util.List;
  * 
  * Questa interfaccia firma i metodi dei converter (vedi guida JavaCOnsolePro, sez Interfacce e Clasi Astratte)
  */
-public interface Converter<Entity, DTO> {
+public interface Converter<Entity, DTO>  {
 
 	public DTO toDTO(Entity entity);
 	

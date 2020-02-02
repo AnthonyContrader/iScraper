@@ -2,7 +2,7 @@ package it.contrader.model;
 /**
  * Per dettagli vedi guida sez 4 Model
  */
-public class User exten{
+public class User{
 
 	/**
 	 * Qui sotto definisco gli attributi di User. 
