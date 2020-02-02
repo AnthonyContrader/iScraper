@@ -37,16 +37,7 @@ public class GetPlayersView implements View {
 			System.out.println(player);
 		}
 		
-	//	System.out.println(playerController.getPlayers().toString());
-		
-//		String response = getInput();
-//
-//		if (response != null && response.equals("yes")) {
-//			System.out.println(playerController.getPlayers().toString());
-//			
-//		} else {
-//			System.out.println("Valore inserito errato");
-//		}
+	
 	}
 		
 	public String getInput() {
