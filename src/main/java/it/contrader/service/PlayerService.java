@@ -35,8 +35,8 @@ public class PlayerService {
 		
 	}
 	
-	public boolean updatePlayer(Player player) {
-		return this.playerDAO.updatePlayer(player);
+	public boolean updatePlayer(PlayerDTO playerDTO) {
+		return this.playerDAO.updatePlayer(playerConverter.toEntity(playerDTO));
 	}
 	public boolean deletePlayer(int id) {
 		return this.playerDAO.deletePlayer(id);

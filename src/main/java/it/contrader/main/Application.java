@@ -1,6 +1,11 @@
 package it.contrader.main;
 
+import java.sql.Date;
+
+import it.contrader.dao.InjuryDAO;
 import it.contrader.dao.PlayerDAO;
+import it.contrader.dto.InjuryDTO;
+import it.contrader.model.Injury;
 import it.contrader.model.Player;
 
 /*
@@ -13,17 +18,37 @@ import it.contrader.model.Player;
 */
 public class Application {
 
-    public static void main(String[] args) {
-//   	Player player= new Player( "h", "s", 1, 2,4, "e");
+   public static void main(String[] args) {
+//	Player player= new Player(10, "h", "s", 1, 2,4, "e");
 //
+
+//  PlayerDAO playerDAO=new PlayerDAO();
+//	playerDAO.updatePlayer(player);
+
+   // 	PlayerDAO playerDAO=new PlayerDAO();
+   //	playerDAO.insertPlayer(player);
+   //	System.out.println("---------------------");
 //   	PlayerDAO playerDAO=new PlayerDAO();
 //   	playerDAO.insertPlayer(player);
 // 	PlayerDAO playerDAO=new PlayerDAO();
 //	playerDAO.insertPlayer(player);
 //	System.out.println("---------------------");
 
+
 //    	System.out.println(playerDAO.readPlayer(0));;
-//    	System.out.println(playerDAO.getAllPlayers());
+//   	System.out.println(playerDAO.getAllPlayers());
+//    	Date date= new Date(2000-12-22);
+// //   
+//    	Injury injury=new Injury(12, "weww", date,2, 12);
+//    	//severity, description, date, duration, player_id
+//    	InjuryDAO injuryDAO=new InjuryDAO();
+//    	injuryDAO.insert(injury);
+//    	
+//    	System.out.println(injuryDAO.getAllInjury());
+//   // 	System.out.println(injuryDAO.read(2));
+    	
+//    	
+//    	
     	
     	MainDispatcher.getInstance().callAction("Login", "doControl", null);
     }

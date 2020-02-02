@@ -1,5 +1,6 @@
 package it.contrader.controller;
 
+import it.contrader.converter.PlayerConverter;
 import it.contrader.dto.PlayerDTO;
 import it.contrader.dto.StatsboxDTO;
 import it.contrader.main.MainDispatcher;
@@ -13,6 +14,7 @@ public class PlayerController implements Controller{
 
 	private static String sub_package = "player.";
 	private PlayerService playerService;
+	private PlayerConverter playerConverter;
 	
 	 int player_id;
 	 String player_name;
@@ -42,9 +44,9 @@ public class PlayerController implements Controller{
 		return this.playerService.readPlayer(player_id);
 	}
 	
-//	public boolean updatePlayer(Player player) {
-//		return this.playerService.updatePlayer(player);
-//	}
+	public boolean updatePlayer(Player player) {
+		return this.playerService.updatePlayer(playerConverter.toTDO(player));
+	}
 	public boolean deletePlayer(int id) {
 		return this.playerService.deletePlayer(id);
 		
@@ -86,7 +88,28 @@ public class PlayerController implements Controller{
 			//Rimanda alla view con la risposta
 			MainDispatcher.getInstance().callView(sub_package + "PlayerInsert", request);
 			break;
-
+			
+		case "UPDATE":
+			player_id = Integer.parseInt(request.get("player_id").toString());
+			
+			player_name = request.get("player_name").toString();
+			player_surname = request.get("player_surname").toString();
+			age = Integer.parseInt(request.get("age").toString());
+			actualMarketValue = Integer.parseInt(request.get("actualMarketValue").toString());
+			previousMarketValue = Integer.parseInt(request.get("previousMarketValue").toString());
+			position = request.get("position").toString();
+			
+			
+			//costruisce l'oggetto user da inserire
+			PlayerDTO playertoupdate = new PlayerDTO(player_id, player_name, player_surname, age, actualMarketValue, previousMarketValue, position);
+			//invoca il service
+			playerService.updatePlayer(playertoupdate);
+			request = new Request();
+			request.put("mode", mode);
+			//Rimanda alla view con la risposta
+			MainDispatcher.getInstance().callView(sub_package + "PlayerUpdate", request);
+			break;
+			
 		default:
 			break;
 		}
@@ -109,6 +132,9 @@ public class PlayerController implements Controller{
 				break;
 			case "B":
 				MainDispatcher.getInstance().callView("HomeAdmin", null);
+				break;
+			case "U":
+				MainDispatcher.getInstance().callView(sub_package + "PlayerUpdate", null);
 				break;
 			
 			case "E":

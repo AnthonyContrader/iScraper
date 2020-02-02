@@ -12,8 +12,8 @@ import it.contrader.main.MainDispatcher;
 import it.contrader.view.View;
 
 public class InjuryReadView implements View{
-	private int playerId;
-	
+	private int player_id;
+	private InjuryController injuryController;
 	private Request request;
 	private final String mode = "READ";
 
@@ -46,9 +46,12 @@ public class InjuryReadView implements View{
 	@Override
 	public void showOptions() {
 		System.out.println("Inserisci l'ID del giocatore:");
-		playerId = Integer.parseInt(getInput());
+		player_id = Integer.parseInt(getInput());
+		System.out.println(injuryController.readInjury(player_id).toString());
+		//injuryController.doControl(request);
+		}
 		
-	}
+	
 	public String getInput() {
 		 Scanner scanner = new Scanner(System.in) ;
 			return scanner.nextLine().trim();
@@ -61,7 +64,7 @@ public class InjuryReadView implements View{
 	@Override
 	public void submit() {
 		request = new Request();
-		request.put("playerId", playerId);
+		request.put("player_id", player_id);
 	
 		request.put("mode", mode);
 		MainDispatcher.getInstance().callAction("Injury", "doControl", request);

@@ -1,12 +1,18 @@
 package it.contrader.view.injury;
 
-import java.util.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+
 
 import it.contrader.controller.Request;
 import it.contrader.main.MainDispatcher;
 import it.contrader.view.AbstractView;
 
-public class InjuryInsertView extends AbstractView{
+public class InjuryInsertView extends AbstractView {
+
+	
 	private Request request;
 
 	private int id;
@@ -65,3 +71,4 @@ public class InjuryInsertView extends AbstractView{
 	}
 
 }
+

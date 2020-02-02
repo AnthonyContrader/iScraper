@@ -22,6 +22,7 @@ public class InjuryConverter {
 		return dtoList;
 	}
 	
+	
 	public InjuryDTO toDTO(Injury injury) {
 		return new InjuryDTO(injury.getId(),injury.getSeverity(),injury.getDescription(),injury.getDuration(),injury.getDate(),injury.getPlayer_id());
 	}
