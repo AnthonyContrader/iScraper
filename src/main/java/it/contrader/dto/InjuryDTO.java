@@ -8,12 +8,12 @@ public class InjuryDTO {
 		private int severity;
 		private String description;
 		private int duration;
-		private Date date;
+		private String date;
 		private int player_id;
 		
 		
 		
-		public InjuryDTO(int id, int severity, String description, int duration, Date date, int player_id) {
+		public InjuryDTO(int id, int severity, String description, int duration, String date, int player_id) {
 			super();
 			this.id = id;
 			this.severity = severity;
@@ -23,7 +23,7 @@ public class InjuryDTO {
 			this.player_id = player_id;
 		}
 		
-		public InjuryDTO(int severity, String description, int duration, Date date, int player_id) {
+		public InjuryDTO(int severity, String description, int duration, String date, int player_id) {
 			super();
 			this.severity = severity;
 			this.description = description;
@@ -32,6 +32,7 @@ public class InjuryDTO {
 			this.player_id = player_id;
 		}
 
+	
 		public int getId() {
 			return id;
 		}
@@ -56,10 +57,10 @@ public class InjuryDTO {
 		public void setDuration(int duration) {
 			this.duration = duration;
 		}
-		public Date getDate() {
+		public String getDate() {
 			return date;
 		}
-		public void setDate(Date date) {
+		public void setDate(String date) {
 			this.date = date;
 		}
 		public int getPlayer_id() {

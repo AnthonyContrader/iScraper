@@ -50,7 +50,7 @@ public class SearchController implements Controller {
 			break;
 			
 		case "DELETE":
-			id = Long.parseLong(request.get("ID").toString());
+			id = Long.parseLong(request.get("search_id").toString());
 			searchService.delete(id);
 			request = new Request();
 			request.put("mode", "mode");

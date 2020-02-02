@@ -12,9 +12,8 @@ public class SearchDAO {
 	private final String QUERY_ALL = "SELECT * FROM tb_searches";
 	private final String QUERY_CREATE = "INSERT INTO tb_searches (search_date, player_value, player_index, user_id, player_id) VALUES (?,?,?,?,?)";
 	private final String QUERY_READ = "SELECT * FROM tb_searches WHERE id=?";
-
-	private final String QUERY_UPDATE = "UPDATE tb_searches SET search_date=?. player_value=?, player_index=?, user_id=?, player_id=? WHERE id=?";
-
+	//private final String USER_ALL = "SELECT * FROM tb_searches user_id=?";
+	private final String QUERY_UPDATE = "UPDATE tb_searches SET search_date=?, player_value=?, player_index=?, user_id=?, player_id=? WHERE id=?";
 	private final String QUERY_DELETE = "DELETE FROM tb_searches WHERE id=?";
 	
 	public SearchDAO(){}
@@ -59,6 +58,7 @@ public class SearchDAO {
 		}
 	}
 	
+	
 	public Search read(long id) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
@@ -78,6 +78,26 @@ public class SearchDAO {
 			return null;
 		}
 	}
+	
+	/*public List<Search> userAllRead(int user_id) {
+		List<Search> searchesList = new ArrayList<>();
+		Connection connection = ConnectionSingleton.getInstance();
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_READ);
+			preparedStatement.setInt(1, user_id);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			Search search;
+			while (resultSet.next()) {
+				Date search_date = resultSet.getDate("search_date");
+				int value = resultSet.getInt("player_value");
+				int index = resultSet.getInt("player_index");
+				short player_id = resultSet.getShort("player_id");
+				search = new Search(search_date, value, index, user_id, player_id);
+				searchesList.add(search);
+			}
+		}catch (Exception e) {}
+		return searchesList;
+	}*/
 	
 	public boolean update(Search searchToUpdate) {
 		System.out.println("fefe");

@@ -2,6 +2,7 @@ package it.contrader.view.search;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.TimeZone;
 
 import it.contrader.controller.Request;
 import it.contrader.main.MainDispatcher;
@@ -31,14 +32,16 @@ public class SearchUpdateView extends AbstractView{
 		try {
 			System.out.println("Inserisci l'id della ricerca: ");
 			id = Long.parseLong(getInput());
-			System.out.println("Inserisci la data della ricerca: ");
+			System.out.println("Inserisci la data della ricerca (giorno/mese/anno): ");
 			try {
-				SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+				SimpleDateFormat format = new SimpleDateFormat("dMyyyy");
+				format.setTimeZone(TimeZone.getTimeZone("UTC"));
 				java.util.Date parsed = format.parse(getInput());
 				search_date = new Date(parsed.getTime());
 			} catch (Exception e) {
 				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-				java.util.Date parsed = format.parse("2020-02-02");
+				format.setTimeZone(TimeZone.getTimeZone("UTC"));
+				java.util.Date parsed = format.parse("2020-02-21");
 				search_date = new Date(parsed.getTime());
 			} //Cercare eccezione specifica
 			System.out.println("Inserisci il valore del giocatore: ");
