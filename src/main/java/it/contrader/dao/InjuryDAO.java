@@ -9,7 +9,7 @@ import java.util.List;
 
 public class InjuryDAO {
 	private final String QUERY_ALL = "SELECT * FROM tb_injuries";
-	private final String QUERY_CREATE = "INSERT into tb_injuries (id, severity, description, date, duration, player_id) values (?,?,?,?,?,)";
+	private final String QUERY_CREATE = "INSERT into tb_injuries (severity, description, duration, date, player_id) values (?,?,?,?,?)";
 	private final String QUERY_READ = "SELECT * FROM tb_injuries WHERE id=?";
 	private final String QUERY_UPDATE= "UPDATE tb_injuries SET severity=?, description=?, date=?, duration=?, player_id=? WHERE id=?";
 	private final String QUERY_DELETE= "DELETE FROM tb_injuries WHERE id=?";
@@ -29,7 +29,7 @@ public class InjuryDAO {
 					int severity = resultSet.getInt("severity");
 					String description = resultSet.getString("description");
 					int duration = resultSet.getInt("duration");
-					Date date = resultSet.getDate("date");
+					String date = resultSet.getString("date");
 					int player_id = resultSet.getInt("player_id");
 					
 					injury = new Injury(id, severity, description, duration, date, player_id);
@@ -45,14 +45,15 @@ public class InjuryDAO {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_CREATE);
-			preparedStatement.setInt(1,injuryToUpdate.getId());
-			preparedStatement.setInt(2,injuryToUpdate.getSeverity());
-			preparedStatement.setString(3,injuryToUpdate.getDescription());
-			preparedStatement.setInt(4,injuryToUpdate.getDuration());
-			preparedStatement.setDate(5,injuryToUpdate.getDate());
-			preparedStatement.setInt(6,injuryToUpdate.getPlayer_id());
+			preparedStatement.setInt(1,injuryToUpdate.getSeverity());
+			preparedStatement.setString(2,injuryToUpdate.getDescription());
+			preparedStatement.setInt(3,injuryToUpdate.getDuration());
+			preparedStatement.setString(4,injuryToUpdate.getDate());
+			preparedStatement.setInt(5,injuryToUpdate.getPlayer_id());
+			preparedStatement.execute();
 			return true;
 		} catch(SQLException e) {
+			System.out.println(e.toString());
 			return false;
 		}
 	}
@@ -67,7 +68,7 @@ public class InjuryDAO {
 			int player_id = resultSet.getInt("player_id");
 			int severity = resultSet.getInt("severity");
 			String description = resultSet.getString("description");
-			Date date = resultSet.getDate("date");
+			String date = resultSet.getString("date");
 			int duration = resultSet.getInt("duration");
 			
 			Injury injury = new Injury(id, severity, description, duration, date, player_id);
@@ -121,7 +122,7 @@ public class InjuryDAO {
 				preparedStatement.setInt(1,injuryToUpdate.getSeverity());
 				preparedStatement.setString(2,injuryToUpdate.getDescription());
 				preparedStatement.setInt(3,injuryToUpdate.getDuration());
-				preparedStatement.setDate(4,injuryToUpdate.getDate());
+				preparedStatement.setString(4,injuryToUpdate.getDate());
 				preparedStatement.setInt(5,injuryToUpdate.getPlayer_id());
 				int a = preparedStatement.executeUpdate();
 				if (a > 0)

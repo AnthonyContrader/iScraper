@@ -20,7 +20,7 @@ public class InjuryController implements Controller {
 	private int severity;
 	private String description;
 	private int duration;
-	private Date date;
+	private String date;
 	private int player_id;
 	
 	
@@ -42,11 +42,10 @@ public class InjuryController implements Controller {
 			break;
 		
 		case "INSERT":
-			id = Integer.parseInt(request.get("id").toString());
 			severity = Integer.parseInt(request.get("severity").toString());
 			description = request.get("description").toString();
 			duration = Integer.parseInt(request.get("duration").toString());
-			date = Date.valueOf((request.get("date").toString()));
+			date = request.get("date").toString();
 			player_id = Integer.parseInt(request.get("player_id").toString());
 			
 			InjuryDTO injuryToInsert = new InjuryDTO(id,severity,description,duration,date,player_id);
@@ -69,7 +68,7 @@ public class InjuryController implements Controller {
 			severity = Integer.parseInt(request.get("severity").toString());
 			description = request.get("description").toString();
 			duration = Integer.parseInt(request.get("duration").toString());
-			date = Date.valueOf((request.get("date").toString()));
+			date = (request.get("date").toString());
 			player_id = Integer.parseInt(request.get("player_id").toString());
 			
 			InjuryDTO injuryToUpdate = new InjuryDTO(id,severity,description,duration,date,player_id);
@@ -81,7 +80,7 @@ public class InjuryController implements Controller {
 			
 		case "INJURYLIST":
 			List<InjuryDTO> dto = injuryService.getAll();
-			request.put("Injuries", dto);
+			request.put("injuries", dto);
 			MainDispatcher.getInstance().callView("Injury", request);
 			break;
 			
@@ -94,6 +93,7 @@ switch (choice.toUpperCase()) {
 				break;
 				
 			case "I":
+				System.out.println("ok");
 				MainDispatcher.getInstance().callView(sub_package + "InjuryInsert", null);
 				break;
 				

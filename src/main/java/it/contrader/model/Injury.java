@@ -7,12 +7,12 @@ public class Injury {
 	private int severity;
 	private String description;
 	private int duration;
-	private Date date;
+	private String date;
 	private int player_id;
 	
 	
 	
-	public Injury(int id, int severity, String description, int duration, Date date, int player_id) {
+	public Injury(int id, int severity, String description, int duration, String date, int player_id) {
 		super();
 		this.id = id;
 		this.severity = severity;
@@ -46,10 +46,10 @@ public class Injury {
 	public void setDuration(int duration) {
 		this.duration = duration;
 	}
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 	public int getPlayer_id() {

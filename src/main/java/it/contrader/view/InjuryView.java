@@ -20,14 +20,14 @@ public class InjuryView extends AbstractView {
 	public void showResults(Request request) {
 		if(request!=null) {
 			System.out.println("\n------------------- Infortuni ----------------\n");
-			System.out.println("PlayerID\tTypology\tDuration\tGravityIndex\tSeason");
+			System.out.println("id\tseverity\tdescription\tduration\tdate\tplayer_id");
 			System.out.println("----------------------------------------------------\n");
 			
-//			@SuppressWarnings("unchecked")
-//			List<InjuryDTO> injuries = (List<InjuryDTO>) request.get("injury");
-//			for(InjuryDTO s: injuries)
-//				System.out.println(s);
-//			System.out.println();
+		@SuppressWarnings("unchecked")
+			List<InjuryDTO> injuries = (List<InjuryDTO>) request.get("injuries");
+			for(InjuryDTO s: injuries)
+				System.out.println(s);
+			System.out.println();
 		}
 	}
 	
