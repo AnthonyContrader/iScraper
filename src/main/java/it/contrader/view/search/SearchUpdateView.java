@@ -77,7 +77,6 @@ public class SearchUpdateView extends AbstractView{
 	
 	@Override
 	public void submit() {
-		System.out.println("submit");
 		request = new Request();
 		request.put("search_id", id);
 		request.put("search_date", search_date);
