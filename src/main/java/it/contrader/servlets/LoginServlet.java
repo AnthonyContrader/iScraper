@@ -33,10 +33,9 @@ public class LoginServlet extends HttpServlet {
 			String username = request.getParameter("username").toString();
 			String password = request.getParameter("password").toString();
 			//come nei vecchi controller, invoca il service
-			String usertype = service.login(username, password);
-			UserDTO dto = new UserDTO();
-			if (usertype != null) {
-				dto = new UserDTO(username, password, usertype);
+			UserDTO dto = service.login(username, password);
+			
+			if (dto != null) {
 				//se il login ha funzionato, salva l'utente nella sessione
 				session.setAttribute("user", dto);
 			}
