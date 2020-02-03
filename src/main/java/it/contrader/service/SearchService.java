@@ -3,16 +3,13 @@ package it.contrader.service;
 import it.contrader.converter.SearchConverter;
 import it.contrader.dao.SearchDAO;
 import it.contrader.dto.SearchDTO;
+import it.contrader.model.Search;
 
-import java.util.List;
+public class SearchService extends AbstractService<Search, SearchDTO>{
 
-public class SearchService extends AbstractService{
-
-	private SearchDAO searchDAO;
-	private SearchConverter searchConverter;
 	
 	public SearchService() {
-		searchDAO = new SearchDAO();
-		searchConverter = new SearchConverter();
+		this.dao = new SearchDAO();
+		this.converter = new SearchConverter();
 	}
 }

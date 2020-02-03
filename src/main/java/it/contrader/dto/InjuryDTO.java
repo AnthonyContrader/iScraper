@@ -1,6 +1,5 @@
 package it.contrader.dto;
 
-import java.sql.Date;
 
 public class InjuryDTO implements DTO{
 

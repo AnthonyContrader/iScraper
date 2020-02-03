@@ -1,6 +1,5 @@
 package it.contrader.model;
 
-import java.sql.Date;
 
 public class Injury {
 	private int id;
