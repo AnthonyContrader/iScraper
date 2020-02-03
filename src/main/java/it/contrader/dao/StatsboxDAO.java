@@ -1,11 +1,14 @@
 package it.contrader.dao;
 
+
 import it.contrader.utils.ConnectionSingleton;
+
 import it.contrader.model.Statsbox;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class StatsboxDAO implements DAO<Statsbox> {
 	private final String QUERY_ALL = "SELECT * FROM tb_stats";
@@ -13,6 +16,7 @@ public class StatsboxDAO implements DAO<Statsbox> {
 	private final String QUERY_READ = "SELECT * FROM tb_stats WHERE id=?";
 	private final String QUERY_UPDATE = "UPDATE tb_stats SET player_id=?, season=?, team=?, caps=?, contributions=?, shotsper=?, keypass=?, passprec=?, dribbling=?, foulssub=?, foulscomm=?, tackles=?, tacklesper=?, breaks=? WHERE id=?";
 	private final String QUERY_DELETE = "DELETE FROM tb_stats WHERE id=?";
+
 	
 	public StatsboxDAO() {
 		
@@ -27,6 +31,7 @@ public class StatsboxDAO implements DAO<Statsbox> {
 				Statsbox statsbox;
 				while (resultSet.next()) {
 					int id = resultSet.getInt("id");
+
 					int playerId = resultSet.getInt("player_id");
 					int season = Integer.parseInt(resultSet.getString("season"));
 					String team = resultSet.getString("team");
@@ -43,6 +48,7 @@ public class StatsboxDAO implements DAO<Statsbox> {
 					float breaks = resultSet.getFloat("breaks");
 					
 					statsbox = new Statsbox(id,playerId, season, team, caps, contributions, shotsper, keypass, passprec, dribbling, foulssub, foulscomm, tackles, tacklesper, breaks);
+
 					statsList.add(statsbox);
 				}
 			} catch (SQLException e) {
@@ -70,6 +76,7 @@ public class StatsboxDAO implements DAO<Statsbox> {
 			preparedStatement.setFloat(13, statsboxToUpdate.getTackles());
 			preparedStatement.setFloat(14, statsboxToUpdate.getTacklesper());
 			preparedStatement.setFloat(15, statsboxToUpdate.getBreaks());
+
 			preparedStatement.execute();
 			return true;
 		} catch (SQLException e) {
@@ -83,6 +90,7 @@ public class StatsboxDAO implements DAO<Statsbox> {
 		Connection connection = ConnectionSingleton.getInstance();
 
 		// Check if id is present
+
 		if (statsboxToUpdate.getId() == 0)
 			return false;
 
@@ -97,7 +105,7 @@ public class StatsboxDAO implements DAO<Statsbox> {
 				if (statsboxToUpdate.getSeason() == 0) {
 					statsboxToUpdate.setSeason(statsboxRead.getSeason());
 				}
-				
+
 				if (statsboxToUpdate.getTeam() == null || statsboxToUpdate.getTeam().equals("")) {
 					statsboxToUpdate.setTeam(statsboxRead.getTeam());
 				}
@@ -181,6 +189,7 @@ public class StatsboxDAO implements DAO<Statsbox> {
 
 	}
 	
+
 	public Statsbox read (int id) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
@@ -218,6 +227,7 @@ public class StatsboxDAO implements DAO<Statsbox> {
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_DELETE);
 			preparedStatement.setInt(1, id);
+
 			int n = preparedStatement.executeUpdate();
 			if (n != 0)
 				return true;

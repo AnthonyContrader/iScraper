@@ -1,6 +1,8 @@
 package it.contrader.dao;
 
+
 import it.contrader.utils.ConnectionSingleton;
+
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -1,13 +1,17 @@
 package it.contrader.dao;
 
+
 import it.contrader.utils.ConnectionSingleton;
+
 import it.contrader.model.Injury;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class InjuryDAO implements DAO<Injury>{
+
 	private final String QUERY_ALL = "SELECT * FROM tb_injuries";
 
 	private final String QUERY_CREATE = "INSERT into tb_injuries (severity, description, duration, date, player_id) values (?,?,?,?,?)";
@@ -18,6 +22,7 @@ public class InjuryDAO implements DAO<Injury>{
 
 	public InjuryDAO() {}
 	
+
 	public List<Injury> getAll() {
 			List<Injury> injuryList=new ArrayList<>();
 			Connection connection = ConnectionSingleton.getInstance();

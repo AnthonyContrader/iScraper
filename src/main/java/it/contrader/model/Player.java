@@ -15,6 +15,7 @@ public class Player {
 	
 	public Player(String player_name, String player_surname, int age, int actualMarketValue, int previousMarketValue,
 			String position, String team) {
+
 		super();
 		this.player_name = player_name;
 		this.player_surname = player_surname;
@@ -22,10 +23,12 @@ public class Player {
 		this.actualMarketValue = actualMarketValue;
 		this.previousMarketValue = previousMarketValue;
 		this.position = position;
+
 		this.team = team;
 	}
 	public Player(int id, String name, String surname, int age, int actualMarketValue, int previousMarketValue,
 			 String position, String team) {
+
 		
 		this.player_id = id;
 		this.player_name = name;
@@ -35,6 +38,7 @@ public class Player {
 		this.previousMarketValue = previousMarketValue;
 		this.position = position;
 		this.team = team;
+
 	}
 	public Player(int player_id, String player_name, String player_surname) {
 		super();
@@ -102,12 +106,13 @@ public class Player {
 				+ previousMarketValue  + ", position=" + position 
 				+  "]";
 	}
+	
 	public String getTeam() {
 		return team;
 	}
 	public void setTeam(String team) {
 		this.team = team;
 	}
-	
+
 	
 }

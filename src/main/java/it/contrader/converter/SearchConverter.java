@@ -6,7 +6,10 @@ import it.contrader.model.Search;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class SearchConverter implements Converter<Search, SearchDTO>{
+
+
 
 	public SearchDTO toDTO(Search search) {
 		SearchDTO searchDTO = new SearchDTO(search.getID(), search.getDate(), search.getValue(), search.getIndex(), search.getUser(), search.getPlayer());

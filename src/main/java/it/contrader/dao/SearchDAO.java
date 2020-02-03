@@ -1,6 +1,8 @@
 package it.contrader.dao;
 
+
 import it.contrader.utils.ConnectionSingleton;
+
 import it.contrader.model.Search;
 
 import java.sql.*;
@@ -8,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SearchDAO implements DAO<Search> {
+
 	
 	private final String QUERY_ALL = "SELECT * FROM tb_searches";
 	private final String QUERY_CREATE = "INSERT INTO tb_searches (search_date, player_value, player_index, user_id, player_id) VALUES (?,?,?,?,?)";
@@ -27,6 +30,7 @@ public class SearchDAO implements DAO<Search> {
 			Search search;
 			while (resultSet.next()) {
 				int search_id = resultSet.getInt("id");
+
 				Date search_date = resultSet.getDate("search_date");
 				int value = resultSet.getInt("player_value");
 				int index = resultSet.getInt("player_index");
@@ -60,6 +64,7 @@ public class SearchDAO implements DAO<Search> {
 	
 	
 	public Search read(int id) {
+
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_READ);
@@ -73,6 +78,7 @@ public class SearchDAO implements DAO<Search> {
 			short player = resultSet.getShort("player_id");
 			Search search = new Search(search_date, value, index, user, player);
 			search.setID(resultSet.getInt("id"));
+
 			return search;
 		} catch (SQLException e) {
 			return null;
@@ -144,6 +150,7 @@ public class SearchDAO implements DAO<Search> {
 	}
 	
 	public boolean delete(int id) {
+
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_DELETE);

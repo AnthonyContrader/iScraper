@@ -5,6 +5,7 @@ import java.sql.Date;
 public class Search {
 	
 	private int search_id;
+
 	private int value, index, user_id;
 	private Date search_date;
 	private short player;
@@ -20,6 +21,7 @@ public class Search {
 	}
 	
 	public Search(int search_id, Date search_date, int value, int index, int user_id, short player) {
+
 		this.search_id = search_id;
 		this.search_date = search_date;
 		this.value = value;
@@ -33,6 +35,7 @@ public class Search {
 	}
 	
 	public void setID(int search_id) {
+
 		this.search_id = search_id;
 	}
 	

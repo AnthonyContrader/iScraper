@@ -8,12 +8,15 @@ import java.util.List;
 
 
 public class PlayerConverter implements Converter<Player, PlayerDTO>{
+
 	
 	public PlayerConverter() {
 		
 	}
 
+
 	public   PlayerDTO toDTO(Player player) {
+
 		PlayerDTO playerDTO = null;
 		if (player != null) {
 			playerDTO = new PlayerDTO();
@@ -26,6 +29,7 @@ public class PlayerConverter implements Converter<Player, PlayerDTO>{
 			playerDTO.setPreviousMarketValue(player.getPreviousMarketValue());
 			playerDTO.setPosition(player.getPosition());
 			playerDTO.setTeam(player.getTeam());
+
 			
 			
 		}
@@ -36,16 +40,20 @@ public class PlayerConverter implements Converter<Player, PlayerDTO>{
 		
 		return new Player(playerDTO.getId(), playerDTO.getName(), playerDTO.getSurname(), playerDTO.getAge(), playerDTO.getActualMarketValue(), playerDTO.getPreviousMarketValue(),
 				playerDTO.getPosition(), playerDTO.getTeam());
+
 	}
 	
 	
 	
+
 	public  List<PlayerDTO>  toDTOList(List<Player> list){
+
 		List<PlayerDTO> listPlayerDTOs= new ArrayList<PlayerDTO>();
 		
 			for(Player player:list) {
 				
 				listPlayerDTOs.add(this.toDTO(player));
+
 			}
 		
 		return listPlayerDTOs;

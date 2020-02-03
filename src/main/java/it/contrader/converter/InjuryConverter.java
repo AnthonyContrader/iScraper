@@ -6,7 +6,9 @@ import it.contrader.model.Injury;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class InjuryConverter implements Converter<Injury, InjuryDTO> {
+
 	
 	public InjuryConverter() {
 		

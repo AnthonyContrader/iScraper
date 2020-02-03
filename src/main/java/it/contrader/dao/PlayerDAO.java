@@ -1,5 +1,6 @@
 package it.contrader.dao;
 
+
 import it.contrader.utils.ConnectionSingleton;
 import it.contrader.model.Player;
 
@@ -11,15 +12,15 @@ import java.util.List;
 
 
 
-public class PlayerDAO implements DAO<Player> {
+public class PlayerDAO {
 
 	private final String QUERY_ALL = "select * from tb_players";
 	
 
-	private final String QUERY_INSERT = "insert into tb_players (id, player_name, player_surname, age, actual_value, previous_value, position, team) values (?,?,?,?,?,?,?,?)";
+	private final String QUERY_INSERT = "insert into tb_players (id, player_name, player_surname, age, actual_value, previous_value, position) values (?,?,?,?,?,?,?)";
 	private final String QUERY_READ = "select * from tb_players where id=?";
 
-	private final String QUERY_UPDATE = "UPDATE tb_players SET player_name=?, player_surname=?, age=?, actual_value=?, previous_value=?, position=?, team=? WHERE id=?";
+	private final String QUERY_UPDATE = "UPDATE tb_players SET player_name=?, player_surname=?, age=?, actual_value=?, previous_value=?, position=? WHERE id=?";
 	private final String QUERY_DELETE = "DELETE from tb_players WHERE id=?";
 	
 	
@@ -27,7 +28,7 @@ public class PlayerDAO implements DAO<Player> {
 	public PlayerDAO() {
 	}
 
-	public List<Player> getAll() {
+	public List<Player> getAllPlayers() {
 		List<Player> playerList = new ArrayList<>();
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
@@ -45,8 +46,8 @@ public class PlayerDAO implements DAO<Player> {
 				player.setAge(resultSet.getInt("age"));
 				player.setActualMarketValue(resultSet.getInt("actual_value"));
 				player.setPreviousMarketValue(resultSet.getInt("previous_value"));
+				
 				player.setPosition(resultSet.getString("position"));
-				player.setTeam(resultSet.getString("team"));
 				
 				playerList.add(player);
 			}
@@ -57,7 +58,7 @@ public class PlayerDAO implements DAO<Player> {
 	}
 	
 
-	public boolean insert(Player player) {
+	public boolean insertPlayer(Player player) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_INSERT);
@@ -67,8 +68,8 @@ public class PlayerDAO implements DAO<Player> {
 			preparedStatement.setInt(4, player.getAge());
 			preparedStatement.setInt(5, player.getActualMarketValue());
 			preparedStatement.setInt(6, player.getPreviousMarketValue());
+			
 			preparedStatement.setString(7, player.getPosition());
-			preparedStatement.setString(8, player.getTeam());
 	
 			preparedStatement.execute();
 			return true;
@@ -78,7 +79,7 @@ public class PlayerDAO implements DAO<Player> {
 
 	}
 
-	public Player read(int player_id) {
+	public Player readPlayer(int player_id) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_READ);
@@ -95,7 +96,6 @@ public class PlayerDAO implements DAO<Player> {
 				player.setActualMarketValue(resultSet.getInt("actual_value"));
 				player.setActualMarketValue(resultSet.getInt("previous_value"));
 				player.setPosition(resultSet.getString("position"));
-				player.setTeam(resultSet.getString("team"));
 			} catch (Exception e) {
 				// TODO: handle exception
 			//	GestoreEccezzioni.getInstance().gestisciEccezione(e);
@@ -111,13 +111,13 @@ public class PlayerDAO implements DAO<Player> {
 
 	}
 
-	public boolean update(Player player) {
+	public boolean updatePlayer(Player player) {
 		Connection connection = ConnectionSingleton.getInstance();
 		if (player.getId() == 0)
 			return false;
 
 		
-		Player playerRead = read(player.getId());
+		Player playerRead = readPlayer(player.getId());
 		System.out.println(player);
 		if(!playerRead.equals(player)) {
 			try {
@@ -145,20 +145,16 @@ public class PlayerDAO implements DAO<Player> {
 				player.setPosition(playerRead.getPosition());
 			}
 			
-			if (player.getTeam() == null || player.getTeam().contentEquals("")) {
-				player.setTeam(playerRead.getTeam());
-			}
-			
 			
 			PreparedStatement preparedStatement =(PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
-			preparedStatement.setInt(8, player.getId());
+			preparedStatement.setInt(7, player.getId());
 			preparedStatement.setString(1, player.getName());
 			preparedStatement.setString(2, player.getSurname());
 			preparedStatement.setInt(3, player.getAge());
 			preparedStatement.setInt(4, player.getActualMarketValue());
 			preparedStatement.setInt(5, player.getPreviousMarketValue());
+			
 			preparedStatement.setString(6, player.getPosition());
-			preparedStatement.setString(7, player.getTeam());
 	
 			int a = preparedStatement.executeUpdate();
 			if (a > 0) 
@@ -181,7 +177,7 @@ public class PlayerDAO implements DAO<Player> {
 
 	
 	
-	public boolean delete(int id) {
+	public boolean deletePlayer(Integer id) {
 			Connection connection = ConnectionSingleton.getInstance();
 			
 			try {

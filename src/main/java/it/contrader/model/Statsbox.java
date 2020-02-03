@@ -2,6 +2,7 @@ package it.contrader.model;
 
 public class Statsbox {
 	private int id;
+
 	private int playerId;
 	private int season;
 	private String team;
@@ -41,7 +42,7 @@ public class Statsbox {
 		this.tacklesper = tacklesper;
 		this.breaks = breaks;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -49,6 +50,7 @@ public class Statsbox {
 	public void setId(int id) {
 		this.id = id;
 	}
+
 
 	public int getPlayerId() {
 		return playerId;
