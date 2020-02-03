@@ -10,6 +10,7 @@
 
 	<div class="header">SAMPLE Project</div>
 
+	<div class="main">
 
 
 </body>
