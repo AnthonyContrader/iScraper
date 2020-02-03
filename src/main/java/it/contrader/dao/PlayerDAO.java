@@ -12,15 +12,15 @@ import java.util.List;
 
 
 
-public class PlayerDAO {
+public class PlayerDAO implements DAO<Player>{
 
 	private final String QUERY_ALL = "select * from tb_players";
 	
 
-	private final String QUERY_INSERT = "insert into tb_players (id, player_name, player_surname, age, actual_value, previous_value, position) values (?,?,?,?,?,?,?)";
+	private final String QUERY_INSERT = "insert into tb_players (id, player_name, player_surname, age, actual_value, previous_value, position, team) values (?,?,?,?,?,?,?,?)";
 	private final String QUERY_READ = "select * from tb_players where id=?";
 
-	private final String QUERY_UPDATE = "UPDATE tb_players SET player_name=?, player_surname=?, age=?, actual_value=?, previous_value=?, position=? WHERE id=?";
+	private final String QUERY_UPDATE = "UPDATE tb_players SET player_name=?, player_surname=?, age=?, actual_value=?, previous_value=?, position=?, team=? WHERE id=?";
 	private final String QUERY_DELETE = "DELETE from tb_players WHERE id=?";
 	
 	
@@ -28,7 +28,7 @@ public class PlayerDAO {
 	public PlayerDAO() {
 	}
 
-	public List<Player> getAllPlayers() {
+	public List<Player> getAll() {
 		List<Player> playerList = new ArrayList<>();
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
@@ -46,9 +46,8 @@ public class PlayerDAO {
 				player.setAge(resultSet.getInt("age"));
 				player.setActualMarketValue(resultSet.getInt("actual_value"));
 				player.setPreviousMarketValue(resultSet.getInt("previous_value"));
-				
 				player.setPosition(resultSet.getString("position"));
-				
+				player.setTeam(resultSet.getString("team"));
 				playerList.add(player);
 			}
 		} catch (SQLException e) {
@@ -58,7 +57,7 @@ public class PlayerDAO {
 	}
 	
 
-	public boolean insertPlayer(Player player) {
+	public boolean insert(Player player) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_INSERT);
@@ -68,8 +67,8 @@ public class PlayerDAO {
 			preparedStatement.setInt(4, player.getAge());
 			preparedStatement.setInt(5, player.getActualMarketValue());
 			preparedStatement.setInt(6, player.getPreviousMarketValue());
-			
 			preparedStatement.setString(7, player.getPosition());
+			preparedStatement.setString(8, player.getTeam());
 	
 			preparedStatement.execute();
 			return true;
@@ -79,11 +78,11 @@ public class PlayerDAO {
 
 	}
 
-	public Player readPlayer(int player_id) {
+	public Player read(int id) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_READ);
-			preparedStatement.setInt(1, player_id);
+			preparedStatement.setInt(1, id);
 			
 			ResultSet resultSet = preparedStatement.executeQuery();
 			resultSet.next();
@@ -96,6 +95,7 @@ public class PlayerDAO {
 				player.setActualMarketValue(resultSet.getInt("actual_value"));
 				player.setActualMarketValue(resultSet.getInt("previous_value"));
 				player.setPosition(resultSet.getString("position"));
+				player.setTeam(resultSet.getString("Team"));
 			} catch (Exception e) {
 				// TODO: handle exception
 			//	GestoreEccezzioni.getInstance().gestisciEccezione(e);
@@ -111,13 +111,13 @@ public class PlayerDAO {
 
 	}
 
-	public boolean updatePlayer(Player player) {
+	public boolean update(Player player) {
 		Connection connection = ConnectionSingleton.getInstance();
 		if (player.getId() == 0)
 			return false;
 
 		
-		Player playerRead = readPlayer(player.getId());
+		Player playerRead = read(player.getId());
 		System.out.println(player);
 		if(!playerRead.equals(player)) {
 			try {
@@ -145,16 +145,20 @@ public class PlayerDAO {
 				player.setPosition(playerRead.getPosition());
 			}
 			
+			if (player.getTeam() == null || player.getTeam().equals("")){
+				player.setTeam(playerRead.getTeam());
+			}
+			
 			
 			PreparedStatement preparedStatement =(PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
-			preparedStatement.setInt(7, player.getId());
+			preparedStatement.setInt(8, player.getId());
 			preparedStatement.setString(1, player.getName());
 			preparedStatement.setString(2, player.getSurname());
 			preparedStatement.setInt(3, player.getAge());
 			preparedStatement.setInt(4, player.getActualMarketValue());
 			preparedStatement.setInt(5, player.getPreviousMarketValue());
-			
 			preparedStatement.setString(6, player.getPosition());
+			preparedStatement.setString(7, player.getTeam());
 	
 			int a = preparedStatement.executeUpdate();
 			if (a > 0) 
@@ -177,7 +181,7 @@ public class PlayerDAO {
 
 	
 	
-	public boolean deletePlayer(Integer id) {
+	public boolean delete(int id) {
 			Connection connection = ConnectionSingleton.getInstance();
 			
 			try {
