@@ -1,11 +1,15 @@
 package it.contrader.dao;
 
-import java.sql.*;
-
-import java.util.ArrayList;
-import java.util.List;
 import it.contrader.utils.ConnectionSingleton;
 import it.contrader.model.User;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 
@@ -13,13 +17,13 @@ import it.contrader.model.User;
  *
  *Per i dettagli della classe vedi Guida sez 6: DAO
  */
-public class UserDAO implements DAO<User> {
+public class UserDAO implements DAO<User>{
 
-	private final String QUERY_ALL = "SELECT * FROM user";
-	private final String QUERY_CREATE = "INSERT INTO user (username, password, usertype) VALUES (?,?,?)";
-	private final String QUERY_READ = "SELECT * FROM user WHERE id=?";
-	private final String QUERY_UPDATE = "UPDATE user SET username=?, password=?, usertype=? WHERE id=?";
-	private final String QUERY_DELETE = "DELETE FROM user WHERE id=?";
+	private final String QUERY_ALL = "SELECT * FROM tb_users";
+	private final String QUERY_CREATE = "INSERT INTO tb_users (username, password, usertype) VALUES (?,?,?)";
+	private final String QUERY_READ = "SELECT * FROM tb_users WHERE id=?";
+	private final String QUERY_UPDATE = "UPDATE tb_users SET username=?, password=?, usertype=? WHERE id=?";
+	private final String QUERY_DELETE = "DELETE FROM tb_users WHERE id=?";
 
 	public UserDAO() {
 
