@@ -36,4 +36,16 @@
     <servlet-name>UserServlet</servlet-name>
     <url-pattern>/UserServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+  	<servlet-name>StatsboxServlet</servlet-name>
+  	<servlet-class>it.contrader.servlets.StatsboxServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>StatsboxServlet</servlet-name>
+  	<url-pattern>/StatsboxServlet</url-pattern>
+  </servlet-mapping>
+   <servlet>
+		<servlet-name>PlayerServlet</servlet-name>
+		<servlet-class>it.contrader.servlets.PlayerServlet</servlet-class>
+	</servlet>
 </web-app>

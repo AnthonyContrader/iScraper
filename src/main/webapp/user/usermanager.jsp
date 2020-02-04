@@ -9,8 +9,15 @@
 <title>User Manager</title>
 </head>
 <body>
-	<%@include file="/css/header.jsp"%>
-<%@include file="/css/navbar.jsp"%>
+
+	<%@ include file="../utilities/header.jsp"%>
+
+	<div class="navbar">
+		<a href="homeadmin.jsp">Home</a> <a class="active"
+			href="UserServlet?mode=userlist">Users</a> <a href="LogoutServlet"
+			id="logout">Logout</a>
+	</div>
+
 	<div class="main">
 		<%
 		List<UserDTO> list = (List<UserDTO>) request.getAttribute("list");
@@ -83,6 +90,6 @@
 
 	</div>
 	<br>
-	<%@ include file="../css/footer.jsp"%>
+	<%@ include file="../utilities/footer.jsp"%>
 </body>
 </html>
