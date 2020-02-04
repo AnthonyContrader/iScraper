@@ -9,6 +9,7 @@
 <title>User Manager</title>
 </head>
 <body>
+
 	<%@ include file="../utilities/header.jsp"%>
 
 	<div class="navbar">
@@ -16,6 +17,7 @@
 			href="UserServlet?mode=userlist">Users</a> <a href="LogoutServlet"
 			id="logout">Logout</a>
 	</div>
+
 	<div class="main">
 		<%
 		List<UserDTO> list = (List<UserDTO>) request.getAttribute("list");
