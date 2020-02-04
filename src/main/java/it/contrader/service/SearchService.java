@@ -6,7 +6,6 @@ import it.contrader.dto.SearchDTO;
 import it.contrader.model.Search;
 
 public class SearchService extends AbstractService<Search, SearchDTO>{
-
 	
 	public SearchService() {
 		this.dao = new SearchDAO();
