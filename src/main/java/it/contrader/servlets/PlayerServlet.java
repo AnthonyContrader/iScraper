@@ -62,11 +62,13 @@ public class PlayerServlet extends HttpServlet {
 			id = Integer.parseInt(request.getParameter("id"));
 			dto = service.read(id);
 			request.setAttribute("dto", dto);
-			if (request.getParameter("update") == null) {
-				getServletContext().getRequestDispatcher("/player/readplayer.jsp").forward(request, response);
-			} else {
-				getServletContext().getRequestDispatcher("/player/updateplayer.jsp").forward(request, response);
-			}
+			getServletContext().getRequestDispatcher("/player/readplayer.jsp").forward(request, response);
+//			if (request.getParameter("update") == null) {
+//				getServletContext().getRequestDispatcher("/player/readplayer.jsp").forward(request, response);
+//			} else {
+//				getServletContext().getRequestDispatcher("/player/updateplayer.jsp").forward(request, response);
+			
+			
 			break;
 		
 		case "INSERT":
@@ -89,7 +91,7 @@ public class PlayerServlet extends HttpServlet {
 			} catch (Exception e) {}
 			
 			try {
-				position = request.getParameter("position");
+				position = request.getParameter("position"); 
 			} catch (Exception e) {}
 			try {
 				team = request.getParameter("team");
@@ -131,7 +133,7 @@ public class PlayerServlet extends HttpServlet {
 			
 			id = Integer.parseInt(request.getParameter("id"));
 			dto = new PlayerDTO(id,player_name,player_surname,age,actualMarketValue,previousMarketValue,position,team);
-			ans = service.insert(dto);
+			ans = service.update(dto);
 			updateList(request);
 			getServletContext().getRequestDispatcher("/player/playermanager.jsp").forward(request, response);
 		break;

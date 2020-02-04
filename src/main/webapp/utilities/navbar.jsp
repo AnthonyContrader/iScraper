@@ -5,7 +5,7 @@
 		class="active" href="PlayerServlet?mode=playerList">Players</a><a
 		class="active" href="PlayerServlet?mode=read">Get player</a> 
 		<a
-		class="active" href="PlayerServlet?mode=updateid">Update Player</a><a
+		class="active" href="PlayerServlet?mode=update">Update Player</a><a
 		href="LogoutServlet" id="logout">Logout</a>
 	
 	</div>
