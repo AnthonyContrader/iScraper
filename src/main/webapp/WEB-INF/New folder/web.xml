@@ -4,6 +4,14 @@
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
+		<servlet-name>PlayerServlet</servlet-name>
+		<servlet-class>it.contrader.servlets.PlayerServlet</servlet-class>
+	</servlet>
+	 <servlet>
+		<servlet-name>HelloWorldServlet</servlet-name>
+		<servlet-class>it.contrader.servlets.HelloWorldServlet</servlet-class>
+	</servlet>
+  <servlet>
     <servlet-name>LoginServlet</servlet-name>
     <servlet-class>it.contrader.servlets.LoginServlet</servlet-class>
   </servlet>
@@ -31,5 +39,9 @@
   <servlet-mapping>
     <servlet-name>UserServlet</servlet-name>
     <url-pattern>/UserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>HelloWorldServlet</servlet-name>
+    <url-pattern>/HelloWorldServlet</url-pattern>
   </servlet-mapping>
 </web-app>
