@@ -10,12 +10,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
 import it.contrader.dto.PlayerDTO;
 import it.contrader.dto.UserDTO;
+
 import it.contrader.service.PlayerService;
 
 public class PlayerServlet extends HttpServlet {
-
+//	private int player_id;
+//	private String player_name;
+//	private String player_surname;
+//	private int age;
+//	 int actualMarketValue;
+//	 int previousMarketValue;
+//	 private String position;
+	 
 	private PlayerService playerService = new PlayerService();
 	private List<PlayerDTO> allPlayers = new ArrayList<PlayerDTO>();
 	private List<PlayerDTO> filteredPlayers = new ArrayList<PlayerDTO>();
@@ -26,6 +35,7 @@ public class PlayerServlet extends HttpServlet {
 		final String scelta = request.getParameter("richiesta");
 		final HttpSession session = request.getSession(true);
 		final UserDTO userLogged = (UserDTO) session.getAttribute("usertype");
+
 
 		switch (scelta) {
 
