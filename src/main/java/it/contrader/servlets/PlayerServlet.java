@@ -38,7 +38,7 @@ public class PlayerServlet extends HttpServlet {
 	 
 		 String player_name = null;
 		 String player_surname = null;
-		 int age = 0;
+		 int age = 0; 
 		 int actualMarketValue = 0;
 		 int previousMarketValue = 0;
 		 String position = null;
@@ -46,6 +46,13 @@ public class PlayerServlet extends HttpServlet {
 		
 		switch (mode.toUpperCase()) {
 		
+		
+		case "UPDATEID" :
+			PlayerDTO newDto= new PlayerDTO(); 
+			dto = service.read(newDto.getId());
+			System.out.println(dto);
+			request.setAttribute("dto", dto);
+			
 		case "PLAYERLIST":
 			updateList(request);
 			getServletContext().getRequestDispatcher("/player/playermanager.jsp").forward(request, response);

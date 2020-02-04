@@ -16,7 +16,7 @@
 	<div class="main">
 		
 
-		<form id="floatleft" action="PlayerServlet?mode=read" method="post">
+		<form id="floatleft" action="PlayerServlet?mode=updateid" method="post">
 			<div class="row">
 				<div class="col-25">
 					<label for="date">Player id</label>
@@ -31,6 +31,7 @@
 		</form>
 <%
 			PlayerDTO player = (PlayerDTO) request.getAttribute("dto");
+							
 		%>
 
 		<table>
