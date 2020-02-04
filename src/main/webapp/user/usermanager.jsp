@@ -9,7 +9,7 @@
 <title>User Manager</title>
 </head>
 <body>
-	<%@ include file="../css/header.jsp"%>
+	<%@ include file="../utilities/header.jsp"%>
 
 	<div class="navbar">
 		<a href="homeadmin.jsp">Home</a> <a class="active"
@@ -88,6 +88,6 @@
 
 	</div>
 	<br>
-	<%@ include file="../css/footer.jsp"%>
+	<%@ include file="../utilities/footer.jsp"%>
 </body>
 </html>

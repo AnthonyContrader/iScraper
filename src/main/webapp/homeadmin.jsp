@@ -9,8 +9,8 @@
 <link href="css/vittoriostyle.css" rel="stylesheet">
 </head>
 <body>
-	<%@include file="css/header.jsp"%>
-<%@include file="css/navbar.jsp"%>
+	<%@include file="utilities/header.jsp"%>
+<%@include file="utilities/navbar.jsp"%>
 
 
 	
@@ -57,7 +57,7 @@
 	</div>
 
 
-	<%@ include file="css/footer.jsp"%>
+	<%@ include file="utilities/footer.jsp"%>
 
 </body>
 </html>
