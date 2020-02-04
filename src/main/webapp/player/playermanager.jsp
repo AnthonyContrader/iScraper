@@ -6,12 +6,14 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link href="../css/player.css" rel="stylesheet">
+<link href="css/player.css" rel="stylesheet">
 <title>Player Manager</title>
 </head>
 <body>
+<br>
 	<%@include file="/utilities/header.jsp"%>
 	<%@include file="/utilities/navbar.jsp"%>
+	
 	<div class="main">
 		<%
 			List<PlayerDTO> list = (List<PlayerDTO>) request.getAttribute("list");
@@ -19,7 +21,7 @@
 
 		<br>
 
-		<table>
+		<table id="newone" >
 			<tr>
 				<th>Nome</th>
 				<th>Cognome</th>
@@ -50,9 +52,9 @@
 			%>
 		</table>
 
+<br>
 
-
-		<form id="floatright" action="PlayerServlet?mode=insert" method="post">
+		<form id="floatleft" action="PlayerServlet?mode=insert" method="post">
 			<div class="row">
 				<div class="col-25">
 					<label for="date">Nome</label>
@@ -128,7 +130,8 @@
 			<button type="submit">Insert</button>
 		</form>
 
-
+<br>
+<br>
 		<form id="floatright" action="PlayerServlet?mode=update" method="post">
 			<div class="row">
 				<div class="col-25">
@@ -214,10 +217,10 @@
 		</form>
 		
 		
-		<form id="floatright" action="PlayerServlet?mode=delete" method="post">
+		<form id="floatright" style="margin-top: 5%; margin-bottom: 1%; " action="PlayerServlet?mode=delete" method="post">
 			<div class="row">
 				<div class="col-25">
-					<label for="date">ID</label>
+					<label for="date">Player ID</label>
 				</div>
 				<div class="col-75">
 					<input type="text" id="id" name="id" placeholder="inserisci il id">
@@ -230,5 +233,4 @@
 	<br>
 	<%@ include file="../css/footer.jsp"%>
 </body>
-</html>
 </html>

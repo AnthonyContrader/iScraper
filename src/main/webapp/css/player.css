@@ -2,9 +2,7 @@
 html {
 	scroll-behavior: smooth;
 }
-.hr {
-        background-image: url("/css/image.jpg");
-    }
+
 * {
 	font-family: sans-serif;
 }
@@ -23,6 +21,14 @@ div.text {
 }
 
 .main {
+	background-image: url("image.jpg");
+	 background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+   -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 	margin-right: 5%;
 	margin-left: 5%;
 	margin-bottom: 5%;
@@ -44,7 +50,9 @@ div.text {
 	margin-top: 5%;
 	margin-bottom: 1%;
 }
-
+#newfloat{
+	margin-top: 100px;
+}
 /* headers */
 h1 {
 	position: center;
@@ -122,17 +130,18 @@ a:visited {
 
 /*Tables*/
 table {
-	 background-image: url("/css/image.jpg");
+	
 	border-collapse: collapse;
-	width: 50%;
+	width: 100%;
 	float: left;
 	border-radius: 4px;
 	-moz-border-radius: 4px;
 }
 
-th, td { background-image: url("css/image.jpg");
+th, td { 
 	text-align: center;
 	padding: 8px;
+	color: #51d93e;
 }
 
 tr:nth-child(even) {
@@ -142,6 +151,7 @@ tr:nth-child(even) {
 th {
 	background-color: #00a990;
 	color: #ffffff;
+	
 }
 
 a:hover {
@@ -263,10 +273,13 @@ button:hover {
 
 #floatleft {
 	float: left;
+	background-color: #f2f2f270;
 }
 
 #floatright {
+	background-color: #f2f2f270;
 	float: right;
+	margin-bottom:20px;
 }
 
 #floattop {
@@ -276,7 +289,11 @@ button:hover {
 #floatright {
 	float: bottom;
 }
-
+#newone {
+	background: #1b1a2045;
+	width: -moz-available;
+	margin-bottom: 20px;
+}
 /*Navigation bar*/
 div.navbar {
 	background: #00a990;

@@ -16,7 +16,7 @@
 	<div class="main">
 	
 			<%
-			List<PlayerDTO> list = (List<PlayerDTO>) request.getAttribute("dto");
+			List<PlayerDTO> list = (List<PlayerDTO>) request.getAttribute("list");
 		%>
 
 		<br>
@@ -50,6 +50,7 @@
 			<%
 				}
 			%>
+			</table>
 			<form id="floatright" action="PlayerServlet?mode=update" method="post">
 			<div class="row">
 				<div class="col-25">
