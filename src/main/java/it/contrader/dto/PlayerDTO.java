@@ -24,6 +24,17 @@ public class PlayerDTO implements DTO {
 		this.team = team;
 		
 	}
+	public PlayerDTO(String player_name, String player_surname, int age, int actualMarketValue, int previousMarketValue,
+			String position, String team) {
+		super();
+		this.player_name = player_name;
+		this.player_surname = player_surname;
+		this.age = age;
+		this.actualMarketValue = actualMarketValue;
+		this.previousMarketValue = previousMarketValue;
+		this.position = position;
+		this.team = team;
+	}
 	public PlayerDTO(int player_id, String player_name, String player_surname) {
 		super();
 		this.player_id = player_id;
