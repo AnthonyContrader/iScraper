@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="it.contrader.dto.PlayerDTO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import="it.contrader.dto.SearchDTO"%>
@@ -14,10 +15,42 @@
 	<br>
 	<div class="main">
 	
-		<%		PlayerDTO player = (PlayerDTO) request.getAttribute("dto"); %>
-		
-		
-			<form id="floatright" action="PlayerServlet?mode=insert" method="post">
+			<%
+			List<PlayerDTO> list = (List<PlayerDTO>) request.getAttribute("dto");
+		%>
+
+		<br>
+
+		<table>
+			<tr>
+				<th>Nome</th>
+				<th>Cognome</th>
+				<th>Eta</th>
+				<th>Valore Attuale</th>
+				<th>Valore Precedente</th>
+				<th>Posizione</th>
+				<th>Squadra</th>
+
+			</tr>
+			<%
+				for (PlayerDTO s : list) {
+			%>
+			<tr>
+
+				<td><%=s.getName()%></td>
+				<td><%=s.getSurname()%></td>
+				<td><%=s.getAge()%></td>
+				<td><%=s.getActualMarketValue()%></td>
+				<td><%=s.getPreviousMarketValue()%></td>
+				<td><%=s.getPosition()%></td>
+				<td><%=s.getTeam()%></td>
+				
+
+			</tr>
+			<%
+				}
+			%>
+			<form id="floatright" action="PlayerServlet?mode=update" method="post">
 			<div class="row">
 				<div class="col-25">
 					<label for="date">Nome</label>

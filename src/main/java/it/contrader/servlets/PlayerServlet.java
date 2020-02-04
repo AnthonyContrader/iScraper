@@ -36,7 +36,7 @@ public class PlayerServlet extends HttpServlet {
 		boolean ans;
 		
 	 
-		 String player_name = null;
+		 String player_name = null; 
 		 String player_surname = null;
 		 int age = 0; 
 		 int actualMarketValue = 0;
@@ -59,15 +59,42 @@ public class PlayerServlet extends HttpServlet {
 			break;
 			
 		case "READ":
-			id = Integer.parseInt(request.getParameter("id"));
-			dto = service.read(id);
-			request.setAttribute("dto", dto);
-			getServletContext().getRequestDispatcher("/player/readplayer.jsp").forward(request, response);
-//			if (request.getParameter("update") == null) {
-//				getServletContext().getRequestDispatcher("/player/readplayer.jsp").forward(request, response);
-//			} else {
-//				getServletContext().getRequestDispatcher("/player/updateplayer.jsp").forward(request, response);
-			
+			updateList(request);
+			getServletContext().getRequestDispatcher("/player/playermanager.jsp").forward(request, response);
+//			try {
+//				player_name = request.getParameter("player_name");
+//			} catch (Exception e) {}
+//			try {
+//				player_surname = request.getParameter("player_surname");
+//			} catch (Exception e) {}
+//			try {
+//				age = Integer.parseInt(request.getParameter("age"));
+//			} catch (Exception e) {}
+//			
+//			try {
+//				actualMarketValue = Integer.parseInt(request.getParameter("actual_value"));
+//			} catch (Exception e) {}
+//			try {
+//				previousMarketValue = Integer.parseInt(request.getParameter("previous_value"));
+//			} catch (Exception e) {}
+//			
+//			try {
+//				position = request.getParameter("position"); 
+//			} catch (Exception e) {}
+//			try {
+//				team = request.getParameter("team");
+//			} catch (Exception e) {}
+//			
+//			dto = new PlayerDTO(player_name,player_surname,age,actualMarketValue,previousMarketValue,position,team);
+//			id = Integer.parseInt(request.getParameter("id"));
+//			//dto = service.read(id);
+//			request.setAttribute("dto", dto);
+//			getServletContext().getRequestDispatcher("/player/readplayer.jsp").forward(request, response);
+////			if (request.getParameter("update") == null) {
+////				getServletContext().getRequestDispatcher("/player/readplayer.jsp").forward(request, response);
+////			} else {
+////				getServletContext().getRequestDispatcher("/player/updateplayer.jsp").forward(request, response);
+//			
 			
 			break;
 		
@@ -107,6 +134,7 @@ public class PlayerServlet extends HttpServlet {
 		break;
 		
 		case "UPDATE":
+			updateList(request);
 			try {
 				player_name = request.getParameter("player_name");
 			} catch (Exception e) {}
@@ -139,9 +167,33 @@ public class PlayerServlet extends HttpServlet {
 		break;
 		
 		case "DELETE":
+			try {
+				player_name = request.getParameter("player_name");
+			} catch (Exception e) {}
+			try {
+				player_surname = request.getParameter("player_surname");
+			} catch (Exception e) {}
+			try {
+				age = Integer.parseInt(request.getParameter("age"));
+			} catch (Exception e) {}
+			
+			try {
+				actualMarketValue = Integer.parseInt(request.getParameter("actual_value"));
+			} catch (Exception e) {}
+			try {
+				previousMarketValue = Integer.parseInt(request.getParameter("previous_value"));
+			} catch (Exception e) {}
+			
+			try {
+				position = request.getParameter("position");
+			} catch (Exception e) {}
+			try {
+				team = request.getParameter("team");
+			} catch (Exception e) {}
+			
 			id = Integer.parseInt(request.getParameter("id"));
 			ans = service.delete(id);
-			request.setAttribute("ans", ans);
+		//	request.setAttribute("ans", ans);
 			updateList(request);
 			getServletContext().getRequestDispatcher("/player/playermanager.jsp").forward(request, response);
 		}

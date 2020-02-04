@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link href="../css/vittoriostyle.css" rel="stylesheet">
+<link href="../css/player.css" rel="stylesheet">
 <title>Player Manager</title>
 </head>
 <body>
@@ -42,7 +42,7 @@
 				<td><%=s.getPreviousMarketValue()%></td>
 				<td><%=s.getPosition()%></td>
 				<td><%=s.getTeam()%></td>
-				</td>
+				
 
 			</tr>
 			<%
@@ -132,7 +132,7 @@
 		<form id="floatright" action="PlayerServlet?mode=update" method="post">
 			<div class="row">
 				<div class="col-25">
-					<label for="date">ID</label>
+					<label for="type">ID</label>
 				</div>
 				<div class="col-75">
 					<input type="text" id="id" name="id" placeholder="inserisci il id">
@@ -211,6 +211,20 @@
 			</div>
 
 			<button type="submit">Edit</button>
+		</form>
+		
+		
+		<form id="floatright" action="PlayerServlet?mode=delete" method="post">
+			<div class="row">
+				<div class="col-25">
+					<label for="date">ID</label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="id" name="id" placeholder="inserisci il id">
+				</div>
+			</div>
+			
+			<button type="submit">Cancela</button>
 		</form>
 	</div>
 	<br>

@@ -24,7 +24,7 @@
 	<name>JspApp</name>
 
 	<!-- The website for the project -->
-	<url>http://localhost:8080/JspApp</url>
+	<url>http://localhost:8080/JspApp?autoReconnect=true&amp;useSSL=false</url>
 
 	<!-- And now, a list of Maven projects that we depend upon -->
 	<dependencies>
