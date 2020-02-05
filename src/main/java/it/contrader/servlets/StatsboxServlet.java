@@ -90,8 +90,6 @@ public class StatsboxServlet extends HttpServlet{
 			break;
 			
 		case "UPDATE":
-			id = Integer.parseInt(request.getParameter("id"));
-
 			player_id = Integer.parseInt(request.getParameter("player_id"));
 			season = Integer.parseInt(request.getParameter("season"));
 			caps = Integer.parseInt(request.getParameter("caps"));;
@@ -105,6 +103,7 @@ public class StatsboxServlet extends HttpServlet{
 			tackles = Float.parseFloat(request.getParameter("tackles"));
 			tacklesper = Float.parseFloat(request.getParameter("tacklesper"));
 			breaks = Float.parseFloat(request.getParameter("breaks"));
+			id = Integer.parseInt(request.getParameter("id"));
 			dto = new StatsboxDTO (id, player_id, season, caps, contributions, shotsper, keypass, passprec, dribbling, foulssub, foulscomm, tackles, tacklesper, breaks);
 			ans = service.update(dto);
 			updateList(request);
@@ -116,7 +115,7 @@ public class StatsboxServlet extends HttpServlet{
 			ans = service.delete(id);
 			request.setAttribute("ans", ans);
 			updateList(request);
-			getServletContext().getRequestDispatcher("/stats/statsmanager.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/statsbox/statsmanager.jsp").forward(request, response);
 			break;
 		}
 	}
