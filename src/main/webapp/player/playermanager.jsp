@@ -23,6 +23,7 @@
 
 		<table id="newone" >
 			<tr>
+				<th>ID</th>
 				<th>Nome</th>
 				<th>Cognome</th>
 				<th>Eta</th>
@@ -36,7 +37,7 @@
 				for (PlayerDTO s : list) {
 			%>
 			<tr>
-
+				<td> <a href=PlayerServlet?mode=read&id=<%=s.getId()%>> <%=s.getId()%> </a></td>
 				<td><%=s.getName()%></td>
 				<td><%=s.getSurname()%></td>
 				<td><%=s.getAge()%></td>
@@ -98,7 +99,7 @@
 
 				<div class="col-25">
 
-					<label for="type">Valoare attuale</label>
+					<label for="type">Valoare precedente</label>
 				</div>
 				<div class="col-75">
 					<input type="text" id="previous_value" name="previous_value"
@@ -132,7 +133,6 @@
 
 <br>
 <br>
-
 		<form id="floatright" action="PlayerServlet?mode=update" method="post">
 			<div class="row">
 				<div class="col-25">
@@ -185,7 +185,7 @@
 
 				<div class="col-25">
 
-					<label for="type">Valoare attuale</label>
+					<label for="type">Valoare precedente</label>
 				</div>
 				<div class="col-75">
 					<input type="text" id="previous_value" name="previous_value"

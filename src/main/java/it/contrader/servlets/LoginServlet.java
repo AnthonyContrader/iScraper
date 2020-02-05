@@ -26,7 +26,7 @@ public class LoginServlet extends HttpServlet {
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		final HttpSession session = request.getSession();
 		session.setAttribute("utente", null);
-
+ 
 		LoginService service = new LoginService();
 
 		if (request != null) {

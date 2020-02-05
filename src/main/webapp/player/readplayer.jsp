@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link href="../css/vittoriostyle.css" rel="stylesheet">
+<link href="css/player.css" rel="stylesheet">
 <title>Read Player</title>
 </head>
 <body>
@@ -23,6 +23,7 @@
 
 		<table>
 			<tr>
+				<th>ID</th>
 				<th>Nome</th>
 				<th>Cognome</th>
 				<th>Eta</th>
@@ -33,8 +34,10 @@
 
 			</tr>
 			<tr>
+				<td><%=player.getId()%></td>
 				<td><%=player.getName()%></td>
 				<td><%=player.getSurname()%></td>
+				<td><%=player.getAge()%></td>
 				<td><%=player.getActualMarketValue()%></td>
 				<td><%=player.getPreviousMarketValue()%></td>
 				<td><%=player.getPosition()%></td>
