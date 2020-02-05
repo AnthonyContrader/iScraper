@@ -12,6 +12,10 @@
     <servlet-class>it.contrader.servlets.PlayerServlet</servlet-class>
   </servlet>
   <servlet>
+  <servlet-name>PlayerUserServlet</servlet-name>
+    <servlet-class>it.contrader.servlets.PlayerUserServlet</servlet-class>
+  </servlet>
+  <servlet>
     <servlet-name>LogoutServlet</servlet-name>
     <servlet-class>it.contrader.servlets.LogoutServlet</servlet-class>
   </servlet>
@@ -47,6 +51,10 @@
    <servlet-mapping>
   	<servlet-name>PlayerServlet</servlet-name>
   	<url-pattern>/PlayerServlet</url-pattern>
+  </servlet-mapping>
+   <servlet-mapping>
+  	<servlet-name>PlayerUserServlet</servlet-name>
+  	<url-pattern>/PlayerUserServlet</url-pattern>
   </servlet-mapping>
   <servlet>
   	<description></description>

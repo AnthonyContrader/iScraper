@@ -10,7 +10,7 @@
 </head>
 <body>
 	<%@include file="/utilities/header.jsp"%>
-	<%@include file="/utilities/navbar.jsp"%>
+	<%@include file="/utilities/usernavbar.jsp"%>
 	<br>
 
 	<div class="main">
@@ -21,7 +21,7 @@
 			PlayerDTO player = (PlayerDTO) request.getAttribute("dto");
 		%>
 
-		<table>
+		<table id="newtable">
 			<tr>
 				<th>ID</th>
 				<th>Nome</th>

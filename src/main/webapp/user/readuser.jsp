@@ -21,11 +21,15 @@
 				<th>Username</th>
 				<th>Password</th>
 				<th>Usertype</th>
+				<th>Name</th>
+				<th>Email</th>
 			</tr>
 			<tr>
 				<td><%=u.getUsername()%></td>
 				<td><%=u.getPassword()%></td>
 				<td><%=u.getUsertype()%></td>
+				<td><%=u.getName()%></td>
+				<td><%=u.getEmail()%></td>
 			</tr>
 		</table>
 

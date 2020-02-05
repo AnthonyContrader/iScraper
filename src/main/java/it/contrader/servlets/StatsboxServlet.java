@@ -49,7 +49,7 @@ public class StatsboxServlet extends HttpServlet{
 		
 		switch (mode.toUpperCase()) {
 
-		case "STATSBOXLIST":
+		case "STATSBOXLIST": 
 			updateList(request);
 			getServletContext().getRequestDispatcher("/statsbox/statsmanager.jsp").forward(request, response);
 			break;

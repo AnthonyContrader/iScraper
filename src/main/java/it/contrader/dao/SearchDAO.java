@@ -106,11 +106,9 @@ public class SearchDAO implements DAO<Search> {
 	}*/
 	
 	public boolean update(Search searchToUpdate) {
-		System.out.println("fefe");
 		Connection connection = ConnectionSingleton.getInstance();
 		if (searchToUpdate.getID()==0) return false;
 		Search searchRead = read(searchToUpdate.getID());
-		System.out.println("fefe");
 		if (!searchRead.equals(searchToUpdate)) {
 			try {
 				if (searchToUpdate.getDate() == null) {
@@ -136,7 +134,6 @@ public class SearchDAO implements DAO<Search> {
 				preparedStatement.setInt(4, searchToUpdate.getUser());
 				preparedStatement.setShort(5, searchToUpdate.getPlayer());
 				preparedStatement.setLong (6, searchToUpdate.getID());
-				System.out.println(preparedStatement.toString());
 				int a = preparedStatement.executeUpdate();
 				if (a < 0) {
 					return true;

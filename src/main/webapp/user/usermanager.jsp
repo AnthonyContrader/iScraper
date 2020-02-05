@@ -26,6 +26,8 @@
 				<th>Username</th>
 				<th>Password</th>
 				<th>Usertype</th>
+				<th>Name</th>
+				<th>Email</th>
 				<th></th>
 				<th></th>
 			</tr>
@@ -33,10 +35,13 @@
 			for (UserDTO u : list) {
 		%>
 			<tr>
-				<td><a href=UserServlet?mode=read&id=<%=u.getId()%>> <%=u.getUsername()%>
+				<td><a href=UserServlet?mode=read&id=<%=u.getId()%>>
+				 <%=u.getUsername()%>
 				</a></td>
 				<td><%=u.getPassword()%></td>
 				<td><%=u.getUsertype()%></td>
+				<td><%=u.getName()%></td>
+				<td><%=u.getEmail()%></td>
 				<td><a href=UserServlet?mode=read&update=true&id=<%=u.getId()%>>Edit</a></td>
 
 				<td><a href=UserServlet?mode=delete&id=<%=u.getId()%>>Delete</a>
@@ -67,6 +72,24 @@
 				<div class="col-75">
 					<input type="text" id="pass" name="password"
 						placeholder="inserisci password">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-25">
+					<label for="pass">Name</label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="given_name" name="name"
+						placeholder="inserisci il tuo nome">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-25">
+					<label for="pass">E-mail</label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="mail" name="email"
+						placeholder="inserisci la tua e-mail">
 				</div>
 			</div>
 			<div class="row">

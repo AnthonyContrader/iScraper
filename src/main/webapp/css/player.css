@@ -110,13 +110,18 @@ a {
 .a {
 	text-decoration: none;
 }
+#newtable{
+	border-collapse: collapse;
 
+float: left;
+border-radius: 4px;
+}
 a:link {
-	color: #000000;
+	color: #00ff00;
 }
 
 .a:link {
-	color: #000000;
+	color: #00ff40;
 }
 
 /* visited link */

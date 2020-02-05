@@ -49,6 +49,24 @@
 					</select>
 				</div>
 			</div>
+			<div class="row">
+				<div class="col-25">
+					<label for="pass">Name</label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="given_name" name="name"
+						value=<%=u.getName()%>>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-25">
+					<label for="pass">Email</label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="mail" name="email"
+						value=<%=u.getEmail()%>>
+				</div>
+			</div>
 			<button type="submit">Edit</button>
 		</form>
 

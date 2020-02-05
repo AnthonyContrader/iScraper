@@ -15,6 +15,9 @@ public class User{
 	
 	private String usertype;
 
+	private String name;
+	
+	private String email;
 	/**
 	 * Definisco i due costruttori, uno vuoto e uno con tre parametri per costrire oggetti di tipo User
 	 */
@@ -22,17 +25,21 @@ public class User{
 		
 	}
 
-	public User (String username, String password, String usertype) {
+	public User (String username, String password, String usertype, String name, String email) {
 		this.username = username;
 		this.password = password;
 		this.usertype = usertype;
+		this.name = name;
+		this.email = email;
 	}
 
-	public User (int id, String username, String password, String usertype) {
+	public User (int id, String username, String password, String usertype, String name, String email) {
 		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.usertype = usertype;
+		this.name = name;
+		this.email = email;
 	}
 
 	/**
@@ -70,11 +77,27 @@ public class User{
 		return username;
 	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
 	//Trasforma un oggetto in una stringa
 	@Override
 	public String toString() {
-		return  id + "\t"  + username +"\t\t" +   password + "\t\t" + usertype;
+		return  id + "\t"  + username +"\t\t" +   password + "\t\t" + usertype + "\t\t" + name + "\t\t" + email;
 	}
+	
 
 	//Metodo per il confronto degli oggetti
 	@Override
@@ -102,6 +125,16 @@ public class User{
 			if (other.usertype != null)
 				return false;
 		} else if (!usertype.equals(other.usertype))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
 			return false;
 		return true;
 	}
