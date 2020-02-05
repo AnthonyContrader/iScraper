@@ -36,8 +36,10 @@ public class LoginDAO {
 				resultSet = statement.executeQuery();
 				resultSet.next();
 				String usertype = resultSet.getString("usertype");
+				String name = resultSet.getString("name");
+				String email = resultSet.getString("email");
 				int id = resultSet.getInt("id");
-				User user = new User(id, username, password, usertype);
+				User user = new User(id, username, password, usertype, name, email);
 				
 				return user;
 			}

@@ -23,9 +23,9 @@ public class UserDAO implements DAO<User>{
 
 
 	private final String QUERY_ALL = "SELECT * FROM tb_users";
-	private final String QUERY_CREATE = "INSERT INTO tb_users (username, password, usertype) VALUES (?,?,?)";
+	private final String QUERY_CREATE = "INSERT INTO tb_users (username, password, usertype, name, email) VALUES (?,?,?,?,?)";
 	private final String QUERY_READ = "SELECT * FROM tb_users WHERE id=?";
-	private final String QUERY_UPDATE = "UPDATE tb_users SET username=?, password=?, usertype=? WHERE id=?";
+	private final String QUERY_UPDATE = "UPDATE tb_users SET username=?, password=?, usertype=?, name=?, email=? WHERE id=?";
 	private final String QUERY_DELETE = "DELETE FROM tb_users WHERE id=?";
 
 	public UserDAO() {
@@ -44,7 +44,9 @@ public class UserDAO implements DAO<User>{
 				String username = resultSet.getString("username");
 				String password = resultSet.getString("password");
 				String usertype = resultSet.getString("usertype");
-				user = new User(username, password, usertype);
+				String name = resultSet.getString("name");
+				String email = resultSet.getString("email");
+				user = new User(username, password, usertype, name, email);
 				user.setId(id);
 				usersList.add(user);
 			}
@@ -61,6 +63,8 @@ public class UserDAO implements DAO<User>{
 			preparedStatement.setString(1, userToInsert.getUsername());
 			preparedStatement.setString(2, userToInsert.getPassword());
 			preparedStatement.setString(3, userToInsert.getUsertype());
+			preparedStatement.setString(4, userToInsert.getName());
+			preparedStatement.setString(5, userToInsert.getEmail());
 			preparedStatement.execute();
 			return true;
 		} catch (SQLException e) {
@@ -78,12 +82,14 @@ public class UserDAO implements DAO<User>{
 			preparedStatement.setInt(1, id);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			resultSet.next();
-			String username, password, usertype;
+			String username, password, usertype, name, email;
 
 			username = resultSet.getString("username");
 			password = resultSet.getString("password");
 			usertype = resultSet.getString("usertype");
-			User user = new User(username, password, usertype);
+			name = resultSet.getString("name");
+			email = resultSet.getString("email");
+			User user = new User(username, password, usertype, name, email);
 			user.setId(resultSet.getInt("id"));
 
 			return user;
@@ -115,13 +121,23 @@ public class UserDAO implements DAO<User>{
 				if (userToUpdate.getUsertype() == null || userToUpdate.getUsertype().equals("")) {
 					userToUpdate.setUsertype(userRead.getUsertype());
 				}
+				
+				if (userToUpdate.getName() == null || userToUpdate.getName().contentEquals("")) {
+					userToUpdate.setName(userRead.getName());
+				}
+				
+				if (userToUpdate.getEmail() == null || userToUpdate.getEmail().contentEquals("")) {
+					userToUpdate.setEmail(userRead.getName());
+				}
 
 				// Update the user
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
 				preparedStatement.setString(1, userToUpdate.getUsername());
 				preparedStatement.setString(2, userToUpdate.getPassword());
 				preparedStatement.setString(3, userToUpdate.getUsertype());
-				preparedStatement.setInt(4, userToUpdate.getId());
+				preparedStatement.setString(4, userToUpdate.getName());
+				preparedStatement.setString(5, userToUpdate.getEmail());
+				preparedStatement.setInt(6, userToUpdate.getId());
 				int a = preparedStatement.executeUpdate();
 				if (a > 0)
 					return true;
