@@ -53,7 +53,7 @@
 		</table>
 
 <br>
-
+			
 		<form id="floatleft" action="PlayerServlet?mode=insert" method="post">
 			<div class="row">
 				<div class="col-25">
@@ -132,6 +132,7 @@
 
 <br>
 <br>
+
 		<form id="floatright" action="PlayerServlet?mode=update" method="post">
 			<div class="row">
 				<div class="col-25">

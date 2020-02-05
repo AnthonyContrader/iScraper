@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	<div class="header">Iscraper Project</div>
+	<div class="header" img src="images/logo.png" alt="logo">Iscraper Project</div>
 
 	<div class="main">
 

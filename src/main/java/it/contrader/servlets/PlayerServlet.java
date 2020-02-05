@@ -20,7 +20,7 @@ import it.contrader.service.PlayerService;
 import it.contrader.service.Service;
 
 public class PlayerServlet extends HttpServlet {
-	
+	boolean t=false;
 	public void updateList(HttpServletRequest request) {
 		Service<PlayerDTO> service = new PlayerService();
 		List<PlayerDTO> listDTO = service.getAll();
@@ -30,7 +30,10 @@ public class PlayerServlet extends HttpServlet {
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
+//		String usertype = request.getParameter("usertype");
+//		if(usertype.equals("admin")) {
+//			t=true;
+//		}
 		
 		Service<PlayerDTO> service = new PlayerService();
 		String mode = request.getParameter("mode");
@@ -136,6 +139,8 @@ public class PlayerServlet extends HttpServlet {
 		break;
 		
 		case "UPDATE":
+			
+			
 			updateList(request);
 			try {
 				player_name = request.getParameter("player_name");
