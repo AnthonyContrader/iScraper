@@ -17,7 +17,7 @@ public class LoginServlet extends HttpServlet {
 	// UID della servlet
 	private static final long serialVersionUID = 1L;
 
-	/**
+	/** 
 	 * @param HttpServletRequest request
 	 * @param HttpServletResponse response
 	 * 
@@ -51,7 +51,7 @@ public class LoginServlet extends HttpServlet {
 				break;
 				
 			case "USER":
-				getServletContext().getRequestDispatcher("/homeadmin.jsp").forward(request, response);
+				getServletContext().getRequestDispatcher("/homeuser.jsp").forward(request, response);
 				break;
 				
 			default:
