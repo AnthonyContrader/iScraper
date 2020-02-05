@@ -35,7 +35,7 @@ public class SearchServlet extends HttpServlet {
 		SimpleDateFormat format = new SimpleDateFormat("dMyyyy");
 		Date search_date = new Date(Calendar.getInstance().getTimeInMillis());
 		int value = 0, index = 0, user = 0;
-		short player = 0;
+		short player = 0; 
 		
 		switch (mode.toUpperCase()) {
 		

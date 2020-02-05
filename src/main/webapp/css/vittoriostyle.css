@@ -1,12 +1,15 @@
 /* Main Layout */
 html {
 	scroll-behavior: smooth;
+	background-image: url("camp.jpg");
 }
 
 * {
 	font-family: sans-serif;
 }
-
+.body{
+	background-image: url("camp.jpg")
+}
 div.text {
 	clear: both;
 	margin-top: 3%;

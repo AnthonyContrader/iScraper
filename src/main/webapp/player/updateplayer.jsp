@@ -1,3 +1,4 @@
+
 <%@page import="java.util.List"%>
 <%@page import="it.contrader.dto.PlayerDTO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"

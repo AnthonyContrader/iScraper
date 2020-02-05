@@ -217,7 +217,8 @@
 		</form>
 		
 		
-		<form id="floatright" style="margin-top: 5%; margin-bottom: 1%; " action="PlayerServlet?mode=delete" method="post">
+		<form id="floatright" style="margin-top: 5%;
+margin-bottom: 1%; " action="PlayerServlet?mode=delete" method="post">
 			<div class="row">
 				<div class="col-25">
 					<label for="date">Player ID</label>
