@@ -91,14 +91,14 @@
 						placeholder="Presenze">
 				</div>
 				<div class="col-18">
-					<label for="type">Contribuzioni (gol e assist)</label>
+					<label for="type">Contribuzioni</label>
 				</div>
 				<div class="col-12">
 					<input class="statsbox" type="text" id="contributions" name="contributions"
 						placeholder="Contribuzioni">
 				</div>
 				<div class="col-18">
-					<label for="type">Percentuale tiri</label>
+					<label for="type">%Tiri</label>
 				</div>
 				<div class="col-12">
 					<input class="statsbox" type="text" id="shotsper" name="shotsper"
@@ -114,7 +114,7 @@
 						placeholder="Passaggi chiave">
 				</div>
 				<div class="col-18">
-					<label for="type">Percentuale passaggi riusciti</label>
+					<label for="type">%Passaggi</label>
 				</div>
 				<div class="col-12">
 					<input class="statsbox" type="text" id="passprec" name="passprec"
@@ -153,7 +153,7 @@
 			</div>
 			<div class="row">
 				<div class="col-18">
-					<label for="type">Percentuale Tackles</label>
+					<label for="type">%Tackles</label>
 				</div>
 				<div class="col-12">
 					<input class="statsbox" type="text" id="tacklesper" name="tacklesper"
@@ -165,6 +165,9 @@
 				<div class="col-12">
 					<input class="statsbox" type="text" id="breaks" name="breaks"
 						placeholder="Chiusure">
+				</div>
+				<div>
+					<button type="submit" class="statsbox" class="floatright">Inserisci</button>
 				</div>
 			</div>
 		</form>
