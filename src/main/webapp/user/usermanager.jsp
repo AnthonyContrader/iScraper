@@ -12,17 +12,13 @@
 
 	<%@ include file="../utilities/header.jsp"%>
 
-	<div class="navbar">
-		<a href="homeadmin.jsp">Home</a> <a class="active"
-			href="UserServlet?mode=userlist">Users</a> <a href="LogoutServlet"
-			id="logout">Logout</a>
-	</div>
+	<%@ include file="../utilities/navbar.jsp" %>
 
 	<div class="main">
 		<%
 		List<UserDTO> list = (List<UserDTO>) request.getAttribute("list");
 	%>
-
+		
 		<br>
 
 		<table>
@@ -51,8 +47,7 @@
 			}
 		%>
 		</table>
-
-
+	
 
 		<form id="floatright" action="UserServlet?mode=insert" method="post">
 			<div class="row">

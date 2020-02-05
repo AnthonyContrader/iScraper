@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import it.contrader.dto.StatsboxDTO;
-import it.contrader.dto.UserDTO;
-import it.contrader.model.Statsbox;
 import it.contrader.service.Service;
 import it.contrader.service.StatsboxService;
 
