@@ -63,16 +63,16 @@ public class SearchServlet extends HttpServlet {
 			} catch (Exception e) {}
 			try {
 				value = Integer.parseInt(request.getParameter("player_value"));
-			} catch (Exception e) {}
+			} catch (Exception e) {value=0;}
 			try {
 				index = Integer.parseInt(request.getParameter("player_index"));
-			} catch (Exception e) {}
+			} catch (Exception e) {index=0;}
 			try {
 				user = Integer.parseInt(request.getParameter("user_id"));
-			} catch (Exception e) {}
+			} catch (Exception e) {user=0;}
 			try {
 				player = Short.parseShort(request.getParameter("player_id"));
-			} catch (Exception e) {}
+			} catch (Exception e) {player=0;}
 			dto = new SearchDTO(search_date, value, index, user, player);
 			ans = service.insert(dto);
 			request.setAttribute("ans", ans);
@@ -82,7 +82,7 @@ public class SearchServlet extends HttpServlet {
 		
 		case "UPDATE":
 			try {
-				search_date = new Date(format.parse(request.getParameter("search_date")).getTime());
+				search_date = new Date(format.parse(request.getParameter("update_search_date")).getTime());
 			} catch (Exception e) {}
 			value = Integer.parseInt(request.getParameter("player_value"));
 			index = Integer.parseInt(request.getParameter("player_index"));
