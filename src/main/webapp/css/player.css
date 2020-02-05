@@ -110,7 +110,12 @@ a {
 .a {
 	text-decoration: none;
 }
+#newtable{
+	border-collapse: collapse;
 
+float: left;
+border-radius: 4px;
+}
 a:link {
 	color: #00ff00;
 }
