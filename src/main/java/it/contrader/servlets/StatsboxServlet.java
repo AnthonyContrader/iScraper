@@ -34,7 +34,6 @@ public class StatsboxServlet extends HttpServlet{
 		int id;
 		int player_id;
 		int season;
-		String team;
 		int caps;
 		float contributions;
 		float shotsper;
@@ -70,11 +69,8 @@ public class StatsboxServlet extends HttpServlet{
 			break;
 
 		case "INSERT":
-			id = Integer.parseInt(request.getParameter("id"));
-
 			player_id = Integer.parseInt(request.getParameter("player_id"));
 			season = Integer.parseInt(request.getParameter("season"));
-			team = request.getParameter("team");
 			caps = Integer.parseInt(request.getParameter("caps"));;
 			contributions = Float.parseFloat(request.getParameter("contributions"));
 			shotsper = Float.parseFloat(request.getParameter("shotsper"));
@@ -86,7 +82,7 @@ public class StatsboxServlet extends HttpServlet{
 			tackles = Float.parseFloat(request.getParameter("tackles"));
 			tacklesper = Float.parseFloat(request.getParameter("tacklesper"));
 			breaks = Float.parseFloat(request.getParameter("breaks"));
-			dto = new StatsboxDTO (id, player_id, season, team, caps, contributions, shotsper, keypass, passprec, dribbling, foulssub, foulscomm, tackles, tacklesper, breaks);
+			dto = new StatsboxDTO (player_id, season, caps, contributions, shotsper, keypass, passprec, dribbling, foulssub, foulscomm, tackles, tacklesper, breaks);
 			ans = service.insert(dto);
 			request.setAttribute("ans", ans);
 			updateList(request);
@@ -98,7 +94,6 @@ public class StatsboxServlet extends HttpServlet{
 
 			player_id = Integer.parseInt(request.getParameter("player_id"));
 			season = Integer.parseInt(request.getParameter("season"));
-			team = request.getParameter("team");
 			caps = Integer.parseInt(request.getParameter("caps"));;
 			contributions = Float.parseFloat(request.getParameter("contributions"));
 			shotsper = Float.parseFloat(request.getParameter("shotsper"));
@@ -110,7 +105,7 @@ public class StatsboxServlet extends HttpServlet{
 			tackles = Float.parseFloat(request.getParameter("tackles"));
 			tacklesper = Float.parseFloat(request.getParameter("tacklesper"));
 			breaks = Float.parseFloat(request.getParameter("breaks"));
-			dto = new StatsboxDTO (id, player_id, season, team, caps, contributions, shotsper, keypass, passprec, dribbling, foulssub, foulscomm, tackles, tacklesper, breaks);
+			dto = new StatsboxDTO (id, player_id, season, caps, contributions, shotsper, keypass, passprec, dribbling, foulssub, foulscomm, tackles, tacklesper, breaks);
 			ans = service.update(dto);
 			updateList(request);
 			getServletContext().getRequestDispatcher("/statsbox/statsmanager.jsp").forward(request, response);

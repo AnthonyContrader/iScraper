@@ -5,7 +5,6 @@ public class Statsbox {
 
 	private int playerId;
 	private int season;
-	private String team;
 	private int caps; //questo campo indica le presenze in questa stagione in campionato
 	private float contributions; //questo campo indica le contribuzioni (gol o assist, che valgono rispettivamente 1 e 0.5) per 90 minuti di quel giocatore
 	private float shotsper; //questo campo indica la percentuale di tiri in porta su tiri totali del giocatore, su 90 minuti
@@ -22,14 +21,32 @@ public class Statsbox {
 		
 	}
 	
-	public Statsbox(int id, int playerId, int season, String team, int caps, float contributions, float shotsper,
+	public Statsbox(int id, int playerId, int season, int caps, float contributions, float shotsper,
 			float keypass, float passprec, float dribbling, float foulssub, float foulscomm, float tackles,
 			float tacklesper, float breaks) {
 		super();
 		this.id=id;
 		this.playerId = playerId;
 		this.season = season;
-		this.team = team;
+		this.caps = caps;
+		this.contributions = contributions;
+		this.shotsper = shotsper;
+		this.keypass = keypass;
+		this.passprec = passprec;
+		this.dribbling = dribbling;
+		this.foulssub = foulssub;
+		this.foulscomm = foulscomm;
+		this.tackles = tackles;
+		this.tacklesper = tacklesper;
+		this.breaks = breaks;
+	}
+	
+	public Statsbox(int playerId, int season, int caps, float contributions, float shotsper,
+			float keypass, float passprec, float dribbling, float foulssub, float foulscomm, float tackles,
+			float tacklesper, float breaks) {
+		super();
+		this.playerId = playerId;
+		this.season = season;
 		this.caps = caps;
 		this.contributions = contributions;
 		this.shotsper = shotsper;
@@ -63,12 +80,6 @@ public class Statsbox {
 	}
 	public void setSeason(int season) {
 		this.season = season;
-	}
-	public String getTeam() {
-		return team;
-	}
-	public void setTeam(String team) {
-		this.team = team;
 	}
 	public int getCaps() {
 		return caps;
@@ -139,7 +150,7 @@ public class Statsbox {
 
 	@Override
 	public String toString() {
-		return playerId + "l\t" + season + "\t\t" + team + "\t\t" + caps
+		return playerId + "l\t" + season + "\t\t" + caps
 				+ "\t\t" + contributions + "\t\t" + shotsper + "\t\t" + keypass + "\t\t" 
 				+ passprec + "\t\t" + dribbling + "\t\t" + foulssub + "\t\t" + foulscomm
 				+ "\t\t" + tackles + "\t\t" + tacklesper + "\t\t" + breaks;

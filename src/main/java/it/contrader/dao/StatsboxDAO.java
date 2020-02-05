@@ -12,9 +12,9 @@ import java.util.List;
 
 public class StatsboxDAO implements DAO<Statsbox> {
 	private final String QUERY_ALL = "SELECT * FROM tb_stats";
-	private final String QUERY_CREATE = "INSERT INTO tb_stats (id,player_id, season, team, caps, contributions, shotsper, keypass, passprec, dribbling, foulssub, foulscomm, tackles, tacklesper, breaks) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+	private final String QUERY_CREATE = "INSERT INTO tb_stats (player_id, season, caps, contributions, shotsper, keypass, passprec, dribbling, foulssub, foulscomm, tackles, tacklesper, breaks) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
 	private final String QUERY_READ = "SELECT * FROM tb_stats WHERE id=?";
-	private final String QUERY_UPDATE = "UPDATE tb_stats SET player_id=?, season=?, team=?, caps=?, contributions=?, shotsper=?, keypass=?, passprec=?, dribbling=?, foulssub=?, foulscomm=?, tackles=?, tacklesper=?, breaks=? WHERE id=?";
+	private final String QUERY_UPDATE = "UPDATE tb_stats SET player_id=?, season=?, caps=?, contributions=?, shotsper=?, keypass=?, passprec=?, dribbling=?, foulssub=?, foulscomm=?, tackles=?, tacklesper=?, breaks=? WHERE id=?";
 	private final String QUERY_DELETE = "DELETE FROM tb_stats WHERE id=?";
 
 	
@@ -34,7 +34,6 @@ public class StatsboxDAO implements DAO<Statsbox> {
 
 					int playerId = resultSet.getInt("player_id");
 					int season = Integer.parseInt(resultSet.getString("season"));
-					String team = resultSet.getString("team");
 					int caps = resultSet.getInt("caps");
 					float contributions = resultSet.getFloat("contributions");
 					float shotsper = resultSet.getFloat("shotsper");
@@ -47,7 +46,7 @@ public class StatsboxDAO implements DAO<Statsbox> {
 					float tacklesper = resultSet.getFloat("tacklesper");
 					float breaks = resultSet.getFloat("breaks");
 					
-					statsbox = new Statsbox(id,playerId, season, team, caps, contributions, shotsper, keypass, passprec, dribbling, foulssub, foulscomm, tackles, tacklesper, breaks);
+					statsbox = new Statsbox(id,playerId, season, caps, contributions, shotsper, keypass, passprec, dribbling, foulssub, foulscomm, tackles, tacklesper, breaks);
 
 					statsList.add(statsbox);
 				}
@@ -61,21 +60,19 @@ public class StatsboxDAO implements DAO<Statsbox> {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {	
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_CREATE);
-			preparedStatement.setInt(1, statsboxToUpdate.getId());
-			preparedStatement.setInt(2, statsboxToUpdate.getPlayerId());
-			preparedStatement.setInt(3, statsboxToUpdate.getSeason());
-			preparedStatement.setString(4, statsboxToUpdate.getTeam());
-			preparedStatement.setInt(5, statsboxToUpdate.getCaps());
-			preparedStatement.setFloat(6, statsboxToUpdate.getContributions());
-			preparedStatement.setFloat(7, statsboxToUpdate.getShotsper());
-			preparedStatement.setFloat(8, statsboxToUpdate.getKeypass());
-			preparedStatement.setFloat(9, statsboxToUpdate.getPassprec());
-			preparedStatement.setFloat(10, statsboxToUpdate.getDribbling());
-			preparedStatement.setFloat(11, statsboxToUpdate.getFoulssub());
-			preparedStatement.setFloat(12, statsboxToUpdate.getFoulscomm());
-			preparedStatement.setFloat(13, statsboxToUpdate.getTackles());
-			preparedStatement.setFloat(14, statsboxToUpdate.getTacklesper());
-			preparedStatement.setFloat(15, statsboxToUpdate.getBreaks());
+			preparedStatement.setInt(1, statsboxToUpdate.getPlayerId());
+			preparedStatement.setInt(2, statsboxToUpdate.getSeason());
+			preparedStatement.setInt(3, statsboxToUpdate.getCaps());
+			preparedStatement.setFloat(4, statsboxToUpdate.getContributions());
+			preparedStatement.setFloat(5, statsboxToUpdate.getShotsper());
+			preparedStatement.setFloat(6, statsboxToUpdate.getKeypass());
+			preparedStatement.setFloat(7, statsboxToUpdate.getPassprec());
+			preparedStatement.setFloat(8, statsboxToUpdate.getDribbling());
+			preparedStatement.setFloat(9, statsboxToUpdate.getFoulssub());
+			preparedStatement.setFloat(10, statsboxToUpdate.getFoulscomm());
+			preparedStatement.setFloat(11, statsboxToUpdate.getTackles());
+			preparedStatement.setFloat(12, statsboxToUpdate.getTacklesper());
+			preparedStatement.setFloat(13, statsboxToUpdate.getBreaks());
 
 			preparedStatement.execute();
 			return true;
@@ -104,10 +101,6 @@ public class StatsboxDAO implements DAO<Statsbox> {
 				
 				if (statsboxToUpdate.getSeason() == 0) {
 					statsboxToUpdate.setSeason(statsboxRead.getSeason());
-				}
-
-				if (statsboxToUpdate.getTeam() == null || statsboxToUpdate.getTeam().equals("")) {
-					statsboxToUpdate.setTeam(statsboxRead.getTeam());
 				}
 
 				if (statsboxToUpdate.getCaps() == 0) {
@@ -158,19 +151,18 @@ public class StatsboxDAO implements DAO<Statsbox> {
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
 				preparedStatement.setInt(1, statsboxToUpdate.getPlayerId());
 				preparedStatement.setInt(2, statsboxToUpdate.getSeason());
-				preparedStatement.setString(3, statsboxToUpdate.getTeam());
-				preparedStatement.setObject(5, statsboxToUpdate.getContributions());
-				preparedStatement.setInt(4, statsboxToUpdate.getCaps());
-				preparedStatement.setFloat(6, statsboxToUpdate.getShotsper());
-				preparedStatement.setFloat(7, statsboxToUpdate.getKeypass());
-				preparedStatement.setFloat(8, statsboxToUpdate.getPassprec());
-				preparedStatement.setFloat(9, statsboxToUpdate.getDribbling());
-				preparedStatement.setFloat(10, statsboxToUpdate.getFoulssub());
-				preparedStatement.setFloat(11, statsboxToUpdate.getFoulscomm());
-				preparedStatement.setFloat(12, statsboxToUpdate.getTackles());
-				preparedStatement.setFloat(13, statsboxToUpdate.getTacklesper());
-				preparedStatement.setFloat(14, statsboxToUpdate.getBreaks());
-				preparedStatement.setInt(15, statsboxToUpdate.getId());
+				preparedStatement.setObject(4, statsboxToUpdate.getContributions());
+				preparedStatement.setInt(3, statsboxToUpdate.getCaps());
+				preparedStatement.setFloat(5, statsboxToUpdate.getShotsper());
+				preparedStatement.setFloat(6, statsboxToUpdate.getKeypass());
+				preparedStatement.setFloat(7, statsboxToUpdate.getPassprec());
+				preparedStatement.setFloat(8, statsboxToUpdate.getDribbling());
+				preparedStatement.setFloat(9, statsboxToUpdate.getFoulssub());
+				preparedStatement.setFloat(10, statsboxToUpdate.getFoulscomm());
+				preparedStatement.setFloat(11, statsboxToUpdate.getTackles());
+				preparedStatement.setFloat(12, statsboxToUpdate.getTacklesper());
+				preparedStatement.setFloat(13, statsboxToUpdate.getBreaks());
+				preparedStatement.setInt(14, statsboxToUpdate.getId());
 				
 				int a = preparedStatement.executeUpdate();
 				if (a > 0) {
@@ -201,7 +193,6 @@ public class StatsboxDAO implements DAO<Statsbox> {
 			resultSet.next();
 			int player_id = resultSet.getInt("player_id");
 			int season = resultSet.getInt("season");
-			String team = resultSet.getString("team");
 			int caps = resultSet.getInt("caps");
 			float contributions = resultSet.getFloat("contributions");
 			float shotsper = resultSet.getFloat("shotsper");
@@ -214,7 +205,7 @@ public class StatsboxDAO implements DAO<Statsbox> {
 			float tacklesper = resultSet.getFloat("tacklesper");
 			float breaks = resultSet.getFloat("breaks");
 			
-			Statsbox statsbox = new Statsbox(id, player_id, season, team, caps, contributions, shotsper, keypass, passprec, dribbling, foulssub, foulscomm, tackles, tacklesper, breaks);
+			Statsbox statsbox = new Statsbox(id, player_id, season, caps, contributions, shotsper, keypass, passprec, dribbling, foulssub, foulscomm, tackles, tacklesper, breaks);
 
 			return statsbox;
 		} catch (SQLException e) {

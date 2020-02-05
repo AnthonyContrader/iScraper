@@ -69,13 +69,13 @@ public class UserDAO implements DAO<User>{
 
 	}
 
-	public User read(int userId) {
+	public User read(int id) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 
 
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_READ);
-			preparedStatement.setInt(1, userId);
+			preparedStatement.setInt(1, id);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			resultSet.next();
 			String username, password, usertype;

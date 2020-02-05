@@ -202,7 +202,8 @@ input.statsbox {
 	background-color: #ffff;
 	color: #000000;
 	padding: 10px 10px;
-	margin: 3px 6px;
+	margin: 5%;
+	margin-right: 10%;
 	border: 1px solid #ccc;
 	border-radius: 4px;
 	cursor: pointer;
@@ -295,11 +296,13 @@ button {
 }
 
 button.statsbox {
-	padding: 1% 1%;
 	width: auto;
-	margin: 1% 1% 1% 1%;
 	font-size: 100%;
-	align: right;
+	margin-left: 48.6%;
+	margin-top:0%; 
+	margin-bottom: 0%;
+	margin-right: 0%;
+	padding: 1.7% 1.7%;
 }
 
 
