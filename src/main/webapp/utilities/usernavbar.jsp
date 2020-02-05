@@ -3,7 +3,7 @@
  	<a href="homeuser.jsp">Home</a> 
  	
 	
-	<a href="PlayerUserServlet?mode=playerList">Players</a>
+	<a href="PlayerServlet?mode=playerList">Players</a>
 	<a href="StatsboxServlet?mode=statsboxList"> Statistiche</a>
 	<a href="SearchServlet?mode=searchlist">Ricerche</a>
 	<a href="LogoutServlet" id="logout">Logout</a>

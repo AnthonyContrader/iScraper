@@ -1,6 +1,7 @@
 /* Main Layout */
 html {
 	scroll-behavior: smooth;
+	background-image: url("grass1.jpg");
 }
 
 * {

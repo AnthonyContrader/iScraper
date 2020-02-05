@@ -21,7 +21,7 @@
 			PlayerDTO player = (PlayerDTO) request.getAttribute("dto");
 		%>
 
-		<table>
+		<table id="newone">
 			<tr>
 				<th>ID</th>
 				<th>Nome</th>

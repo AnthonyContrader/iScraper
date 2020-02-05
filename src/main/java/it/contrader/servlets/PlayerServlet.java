@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+import javax.sound.midi.Soundbank;
 
 import it.contrader.dto.PlayerDTO;
 
@@ -30,7 +30,13 @@ public class PlayerServlet extends HttpServlet {
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		final HttpSession session = request.getSession(true);
+		final UserDTO userLogged = (UserDTO) session.getAttribute("utente");
+		
+		
+		
 		String dd=request.getRemoteUser();
+		
 		 request.setAttribute("tip", dd);
 		
 
@@ -56,19 +62,29 @@ public class PlayerServlet extends HttpServlet {
 		case "UPDATEID" :
 			PlayerDTO newDto= new PlayerDTO(); 
 			dto = service.read(newDto.getId());
-			System.out.println(dto);
+			//System.out.println(dto);
 			request.setAttribute("dto", dto);
 			
 		case "PLAYERLIST":
+			
+			
+			
 			updateList(request);
-			getServletContext().getRequestDispatcher("/player/playermanager.jsp").forward(request, response);
+			if(session.getAttribute("utilizator").equals("ADMIN")) {
+				getServletContext().getRequestDispatcher("/player/playermanager.jsp").forward(request, response);
+			}else {
+				getServletContext().getRequestDispatcher("/player/playerusermanager.jsp").forward(request, response);
+			}
+			
 			break;
 			
 		case "READ":
 			id = Integer.parseInt(request.getParameter("id"));
 			dto = service.read(id);
+			System.out.println(dto);
 			request.setAttribute("dto", dto);
 			
+			System.out.println(dto.getPreviousMarketValue());
 			if (request.getParameter("update") == null) {
 				 getServletContext().getRequestDispatcher("/player/readplayer.jsp").forward(request, response);
 				
@@ -95,6 +111,7 @@ public class PlayerServlet extends HttpServlet {
 			try {
 				actualMarketValue = Integer.parseInt(request.getParameter("actual_value"));
 			} catch (Exception e) {}
+			
 			try {
 				previousMarketValue = Integer.parseInt(request.getParameter("previous_value"));
 			} catch (Exception e) {}
@@ -109,7 +126,9 @@ public class PlayerServlet extends HttpServlet {
 			
 			
 			dto = new PlayerDTO(player_name,player_surname,age,actualMarketValue,previousMarketValue,position,team);
-			ans = service.insert(dto);
+			System.out.println(dto.getPreviousMarketValue()+ "new");
+			
+			ans = service.insert(dto); 
 			request.setAttribute("ans", ans);
 			updateList(request);
 			getServletContext().getRequestDispatcher("/player/playermanager.jsp").forward(request, response);
@@ -147,6 +166,7 @@ public class PlayerServlet extends HttpServlet {
 			dto = new PlayerDTO(id,player_name,player_surname,age,actualMarketValue,previousMarketValue,position,team);
 			ans = service.update(dto);
 			updateList(request);
+			//String username = request.getParameter("username").toString();
 			getServletContext().getRequestDispatcher("/player/playermanager.jsp").forward(request, response);
 		break;
 		

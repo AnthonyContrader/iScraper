@@ -35,7 +35,7 @@
 				for (PlayerDTO s : list) {
 			%>
 			<tr>
-				<td> <a href=PlayerUserServlet?mode=read&id=<%=s.getId()%>> <%=s.getId()%> </a></td>
+				<td> <a href=PlayerServlet?mode=read&id=<%=s.getId()%>> <%=s.getId()%> </a></td>
 				<td><%=s.getName()%></td>
 				<td><%=s.getSurname()%></td>
 				<td><%=s.getAge()%></td>

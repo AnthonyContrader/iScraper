@@ -21,7 +21,7 @@
 			PlayerDTO player = (PlayerDTO) request.getAttribute("dto");
 		%>
 
-		<table id="newtable">
+		<table id="newone">
 			<tr>
 				<th>ID</th>
 				<th>Nome</th>
@@ -31,7 +31,6 @@
 				<th>Valore Precedente</th>
 				<th>Posizione</th>
 				<th>Squadra</th>
-
 			</tr>
 			<tr>
 				<td><%=player.getId()%></td>

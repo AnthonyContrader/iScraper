@@ -14,7 +14,7 @@ public class PlayerDTO implements DTO {
 	
 	public PlayerDTO(int id, String name, String surname, int age, int actualMarketValue, int previousMarketValue, String position, String team ) {
 		
-		this.player_id = id;
+		this.player_id = id; 
 		this.player_name = name;
 		this.player_surname=surname;
 		this.age = age;
@@ -91,13 +91,13 @@ public class PlayerDTO implements DTO {
 		this.position = position;
 	}
 	
-	
+	 
 	@Override
 	public String toString() {
-		return "Player [player_id=" + player_id + ", player_name=" + player_name + ", player_surname=" + player_surname
-				+ ", age=" + age + ", actualMarketValue=" + actualMarketValue + ", previousMarketValue="
-				+ previousMarketValue  + ", position=" + position 
-				+  "]";
+		return   player_id + "  " + player_name + "  " + player_surname
+				+ "    " + age + "    " + actualMarketValue + "    "
+				+ previousMarketValue  + "    " + position 
+				  ;
 	}
 	public String getTeam() {
 		return team;

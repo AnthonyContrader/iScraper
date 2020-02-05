@@ -25,8 +25,10 @@ public class LoginServlet extends HttpServlet {
 	 */
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		final HttpSession session = request.getSession();
-		session.setAttribute("utente", null);
+		session.setAttribute("utente", null); 
  
+		
+		
 		LoginService service = new LoginService();
 
 		if (request != null) {
@@ -34,7 +36,7 @@ public class LoginServlet extends HttpServlet {
 			String password = request.getParameter("password").toString();
 			//come nei vecchi controller, invoca il service
 			UserDTO dto = service.login(username, password);
-			
+			session.setAttribute("utilizator", dto.getUsertype().toString());
 			if (dto != null) {
 				//se il login ha funzionato, salva l'utente nella sessione
 				session.setAttribute("user", dto);
