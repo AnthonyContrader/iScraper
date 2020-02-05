@@ -10,12 +10,12 @@ public class TeamConverter implements Converter<Team, TeamDTO>{
 
 	@Override
 	public TeamDTO toDTO(Team team) {
-		return new TeamDTO(team.getId(), team.getName(), team.getMarketValue(), team.getTeamIndex());
+		return new TeamDTO(team.getId(), team.getName(), team.getMarketValue(), team.getIndex());
 	}
 
 	@Override
 	public Team toEntity(TeamDTO dto) {
-		return new Team(dto.getId(), dto.getName(), dto.getMarketValue(), dto.getTeamIndex());
+		return new Team(dto.getId(), dto.getName(), dto.getMarketValue(), dto.getIndex());
 	}
 
 	@Override

@@ -17,9 +17,9 @@ import it.contrader.utils.ConnectionSingleton;
 public class TeamDAO implements DAO<Team>{
 
 	private final String QUERY_ALL = "SELECT * FROM tb_teams";
-	private final String QUERY_CREATE = "INSERT INTO tb_teams (id, name, market_value, index) VALUES (?,?,?,?)";
+	private final String QUERY_CREATE = "INSERT INTO tb_teams (name, market_value, `index`) VALUES (?,?,?)";
 	private final String QUERY_READ = "SELECT * FROM tb_teams WHERE id=?";
-	private final String QUERY_UPDATE = "UPDATE tb_teams SET name=?, market_value=?, index=? WHERE id=?";
+	private final String QUERY_UPDATE = "UPDATE tb_teams SET name=?, market_value=?, `index`=? WHERE id=?";
 	private final String QUERY_DELETE = "DELETE FROM tb_teams WHERE id=?";
 	
 	public TeamDAO() {
@@ -76,13 +76,14 @@ public class TeamDAO implements DAO<Team>{
 		Connection connection = ConnectionSingleton.getInstance();
 		try {	
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_CREATE);
-			preparedStatement.setInt(1, teamToInsert.getId());
-			preparedStatement.setString(2, teamToInsert.getName());
-			preparedStatement.setInt(3, teamToInsert.getMarketValue());
-			preparedStatement.setInt(4, teamToInsert.getTeamIndex());
-			preparedStatement.executeQuery();
+			preparedStatement.setString(1, teamToInsert.getName());
+			preparedStatement.setInt(2, teamToInsert.getMarketValue());
+			preparedStatement.setInt(3, teamToInsert.getIndex());
+			System.out.println(preparedStatement);
+			preparedStatement.execute();
 			return true;
 		} catch (SQLException e) {
+			e.printStackTrace();
 			return false;
 		}	}
 
@@ -106,15 +107,15 @@ public class TeamDAO implements DAO<Team>{
 					teamToUpdate.setMarketValue(teamRead.getMarketValue());
 				}
 
-				if (teamToUpdate.getTeamIndex() == 0) {
-					teamToUpdate.setTeamIndex(teamRead.getTeamIndex());
+				if (teamToUpdate.getIndex() == 0) {
+					teamToUpdate.setIndex(teamRead.getIndex());
 				}
 
 				// Update the team
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
 				preparedStatement.setString(1, teamToUpdate.getName());
 				preparedStatement.setInt(2, teamToUpdate.getMarketValue());
-				preparedStatement.setInt(3, teamToUpdate.getTeamIndex());
+				preparedStatement.setInt(3, teamToUpdate.getIndex());
 				preparedStatement.setInt(4, teamToUpdate.getId());
 				int a = preparedStatement.executeUpdate();
 				if (a > 0)
