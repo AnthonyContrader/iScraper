@@ -198,11 +198,12 @@ input {
 }
 
 input.statsbox {
-	width: 80%;
+	width: 100%;
 	background-color: #ffff;
 	color: #000000;
 	padding: 10px 10px;
-	margin: 3px 6px;
+	margin: 5%;
+	margin-right: 10%;
 	border: 1px solid #ccc;
 	border-radius: 4px;
 	cursor: pointer;
@@ -234,8 +235,8 @@ form {
 form.statsbox {
 	width: 100%;
 	border-radius: 7px;
-	background-color: #f2f2f2;
-	padding: 5px;
+	background-color: white;
+	padding: 10px;
 }
 
 .col-12 {
@@ -292,6 +293,16 @@ button {
 	cursor: pointer;
 	border-radius: 7px;
 	width: 80%;
+}
+
+button.statsbox {
+	width: auto;
+	font-size: 100%;
+	margin-left: 48.6%;
+	margin-top:0%; 
+	margin-bottom: 0%;
+	margin-right: 0%;
+	padding: 1.7% 1.7%;
 }
 
 

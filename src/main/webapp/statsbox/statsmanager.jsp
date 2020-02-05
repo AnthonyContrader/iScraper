@@ -17,12 +17,11 @@
 		List<StatsboxDTO> list = (List<StatsboxDTO>) request.getAttribute("list");
 	%>
 	<br>
-		<table class="statsbox" max-width=104%>
+		<table class="statsbox">
 		<tr>
 			<th> ID </th>
 			<th> ID Giocatore </th>
 			<th> Stagione </th>
-			<th> Squadra </th>
 			<th> Presenze </th>
 			<th> Contribuzioni/90min </th>
 			<th> %Tiri </th>
@@ -30,7 +29,7 @@
 			<th> %Passaggi</th>
 			<th> Dribbling/90min </th>
 			<th> Falli Subiti/90min </th>
-			<th> Falli Commessi /90min </th>
+			<th> Falli Commessi/90min </th>
 			<th> Tackles/90min </th>
 			<th> %Tackles </th>
 			<th> Chiusure/90min </th>
@@ -38,10 +37,9 @@
 		
 		<% for ( StatsboxDTO d : list ) { %>
 		<tr>
-			<td> <%=d.getId() %> </td>
-			<td> <%=d.getPlayerId() %> </td>
+			<td> <a href=StatsboxServlet?mode=read&id=<%=d.getId()%>> <%=d.getId() %> </a></td>
+			<td> <a href=PlayerServlet?mode=read&id=<%=d.getPlayerId()%>> <%=d.getPlayerId() %> </a></td>
 			<td> <%=d.getSeason() %> </td>
-			<td> <%=d.getTeam() %></td>
 			<td> <%=d.getCaps() %> </td>
 			<td> <%=d.getContributions() %> </td>
 			<td> <%=d.getShotsper() %> </td>
@@ -64,7 +62,7 @@
 					<label for="user">Giocatore</label>
 				</div>
 				<div class="col-12">
-					<input class="statsbox" type="text" id="id" name="player_id"
+					<input class="statsbox" type="text" id="player_id" name="player_id"
 						placeholder="Id giocatore">
 				</div>
 				<div class="col-18">
@@ -75,37 +73,28 @@
 						placeholder="Stagione">
 				</div>
 				<div class="col-18">
-					<label for="pass">Squadra</label>
-				</div>
-				<div class="col-12">
-					<input class="statsbox" type="text" id="team" name="team"
-						placeholder="Squadra">
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-18">
 					<label for="pass">Presenze</label>
 				</div>
 				<div class="col-12">
 					<input class="statsbox" type="text" id="caps" name="caps"
 						placeholder="Presenze">
 				</div>
+			</div>
+			<div class="row">
 				<div class="col-18">
-					<label for="type">Contribuzioni (gol e assist)</label>
+					<label for="type">Contribuzioni</label>
 				</div>
 				<div class="col-12">
 					<input class="statsbox" type="text" id="contributions" name="contributions"
 						placeholder="Contribuzioni">
 				</div>
 				<div class="col-18">
-					<label for="type">Percentuale tiri</label>
+					<label for="type">%Tiri</label>
 				</div>
 				<div class="col-12">
 					<input class="statsbox" type="text" id="shotsper" name="shotsper"
 						placeholder="Percentuale tiri">
 				</div>
-			</div>
-			<div class="row">
 				<div class="col-18">
 					<label for="type">Passaggi chiave</label>
 				</div>
@@ -113,8 +102,10 @@
 					<input class="statsbox" type="text" id="keypass" name="keypass"
 						placeholder="Passaggi chiave">
 				</div>
+			</div>
+			<div class="row">
 				<div class="col-18">
-					<label for="type">Percentuale passaggi riusciti</label>
+					<label for="type">%Passaggi</label>
 				</div>
 				<div class="col-12">
 					<input class="statsbox" type="text" id="passprec" name="passprec"
@@ -127,8 +118,6 @@
 					<input class="statsbox" type="text" id="dribbling" name="dribbling"
 						placeholder="Dribbling">
 				</div>
-			</div>
-			<div class="row">
 				<div class="col-18">
 					<label for="type">Falli subiti</label>
 				</div>
@@ -136,6 +125,8 @@
 					<input class="statsbox" type="text" id="foulssub" name="foulssub"
 						placeholder="Falli subiti">
 				</div>
+			</div>
+			<div class="row">
 				<div class="col-18">
 					<label for="type">Falli fatti</label>
 				</div>
@@ -150,21 +141,30 @@
 					<input class="statsbox" type="text" id="tackles" name="tackles"
 						placeholder="Tackles">
 				</div>
-			</div>
-			<div class="row">
 				<div class="col-18">
-					<label for="type">Percentuale Tackles</label>
+					<label for="type">%Tackles</label>
 				</div>
 				<div class="col-12">
 					<input class="statsbox" type="text" id="tacklesper" name="tacklesper"
 						placeholder="Percentuale Tackles">
 				</div>
+			</div>
+			<div class="row">
 				<div class="col-18">
 					<label for="type">Chiusure</label>
 				</div>
 				<div class="col-12">
 					<input class="statsbox" type="text" id="breaks" name="breaks"
 						placeholder="Chiusure">
+				</div>
+				<div class="col-18">
+				</div>
+				<div class="col-12">
+				</div>
+				<div class="col-18">
+				</div>
+				<div>
+					<button type="submit" class="statsbox" >Inserisci</button>
 				</div>
 			</div>
 		</form>
