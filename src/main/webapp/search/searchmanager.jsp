@@ -32,14 +32,13 @@
 			for (SearchDTO s : list) {
 		%>
 			<tr>
-				<td><a href=SearchServlet?mode=read&search_id=<%=s.getID()%>></a></td>
-				<td><%=s.getDate()%></td>
+				<td><a href=SearchServlet?mode=read&id=<%=s.getID()%>><%=s.getDate()%></a></td>
 				<td><%=s.getIndex()%></td>
 				<td><%=s.getValue()%></td>
 				<td><%=s.getUser()%></td>
 				<td><%=s.getPlayer()%></td>
-				<td><a href=SearchServlet?mode=read&update=true&search_id=<%=s.getID()%>>Edit</a></td>
-				<td><a href=SearchServlet?mode=delete&search_id=<%=s.getID()%>>Delete</a>
+				<td><a href=SearchServlet?mode=read&update=true&id=<%=s.getID()%>>Edit</a></td>
+				<td><a href=SearchServlet?mode=delete&id=<%=s.getID()%>>Delete</a>
 				</td>
 
 			</tr>

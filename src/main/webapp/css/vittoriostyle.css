@@ -197,17 +197,20 @@ input {
 	float: right;
 }
 
+input.statstable {
+	display: inline-block;
+	text-align: center;
+	padding: 2px 2px;
+	margin: 0px;
+	float: left;
+}
+
 input.statsbox {
 	width: 100%;
-	background-color: #ffff;
-	color: #000000;
 	padding: 10px 10px;
 	margin: 5%;
 	margin-right: 10%;
-	border: 1px solid #ccc;
 	border-radius: 4px;
-	cursor: pointer;
-	float: right;
 }
 
 
@@ -239,16 +242,25 @@ form.statsbox {
 	padding: 10px;
 }
 
-.col-12 {
+.col-14 {
 	float: left;
-	width: 12%;
-	margin-top: 5px;
+	width: 14%;
+	margin-top: 3%;
+	margin-left: 0.14%;
 }
 
-.col-18 {
+.col-19 {
 	float: left;
-	width: 18%;
-	margin-top: 5px;
+	width: 19%;
+	margin-top: 3%;
+	margin-left: 0.19%
+}
+
+.col-66 {
+	float: left;
+	width: 66%;
+	margin-top: 0px;
+	margin-left: 0.66%
 }
 
 .col-25 {
@@ -296,13 +308,11 @@ button {
 }
 
 button.statsbox {
-	width: auto;
-	font-size: 100%;
-	margin-left: 48.6%;
-	margin-top:0%; 
-	margin-bottom: 0%;
+	margin-top: 0%;
+	margin-left: 18%;
 	margin-right: 0%;
-	padding: 1.7% 1.7%;
+	margin-bottom: 10%;
+	padding: 5% 5%;
 }
 
 

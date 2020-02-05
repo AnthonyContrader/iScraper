@@ -34,6 +34,7 @@ public class SearchServlet extends HttpServlet {
 		int id;
 		boolean ans;
 		SimpleDateFormat format = new SimpleDateFormat("dMyyyy");
+		SimpleDateFormat format2 = new SimpleDateFormat("yyyyMMdd");
 		Date search_date = new Date(Calendar.getInstance().getTimeInMillis());
 		int value /*= 0*/, index /*= 0*/, user /*= 0*/;
 		short player /*= 0*/;
@@ -47,7 +48,7 @@ public class SearchServlet extends HttpServlet {
 			
 		case "READ":
 			updateList(request);
-			id = Integer.parseInt(request.getParameter("search_id"));
+			id = Integer.parseInt(request.getParameter("id"));
 			dto = service.read(id);
 			request.setAttribute("dto", dto);
 			if (request.getParameter("update") == null) {
@@ -81,27 +82,38 @@ public class SearchServlet extends HttpServlet {
 		break;
 		
 		case "UPDATE":
+			/*try {
+				search_date = new Date(format2.parse(request.getParameter("search_date")).getTime());
+			} catch (Exception e) {}*/
 			try {
-				search_date = new Date(format.parse(request.getParameter("update_search_date")).getTime());
-			} catch (Exception e) {}
-			value = Integer.parseInt(request.getParameter("player_value"));
-			index = Integer.parseInt(request.getParameter("player_index"));
-			user = Integer.parseInt(request.getParameter("user_id"));
-			player = Short.parseShort(request.getParameter("player_id"));
-			id = Integer.parseInt(request.getParameter("id"));
-			dto = new SearchDTO(search_date, value, index, user, player);
-			ans = service.insert(dto);
+				value = Integer.parseInt(request.getParameter("player_value"));
+			} catch(Exception e){value=0;}
+			try {
+				index = Integer.parseInt(request.getParameter("player_index"));
+			} catch(Exception e) {index=0;}
+			try {
+				user = Integer.parseInt(request.getParameter("user_id"));
+			} catch(Exception e) {user=0;}
+			try {
+				player = Short.parseShort(request.getParameter("player_id"));
+			} catch (Exception e) {player=0;}
+			try {
+				id = Integer.parseInt(request.getParameter("id"));
+			} catch (Exception e) {id=0;}
+			dto = new SearchDTO(id, search_date, value, index, user, player);
+			ans = service.update(dto);
 			request.setAttribute("ans", ans);
 			updateList(request);
 			getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
 		break;
 		
 		case "DELETE":
-			id = Integer.parseInt(request.getParameter("search_id"));
+			id = Integer.parseInt(request.getParameter("id"));
 			ans = service.delete(id);
 			request.setAttribute("ans", ans);
 			updateList(request);
 			getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
+		break;
 		}
 	}
 }	
