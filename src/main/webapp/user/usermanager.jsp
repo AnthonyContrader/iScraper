@@ -38,14 +38,9 @@
 				<td><%=u.getPassword()%></td>
 				<td><%=u.getUsertype()%></td>
 				<td><a href=UserServlet?mode=read&update=true&id=<%=u.getId()%>>Edit</a></td>
-<<<<<<< HEAD
 
-				<td><a href=UserServlet?mode=delete&id= <%=u.getId()%>>Delete</a>
-
-
-=======
 				<td><a href=UserServlet?mode=delete&id=<%=u.getId()%>>Delete</a>
->>>>>>> 68fa9f8eb64ec557a9b6821d14d865436d42919e
+
 				</td>
 
 			</tr>
