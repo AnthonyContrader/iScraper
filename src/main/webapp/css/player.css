@@ -21,6 +21,14 @@ div.text {
 }
 
 .main {
+	background-image: url("image.jpg");
+	 background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+   -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 	margin-right: 5%;
 	margin-left: 5%;
 	margin-bottom: 5%;
@@ -42,7 +50,9 @@ div.text {
 	margin-top: 5%;
 	margin-bottom: 1%;
 }
-
+#newfloat{
+	margin-top: 100px;
+}
 /* headers */
 h1 {
 	position: center;
@@ -119,29 +129,19 @@ a:visited {
 }
 
 /*Tables*/
-
- 
-table.statsbox {
+table {
+	
 	border-collapse: collapse;
 	width: 100%;
 	float: left;
 	border-radius: 4px;
 	-moz-border-radius: 4px;
-	overflow-x:scroll;
-	display:block;
 }
 
-table {
-	border-collapse: collapse;
-	width: 50%;
-	float: left;
-	border-radius: 4px;
-	-moz-border-radius: 4px;
-}
-
-th, td {
+th, td { 
 	text-align: center;
 	padding: 8px;
+	color: #51d93e;
 }
 
 tr:nth-child(even) {
@@ -151,6 +151,7 @@ tr:nth-child(even) {
 th {
 	background-color: #00a990;
 	color: #ffffff;
+	
 }
 
 a:hover {
@@ -194,19 +195,6 @@ input {
 	float: right;
 }
 
-input.statsbox {
-	width: 80%;
-	background-color: #ffff;
-	color: #000000;
-	padding: 10px 10px;
-	margin: 3px 6px;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	cursor: pointer;
-	float: right;
-}
-
-
 input:hover {
 	background-color: #00ccad;
 }
@@ -226,25 +214,6 @@ form {
 	border-radius: 7px;
 	background-color: #f2f2f2;
 	padding: 20px;
-}
-
-form.statsbox {
-	width: 100%;
-	border-radius: 7px;
-	background-color: #f2f2f2;
-	padding: 5px;
-}
-
-.col-12 {
-	float: left;
-	width: 12%;
-	margin-top: 5px;
-}
-
-.col-18 {
-	float: left;
-	width: 18%;
-	margin-top: 5px;
 }
 
 .col-25 {
@@ -291,8 +260,6 @@ button {
 	width: 80%;
 }
 
-
-
 button:hover {
 	background-color: #00ccad;
 	color: white;
@@ -306,10 +273,13 @@ button:hover {
 
 #floatleft {
 	float: left;
+	background-color: #f2f2f270;
 }
 
 #floatright {
+	background-color: #f2f2f270;
 	float: right;
+	margin-bottom:20px;
 }
 
 #floattop {
@@ -319,7 +289,11 @@ button:hover {
 #floatright {
 	float: bottom;
 }
-
+#newone {
+	background: #1b1a2045;
+	width: -moz-available;
+	margin-bottom: 20px;
+}
 /*Navigation bar*/
 div.navbar {
 	background: #00a990;

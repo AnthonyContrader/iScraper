@@ -31,7 +31,7 @@ public class PlayerDAO implements DAO<Player>{
 	public List<Player> getAll() {
 		List<Player> playerList = new ArrayList<>();
 		Connection connection = ConnectionSingleton.getInstance();
-		try {
+		try { 
 			Statement statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery(QUERY_ALL);
 	
