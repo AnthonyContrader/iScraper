@@ -9,12 +9,7 @@
 </head>
 <body>
 	<%@ include file="../utilities/header.jsp" %>
-	<div class="navbar">
-		<a href="homeadmin.jsp">Home</a> <a
-		href="UserServlet?mode=userlist">Users</a> <a class="active"
-		href="SearchServlet?mode=searchlist">Searches</a> <a href="LogoutServlet"
-		id="logout">Logout</a>
-	</div>
+	<%@ include file="../utilities/navbar.jsp" %>
 	<br>
 	
 	<div class="main">

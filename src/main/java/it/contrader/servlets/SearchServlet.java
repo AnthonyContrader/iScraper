@@ -18,7 +18,6 @@ import java.text.SimpleDateFormat;
 
 public class SearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
 	public SearchServlet() {}
 	
 	public void updateList(HttpServletRequest request) {
@@ -36,8 +35,8 @@ public class SearchServlet extends HttpServlet {
 		boolean ans;
 		SimpleDateFormat format = new SimpleDateFormat("dMyyyy");
 		Date search_date = new Date(Calendar.getInstance().getTimeInMillis());
-		int value = 0, index = 0, user = 0;
-		short player = 0;
+		int value /*= 0*/, index /*= 0*/, user /*= 0*/;
+		short player /*= 0*/;
 		
 		switch (mode.toUpperCase()) {
 		
@@ -85,52 +84,15 @@ public class SearchServlet extends HttpServlet {
 			try {
 				search_date = new Date(format.parse(request.getParameter("search_date")).getTime());
 			} catch (Exception e) {}
-			try {
-				value = Integer.parseInt(request.getParameter("player_value"));
-			} catch (Exception e) {}
-			try {
-				index = Integer.parseInt(request.getParameter("player_index"));
-			} catch (Exception e) {}
-			try {
-				user = Integer.parseInt(request.getParameter("user_id"));
-			} catch (Exception e) {}
-			try {
-				player = Short.parseShort(request.getParameter("player_id"));
-			} catch (Exception e) {}
+			value = Integer.parseInt(request.getParameter("player_value"));
+			index = Integer.parseInt(request.getParameter("player_index"));
+			user = Integer.parseInt(request.getParameter("user_id"));
+			player = Short.parseShort(request.getParameter("player_id"));
 			id = Integer.parseInt(request.getParameter("id"));
 			dto = new SearchDTO(search_date, value, index, user, player);
 			ans = service.insert(dto);
 			request.setAttribute("ans", ans);
 			updateList(request);
-			/*String inputString;
-			inputString = request.getParameter("search_date");
-			try {
-				search_date = new Date(format.parse(request.getParameter("search_date")).getTime());
-			} catch (Exception e) {}
-			if (!inputString.isEmpty() && inputString != null && (inputString.chars().allMatch( Character::isDigit))) {
-				try {
-					value = Integer.parseInt(request.getParameter("player_value"));
-				} catch (Exception e) {}
-			} else { value = 0; }
-			if (!inputString.isEmpty() && inputString != null && (inputString.chars().allMatch( Character::isDigit))) {
-					try {
-					index = Integer.parseInt(request.getParameter("player_index"));
-				} catch (Exception e) {}
-			} else { index = 0; }
-			if (!inputString.isEmpty() && inputString != null && (inputString.chars().allMatch( Character::isDigit))) {
-				try {
-					user = Integer.parseInt(request.getParameter("user_id"));
-				} catch (Exception e) {}
-			} else { user = 0; }
-			if (!inputString.isEmpty() && inputString != null && (inputString.chars().allMatch( Character::isDigit))) {
-				try {
-					player = Short.parseShort(request.getParameter("player_id"));
-				} catch (Exception e) {}
-			} else { player = 0; }
-			id = Integer.parseInt(request.getParameter("search_id"));
-			dto = new SearchDTO(id, search_date, value, index, user, player);
-			ans = service.insert(dto);
-			updateList(request);*/
 			getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
 		break;
 		
