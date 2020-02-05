@@ -7,8 +7,7 @@
 		<a href="LogoutServlet" id="logout">Logout</a>
 		<a href="PlayerServlet?mode=playerList">Players</a>
 		
-		<a
-		href="LogoutServlet" id="logout">Logout</a>
+		
 	
 	</div>
 
