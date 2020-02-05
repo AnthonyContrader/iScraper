@@ -62,21 +62,21 @@
 		<form id="floatbottom" class="statsbox" action="StatsboxServlet?mode=insert" method="post">
 			<div class="row">
 				<div class="col-19">
-					<label for="user">Giocatore</label>
+					<label for="player_id">Giocatore</label>
 				</div>
 				<div class="col-14">
 					<input class="statsbox" type="text" id="player_id" name="player_id"
 						placeholder="Id giocatore">
 				</div>
 				<div class="col-19">
-					<label for="pass">Stagione</label>
+					<label for="season">Stagione</label>
 				</div>
 				<div class="col-14">
 					<input class="statsbox" type="text" id="season" name="season"
 						placeholder="Stagione">
 				</div>
 				<div class="col-19">
-					<label for="pass">Presenze</label>
+					<label for="caps">Presenze</label>
 				</div>
 				<div class="col-14">
 					<input class="statsbox" type="text" id="caps" name="caps"
@@ -85,21 +85,21 @@
 			</div>
 			<div class="row">
 				<div class="col-19">
-					<label for="type">Contribuzioni</label>
+					<label for="contributions">Contribuzioni</label>
 				</div>
 				<div class="col-14">
 					<input class="statsbox" type="text" id="contributions" name="contributions"
 						placeholder="Contribuzioni">
 				</div>
 				<div class="col-19">
-					<label for="type">%Tiri</label>
+					<label for="shotsper">%Tiri</label>
 				</div>
 				<div class="col-14">
 					<input class="statsbox" type="text" id="shotsper" name="shotsper"
 						placeholder="Percentuale tiri">
 				</div>
 				<div class="col-19">
-					<label for="type">Passaggi chiave</label>
+					<label for="keypass">Passaggi chiave</label>
 				</div>
 				<div class="col-14">
 					<input class="statsbox" type="text" id="keypass" name="keypass"
@@ -108,21 +108,21 @@
 			</div>
 			<div class="row">
 				<div class="col-19">
-					<label for="type">%Passaggi</label>
+					<label for="passprec">%Passaggi</label>
 				</div>
 				<div class="col-14">
 					<input class="statsbox" type="text" id="passprec" name="passprec"
 						placeholder="Percentuale passaggi">
 				</div>
 				<div class="col-19">
-					<label for="type">Dribbling</label>
+					<label for="dribbling">Dribbling</label>
 				</div>
 				<div class="col-14">
 					<input class="statsbox" type="text" id="dribbling" name="dribbling"
 						placeholder="Dribbling">
 				</div>
 				<div class="col-19">
-					<label for="type">Falli subiti</label>
+					<label for="foulssub">Falli subiti</label>
 				</div>
 				<div class="col-14">
 					<input class="statsbox" type="text" id="foulssub" name="foulssub"
@@ -131,21 +131,21 @@
 			</div>
 			<div class="row">
 				<div class="col-19">
-					<label for="type">Falli fatti</label>
+					<label for="foulscomm">Falli fatti</label>
 				</div>
 				<div class="col-14">
 					<input class="statsbox" type="text" id="foulscomm" name="foulscomm"
 						placeholder="Falli fatti">
 				</div>
 				<div class="col-19">
-					<label for="type">Tackles</label>
+					<label for="tackles">Tackles</label>
 				</div>
 				<div class="col-14">
 					<input class="statsbox" type="text" id="tackles" name="tackles"
 						placeholder="Tackles">
 				</div>
 				<div class="col-19">
-					<label for="type">%Tackles</label>
+					<label for="tacklesper">%Tackles</label>
 				</div>
 				<div class="col-14">
 					<input class="statsbox" type="text" id="tacklesper" name="tacklesper"
@@ -154,7 +154,7 @@
 			</div>
 			<div class="row">
 				<div class="col-19">
-					<label for="type">Chiusure</label>
+					<label for="breaks">Chiusure</label>
 				</div>
 				<div class="col-14">
 					<input class="statsbox" type="text" id="breaks" name="breaks"
@@ -165,7 +165,10 @@
 				</div>
 			</div>
 		</form>
-</div>
+	</div>
+	<br>
+	<%@ include file="../utilities/footer.jsp"%>
+
 
 
 </body>

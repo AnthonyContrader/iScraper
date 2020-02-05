@@ -45,11 +45,11 @@ public class TeamDTO implements DTO{
 		this.marketValue = marketValue;
 	}
 
-	public int getTeamIndex() {
+	public int getIndex() {
 		return teamIndex;
 	}
 
-	public void setTeamIndex(int teamIndex) {
+	public void setIndex(int teamIndex) {
 		this.teamIndex = teamIndex;
 	}
 	
