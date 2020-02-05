@@ -9,14 +9,8 @@
 <title>Search Manager</title>
 </head>
 <body>
-<%@ include file="../utilities/header.jsp"%>
-
-	<div class="navbar">
-		<a href="homeadmin.jsp">Home</a> <a
-		href="UserServlet?mode=userlist">Users</a> <a
-		class="active" href="SearchServlet?mode=searchList">Searches</a> <a
-		href="LogoutServlet" id="logout">Logout</a>
-	</div>
+	<%@ include file="../utilities/header.jsp"%>
+	<%@ include file="../utilities/navbar.jsp" %>
 	<div class="main">
 		<%
 		List<SearchDTO> list = (List<SearchDTO>) request.getAttribute("list");
@@ -38,16 +32,14 @@
 			for (SearchDTO s : list) {
 		%>
 			<tr>
-				<td><a href=SearchServlet?mode=read&id= <%=s.getID()%>>
-				</a></td>
+				<td><a href=SearchServlet?mode=read&search_id=<%=s.getID()%>></a></td>
 				<td><%=s.getDate()%></td>
 				<td><%=s.getIndex()%></td>
 				<td><%=s.getValue()%></td>
 				<td><%=s.getUser()%></td>
 				<td><%=s.getPlayer()%></td>
-				<td><a href=SearchServlet?mode=read&update=true&id=
-					<%=s.getID()%>>Edit</a></td>
-				<td><a href=SearcServlet?mode=delete&id= <%=s.getID()%>>Delete</a>
+				<td><a href=SearchServlet?mode=read&update=true&search_id=<%=s.getID()%>>Edit</a></td>
+				<td><a href=SearchServlet?mode=delete&search_id=<%=s.getID()%>>Delete</a>
 				</td>
 
 			</tr>

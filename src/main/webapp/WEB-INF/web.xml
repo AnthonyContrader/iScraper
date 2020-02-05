@@ -48,5 +48,14 @@
   	<servlet-name>PlayerServlet</servlet-name>
   	<url-pattern>/PlayerServlet</url-pattern>
   </servlet-mapping>
-   
+  <servlet>
+  	<description></description>
+  	<display-name>SearchServlet</display-name>
+  	<servlet-name>SearchServlet</servlet-name>
+  	<servlet-class>it.contrader.servlets.SearchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SearchServlet</servlet-name>
+  	<url-pattern>/SearchServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
