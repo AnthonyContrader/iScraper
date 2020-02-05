@@ -129,6 +129,6 @@
 		
 	</div>
 	<br>
-	<%@ include file="../css/footer.jsp"%>
+	<%@ include file="../utilities/footer.jsp"%>
 </body>
 </html>

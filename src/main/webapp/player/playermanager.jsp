@@ -232,6 +232,6 @@ margin-bottom: 1%; " action="PlayerServlet?mode=delete" method="post">
 		</form>
 	</div>
 	<br>
-	<%@ include file="../css/footer.jsp"%>
+	<%@ include file="../utilities/footer.jsp"%>
 </body>
 </html>
