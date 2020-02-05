@@ -31,7 +31,7 @@ public class StatsboxConverter implements Converter <Statsbox, StatsboxDTO>{
 	}
 	
 	public Statsbox toEntity(StatsboxDTO dto) {
-		return new Statsbox(dto.getId(), dto.getPlayerId(),dto.getSeason(),dto.getTeam(), dto.getCaps(), dto.getContribution(), dto.getShotsper(), dto.getKeypass(), dto.getPassprec(), dto.getDribbling(), dto.getFoulssub(), dto.getFoulscomm(), dto.getTackles(), dto.getTacklesper(), dto.getBreaks());
+		return new Statsbox(dto.getId(), dto.getPlayerId(),dto.getSeason(),dto.getTeam(), dto.getCaps(), dto.getContributions(), dto.getShotsper(), dto.getKeypass(), dto.getPassprec(), dto.getDribbling(), dto.getFoulssub(), dto.getFoulscomm(), dto.getTackles(), dto.getTacklesper(), dto.getBreaks());
 
 	}
 }

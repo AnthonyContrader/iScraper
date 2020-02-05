@@ -76,10 +76,10 @@ public class StatsboxDTO implements DTO {
 		public void setCaps(int caps) {
 			this.caps = caps;
 		}
-		public float getContribution() {
+		public float getContributions() {
 			return contributions;
 		}
-		public void setContribution(float contributions) {
+		public void setContributions(float contributions) {
 			this.contributions = contributions;
 		}
 		public float getShotsper() {
