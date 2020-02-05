@@ -1,6 +1,7 @@
 package it.contrader.servlets;
 
 import java.util.Calendar;
+//import java.util.GregorianCalendar;
 import java.util.List;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServlet;
 import it.contrader.dto.SearchDTO;
+import it.contrader.dto.UserDTO;
 import it.contrader.service.SearchService;
 import it.contrader.service.Service;
 import java.sql.Date;
@@ -45,7 +47,8 @@ public class SearchServlet extends HttpServlet {
 			break;
 			
 		case "READ":
-			id = Integer.parseInt(request.getParameter("id"));
+			updateList(request);
+			id = Integer.parseInt(request.getParameter("search_id"));
 			dto = service.read(id);
 			request.setAttribute("dto", dto);
 			if (request.getParameter("update") == null) {
@@ -57,7 +60,7 @@ public class SearchServlet extends HttpServlet {
 		
 		case "INSERT":
 			try {
-				search_date = new Date(format.parse(request.getParameter("searchDate")).getTime());
+				search_date = new Date(format.parse(request.getParameter("search_date")).getTime());
 			} catch (Exception e) {}
 			try {
 				value = Integer.parseInt(request.getParameter("player_value"));
@@ -80,7 +83,7 @@ public class SearchServlet extends HttpServlet {
 		
 		case "UPDATE":
 			try {
-				search_date = new Date(format.parse(request.getParameter("searchDate")).getTime());
+				search_date = new Date(format.parse(request.getParameter("search_date")).getTime());
 			} catch (Exception e) {}
 			try {
 				value = Integer.parseInt(request.getParameter("player_value"));
@@ -95,14 +98,44 @@ public class SearchServlet extends HttpServlet {
 				player = Short.parseShort(request.getParameter("player_id"));
 			} catch (Exception e) {}
 			id = Integer.parseInt(request.getParameter("id"));
+			dto = new SearchDTO(search_date, value, index, user, player);
+			ans = service.insert(dto);
+			request.setAttribute("ans", ans);
+			updateList(request);
+			/*String inputString;
+			inputString = request.getParameter("search_date");
+			try {
+				search_date = new Date(format.parse(request.getParameter("search_date")).getTime());
+			} catch (Exception e) {}
+			if (!inputString.isEmpty() && inputString != null && (inputString.chars().allMatch( Character::isDigit))) {
+				try {
+					value = Integer.parseInt(request.getParameter("player_value"));
+				} catch (Exception e) {}
+			} else { value = 0; }
+			if (!inputString.isEmpty() && inputString != null && (inputString.chars().allMatch( Character::isDigit))) {
+					try {
+					index = Integer.parseInt(request.getParameter("player_index"));
+				} catch (Exception e) {}
+			} else { index = 0; }
+			if (!inputString.isEmpty() && inputString != null && (inputString.chars().allMatch( Character::isDigit))) {
+				try {
+					user = Integer.parseInt(request.getParameter("user_id"));
+				} catch (Exception e) {}
+			} else { user = 0; }
+			if (!inputString.isEmpty() && inputString != null && (inputString.chars().allMatch( Character::isDigit))) {
+				try {
+					player = Short.parseShort(request.getParameter("player_id"));
+				} catch (Exception e) {}
+			} else { player = 0; }
+			id = Integer.parseInt(request.getParameter("search_id"));
 			dto = new SearchDTO(id, search_date, value, index, user, player);
 			ans = service.insert(dto);
-			updateList(request);
+			updateList(request);*/
 			getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
 		break;
 		
 		case "DELETE":
-			id = Integer.parseInt(request.getParameter("id"));
+			id = Integer.parseInt(request.getParameter("search_id"));
 			ans = service.delete(id);
 			request.setAttribute("ans", ans);
 			updateList(request);

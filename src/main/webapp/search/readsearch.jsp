@@ -8,7 +8,7 @@
 <title>Read Search</title>
 </head>
 <body>
-	<%@ include file="../css/header.jsp" %>
+	<%@ include file="../utilities/header.jsp" %>
 	<div class="navbar">
 		<a href="homeadmin.jsp">Home</a> <a
 		href="UserServlet?mode=userlist">Users</a> <a class="active"
@@ -44,6 +44,6 @@
 		
 	</div>
 	
-	<%@ include file="../css/footer.jsp"%>
+	<%@ include file="../utilities/footer.jsp"%>
 </body>
 </html>
