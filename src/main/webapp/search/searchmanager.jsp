@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="java.util.List"
+    pageEncoding="ISO-8859-1" import="java.util.List" import="java.util.Calendar"
     import="it.contrader.dto.SearchDTO"%>
 <!DOCTYPE html>
 <html>
@@ -14,7 +14,7 @@
 	<div class="main">
 		<%
 		List<SearchDTO> list = (List<SearchDTO>) request.getAttribute("list");
-	%>
+		%>
 
 		<br>
 
@@ -55,8 +55,8 @@
 					<label for="date">Date</label>
 				</div>
 				<div class="col-75">
-					<input type="text" id="date" name="search_date"
-						placeholder="inserisci la data della ricerca">
+					<input type="date" id="date" name="search_date"
+						placeholder="inserisci la data della ricerca" value="<%=new java.util.Date()%>">
 				</div>
 			</div>
 			<div class="row">
@@ -83,7 +83,7 @@
 				</div>
 				<div class="col-75">
 					<input type="text" id="user" name="user_id"
-						placeholder="inserisci l'id dell'utente">
+						placeholder="inserisci l'id dell'utente" value="<%=request.getAttribute("sessionUser").toString()%>">
 				</div>
 			</div>
 			<div class="row">
