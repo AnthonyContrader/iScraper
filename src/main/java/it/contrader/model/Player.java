@@ -95,10 +95,16 @@ public class Player {
 	@Override
 	public String toString() {
 		//System.out.println();
-		return "Player [player_id=" + player_id + ", player_name=" + player_name + ", player_surname=" + player_surname
-				+ ", age=" + age + ", actualMarketValue=" + actualMarketValue + ", previousMarketValue="
-				+ previousMarketValue  + ", position=" + position 
-				+  "]";
+		
+//		"    " + player_id + "               " + player_name + "       " + player_surname
+//		+ "           " + age + "           " + "         " + actualMarketValue + "                            "
+//		+ previousMarketValue  + "                   " + position 
+//		 ;
+		
+		return  "    " + player_id + "               " + player_name + "       " + player_surname
+				+ "           " + age + "           " + "         " + actualMarketValue + "                            "
+				+ previousMarketValue  + "                   " + position 
+				 ;
 	}
 	
 	

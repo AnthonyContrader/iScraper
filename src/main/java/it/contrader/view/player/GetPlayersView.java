@@ -32,6 +32,7 @@ public class GetPlayersView implements View {
 	public void showOptions() {
 		// TODO Auto-generated method stub
 		//System.out.println("Sei sicuro di stampare intera lista? yes per si ");
+		System.out.println("Player Id-----------Nome------------Cognome-----------Eta----------Valore Attuale Mercato--------Valore Precedente Mercato--------Ruolo");
 		ArrayList<Player> lista= new ArrayList<Player>(playerController.getPlayers());
 		for(Player player:lista) {
 			System.out.println(player);
