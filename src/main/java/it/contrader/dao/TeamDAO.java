@@ -59,12 +59,14 @@ public class TeamDAO implements DAO<Team>{
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_READ);
 			preparedStatement.setInt(1, id);
 			ResultSet resultSet = preparedStatement.executeQuery();
-			String name = resultSet.getString("name");
+			resultSet.next();
 			int market_value = resultSet.getInt("market_value");
 			int index = resultSet.getInt("index");
+			String name = resultSet.getString("name");
 			
 			team=new Team(id, name, market_value, index);
 		} catch (Exception e) {
+			e.printStackTrace();
 			return null;
 		}
 		

@@ -36,8 +36,7 @@ public class PlayerServlet extends HttpServlet {
 		
 		
 		String dd=request.getRemoteUser();
-		
-		 request.setAttribute("tip", dd);
+		request.setAttribute("tip", dd);
 		
 
 		

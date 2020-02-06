@@ -17,29 +17,10 @@
 		List<TeamDTO> list = (List<TeamDTO>) request.getAttribute("list");
 	%>
 	<br>
-		<table>
-		<tr>
-			<th colspan=2> Modifica/Rimuovi </th>
-			<th> ID </th>
-			<th> Nome </th>
-			<th> Valore di Mercato </th>
-			<th> Indice </th>
-		</tr>
+	
+	<% TeamDTO t = (TeamDTO) request.getAttribute("dto"); %>
 		
-		<% for ( TeamDTO t : list ) { %>
-		<tr>
-			<td> <a href=TeamServlet?mode=read&update=true&id=<%=t.getId()%>> <input type=button class="statstable" value="NEW"></a></td>
-			<td> <a href=TeamServlet?mode=delete&id=<%=t.getId()%>> <input type=button class="statstable" value="X"></a></td>
-			<td> <a href=TeamServlet?mode=read&id=<%=t.getId()%>> <%=t.getId()%> </a></td>
-			<td> <%=t.getName()%> </td>
-			<td> <%=t.getMarketValue()%> </td>
-			<td> <%=t.getIndex()%> </td>
-			
-		</tr>
-		<% } %>
-		</table>
-		
-		<form id="floatright" action="TeamServlet?mode=insert" method="post">
+		<form action="TeamServlet?mode=update&id=<%=t.getId()%>" method="post">
 			<div class="row">
 				<div class="col-25">
 					<label for="name">Nome</label>
@@ -67,7 +48,7 @@
 						placeholder="Indice">
 				</div>
 			</div>
-			<button type="submit">Inserisci</button>
+			<button type="submit">Modifica</button>
 		</form>
 	</div>
 	<br>
