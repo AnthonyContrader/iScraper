@@ -17,7 +17,6 @@
 		<% TeamDTO t = (TeamDTO) request.getAttribute("dto");%>
 		<table>
 		<tr>
-			<th colspan=2> Modifica/Rimuovi </th>
 			<th> ID </th>
 			<th> Nome </th>
 			<th> Valore di Mercato </th>

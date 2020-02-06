@@ -8,13 +8,18 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.mysql.cj.Session;
 
 import it.contrader.dto.StatsboxDTO;
+import it.contrader.dto.UserDTO;
 import it.contrader.service.Service;
 import it.contrader.service.StatsboxService;
 
 public class StatsboxServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
+	
 	
 	public StatsboxServlet() {
 		
@@ -31,6 +36,7 @@ public class StatsboxServlet extends HttpServlet{
 		Service<StatsboxDTO> service = new StatsboxService();
 		String mode = request.getParameter("mode");
 		StatsboxDTO dto;
+		UserDTO utente = (UserDTO) request.getSession().getAttribute("user");
 		int id;
 		int player_id;
 		int season;
@@ -51,7 +57,12 @@ public class StatsboxServlet extends HttpServlet{
 
 		case "STATSBOXLIST": 
 			updateList(request);
-			getServletContext().getRequestDispatcher("/statsbox/statsmanager.jsp").forward(request, response);
+			if (utente.getUsertype().toUpperCase().equals("ADMIN")) {
+				getServletContext().getRequestDispatcher("/statsbox/statsmanager.jsp").forward(request, response);
+			}
+			else if (utente.getUsertype().toUpperCase().equals("USER")) {
+				getServletContext().getRequestDispatcher("/statsbox/readallstats.jsp").forward(request, response);
+			}
 			break;
 
 		case "READ":

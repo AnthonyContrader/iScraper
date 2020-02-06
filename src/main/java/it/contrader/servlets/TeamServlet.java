@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import it.contrader.dto.StatsboxDTO;
 import it.contrader.dto.TeamDTO;
+import it.contrader.dto.UserDTO;
 import it.contrader.service.Service;
 import it.contrader.service.StatsboxService;
 import it.contrader.service.TeamService;
@@ -32,6 +33,7 @@ public class TeamServlet extends HttpServlet{
 	public void service (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		Service<TeamDTO> service = new TeamService();
 		String mode = request.getParameter("mode");
+		UserDTO utente = (UserDTO) request.getSession().getAttribute("user");
 		TeamDTO dto;
 		int id;
 		String name;
@@ -43,7 +45,12 @@ public class TeamServlet extends HttpServlet{
 
 		case "TEAMLIST":
 			updateList(request);
-			getServletContext().getRequestDispatcher("/teams/teammanager.jsp").forward(request, response);
+			if (utente.getUsertype().toUpperCase().equals("ADMIN")) {
+				getServletContext().getRequestDispatcher("/teams/teammanager.jsp").forward(request, response);
+			}
+			else if (utente.getUsertype().toUpperCase().equals("USER")) {
+				getServletContext().getRequestDispatcher("/teams/readallteams.jsp").forward(request, response);
+			}
 			break;
 
 		case "READ":
@@ -56,7 +63,7 @@ public class TeamServlet extends HttpServlet{
 				
 			}
 			
-			else getServletContext().getRequestDispatcher("/teams/teammanager.jsp").forward(request, response);
+			else getServletContext().getRequestDispatcher("/teams/updateteams.jsp").forward(request, response);
 			
 			break;
 
@@ -67,18 +74,17 @@ public class TeamServlet extends HttpServlet{
 			index = Integer.parseInt(request.getParameter("index"));
 			dto = new TeamDTO (name, market_value, index);
 			ans = service.insert(dto);
-			System.out.println("\n\n\n"+ans+"\n\n\n");
 			request.setAttribute("ans", ans);
 			updateList(request);
 			getServletContext().getRequestDispatcher("/teams/teammanager.jsp").forward(request, response);
 			break;
 			
 		case "UPDATE":
-			name = request.getAttribute("name").toString();
-			market_value = Integer.parseInt(request.getAttribute("market_value").toString());
-			index = Integer.parseInt(request.getAttribute("index").toString());
+			name = request.getParameter("name");
+			market_value = Integer.parseInt(request.getParameter("market_value"));
+			index = Integer.parseInt(request.getParameter("index"));
 			id = Integer.parseInt(request.getParameter("id"));
-			dto = new TeamDTO (name, market_value, index);
+			dto = new TeamDTO (id, name, market_value, index);
 			ans = service.update(dto);
 			updateList(request);
 			getServletContext().getRequestDispatcher("/teams/teammanager.jsp").forward(request, response);
