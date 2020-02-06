@@ -242,13 +242,6 @@ form {
 	padding: 20px;
 }
 
-form.user {
-	width: 45%;
-	border-radius: 7px;
-	background-color: white;
-	padding: 10px;
-}
-
 form.statsbox {
 	width: 100%;
 	border-radius: 7px;
@@ -268,6 +261,13 @@ form.statsbox {
 	width: 19%;
 	margin-top: 3%;
 	margin-left: 0.19%
+}
+
+.col-30 {
+	float: left;
+	width: 30%;
+	margin-top: 0px;
+	margin-left: 0.33%
 }
 
 .col-66 {
@@ -301,6 +301,11 @@ label {
 	display: inline-block;
 }
 
+label.user {
+	padding: 5% 5% 5% 5%;
+	display: inline-block;
+}
+
 button {
 	-webkit-transition-duration: 0.1s; /* Safari */
 	transition-duration: 0.1s;
@@ -327,6 +332,14 @@ button.statsbox {
 	margin-right: 0%;
 	margin-bottom: 10%;
 	padding: 5% 5%;
+}
+
+button.user {
+	margin-top: 0%;
+	margin-left: 0%;
+	margin-right: 0%;
+	margin-bottom: 0%;
+	padding: 3% 3%;
 }
 
 

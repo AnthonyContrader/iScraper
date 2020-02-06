@@ -31,7 +31,7 @@ CREATE TABLE `tb_injuries` (
   `player_id` smallint(6) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `player_id` (`player_id`),
-  CONSTRAINT `tb_injuries_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `tb_players` (`id`)
+  CONSTRAINT `tb_injuries_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `tb_players` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -61,7 +61,9 @@ CREATE TABLE `tb_players` (
   `previous_value` int(11) DEFAULT NULL,
   `position` varchar(15) DEFAULT NULL,
   `team` varchar(40) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `team` (`team`),
+  CONSTRAINT `tb_players_ibfk_1` FOREIGN KEY (`team`) REFERENCES `tb_teams` (`name`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -89,8 +91,8 @@ CREATE TABLE `tb_results` (
   `season` varchar(20) DEFAULT NULL,
   KEY `team1` (`team1`),
   KEY `team2` (`team2`),
-  CONSTRAINT `tb_results_ibfk_1` FOREIGN KEY (`team1`) REFERENCES `tb_teams` (`name`),
-  CONSTRAINT `tb_results_ibfk_2` FOREIGN KEY (`team2`) REFERENCES `tb_teams` (`name`)
+  CONSTRAINT `tb_results_ibfk_1` FOREIGN KEY (`team1`) REFERENCES `tb_teams` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `tb_results_ibfk_2` FOREIGN KEY (`team2`) REFERENCES `tb_teams` (`name`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -120,8 +122,8 @@ CREATE TABLE `tb_searches` (
   PRIMARY KEY (`id`),
   KEY `player_id` (`player_id`),
   KEY `user_id` (`user_id`),
-  CONSTRAINT `tb_searches_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `tb_players` (`id`),
-  CONSTRAINT `tb_searches_ibfk_4` FOREIGN KEY (`user_id`) REFERENCES `tb_users` (`id`)
+  CONSTRAINT `tb_searches_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `tb_players` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `tb_searches_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `tb_teams` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -145,8 +147,7 @@ CREATE TABLE `tb_stats` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `player_id` smallint(6) NOT NULL DEFAULT '0',
   `season` int(11) NOT NULL DEFAULT '0',
-  `team` varchar(32) NOT NULL DEFAULT '0',
-  `caps` int(3) NOT NULL DEFAULT '0',
+  `caps` int(11) NOT NULL DEFAULT '0',
   `contributions` decimal(5,2) NOT NULL DEFAULT '0.00',
   `shotsper` decimal(5,2) NOT NULL DEFAULT '0.00',
   `keypass` decimal(5,2) NOT NULL DEFAULT '0.00',
@@ -159,10 +160,8 @@ CREATE TABLE `tb_stats` (
   `breaks` decimal(5,2) NOT NULL DEFAULT '0.00',
   PRIMARY KEY (`id`),
   KEY `player_id` (`player_id`),
-  KEY `team` (`team`),
-  CONSTRAINT `tb_stats_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `tb_players` (`id`),
-  CONSTRAINT `tb_stats_ibfk_2` FOREIGN KEY (`team`) REFERENCES `tb_teams` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `tb_stats_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `tb_players` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -171,7 +170,7 @@ CREATE TABLE `tb_stats` (
 
 LOCK TABLES `tb_stats` WRITE;
 /*!40000 ALTER TABLE `tb_stats` DISABLE KEYS */;
-INSERT INTO `tb_stats` VALUES (1,1,1,'3',4,3.00,4.00,3.00,4.00,3.00,4.00,3.00,4.00,3.00,4.00);
+INSERT INTO `tb_stats` VALUES (1,1,1,4,3.00,4.00,3.00,4.00,3.00,4.00,3.00,4.00,3.00,4.00),(2,1,2001,2,2.00,2.00,2.00,2.00,2.00,2.00,2.00,2.00,2.00,2.00);
 /*!40000 ALTER TABLE `tb_stats` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -183,11 +182,13 @@ DROP TABLE IF EXISTS `tb_teams`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tb_teams` (
-  `name` varchar(40) NOT NULL,
-  `marketValue` int(11) DEFAULT NULL,
-  `teamIndex` int(11) DEFAULT NULL,
-  PRIMARY KEY (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(40) DEFAULT NULL,
+  `market_value` int(11) DEFAULT NULL,
+  `index` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -196,6 +197,7 @@ CREATE TABLE `tb_teams` (
 
 LOCK TABLES `tb_teams` WRITE;
 /*!40000 ALTER TABLE `tb_teams` DISABLE KEYS */;
+INSERT INTO `tb_teams` VALUES (5,'Milan',800,76);
 /*!40000 ALTER TABLE `tb_teams` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -211,7 +213,10 @@ CREATE TABLE `tb_users` (
   `usertype` varchar(255) DEFAULT NULL,
   `password` varchar(32) DEFAULT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id`)
+  `email` varchar(30) NOT NULL,
+  `name` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -221,7 +226,7 @@ CREATE TABLE `tb_users` (
 
 LOCK TABLES `tb_users` WRITE;
 /*!40000 ALTER TABLE `tb_users` DISABLE KEYS */;
-INSERT INTO `tb_users` VALUES ('user','USER','user',1),('admin','ADMIN','admin',2);
+INSERT INTO `tb_users` VALUES ('user','USER','user',1,'user@email.com',NULL),('admin','ADMIN','admin',2,'admin@email.com',NULL);
 /*!40000 ALTER TABLE `tb_users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -234,4 +239,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-02-03 11:57:21
+-- Dump completed on 2020-02-06 11:44:29
