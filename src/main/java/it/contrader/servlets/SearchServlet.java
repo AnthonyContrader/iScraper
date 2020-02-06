@@ -68,17 +68,18 @@ public class SearchServlet extends HttpServlet {
 		boolean ans;
 		SimpleDateFormat format = new SimpleDateFormat("dMyyyy");
 		SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd");
-		Date search_date = new Date(Calendar.getInstance().getTimeInMillis());
-		int value, index, user;
-		short player;
+		SimpleDateFormat format3 = new SimpleDateFormat("EEE MMM d HH:mm:ss z yyyy");
+		//Date search_date = new Date(Calendar.getInstance().getTimeInMillis());
+		Date search_date = new Date(0);
+		int value = 0, index = 0, user = 0;
+		short player = 0;
 		sessionUser = (UserDTO)request.getSession().getAttribute("user");
-		
+		request.setAttribute("userId", sessionUser.getId());
 		
 		switch (mode.toUpperCase()) {
 		
 		case "SEARCHLIST":
 			updateList(request);
-			request.setAttribute("sessionUser", sessionUser.getId());
 			switch (sessionUser.getUsertype()) {
 			
 			case "ADMIN":
@@ -123,22 +124,48 @@ public class SearchServlet extends HttpServlet {
 			break;
 		
 		case "INSERT":
-			try {
-				String test = format2.parse(request.getParameter("search_date").toString()).toString();
-				search_date = new Date(format2.parse(request.getParameter("search_date")).getTime());
-			} catch (Exception e) {}
+			switch (sessionUser.getUsertype()) {
+			
+			case "ADMIN":
+				try {
+					search_date = new Date(format2.parse(request.getParameter("search_date")).getTime());
+				} catch (Exception e) {
+					getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
+				}
+				break;
+				
+			case "USER":
+				try {
+					search_date = new Date(format2.parse(request.getParameter("search_date")).getTime());
+				} catch (Exception e) {
+					getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
+				}	
+				break;
+				
+			default:
+				//logout
+				break;
+			}
 			try {
 				value = Integer.parseInt(request.getParameter("player_value"));
-			} catch (Exception e) {value=0;}
+			} catch (Exception e) {
+				getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
+			}
 			try {
 				index = Integer.parseInt(request.getParameter("player_index"));
-			} catch (Exception e) {index=0;}
+			} catch (Exception e) {
+				getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
+			}
 			try {
 				user = Integer.parseInt(request.getParameter("user_id"));
-			} catch (Exception e) {user=0;}
+			} catch (Exception e) {
+				getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
+			}
 			try {
 				player = Short.parseShort(request.getParameter("player_id"));
-			} catch (Exception e) {player=0;}
+			} catch (Exception e) {
+				getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
+			}
 			dto = new SearchDTO(search_date, value, index, user, player);
 			ans = service.insert(dto);
 			request.setAttribute("ans", ans);
@@ -165,22 +192,30 @@ public class SearchServlet extends HttpServlet {
 			case "ADMIN":
 				try {
 					search_date = new Date(format.parse(request.getParameter("search_date")).getTime());
-				} catch (Exception e) {}
+				} catch (Exception e) {
+					getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
+				}
 				try {
 					value = Integer.parseInt(request.getParameter("player_value"));
-				} catch(Exception e){value=0;}
+				} catch(Exception e){
+					getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
+				}
 				try {
 					index = Integer.parseInt(request.getParameter("player_index"));
-				} catch(Exception e) {index=0;}
+				} catch(Exception e) {
+					getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
+				}
 				try {
 					user = Integer.parseInt(request.getParameter("user_id"));
-				} catch(Exception e) {user=0;}
+				} catch(Exception e) {
+					getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
+				}
 				try {
 					player = Short.parseShort(request.getParameter("player_id"));
-				} catch (Exception e) {player=0;}
-				try {
-					id = Integer.parseInt(request.getParameter("id"));
-				} catch (Exception e) {id=0;}
+				} catch (Exception e) {
+					getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
+				}
+				id = Integer.parseInt(request.getParameter("id"));
 				dto = new SearchDTO(id, search_date, value, index, user, player);
 				ans = service.update(dto);
 				request.setAttribute("ans", ans);
