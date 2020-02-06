@@ -23,6 +23,13 @@ div.text {
 	color: #00a990;
 }
 
+.subtitle {
+	text-align: center;
+	font-size: 300%;
+	font-family: sans-serif;
+	color: #00a990;
+}
+
 .main {
 	margin-right: 5%;
 	margin-left: 5%;
@@ -233,6 +240,13 @@ form {
 	border-radius: 7px;
 	background-color: #f2f2f2;
 	padding: 20px;
+}
+
+form.user {
+	width: 45%;
+	border-radius: 7px;
+	background-color: white;
+	padding: 10px;
 }
 
 form.statsbox {
