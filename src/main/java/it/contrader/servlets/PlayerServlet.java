@@ -59,11 +59,6 @@ public class PlayerServlet extends HttpServlet {
 		switch (mode.toUpperCase()) {
 		
 		
-		case "UPDATEID" :
-			PlayerDTO newDto= new PlayerDTO(); 
-			dto = service.read(newDto.getId());
-			//System.out.println(dto);
-			request.setAttribute("dto", dto);
 			
 		case "PLAYERLIST":
 			
