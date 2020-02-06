@@ -80,10 +80,10 @@ public class PlayerServlet extends HttpServlet {
 		case "READ":
 			id = Integer.parseInt(request.getParameter("id"));
 			dto = service.read(id);
-			System.out.println(dto);
+			
 			request.setAttribute("dto", dto);
 			
-			System.out.println(dto.getPreviousMarketValue());
+			
 			if (request.getParameter("update") == null) {
 				 getServletContext().getRequestDispatcher("/player/readplayer.jsp").forward(request, response);
 				

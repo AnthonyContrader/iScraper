@@ -93,7 +93,7 @@ public class PlayerDAO implements DAO<Player>{
 				player.setSurname(resultSet.getString("player_surname"));
 				player.setAge(resultSet.getInt("age"));
 				player.setActualMarketValue(resultSet.getInt("actual_value"));
-				player.setActualMarketValue(resultSet.getInt("previous_value"));
+				player.setPreviousMarketValue(resultSet.getInt("previous_value"));
 				player.setPosition(resultSet.getString("position"));
 				player.setTeam(resultSet.getString("Team"));
 			} catch (Exception e) {
