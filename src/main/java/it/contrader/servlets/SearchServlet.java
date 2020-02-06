@@ -1,6 +1,6 @@
 package it.contrader.servlets;
 
-import java.util.Calendar;
+//import java.util.Calendar;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.IOException;
@@ -68,18 +68,23 @@ public class SearchServlet extends HttpServlet {
 		boolean ans;
 		SimpleDateFormat format = new SimpleDateFormat("dMyyyy");
 		SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd");
-		SimpleDateFormat format3 = new SimpleDateFormat("EEE MMM d HH:mm:ss z yyyy");
+		//SimpleDateFormat format3 = new SimpleDateFormat("EEE MMM d HH:mm:ss z yyyy");
 		//Date search_date = new Date(Calendar.getInstance().getTimeInMillis());
 		Date search_date = new Date(0);
 		int value = 0, index = 0, user = 0;
 		short player = 0;
 		sessionUser = (UserDTO)request.getSession().getAttribute("user");
-		request.setAttribute("userId", sessionUser.getId());
+		try {
+			request.setAttribute("userId", sessionUser.getId());
+		} catch (NullPointerException e) {
+			getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+		}
+		
 		
 		switch (mode.toUpperCase()) {
 		
 		case "SEARCHLIST":
-			updateList(request);
+	 		updateList(request);
 			switch (sessionUser.getUsertype()) {
 			
 			case "ADMIN":
@@ -91,7 +96,7 @@ public class SearchServlet extends HttpServlet {
 				break;
 				
 			default:
-				//LogoutServlet
+				getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 				break;
 			}
 			break;
@@ -118,7 +123,7 @@ public class SearchServlet extends HttpServlet {
 				break;
 				
 			default:
-				//LogoutServlet
+				getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 				break;
 			}
 			break;
@@ -130,6 +135,7 @@ public class SearchServlet extends HttpServlet {
 				try {
 					search_date = new Date(format2.parse(request.getParameter("search_date")).getTime());
 				} catch (Exception e) {
+					updateList(request);
 					getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
 				}
 				break;
@@ -138,52 +144,59 @@ public class SearchServlet extends HttpServlet {
 				try {
 					search_date = new Date(format2.parse(request.getParameter("search_date")).getTime());
 				} catch (Exception e) {
+					updateList(request);
 					getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
 				}	
 				break;
 				
 			default:
-				//logout
+				getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 				break;
 			}
 			try {
 				value = Integer.parseInt(request.getParameter("player_value"));
 			} catch (Exception e) {
+				updateList(request);
 				getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
 			}
 			try {
 				index = Integer.parseInt(request.getParameter("player_index"));
 			} catch (Exception e) {
+				updateList(request);
 				getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
 			}
 			try {
 				user = Integer.parseInt(request.getParameter("user_id"));
 			} catch (Exception e) {
+				updateList(request);
 				getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
 			}
 			try {
 				player = Short.parseShort(request.getParameter("player_id"));
 			} catch (Exception e) {
+				updateList(request);
 				getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
 			}
 			dto = new SearchDTO(search_date, value, index, user, player);
 			ans = service.insert(dto);
 			request.setAttribute("ans", ans);
-			updateList(request);
 			switch (sessionUser.getUsertype()) {
 			
 			case "ADMIN":
+				updateList(request);
 				getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
 				break;
 				
 			case "USER":
+				updateList(request);
 				getServletContext().getRequestDispatcher("/search/searchusermanager.jsp").forward(request, response);
 				break;
 				
 			default:
-				//logout
+				getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 				break;
 			}
+
 		break;
 		
 		case "UPDATE":
@@ -193,26 +206,31 @@ public class SearchServlet extends HttpServlet {
 				try {
 					search_date = new Date(format.parse(request.getParameter("search_date")).getTime());
 				} catch (Exception e) {
+					updateList(request);
 					getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
 				}
 				try {
 					value = Integer.parseInt(request.getParameter("player_value"));
 				} catch(Exception e){
+					updateList(request);
 					getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
 				}
 				try {
 					index = Integer.parseInt(request.getParameter("player_index"));
 				} catch(Exception e) {
+					updateList(request);
 					getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
 				}
 				try {
 					user = Integer.parseInt(request.getParameter("user_id"));
 				} catch(Exception e) {
+					updateList(request);
 					getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
 				}
 				try {
 					player = Short.parseShort(request.getParameter("player_id"));
 				} catch (Exception e) {
+					updateList(request);
 					getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
 				}
 				id = Integer.parseInt(request.getParameter("id"));
@@ -228,7 +246,7 @@ public class SearchServlet extends HttpServlet {
 				break;
 				
 			default:
-				//logout
+				getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 				break;
 			}
 			break;
@@ -258,7 +276,7 @@ public class SearchServlet extends HttpServlet {
 				break;
 			
 			default:
-				//logout
+				getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 				break;
 			}
 		}
