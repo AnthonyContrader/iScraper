@@ -6,6 +6,7 @@
 	<a href="PlayerServlet?mode=playerList">Players</a>
 	<a href="TeamServlet?mode=teamList">Squadre</a>
 	<a href="StatsboxServlet?mode=statsboxList"> Statistiche</a>
+	<a href="InjuryServlet?mode=injuryList"> Infortuni</a>
 	<a href="SearchServlet?mode=searchlist">Ricerche</a>
 	<a href="LogoutServlet" id="logout">Logout</a>
 </div>

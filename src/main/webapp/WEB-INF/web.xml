@@ -70,4 +70,15 @@
   	<servlet-name>TeamServlet</servlet-name>
   	<url-pattern>/TeamServlet</url-pattern>
   </servlet-mapping>
+  
+   <servlet>
+  	<description></description>
+  	<display-name>InjuryServlet</display-name>
+  	<servlet-name>InjuryServlet</servlet-name>
+  	<servlet-class>it.contrader.servlets.InjuryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>InjuryServlet</servlet-name>
+  	<url-pattern>/InjuryServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

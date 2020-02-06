@@ -5,7 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <link href="../css/vittoriostyle.css" rel="stylesheet">
-<title>Read Teams</title>
+<title>Squadre - Lettura</title>
 </head>
 <body>
 	<%@ include file="../utilities/header.jsp"%>

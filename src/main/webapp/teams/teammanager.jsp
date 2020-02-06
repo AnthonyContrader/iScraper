@@ -6,7 +6,7 @@
 <head> 
 <meta charset="ISO-8859-1">
 <link href="../css/vittoriostyle.css" rel="stylesheet">
-<title> Statistiche </title>
+<title> Squadre </title>
 </head>
 <body>
 	<%@ include file="../utilities/header.jsp"%>
