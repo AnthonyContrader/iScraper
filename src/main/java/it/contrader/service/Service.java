@@ -6,7 +6,7 @@ import java.util.List;
  * 
  * @author Vittorio
  *
- * @param <DTO> questo è un tipo generico!
+ * @param <DTO> questo ï¿½ un tipo generico!
  */
 public interface Service<DTO> {
 	/**
@@ -15,6 +15,7 @@ public interface Service<DTO> {
 	public List<DTO> getAll();
 	
 	public DTO read(int id);
+	public DTO read(String name);
 	
 	public boolean insert(DTO dto);
 	

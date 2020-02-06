@@ -61,8 +61,6 @@ public class PlayerServlet extends HttpServlet {
 			
 		case "PLAYERLIST":
 			
-			
-			
 			updateList(request);
 			if(session.getAttribute("utilizator").equals("ADMIN")) {
 				getServletContext().getRequestDispatcher("/player/playermanager.jsp").forward(request, response);
@@ -87,8 +85,7 @@ public class PlayerServlet extends HttpServlet {
 			else getServletContext().getRequestDispatcher("/player/updateplayer.jsp").forward(request, response);
 			
 			break;
-			
-			
+	
 	
 		case "INSERT":
 			
@@ -120,7 +117,7 @@ public class PlayerServlet extends HttpServlet {
 			
 			
 			dto = new PlayerDTO(player_name,player_surname,age,actualMarketValue,previousMarketValue,position,team);
-			System.out.println(dto.getPreviousMarketValue()+ "new");
+		System.out.println(dto);
 			
 			ans = service.insert(dto); 
 			request.setAttribute("ans", ans);
@@ -165,6 +162,8 @@ public class PlayerServlet extends HttpServlet {
 		break;
 		
 		case "DELETE":
+			
+		
 			try {
 				player_name = request.getParameter("player_name");
 			} catch (Exception e) {}
@@ -190,8 +189,9 @@ public class PlayerServlet extends HttpServlet {
 			} catch (Exception e) {}
 			
 			id = Integer.parseInt(request.getParameter("id"));
+			System.out.println(id);
 			ans = service.delete(id);
-		//	request.setAttribute("ans", ans);
+			request.setAttribute("ans", ans);
 			updateList(request);
 			getServletContext().getRequestDispatcher("/player/playermanager.jsp").forward(request, response);
 		}

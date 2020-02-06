@@ -8,7 +8,21 @@ html {
 	font-family: sans-serif;
 }
 .body{
-	background-image: url("iscrap-03.svg");
+	background-image: url("main1.jpg");
+}
+#new{
+	background-image: url("main1.jpg");
+
+background-repeat: no-repeat;
+
+background-attachment: fixed;
+
+background-position: center;
+
+    background-position-x: center;
+    background-position-y: center;
+
+.background-size: cover;
 }
 div.text {
 	clear: both;

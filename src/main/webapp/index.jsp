@@ -6,7 +6,7 @@
 
 <title>Login SAMPLE</title>
 </head>
-<body>
+<body id="new">
 
 	<form class="login" action="LoginServlet" method="post">
 

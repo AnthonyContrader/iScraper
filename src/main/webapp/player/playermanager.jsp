@@ -33,11 +33,13 @@
 				<th>Squadra</th>
 
 			</tr>
+			
 			<%
 				for (PlayerDTO s : list) {
 			%>
 			<tr>
 				<td> <a href=PlayerServlet?mode=read&id=<%=s.getId()%>> <%=s.getId()%> </a></td>
+			
 				<td><%=s.getName()%></td>
 				<td><%=s.getSurname()%></td>
 				<td><%=s.getAge()%></td>
@@ -219,7 +221,7 @@
 		
 		
 		<form id="floatright" style="margin-top: 5%;
-margin-bottom: 1%; " action="PlayerServlet?mode=delete" method="post">
+		margin-bottom: 1%;" action="PlayerServlet?mode=delete" method="post">
 			<div class="row">
 				<div class="col-25">
 					<label for="date">Player ID</label>
