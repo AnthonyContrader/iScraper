@@ -13,14 +13,6 @@ public class InputValidation {
 	    if (length == 0) {
 	        return "Campo valore vuoto";
 	    }
-	    //Se la stringa ha 10 valori flagga un controllo per l'overflow,
-	    //se ne ha di più ritorna il messaggio d'errore
-	    if (length >= 10) {
-	    	if (length > 10) {
-	    		return "Valore non valido";
-	    	}
-	    	possibleMaxValue = true;
-	    }
 	    int i = 0;
 	    //Controlla se il primo carattere della stringa è un -, in caso positivo
 	    //modifica il punto d'inizio dei controlli e flagga il controllo per
@@ -31,6 +23,21 @@ public class InputValidation {
 	        }
 	        i = 1;
 	        negative = true;
+	    }
+	    //Se la stringa ha 10 valori flagga un controllo per l'overflow,
+	    //se ne ha di più ritorna il messaggio d'errore
+	    if (length >= 10) {
+	    	if (negative) {
+		    	if (length > 11) {
+		    		return "Valore non valido";
+		    	}
+	    	}
+	    	else {
+	    		if (length > 10) {
+	    			return "Valore non valido";
+	    		}
+	    	}
+	    	possibleMaxValue = true;
 	    }
 	    //Se è un possibile valore massimo controlla che ogni singolo carattere non
 	    //superi un determinato valore
