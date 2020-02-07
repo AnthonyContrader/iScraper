@@ -14,6 +14,8 @@ import it.contrader.dto.SearchUserDTO;
 import it.contrader.service.SearchUserService;
 import it.contrader.service.SearchService;
 import it.contrader.service.Service;
+import it.contrader.utils.InputValidation;
+
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 
@@ -151,11 +153,15 @@ public class SearchServlet extends HttpServlet {
 				getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 				break;
 			}
-			try {
+			String messaggio = InputValidation.intValidation(request.getParameter("player_value"), "/search/searchmanager.jsp");
+			String errore = new String("");
+			if (messaggio.equals("ok")) {
 				value = Integer.parseInt(request.getParameter("player_value"));
-			} catch (Exception e) {
-				updateList(request);
-				getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
+			} else {
+				errore = errore + messaggio + "\n";
+				//request.setAttribute("messaggio", messaggio);
+				//updateList(request);
+				//getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
 			}
 			try {
 				index = Integer.parseInt(request.getParameter("player_index"));

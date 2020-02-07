@@ -5,11 +5,12 @@ public class InputValidation {
 	public static String intValidation(String num, String destination) {
 	    boolean possibleMaxValue = false;
 	    boolean negative = false;
-		//Se la stringa è vuota ritorna il messaggio d'errore
+	    //Se la stringa è vuota ritorna il messaggio d'errore
 	    if (num == null) {
 	        return "Campo valore vuoto";
 	    }
-	    int length = num.length();
+	    String trimmedNum = num.trim();
+	    int length = trimmedNum.length();
 	    if (length == 0) {
 	        return "Campo valore vuoto";
 	    }
@@ -17,7 +18,7 @@ public class InputValidation {
 	    //Controlla se il primo carattere della stringa è un -, in caso positivo
 	    //modifica il punto d'inizio dei controlli e flagga il controllo per
 	    //numeri negativi da eseguire nel caso si rischi l'overflow
-	    if (num.charAt(0) == '-') {
+	    if (trimmedNum.charAt(0) == '-') {
 	        if (length == 1) {
 	            return "Valore non valido";
 	        }
@@ -45,34 +46,34 @@ public class InputValidation {
 	    //al limite dell'overflow esce e continua con il controllo normale
 	    if (possibleMaxValue) {
 	    	if (negative) {
-	    		if (num.charAt(i) < '0' || num.charAt(i) > '2') return "Inserire un numero valido";
-	    		else if (num.charAt(i)=='2'){
+	    		if (trimmedNum.charAt(i) < '0' || trimmedNum.charAt(i) > '2') return "Inserire un numero valido";
+	    		else if (trimmedNum.charAt(i)=='2'){
 	    			i++;
-		    		if (num.charAt(i) < '0' || num.charAt(i) > '1') return "Inserire un numero valido";
-		    		else if (num.charAt(i)=='1') {
+		    		if (trimmedNum.charAt(i) < '0' || trimmedNum.charAt(i) > '1') return "Inserire un numero valido";
+		    		else if (trimmedNum.charAt(i)=='1') {
 		    			i++;
-		    			if (num.charAt(i) < '0' || num.charAt(i) > '4') return "Inserire un numero valido";
-		    			else if (num.charAt(i)=='4') {
+		    			if (trimmedNum.charAt(i) < '0' || trimmedNum.charAt(i) > '4') return "Inserire un numero valido";
+		    			else if (trimmedNum.charAt(i)=='4') {
 			    			i++;
-				    		if (num.charAt(i) < '0' || num.charAt(i) > '7') return "Inserire un numero valido";
-				    		else if(num.charAt(i)=='7') {
+				    		if (trimmedNum.charAt(i) < '0' || trimmedNum.charAt(i) > '7') return "Inserire un numero valido";
+				    		else if(trimmedNum.charAt(i)=='7') {
 					    		i++;
-					    		if (num.charAt(i) < '0' || num.charAt(i) > '4') return "Inserire un numero valido";
-					    		else if(num.charAt(i)=='4') {
+					    		if (trimmedNum.charAt(i) < '0' || trimmedNum.charAt(i) > '4') return "Inserire un numero valido";
+					    		else if(trimmedNum.charAt(i)=='4') {
 						    		i++;
-						    		if (num.charAt(i) < '0' || num.charAt(i) > '8') return "Inserire un numero valido";
-						    		else if(num.charAt(i)=='8') {
+						    		if (trimmedNum.charAt(i) < '0' || trimmedNum.charAt(i) > '8') return "Inserire un numero valido";
+						    		else if(trimmedNum.charAt(i)=='8') {
 						    			i++;
-							    		if (num.charAt(i) < '0' || num.charAt(i) > '3') return "Inserire un numero valido";
-							    		else if(num.charAt(i)=='3') {
+							    		if (trimmedNum.charAt(i) < '0' || trimmedNum.charAt(i) > '3') return "Inserire un numero valido";
+							    		else if(trimmedNum.charAt(i)=='3') {
 								    		i++;
-								    		if (num.charAt(i) < '0' || num.charAt(i) > '6') return "Inserire un numero valido";
-								    		else if(num.charAt(i)=='6') { 
+								    		if (trimmedNum.charAt(i) < '0' || trimmedNum.charAt(i) > '6') return "Inserire un numero valido";
+								    		else if(trimmedNum.charAt(i)=='6') { 
 									    		i++;
-									    		if (num.charAt(i) < '0' || num.charAt(i) > '4') return "Inserire un numero valido";
-									    		else if(num.charAt(i)=='4') {
+									    		if (trimmedNum.charAt(i) < '0' || trimmedNum.charAt(i) > '4') return "Inserire un numero valido";
+									    		else if(trimmedNum.charAt(i)=='4') {
 										    		i++;
-										    		if (num.charAt(i) < '0' || num.charAt(i) > '8') return "Inserire un numero valido";
+										    		if (trimmedNum.charAt(i) < '0' || trimmedNum.charAt(i) > '8') return "Inserire un numero valido";
 										    		return "ok";
 									    		}
 								    		}
@@ -88,7 +89,7 @@ public class InputValidation {
 	    		//normalmente dal valore successivo
 		    	i++;
 		    	for (; i < length; i++) {
-			    	char c = num.charAt(i);
+			    	char c = trimmedNum.charAt(i);
 			    	if (c < '0' || c > '9') {
 			    		return "Inserire un numero";
 			    	}
@@ -96,34 +97,34 @@ public class InputValidation {
 		    	return "ok";
 	    	} else {
 	    		//Funziona come il controllo del blocco precedente, ma controlla un valore positivo
-	    		if (num.charAt(i) < '0' || num.charAt(i) > '2') return "Inserire un numero valido";
-	    		else if (num.charAt(i)=='2'){
+	    		if (trimmedNum.charAt(i) < '0' || trimmedNum.charAt(i) > '2') return "Inserire un numero valido";
+	    		else if (trimmedNum.charAt(i)=='2'){
 	    			i++;
-		    		if (num.charAt(i) < '0' || num.charAt(i) > '1') return "Inserire un numero valido";
-		    		else if (num.charAt(i)=='1') {
+		    		if (trimmedNum.charAt(i) < '0' || trimmedNum.charAt(i) > '1') return "Inserire un numero valido";
+		    		else if (trimmedNum.charAt(i)=='1') {
 		    			i++;
-		    			if (num.charAt(i) < '0' || num.charAt(i) > '4') return "Inserire un numero valido";
-		    			else if (num.charAt(i)=='4') {
+		    			if (trimmedNum.charAt(i) < '0' || trimmedNum.charAt(i) > '4') return "Inserire un numero valido";
+		    			else if (trimmedNum.charAt(i)=='4') {
 			    			i++;
-				    		if (num.charAt(i) < '0' || num.charAt(i) > '7') return "Inserire un numero valido";
-				    		else if(num.charAt(i)=='7') {
+				    		if (trimmedNum.charAt(i) < '0' || trimmedNum.charAt(i) > '7') return "Inserire un numero valido";
+				    		else if(trimmedNum.charAt(i)=='7') {
 					    		i++;
-					    		if (num.charAt(i) < '0' || num.charAt(i) > '4') return "Inserire un numero valido";
-					    		else if(num.charAt(i)=='4') {
+					    		if (trimmedNum.charAt(i) < '0' || trimmedNum.charAt(i) > '4') return "Inserire un numero valido";
+					    		else if(trimmedNum.charAt(i)=='4') {
 						    		i++;
-						    		if (num.charAt(i) < '0' || num.charAt(i) > '8') return "Inserire un numero valido";
-						    		else if(num.charAt(i)=='8') {
+						    		if (trimmedNum.charAt(i) < '0' || trimmedNum.charAt(i) > '8') return "Inserire un numero valido";
+						    		else if(trimmedNum.charAt(i)=='8') {
 						    			i++;
-							    		if (num.charAt(i) < '0' || num.charAt(i) > '3') return "Inserire un numero valido";
-							    		else if(num.charAt(i)=='3') {
+							    		if (trimmedNum.charAt(i) < '0' || trimmedNum.charAt(i) > '3') return "Inserire un numero valido";
+							    		else if(trimmedNum.charAt(i)=='3') {
 								    		i++;
-								    		if (num.charAt(i) < '0' || num.charAt(i) > '6') return "Inserire un numero valido";
-								    		else if(num.charAt(i)=='6') { 
+								    		if (trimmedNum.charAt(i) < '0' || trimmedNum.charAt(i) > '6') return "Inserire un numero valido";
+								    		else if(trimmedNum.charAt(i)=='6') { 
 									    		i++;
-									    		if (num.charAt(i) < '0' || num.charAt(i) > '4') return "Inserire un numero valido";
-									    		else if(num.charAt(i)=='4') {
+									    		if (trimmedNum.charAt(i) < '0' || trimmedNum.charAt(i) > '4') return "Inserire un numero valido";
+									    		else if(trimmedNum.charAt(i)=='4') {
 										    		i++;
-										    		if (num.charAt(i) < '0' || num.charAt(i) > '7') return "Inserire un numero valido";
+										    		if (trimmedNum.charAt(i) < '0' || trimmedNum.charAt(i) > '7') return "Inserire un numero valido";
 										    		return "ok";
 									    		}
 								    		}
@@ -136,7 +137,7 @@ public class InputValidation {
 	    		}
 		    	i++;
 		    	for (; i < length; i++) {
-			    	char c = num.charAt(i);
+			    	char c = trimmedNum.charAt(i);
 			    	if (c < '0' || c > '9') {
 			    		return "Inserire un numero";
 			    	}
@@ -147,7 +148,7 @@ public class InputValidation {
 	    	//Il valore non rischia l'overflow, si verifica solamente che ci siano
 	    	//solo numeri nella stringa
 	    	for (; i < length; i++) {
-		        char c = num.charAt(i);
+		        char c = trimmedNum.charAt(i);
 		        if (c < '0' || c > '9') {
 		            return "Inserire un numero";
 		        }
@@ -162,7 +163,8 @@ public class InputValidation {
 	    if (num == null) {
 	        return "Campo valore vuoto";
 	    }
-	    int length = num.length();
+	    String trimmedNum = num.trim();
+	    int length = trimmedNum.length();
 	    if (length == 0) {
 	        return "Campo valore vuoto";
 	    }
@@ -180,34 +182,34 @@ public class InputValidation {
 	    //In qualunque momento il valore controllato non pone il valore complessivo
 	    //al limite dell'overflow esce e continua con il controllo normale
 	    if (possibleMaxValue) {
-	    	if (num.charAt(i) < '0' || num.charAt(i) > '4') return "Inserire un numero valido";
-	   		else if (num.charAt(i)=='4'){
+	    	if (trimmedNum.charAt(i) < '0' || trimmedNum.charAt(i) > '4') return "Inserire un numero valido";
+	   		else if (trimmedNum.charAt(i)=='4'){
 	   			i++;
-	    		if (num.charAt(i) < '0' || num.charAt(i) > '2') return "Inserire un numero valido";
-	    		else if (num.charAt(i)=='2') {
+	    		if (trimmedNum.charAt(i) < '0' || trimmedNum.charAt(i) > '2') return "Inserire un numero valido";
+	    		else if (trimmedNum.charAt(i)=='2') {
 	    			i++;
-	    			if (num.charAt(i) < '0' || num.charAt(i) > '9') return "Inserire un numero valido";
-	    			else if (num.charAt(i)=='9') {
+	    			if (trimmedNum.charAt(i) < '0' || trimmedNum.charAt(i) > '9') return "Inserire un numero valido";
+	    			else if (trimmedNum.charAt(i)=='9') {
 			    		i++;
-				    	if (num.charAt(i) < '0' || num.charAt(i) > '4') return "Inserire un numero valido";
-				    	else if(num.charAt(i)=='4') {
+				    	if (trimmedNum.charAt(i) < '0' || trimmedNum.charAt(i) > '4') return "Inserire un numero valido";
+				    	else if(trimmedNum.charAt(i)=='4') {
 					   		i++;
-					   		if (num.charAt(i) < '0' || num.charAt(i) > '9') return "Inserire un numero valido";
-					   		else if(num.charAt(i)=='9') {
+					   		if (trimmedNum.charAt(i) < '0' || trimmedNum.charAt(i) > '9') return "Inserire un numero valido";
+					   		else if(trimmedNum.charAt(i)=='9') {
 					    		i++;
-					    		if (num.charAt(i) < '0' || num.charAt(i) > '6') return "Inserire un numero valido";
-					    		else if(num.charAt(i)=='6') {
+					    		if (trimmedNum.charAt(i) < '0' || trimmedNum.charAt(i) > '6') return "Inserire un numero valido";
+					    		else if(trimmedNum.charAt(i)=='6') {
 					    			i++;
-						    		if (num.charAt(i) < '0' || num.charAt(i) > '7') return "Inserire un numero valido";
-						    		else if(num.charAt(i)=='7') {
+						    		if (trimmedNum.charAt(i) < '0' || trimmedNum.charAt(i) > '7') return "Inserire un numero valido";
+						    		else if(trimmedNum.charAt(i)=='7') {
 							    		i++;
-							    		if (num.charAt(i) < '0' || num.charAt(i) > '2') return "Inserire un numero valido";
-							    		else if(num.charAt(i)=='2') { 
+							    		if (trimmedNum.charAt(i) < '0' || trimmedNum.charAt(i) > '2') return "Inserire un numero valido";
+							    		else if(trimmedNum.charAt(i)=='2') { 
 								    		i++;
-								    		if (num.charAt(i) < '0' || num.charAt(i) > '9') return "Inserire un numero valido";
-								    		else if(num.charAt(i)=='9') {
+								    		if (trimmedNum.charAt(i) < '0' || trimmedNum.charAt(i) > '9') return "Inserire un numero valido";
+								    		else if(trimmedNum.charAt(i)=='9') {
 									    		i++;
-									    		if (num.charAt(i) < '0' || num.charAt(i) > '5') return "Inserire un numero valido";
+									    		if (trimmedNum.charAt(i) < '0' || trimmedNum.charAt(i) > '5') return "Inserire un numero valido";
 									    		return "ok";
 								    		}
 							    		}
@@ -220,7 +222,7 @@ public class InputValidation {
 	    	}
 	    	i++;
 		    for (; i < length; i++) {
-			   	char c = num.charAt(i);
+			   	char c = trimmedNum.charAt(i);
 			   	if (c < '0' || c > '9') {
 			   		return "Inserire un numero";
 			   	}
@@ -230,7 +232,7 @@ public class InputValidation {
 	    	//Il valore non rischia l'overflow, si verifica solamente che ci siano
 	    	//solo numeri nella stringa
 	    	for (; i < length; i++) {
-		        char c = num.charAt(i);
+		        char c = trimmedNum.charAt(i);
 		        if (c < '0' || c > '9') {
 		            return "Inserire un numero";
 		        }
@@ -238,4 +240,7 @@ public class InputValidation {
 		    return "ok";
 	    }
 	}
+
+	
+	
 }
