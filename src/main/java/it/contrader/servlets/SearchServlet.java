@@ -81,6 +81,9 @@ public class SearchServlet extends HttpServlet {
 		Date search_date = new Date(0);
 		int value = 0, index = 0, user = 0;
 		short player = 0;
+		String messaggio = new String("");
+		String errore = new String("");
+		boolean datiErrati=false;
 		//sessionUser = (UserDTO)request.getSession().getAttribute("user");
 		//try {
 		//	request.setAttribute("userId", sessionUser.getId());
@@ -176,9 +179,9 @@ public class SearchServlet extends HttpServlet {
 				getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 				break;
 			}
-			String messaggio = InputValidation.intValidation(request.getParameter("player_value"));
-			String errore = new String("");
-			boolean datiErrati = false;
+			messaggio = InputValidation.intValidation(request.getParameter("player_value"));
+			errore = new String("");
+			datiErrati = false;
 			if (messaggio.equals("ok")) {
 				value = Integer.parseInt(request.getParameter("player_value"));
 			} else {
@@ -266,42 +269,55 @@ public class SearchServlet extends HttpServlet {
 			switch (usertype/*request.getSession().getAttribute("utente").toString()/*sessionUser.getUsertype()*/) {
 			
 			case "ADMIN":
-				try {
-					search_date = new Date(format.parse(request.getParameter("search_date")).getTime());
-				} catch (Exception e) {
-					updateList(request);
-					getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
-				}
-				try {
+				messaggio = InputValidation.intValidation(request.getParameter("player_value"));
+				errore = new String("");
+				datiErrati = false;
+				if (messaggio.equals("ok")) {
 					value = Integer.parseInt(request.getParameter("player_value"));
-				} catch(Exception e){
-					updateList(request);
-					getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
+				} else {
+					datiErrati = true;
+					errore = errore+ "Valore giocatore: " + messaggio + "<br>";
 				}
-				try {
+				messaggio = InputValidation.intValidation(request.getParameter("player_index"));
+				if (messaggio.equals("ok")) {
 					index = Integer.parseInt(request.getParameter("player_index"));
-				} catch(Exception e) {
-					updateList(request);
-					getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
+				} else {
+					datiErrati = true;
+					errore = errore + "Indice giocatore: " + messaggio + "<br>";
 				}
-				try {
-					user = Integer.parseInt(request.getParameter("user_id"));
-				} catch(Exception e) {
-					updateList(request);
-					getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
-				}
-				try {
+				messaggio = InputValidation.shortValidation(request.getParameter("player_id"));
+				if (messaggio.equals("ok")) {
 					player = Short.parseShort(request.getParameter("player_id"));
-				} catch (Exception e) {
-					updateList(request);
-					getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
+				} else {
+					datiErrati = true;
+					errore = errore + "Id Giocatore: " + messaggio + "<br>";
 				}
 				id = Integer.parseInt(request.getParameter("id"));
-				dto = new SearchDTO(id, search_date, value, index, user, player);
-				ans = service.update(dto);
-				request.setAttribute("ans", ans);
-				updateList(request);
-				getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
+				if (datiErrati) {
+					request.setAttribute("messaggio", errore);
+					try {
+						usertype = request.getSession().getAttribute("utente").toString();
+					} catch (NullPointerException e) {
+						getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+					}
+					switch (usertype/*request.getSession().getAttribute("utente").toString()*/) {
+					
+					case "ADMIN":
+						//updateList(request);
+						getServletContext().getRequestDispatcher("/SearchServlet?mode=read&update=true&id="+id).forward(request, response);
+						break;
+						
+					default:
+						getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+						break;
+					}
+				} else {
+					dto = new SearchDTO(id, search_date, value, index, user, player);
+					ans = service.update(dto);
+					request.setAttribute("ans", ans);
+					updateList(request);
+					getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
+				}
 				break;
 				
 			case "USER":
@@ -349,4 +365,4 @@ public class SearchServlet extends HttpServlet {
 			}
 		}
 	}
-}	
+}
