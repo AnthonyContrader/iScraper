@@ -15,7 +15,7 @@ public class SearchDAO implements DAO<Search> {
 	private final String QUERY_ALL = "SELECT * FROM tb_searches";
 	private final String QUERY_CREATE = "INSERT INTO tb_searches (search_date, player_value, player_index, user_id, player_id) VALUES (?,?,?,?,?)";
 	private final String QUERY_READ = "SELECT * FROM tb_searches WHERE id=?";
-	//private final String USER_ALL = "SELECT * FROM tb_searches user_id=?";
+	//private final String USER_ALL = "SELECT * FROM tb_searches WHERE user_id=?";
 	private final String QUERY_UPDATE = "UPDATE tb_searches SET search_date=?, player_value=?, player_index=?, user_id=?, player_id=? WHERE id=?";
 	private final String QUERY_DELETE = "DELETE FROM tb_searches WHERE id=?";
 	

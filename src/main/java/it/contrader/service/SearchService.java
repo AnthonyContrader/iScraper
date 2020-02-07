@@ -12,9 +12,5 @@ public class SearchService extends AbstractService<Search, SearchDTO>{
 		this.converter = new SearchConverter();
 	}
 
-	@Override
-	public SearchDTO read(String name) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 }

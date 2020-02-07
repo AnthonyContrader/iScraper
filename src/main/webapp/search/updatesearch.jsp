@@ -21,7 +21,7 @@
 					<label for="date">Data</label>
 				</div>
 				<div class="col-75">
-					<input type="text" id="date" name="search_date" value=<%=s.getDate()%>>
+					<input type="date" id="date" name="search_date" value=<%=s.getDate()%>>
 				</div>
 			</div>
 			<div class="row">

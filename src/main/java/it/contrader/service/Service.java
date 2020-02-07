@@ -15,7 +15,7 @@ public interface Service<DTO> {
 	public List<DTO> getAll();
 	
 	public DTO read(int id);
-	public DTO read(String name);
+	//public DTO read(String name);
 	
 	public boolean insert(DTO dto);
 	

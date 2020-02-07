@@ -21,11 +21,7 @@ public class UserService extends AbstractService<User, UserDTO> {
 		this.converter = new UserConverter();
 	}
 
-	@Override
-	public UserDTO read(String name) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 	
 
 }

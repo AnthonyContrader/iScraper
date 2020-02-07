@@ -13,9 +13,5 @@ public class TeamService extends AbstractService <Team, TeamDTO>{
 		this.converter = new TeamConverter();
 	}
 
-	@Override
-	public TeamDTO read(String name) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 }

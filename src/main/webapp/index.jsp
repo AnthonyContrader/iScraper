@@ -11,10 +11,14 @@
 
 	<div class="container2">
 
+
 		<img src="css/adduser.png" alt="Avatar" class="image">
 		
 		
 		<div class="overlay">
+
+		
+
 
 			<form class="login1" action="UserServlet?mode=insertuser"
 				method="post">
