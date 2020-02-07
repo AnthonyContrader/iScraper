@@ -15,7 +15,7 @@
 	<div class="main">
 		<%
 		List<SearchDTO> list = (List<SearchDTO>) request.getAttribute("list");
-		String userId = request.getAttribute("userId").toString();
+		String userId = session.getAttribute("userId").toString();
 		String formatted = new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date()).toString();
 		%>
 

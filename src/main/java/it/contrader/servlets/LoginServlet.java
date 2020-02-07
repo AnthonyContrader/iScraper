@@ -35,8 +35,14 @@ public class LoginServlet extends HttpServlet {
 			String username = request.getParameter("username").toString();
 			String password = request.getParameter("password").toString();
 			//come nei vecchi controller, invoca il service
-			UserDTO dto = service.login(username, password);
-			session.setAttribute("utilizator", dto.getUsertype().toString());
+			UserDTO dto = new UserDTO();
+			try {
+				dto = service.login(username, password);
+			} catch (NullPointerException e) {
+				getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+			}
+			session.setAttribute("utente", dto.getUsertype().toString());
+			session.setAttribute("userId", dto.getId());
 			if (dto != null) {
 				//se il login ha funzionato, salva l'utente nella sessione
 				session.setAttribute("user", dto);

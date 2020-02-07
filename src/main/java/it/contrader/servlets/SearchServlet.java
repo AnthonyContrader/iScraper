@@ -1,6 +1,5 @@
 package it.contrader.servlets;
 
-//import java.util.Calendar;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.IOException;
@@ -21,7 +20,7 @@ import java.text.SimpleDateFormat;
 
 public class SearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	UserDTO sessionUser;
+	//UserDTO sessionUser;
 	
 	public SearchServlet() {}
 	
@@ -29,17 +28,18 @@ public class SearchServlet extends HttpServlet {
 		Service<SearchDTO> service = new SearchService();
 		List<SearchDTO> listDTO = service.getAll();
 		
-		switch (sessionUser.getUsertype()) {
+		switch (request.getSession().getAttribute("utente").toString()/*sessionUser.getUsertype()*/) {
 		
 		case "ADMIN":
 			request.setAttribute("list", listDTO);
 			break;
 		
 		case "USER":
-			SearchUserDTO userDTO = new SearchUserDTO();
+			SearchUserDTO userDTO;
 			List<SearchUserDTO> listUserDTO = new ArrayList<>();
-			listDTO.forEach(element -> {
-				if (element.getUser()==sessionUser.getId()) {
+			for (SearchDTO element : listDTO) {	
+				if (element.getUser()==Integer.parseInt(request.getSession().getAttribute("userId").toString())/*sessionUser.getId()*/) {
+					userDTO = new SearchUserDTO();
 					userDTO.setID(element.getID());
 					userDTO.setDate(element.getDate());
 					userDTO.setIndex(element.getIndex());
@@ -47,7 +47,7 @@ public class SearchServlet extends HttpServlet {
 					userDTO.setPlayer(element.getPlayer());
 					listUserDTO.add(userDTO);
 				}
-			});
+			}
 			request.setAttribute("list", listUserDTO);
 			break;
 			
@@ -68,24 +68,22 @@ public class SearchServlet extends HttpServlet {
 		boolean ans;
 		SimpleDateFormat format = new SimpleDateFormat("dMyyyy");
 		SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd");
-		//SimpleDateFormat format3 = new SimpleDateFormat("EEE MMM d HH:mm:ss z yyyy");
-		//Date search_date = new Date(Calendar.getInstance().getTimeInMillis());
 		Date search_date = new Date(0);
 		int value = 0, index = 0, user = 0;
 		short player = 0;
-		sessionUser = (UserDTO)request.getSession().getAttribute("user");
-		try {
-			request.setAttribute("userId", sessionUser.getId());
-		} catch (NullPointerException e) {
-			getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
-		}
+		//sessionUser = (UserDTO)request.getSession().getAttribute("user");
+		//try {
+		//	request.setAttribute("userId", sessionUser.getId());
+		//} catch (NullPointerException e) {
+		//	getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+		//}
 		
 		
 		switch (mode.toUpperCase()) {
 		
 		case "SEARCHLIST":
 	 		updateList(request);
-			switch (sessionUser.getUsertype()) {
+			switch (request.getSession().getAttribute("utente").toString()/*sessionUser.getUsertype()*/) {
 			
 			case "ADMIN":
 				getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
@@ -104,7 +102,7 @@ public class SearchServlet extends HttpServlet {
 		case "READ":
 			updateList(request);
 			id = Integer.parseInt(request.getParameter("id"));
-			switch (sessionUser.getUsertype()) {
+			switch (request.getSession().getAttribute("utente").toString()/*sessionUser.getUsertype()*/) {
 			
 			case "ADMIN":
 				dto = service.read(id);
@@ -129,7 +127,7 @@ public class SearchServlet extends HttpServlet {
 			break;
 		
 		case "INSERT":
-			switch (sessionUser.getUsertype()) {
+			switch (request.getSession().getAttribute("utente").toString()/*sessionUser.getUsertype()*/) {
 			
 			case "ADMIN":
 				try {
@@ -180,7 +178,7 @@ public class SearchServlet extends HttpServlet {
 			dto = new SearchDTO(search_date, value, index, user, player);
 			ans = service.insert(dto);
 			request.setAttribute("ans", ans);
-			switch (sessionUser.getUsertype()) {
+			switch (request.getSession().getAttribute("utente").toString()/*sessionUser.getUsertype()*/) {
 			
 			case "ADMIN":
 				updateList(request);
@@ -200,7 +198,7 @@ public class SearchServlet extends HttpServlet {
 		break;
 		
 		case "UPDATE":
-			switch (sessionUser.getUsertype()) {
+			switch (request.getSession().getAttribute("utente").toString()/*sessionUser.getUsertype()*/) {
 			
 			case "ADMIN":
 				try {
@@ -253,7 +251,7 @@ public class SearchServlet extends HttpServlet {
 		
 		case "DELETE":
 			id = Integer.parseInt(request.getParameter("id"));
-			switch (sessionUser.getUsertype()) {
+			switch (request.getSession().getAttribute("utente").toString()/*sessionUser.getUsertype()*/) {
 			
 			case "ADMIN":
 				ans = service.delete(id);
@@ -264,7 +262,8 @@ public class SearchServlet extends HttpServlet {
 			
 			case "USER":
 				dto = service.read(id);
-				if (dto.getUser()!=sessionUser.getId())
+				//if (dto.getUser()!=sessionUser.getId())
+				if(dto.getUser()!=Integer.parseInt(request.getSession().getAttribute("userId").toString()))
 				{
 					getServletContext().getRequestDispatcher("/search/searchusermanager.jsp").forward(request, response);
 				} else {
