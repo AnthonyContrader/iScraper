@@ -23,14 +23,22 @@ import java.text.SimpleDateFormat;
 public class SearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	//UserDTO sessionUser;
+	String usertype = new String("");
 	
-	public SearchServlet() {}
+	public SearchServlet() {
+		usertype = new String("");
+	}
 	
 	public void updateList(HttpServletRequest request) {
 		Service<SearchDTO> service = new SearchService();
 		List<SearchDTO> listDTO = service.getAll();
-		
-		switch (request.getSession().getAttribute("utente").toString()/*sessionUser.getUsertype()*/) {
+		try {
+			usertype = request.getSession().getAttribute("utente").toString();
+		} catch (NullPointerException e) {
+			getServletContext().getRequestDispatcher("/index.jsp");
+		}
+		if (usertype.isEmpty()) getServletContext().getRequestDispatcher("/index.jsp");
+		switch (usertype/*sessionUser.getUsertype()*/) {
 		
 		case "ADMIN":
 			request.setAttribute("list", listDTO);
@@ -85,7 +93,12 @@ public class SearchServlet extends HttpServlet {
 		
 		case "SEARCHLIST":
 	 		updateList(request);
-			switch (request.getSession().getAttribute("utente").toString()/*sessionUser.getUsertype()*/) {
+	 		try {
+				usertype = request.getSession().getAttribute("utente").toString();
+			} catch (NullPointerException e) {
+				getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+			}
+			switch (usertype/*request.getSession().getAttribute("utente").toString()/*sessionUser.getUsertype()*/) {
 			
 			case "ADMIN":
 				getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
@@ -104,7 +117,12 @@ public class SearchServlet extends HttpServlet {
 		case "READ":
 			updateList(request);
 			id = Integer.parseInt(request.getParameter("id"));
-			switch (request.getSession().getAttribute("utente").toString()/*sessionUser.getUsertype()*/) {
+			try {
+				usertype = request.getSession().getAttribute("utente").toString();
+			} catch (NullPointerException e) {
+				getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+			}
+			switch (usertype/*request.getSession().getAttribute("utente").toString()/*sessionUser.getUsertype()*/) {
 			
 			case "ADMIN":
 				dto = service.read(id);
@@ -129,7 +147,12 @@ public class SearchServlet extends HttpServlet {
 			break;
 		
 		case "INSERT":
-			switch (request.getSession().getAttribute("utente").toString()/*sessionUser.getUsertype()*/) {
+			try {
+				usertype = request.getSession().getAttribute("utente").toString();
+			} catch (NullPointerException e) {
+				getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+			}
+			switch (usertype/*request.getSession().getAttribute("utente").toString()/*sessionUser.getUsertype()*/) {
 			
 			case "ADMIN":
 				try {
@@ -153,58 +176,94 @@ public class SearchServlet extends HttpServlet {
 				getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 				break;
 			}
-			String messaggio = InputValidation.intValidation(request.getParameter("player_value"), "/search/searchmanager.jsp");
+			String messaggio = InputValidation.intValidation(request.getParameter("player_value"));
 			String errore = new String("");
+			boolean datiErrati = false;
 			if (messaggio.equals("ok")) {
 				value = Integer.parseInt(request.getParameter("player_value"));
 			} else {
-				errore = errore + messaggio + "\n";
-				//request.setAttribute("messaggio", messaggio);
-				//updateList(request);
-				//getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
+				datiErrati = true;
+				errore = errore+ "Valore giocatore: " + messaggio + "<br>";
 			}
-			try {
+			messaggio = InputValidation.intValidation(request.getParameter("player_index"));
+			if (messaggio.equals("ok")) {
 				index = Integer.parseInt(request.getParameter("player_index"));
-			} catch (Exception e) {
-				updateList(request);
-				getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
+			} else {
+				datiErrati = true;
+				errore = errore + "Indice giocatore: " + messaggio + "<br>";
 			}
-			try {
+			messaggio = InputValidation.intValidation(request.getParameter("user_id"));
+			if (messaggio.equals("ok")) {
 				user = Integer.parseInt(request.getParameter("user_id"));
-			} catch (Exception e) {
-				updateList(request);
-				getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
+			} else {
+				datiErrati = true;
+				errore = errore + "Id Utente: " + messaggio + "<br>";
 			}
-			try {
+			messaggio = InputValidation.shortValidation(request.getParameter("player_id"));
+			if (messaggio.equals("ok")) {
 				player = Short.parseShort(request.getParameter("player_id"));
-			} catch (Exception e) {
-				updateList(request);
-				getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
+			} else {
+				datiErrati = true;
+				errore = errore + "Id Giocatore: " + messaggio + "<br>";
 			}
-			dto = new SearchDTO(search_date, value, index, user, player);
-			ans = service.insert(dto);
-			request.setAttribute("ans", ans);
-			switch (request.getSession().getAttribute("utente").toString()/*sessionUser.getUsertype()*/) {
-			
-			case "ADMIN":
-				updateList(request);
-				getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
-				break;
+			if(datiErrati) {
+				request.setAttribute("messaggio", errore);
+				try {
+					usertype = request.getSession().getAttribute("utente").toString();
+				} catch (NullPointerException e) {
+					getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+				}
+				switch (usertype/*request.getSession().getAttribute("utente").toString()*/) {
+				case "ADMIN":
+					updateList(request);
+					getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
+					break;
+					
+				case "USER":
+					updateList(request);
+					getServletContext().getRequestDispatcher("/search/searchusermanager.jsp").forward(request, response);
+					break;
+					
+				default:
+					getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+					break;
+				}
+			} else {
+				dto = new SearchDTO(search_date, value, index, user, player);
+				ans = service.insert(dto);
+				request.setAttribute("ans", ans);
+				try {
+					usertype = request.getSession().getAttribute("utente").toString();
+				} catch (NullPointerException e) {
+					getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+				}
+				switch (usertype/*request.getSession().getAttribute("utente").toString()/*sessionUser.getUsertype()*/) {
 				
-			case "USER":
-				updateList(request);
-				getServletContext().getRequestDispatcher("/search/searchusermanager.jsp").forward(request, response);
-				break;
-				
-			default:
-				getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
-				break;
+				case "ADMIN":
+					updateList(request);
+					getServletContext().getRequestDispatcher("/search/searchmanager.jsp").forward(request, response);
+					break;
+					
+				case "USER":
+					updateList(request);
+					getServletContext().getRequestDispatcher("/search/searchusermanager.jsp").forward(request, response);
+					break;
+					
+				default:
+					getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+					break;
+				}
 			}
 
 		break;
 		
 		case "UPDATE":
-			switch (request.getSession().getAttribute("utente").toString()/*sessionUser.getUsertype()*/) {
+			try {
+				usertype = request.getSession().getAttribute("utente").toString();
+			} catch (NullPointerException e) {
+				getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+			}
+			switch (usertype/*request.getSession().getAttribute("utente").toString()/*sessionUser.getUsertype()*/) {
 			
 			case "ADMIN":
 				try {
@@ -257,7 +316,12 @@ public class SearchServlet extends HttpServlet {
 		
 		case "DELETE":
 			id = Integer.parseInt(request.getParameter("id"));
-			switch (request.getSession().getAttribute("utente").toString()/*sessionUser.getUsertype()*/) {
+			try {
+				usertype = request.getSession().getAttribute("utente").toString();
+			} catch (NullPointerException e) {
+				getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+			}
+			switch (usertype/*request.getSession().getAttribute("utente").toString()/*sessionUser.getUsertype()*/) {
 			
 			case "ADMIN":
 				ans = service.delete(id);
@@ -279,7 +343,6 @@ public class SearchServlet extends HttpServlet {
 					getServletContext().getRequestDispatcher("/search/searchusermanager.jsp").forward(request, response);
 				}
 				break;
-			
 			default:
 				getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 				break;
