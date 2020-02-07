@@ -13,4 +13,10 @@ public class InjuryService extends AbstractService<Injury, InjuryDTO> {
 		this.dao = new InjuryDAO();
 		this.converter = new InjuryConverter();
 	}
+
+	@Override
+	public InjuryDTO read(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

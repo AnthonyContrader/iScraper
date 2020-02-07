@@ -12,4 +12,10 @@ public class StatsboxService extends AbstractService<Statsbox, StatsboxDTO> {
 		this.dao = new StatsboxDAO();
 		this.converter = new StatsboxConverter();
 	}
+
+	@Override
+	public StatsboxDTO read(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

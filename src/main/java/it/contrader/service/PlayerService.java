@@ -47,4 +47,9 @@ public class PlayerService extends AbstractService<Player, PlayerDTO>{
 //		return playerConverter.toDTO((playerDAO.read(playerId)));
 //	}
 }
+	@Override
+	public PlayerDTO read(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -1,4 +1,3 @@
-/* Main Layout */
 html {
 	scroll-behavior: smooth;
 
@@ -8,10 +7,81 @@ html {
 	font-family: sans-serif;
 }
 .body{
-	.background-image: url("main1.jpg");
+	.background-image: url("main2.jpg")  
+	no-repeat center center fixed;;
+	  
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  .background-size: cover;
 }
+
+.container {
+  position: absolute;
+
+top: 29%;
+
+left: 61%;
+
+}
+.container2 {
+ position: absolute;
+top: 28.3%;
+
+left: 68%;
+}
+.image {
+  display: block;
+  .width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+
+.bottom: 0;
+
+left: 0;
+
+right: 0;
+
+background-image: url("backgroundform.jpg");
+    overflow: hidden;
+    width: 500px;
+    height: 500px;
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+    transform: scale(0);
+    -webkit-transition: .3s ease;
+    transition: .3s ease;
+
+
+}
+
+.container:hover .overlay {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+.container2:hover .overlay {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);}
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;}
+
+
 #new{
-	.background-image: url("main1.jpg");
+	background-image: url("main1.jpg");
 
 background-repeat: no-repeat;
 
@@ -29,10 +99,7 @@ div.text {
 	margin-top: 3%;
 	margin-bottom: 3%;
 }
-.user1{
-	margin-left: 950px;
-position: relative;
-}
+
 .header {
 	text-align: center;
 	font-size: 800%;
@@ -93,16 +160,25 @@ h2 {
 }
 
 .login {
-	position: fixed;
-	heigth: 50%;
-	width: 20%;
-	margin-left: 35.6%;
-	margin-right: 44.4%;
-	margin-top: 10%;
-	margin-bottom: auto;
-	z-index: 1;
+	position: inherit;
+heigth: 50%;
+width: 50%;
+margin-left: 17.6%;
+margin-right: 64.4%;
+margin-top: 7%;
+margin-bottom: auto;
+z-index: 1;
 }
-
+.login1 {
+	position: inherit;
+heigth: 50%;
+width: 55%;
+margin-left: 17.6%;
+margin-right: 64.4%;
+margin-top: 7%;
+margin-bottom: auto;
+z-index: 1;
+}
 .login input {
 	text-align: center;
 	float: center;

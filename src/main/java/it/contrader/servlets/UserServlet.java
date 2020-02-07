@@ -70,6 +70,20 @@ public class UserServlet extends HttpServlet {
 			getServletContext().getRequestDispatcher("/user/usermanager.jsp").forward(request, response);
 			break;
 			
+		case "INSERTUSER":
+			 username = request.getParameter("username").toString();
+			 password = request.getParameter("password").toString();
+			 usertype = "user";
+					 //request.getParameter("usertype").toString();
+			 name = request.getParameter("name").toString();
+			 email = request.getParameter("email").toString();
+			dto = new UserDTO (username,password,usertype,name,email);
+			ans = service.insert(dto);
+			request.setAttribute("ans", ans);
+			updateList(request);
+			getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+			break;
+			
 		case "UPDATE":
 			username = request.getParameter("username");
 			password = request.getParameter("password");
