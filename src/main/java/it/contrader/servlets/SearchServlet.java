@@ -84,6 +84,9 @@ public class SearchServlet extends HttpServlet {
 		String messaggio = new String("");
 		String errore = new String("");
 		boolean datiErrati=false;
+		if (request.getAttribute("messaggio") != null) {
+			request.removeAttribute("messaggio");
+		}
 		//sessionUser = (UserDTO)request.getSession().getAttribute("user");
 		//try {
 		//	request.setAttribute("userId", sessionUser.getId());
