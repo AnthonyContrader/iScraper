@@ -30,43 +30,63 @@ public class LoginServlet extends HttpServlet {
 		
 		
 		LoginService service = new LoginService();
-
+		if (request.getAttribute("messaggio") != null) {
+			request.removeAttribute("messaggio");
+		}
+		boolean datiErrati = false;
+		String errore = new String("");
+		
 		if (request != null) {
-			String username = request.getParameter("username").toString();
-			String password = request.getParameter("password").toString();
-			//come nei vecchi controller, invoca il service
-			UserDTO dto = new UserDTO();
-			try {
-				dto = service.login(username, password);
-			} catch (NullPointerException e) {
+			String username = request.getParameter("username").toString().trim();
+			if (username.isEmpty()) {
+				datiErrati = true;
+				errore = errore + "Campo username vuoto <br>";
+			}
+			String password = request.getParameter("password").toString().trim();
+			if (password.isEmpty()) {
+				datiErrati = true;
+				errore = errore + "Campo password vuoto <br>";
+			}
+			if (datiErrati) {
+				request.setAttribute("messaggio", errore);
 				getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 			}
-			session.setAttribute("utente", dto.getUsertype().toString());
-			session.setAttribute("userId", dto.getId());
-			if (dto != null) {
-				//se il login ha funzionato, salva l'utente nella sessione
-				session.setAttribute("user", dto);
-			}
-			else
-				//altrimenti torna alla pagina di login
-				getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
-			
-			//esegue una switch case in base allo usertype per il reindirizzamento
-			switch (dto.getUsertype().toUpperCase()) {
-			case "ADMIN":
-				//questo metodo reindirizza alla JSP tramite URL con una request e una response
-				getServletContext().getRequestDispatcher("/homeadmin.jsp").forward(request, response);
-				break;
-				
-			case "USER":
-				getServletContext().getRequestDispatcher("/homeuser.jsp").forward(request, response);
-				break;
-				
-			default:
-				//di default rimanda al login
-				getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
-				break;
+			else {
+				//come nei vecchi controller, invoca il service
+				UserDTO dto = new UserDTO();
+				try {
+					dto = service.login(username, password);
+					session.setAttribute("utente", dto.getUsertype().toString());
+					session.setAttribute("userId", dto.getId());
+					if (dto != null) {
+						//se il login ha funzionato, salva l'utente nella sessione
+						session.setAttribute("user", dto);
+					}
+						else
+						//altrimenti torna alla pagina di login
+						getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+					
+					//esegue una switch case in base allo usertype per il reindirizzamento
+					switch (dto.getUsertype().toUpperCase()) {
+					case "ADMIN":
+						//questo metodo reindirizza alla JSP tramite URL con una request e una response
+						getServletContext().getRequestDispatcher("/homeadmin.jsp").forward(request, response);
+						break;
+						
+					case "USER":
+						getServletContext().getRequestDispatcher("/homeuser.jsp").forward(request, response);
+						break;
+						
+					default:
+						//di default rimanda al login
+						getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+						break;
+					}
+				} catch (NullPointerException e) {
+					getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+				}
 			}
 		}
+		else getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 	}
 }
