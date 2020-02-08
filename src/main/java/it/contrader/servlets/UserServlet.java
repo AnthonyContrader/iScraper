@@ -35,7 +35,9 @@ public class UserServlet extends HttpServlet {
 		UserDTO dto;
 		int id;
 		boolean ans;
-
+		String errore = new String("");
+		boolean datiErrati=false;
+		
 		switch (mode.toUpperCase()) {
 
 		case "USERLIST":
@@ -77,17 +79,38 @@ public class UserServlet extends HttpServlet {
 			break;
 			
 		case "INSERTUSER":
-			 username = request.getParameter("username").toString();
-			 password = request.getParameter("password").toString();
-			 usertype = "user";
-					 //request.getParameter("usertype").toString();
-			 name = request.getParameter("name").toString();
-			 email = request.getParameter("email").toString();
-			dto = new UserDTO (username,password,usertype,name,email);
-			ans = service.insert(dto);
-			request.setAttribute("ans", ans);
-			updateList(request);
-			getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+			username = request.getParameter("register_username").toString().trim();
+			password = request.getParameter("register_password").toString().trim();
+			//usertype = "user";
+			//request.getParameter("usertype").toString();
+			name = request.getParameter("name").toString().trim();
+			email = request.getParameter("email").toString().trim();
+			if (username.isEmpty()) {
+				datiErrati = true;
+				errore = errore + "Campo username vuoto <br>";
+			}
+			if (password.isEmpty()) {
+				datiErrati = true;
+				errore = errore + "Campo password vuoto <br>";
+			}
+			if (name.isEmpty()) {
+				datiErrati = true;
+				errore = errore + "Campo nome vuoto <br>";
+			}
+			if (email.isEmpty()) {
+				datiErrati = true;
+				errore = errore + "Campo email vuoto <br>";
+			}
+			if (datiErrati) {
+				request.setAttribute("messaggioCreazione", errore);
+				getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+			} else {
+				dto = new UserDTO (username,password,"user",name,email);
+				ans = service.insert(dto);
+				request.setAttribute("ans", ans);
+				updateList(request);
+				getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+			}
 			break;
 			
 		case "UPDATE":
