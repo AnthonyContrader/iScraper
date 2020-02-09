@@ -33,7 +33,8 @@ public class TeamServlet extends HttpServlet{
 	public void service (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		Service<TeamDTO> service = new TeamService();
 		String mode = request.getParameter("mode");
-		UserDTO utente = (UserDTO) request.getSession().getAttribute("user");
+		//UserDTO utente = (UserDTO) request.getSession().getAttribute("user");
+		String utente = new String(request.getSession().getAttribute("utente").toString().toUpperCase());
 		TeamDTO dto;
 		int id;
 		String name;
@@ -45,10 +46,12 @@ public class TeamServlet extends HttpServlet{
 
 		case "TEAMLIST":
 			updateList(request);
-			if (utente.getUsertype().toUpperCase().equals("ADMIN")) {
+			//if (utente.getUsertype().toUpperCase().equals("ADMIN")) {
+			if (utente.equals("ADMIN")) {
 				getServletContext().getRequestDispatcher("/teams/teammanager.jsp").forward(request, response);
 			}
-			else if (utente.getUsertype().toUpperCase().equals("USER")) {
+			//else if (utente.getUsertype().toUpperCase().equals("USER")) {
+			else if (utente.equals("USER")) {
 				getServletContext().getRequestDispatcher("/teams/readallteams.jsp").forward(request, response);
 			}
 			break;
