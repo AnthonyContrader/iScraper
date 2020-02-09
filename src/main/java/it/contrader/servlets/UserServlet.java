@@ -76,7 +76,7 @@ public class UserServlet extends HttpServlet {
 			if (usertype.isEmpty()) {
 				errore = errore + "Campo tipo utente vuoto <br>";
 				datiErrati = true;
-			} else if (usertype!="user" && usertype!="admin") {
+			} else if (!usertype.toLowerCase().equals("user") && !usertype.toLowerCase().equals("admin")) {
 				errore = errore + "Tipologia utente non riconosciuta <br>";
 				datiErrati = true;
 			}
@@ -92,6 +92,7 @@ public class UserServlet extends HttpServlet {
 			}
 			if (datiErrati) {
 				request.setAttribute("messaggio", errore);
+				updateList(request);
 				getServletContext().getRequestDispatcher("/user/usermanager.jsp").forward(request, response);
 			} else {
 				dto = new UserDTO (username,password,usertype,name,email);
@@ -135,7 +136,7 @@ public class UserServlet extends HttpServlet {
 				request.setAttribute("messaggioCreazione", errore);
 				getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 			} else {
-				dto = new UserDTO (username,password,"user",name,email);
+				dto = new UserDTO (username,password,"USER",name,email);
 				ans = service.insert(dto);
 				request.setAttribute("ans", ans);
 				updateList(request);
