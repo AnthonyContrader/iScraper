@@ -40,6 +40,7 @@
 		</table>
 		
 		<form id="floatright" action="TeamServlet?mode=insert" method="post">
+			<p>${messaggio}</p>
 			<div class="row">
 				<div class="col-25">
 					<label for="name">Nome</label>

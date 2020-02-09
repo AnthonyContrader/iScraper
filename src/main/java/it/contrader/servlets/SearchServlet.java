@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServlet;
 
-import it.contrader.dto.UserDTO;
 import it.contrader.dto.SearchDTO;
 import it.contrader.dto.SearchUserDTO;
 import it.contrader.service.SearchUserService;
@@ -76,7 +75,7 @@ public class SearchServlet extends HttpServlet {
 		SearchUserDTO userDTO;
 		int id;
 		boolean ans;
-		SimpleDateFormat format = new SimpleDateFormat("dMyyyy");
+		//SimpleDateFormat format = new SimpleDateFormat("dMyyyy");
 		SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd");
 		Date search_date = new Date(0);
 		int value = 0, index = 0, user = 0;
