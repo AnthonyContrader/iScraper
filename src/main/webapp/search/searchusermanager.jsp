@@ -12,7 +12,10 @@
 	<%@ include file="../utilities/header.jsp"%>
 	<%@ include file="../utilities/usernavbar.jsp" %>
 	<div class="main">
-		<%List<SearchUserDTO> list = (List<SearchUserDTO>) request.getAttribute("list");%>
+		<%
+		@SuppressWarnings("unchecked")
+		List<SearchUserDTO> list = (List<SearchUserDTO>) request.getAttribute("list");
+		%>
 
 		<br>
 

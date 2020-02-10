@@ -13,7 +13,7 @@
 	<%@ include file="../utilities/navbar.jsp"%>
 	
 	<div class="main">
-	<% 
+	<%
 		InjuryDTO i = (InjuryDTO)request.getAttribute("dto");
 	%>
 	<br>
@@ -36,6 +36,7 @@
 		</tr>
 		</table>
 		<br>
+	</div>
 	<%@ include file="../utilities/footer.jsp"%>
 
 

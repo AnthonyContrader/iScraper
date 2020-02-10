@@ -14,6 +14,7 @@
 	
 	<div class="main">
 	<% 
+	@SuppressWarnings("unchecked")
 		List<TeamDTO> list = (List<TeamDTO>) request.getAttribute("list");
 	%>
 	<br>

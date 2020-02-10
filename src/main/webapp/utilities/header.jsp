@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	<div class="header" img src="images/logo.png" alt="logo">IScraper</div>
+	<div class="header" <%--img src="images/logo.png" alt="logo"--%>>IScraper</div>
 	<div class="subtitle"> Writing the future of football </div>
 
 	<div class="main"></div>

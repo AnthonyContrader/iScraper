@@ -14,7 +14,13 @@
 
 	<div class="main">
 		<br>
-		<% List<StatsboxDTO> list = (List<StatsboxDTO>) request.getAttribute("list");%>
+		
+		<%
+		@SuppressWarnings("unchecked")
+		List<StatsboxDTO> list = (List<StatsboxDTO>) request.getAttribute("list");
+		%>
+		
+		
 		<table class="statsbox">
 		<tr>
 			<th> ID </th>

@@ -14,6 +14,7 @@
 	
 	<div class="main">
 	<% 
+	@SuppressWarnings("unchecked")
 		List<InjuryDTO> list = (List<InjuryDTO>) request.getAttribute("list");
 	%>
 	<br>
@@ -38,6 +39,7 @@
 		<% } %>
 		</table>
 		<br>
+	</div>
 	<%@ include file="../utilities/footer.jsp"%>
 
 
