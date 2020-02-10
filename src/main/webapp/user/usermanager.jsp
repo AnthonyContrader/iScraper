@@ -56,6 +56,7 @@
 	
 
 		<form id="floatright" action="UserServlet?mode=insert&newuser=false" method="post">
+			<p>${messaggio}</p>
 			<div class="row">
 				<div class="col-25">
 					<label for="user">Username</label>

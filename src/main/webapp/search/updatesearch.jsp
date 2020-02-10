@@ -16,6 +16,7 @@
 		<%SearchDTO s = (SearchDTO) request.getAttribute("dto"); %>
 		
 		<form id="floatleft" action="SearchServlet?mode=update&id=<%=s.getID()%>" method="post">
+			<p>${messaggio}</p>
 			<div class="row">
 				<div class="col-25">
 					<label for="date">Data</label>

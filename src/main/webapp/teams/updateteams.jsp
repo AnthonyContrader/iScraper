@@ -21,6 +21,7 @@
 	<% TeamDTO t = (TeamDTO) request.getAttribute("dto"); %>
 		
 		<form action="TeamServlet?mode=update&id=<%=t.getId()%>" method="post">
+			<p>${messaggio_update}</p>
 			<div class="row">
 				<div class="col-25">
 					<label for="name">Nome</label>

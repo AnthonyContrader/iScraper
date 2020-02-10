@@ -31,7 +31,7 @@ public class PlayerServlet extends HttpServlet {
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		final HttpSession session = request.getSession(true);
-		final UserDTO userLogged = (UserDTO) session.getAttribute("utente");
+		//final UserDTO userLogged = (UserDTO) session.getAttribute("utente");
 		
 		
 		
@@ -62,7 +62,7 @@ public class PlayerServlet extends HttpServlet {
 		case "PLAYERLIST":
 			
 			updateList(request);
-			if(session.getAttribute("utilizator").equals("ADMIN")) {
+			if(session.getAttribute("utente").toString().equals("ADMIN")) {
 				getServletContext().getRequestDispatcher("/player/playermanager.jsp").forward(request, response);
 			}else {
 				getServletContext().getRequestDispatcher("/player/playerusermanager.jsp").forward(request, response);

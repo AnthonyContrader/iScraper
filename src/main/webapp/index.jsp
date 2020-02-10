@@ -8,6 +8,7 @@
 </head>
 <body id="new">
 
+
 	<div class="container3">
 		<img src="css/fb.png" alt="Avatar" class="image1">
 
@@ -65,15 +66,17 @@
 
 		<div class="overlay">
 
+
 			<form class="login1" action="UserServlet?mode=insertuser"
 				method="post">
+				<p>${messaggioCreazione}</p>
 				<div class="row">
 					<div class="col-25">
 						<label for="user">Username</label>
 					</div>
 					<div class="col-75">
-						<input type="text" id="user" name="username"
-							placeholder="inserisci username">
+						<input type="text" id="user" name="register_username"
+							placeholder="inserisci username" value="">
 					</div>
 				</div>
 				<div class="row">
@@ -81,8 +84,8 @@
 						<label for="pass">Password</label>
 					</div>
 					<div class="col-75">
-						<input type="text" id="pass" name="password"
-							placeholder="inserisci password">
+						<input type="text" id="pass" name="register_password"
+							placeholder="inserisci password" value="">
 					</div>
 				</div>
 				<div class="row">
@@ -91,7 +94,7 @@
 					</div>
 					<div class="col-75">
 						<input type="text" id="given_name" name="name"
-							placeholder="inserisci il tuo nome">
+							placeholder="inserisci il tuo nome" value="">
 					</div>
 				</div>
 				<div class="row">
@@ -100,40 +103,31 @@
 					</div>
 					<div class="col-75">
 						<input type="text" id="mail" name="email"
-							placeholder="inserisci la tua e-mail">
+							placeholder="inserisci la tua e-mail" value="">
 					</div>
 				</div>
 				<div class="row">
-
 					<div class="col-75"></div>
 				</div>
 				<button type="submit">Insert</button>
 			</form>
-
 		</div>
 	</div>
 	<div class="container">
-
 		<img src="css/login1.png" alt="Avatar" class="image">
 		<div class="overlay">
 			<form class="login" action="LoginServlet" method="post">
-
-				<label for="user">Username: </label> <input type="text" id="user"
-					name="username" placeholder="Insert username"> <label
-					for="pass">Password: </label> <input type="password" id="pass"
+				<p>${messaggio}</p>
+				<label for="user">Username: </label>
+				<input type="text" id="user"
+					name="username" placeholder="Insert username">
+				<label for="pass">Password: </label>
+				<input type="password" id="pass"
 					name="password" placeholder="Insert password">
-
 				<button type="submit" value="Login" name="pulsante">Login</button>
 			</form>
 		</div>
 	</div>
-
-
-
-
-
-	<script>
-		
-	</script>
+	<script></script>
 </body>
 </html>

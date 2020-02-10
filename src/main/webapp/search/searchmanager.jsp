@@ -53,6 +53,7 @@
 
 
 		<form id="floatright" action="SearchServlet?mode=insert" method="post">
+			<p> ${messaggio} </p>
 			<div class="row">
 				<div class="col-25">
 					<label for="date">Date</label>

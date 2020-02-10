@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import it.contrader.utils.InputValidation;
 import it.contrader.dto.UserDTO;
 import it.contrader.service.Service;
 import it.contrader.service.UserService;
@@ -35,7 +36,12 @@ public class UserServlet extends HttpServlet {
 		UserDTO dto;
 		int id;
 		boolean ans;
-
+		String errore = new String("");
+		boolean datiErrati=false;
+		if (request.getAttribute("messaggio") != null) {
+			request.removeAttribute("messaggio");
+		}
+		
 		switch (mode.toUpperCase()) {
 
 		case "USERLIST":
@@ -44,54 +50,162 @@ public class UserServlet extends HttpServlet {
 			break;
 
 		case "READ":
-			id = Integer.parseInt(request.getParameter("id"));
-			dto = service.read(id);
-			request.setAttribute("dto", dto);
-			
-			if (request.getParameter("update") == null) {
-				 getServletContext().getRequestDispatcher("/user/readuser.jsp").forward(request, response);
-				
-			}
-			
-			else getServletContext().getRequestDispatcher("/user/updateuser.jsp").forward(request, response);
-			
-			break;
-
+			if (InputValidation.intValidation(request.getParameter("id").toString()) == "ok") {
+				id = Integer.parseInt(request.getParameter("id").trim());
+				dto = service.read(id);
+				request.setAttribute("dto", dto);
+				if (request.getParameter("update") == null) {
+					getServletContext().getRequestDispatcher("/user/readuser.jsp").forward(request, response);
+				}			
+				else getServletContext().getRequestDispatcher("/user/updateuser.jsp").forward(request, response);
+				break;
+			} else getServletContext().getRequestDispatcher("/user/updateuser.jsp").forward(request, response);
+	
 		case "INSERT":
-			String username = request.getParameter("username").toString();
-			String password = request.getParameter("password").toString();
-			String usertype = request.getParameter("usertype").toString();
-			String name = request.getParameter("name").toString();
-			String email = request.getParameter("email").toString();
-			dto = new UserDTO (username,password,usertype,name,email);
-			ans = service.insert(dto);
-			request.setAttribute("ans", ans);
-			updateList(request);
-			boolean newuser = Boolean.parseBoolean(request.getParameter("newuser"));
-			if (newuser) {
-				getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+			String username = request.getParameter("username").toString().trim();
+			if (username.isEmpty()) {
+				errore = errore + "Campo username vuoto <br>";
+				datiErrati = true;
 			}
-			else {
+			String password = request.getParameter("password").toString().trim();
+			if (password.isEmpty()) {
+				errore = errore + "Campo password vuoto <br>";
+				datiErrati = true;
+			}
+			String usertype = request.getParameter("usertype").toString().trim();
+			if (usertype.isEmpty()) {
+				errore = errore + "Campo tipo utente vuoto <br>";
+				datiErrati = true;
+			} else if (!usertype.toLowerCase().equals("user") && !usertype.toLowerCase().equals("admin")) {
+				errore = errore + "Tipologia utente non riconosciuta <br>";
+				datiErrati = true;
+			}
+			String name = request.getParameter("name").toString().trim();
+			if (name.isEmpty()) {
+				errore = errore + "Campo nome vuoto <br>";
+				datiErrati = true;
+			}
+			String email = request.getParameter("email").toString().trim();
+			if (email.isEmpty()) {
+				errore = errore + "Campo email vuoto <br>";
+				datiErrati = true;
+			}
+			if (datiErrati) {
+				request.setAttribute("messaggio", errore);
+				updateList(request);
 				getServletContext().getRequestDispatcher("/user/usermanager.jsp").forward(request, response);
+			} else {
+				dto = new UserDTO (username,password,usertype,name,email);
+				ans = service.insert(dto);
+				request.setAttribute("ans", ans);
+				updateList(request);
+				boolean newuser = Boolean.parseBoolean(request.getParameter("newuser"));
+				if (newuser) {
+					getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+				}
+				else {
+					getServletContext().getRequestDispatcher("/user/usermanager.jsp").forward(request, response);
+				}
 			}
 			break;
 			
 		case "INSERTUSER":
-			 username = request.getParameter("username").toString();
-			 password = request.getParameter("password").toString();
-			 usertype = "user";
-					 //request.getParameter("usertype").toString();
-			 name = request.getParameter("name").toString();
-			 email = request.getParameter("email").toString();
-			dto = new UserDTO (username,password,usertype,name,email);
-			ans = service.insert(dto);
-			request.setAttribute("ans", ans);
-			updateList(request);
-			getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+			username = request.getParameter("register_username").toString().trim();
+			password = request.getParameter("register_password").toString().trim();
+			//usertype = "user";
+			//request.getParameter("usertype").toString();
+			name = request.getParameter("name").toString().trim();
+			email = request.getParameter("email").toString().trim();
+			if (username.isEmpty()) {
+				datiErrati = true;
+				errore = errore + "Campo username vuoto <br>";
+			}
+			if (password.isEmpty()) {
+				datiErrati = true;
+				errore = errore + "Campo password vuoto <br>";
+			}
+			if (name.isEmpty()) {
+				datiErrati = true;
+				errore = errore + "Campo nome vuoto <br>";
+			}
+			if (email.isEmpty()) {
+				datiErrati = true;
+				errore = errore + "Campo email vuoto <br>";
+			}
+			if (datiErrati) {
+				request.setAttribute("messaggioCreazione", errore);
+				getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+			} else {
+				dto = new UserDTO (username,password,"USER",name,email);
+				ans = service.insert(dto);
+				request.setAttribute("ans", ans);
+				updateList(request);
+				getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+			}
 			break;
 			
 		case "UPDATE":
-			username = request.getParameter("username");
+			username = request.getParameter("username").toString().trim();
+			if (username.isEmpty()) {
+				errore = errore + "Campo username vuoto <br>";
+				datiErrati = true;
+			}
+			password = request.getParameter("password").toString().trim();
+			if (password.isEmpty()) {
+				errore = errore + "Campo password vuoto <br>";
+				datiErrati = true;
+			}
+			usertype = request.getParameter("usertype").toString().trim();
+			if (usertype.isEmpty()) {
+				errore = errore + "Campo tipo utente vuoto <br>";
+				datiErrati = true;
+			} else if (usertype.toLowerCase().equals("user")) {
+				if (usertype.toLowerCase().equals("admin")) {
+					errore = errore + "Tipologia utente non riconosciuta <br>";
+					datiErrati = true;
+				}
+			}
+			name = request.getParameter("name").toString().trim();
+			if (name.isEmpty()) {
+				errore = errore + "Campo nome vuoto <br>";
+				datiErrati = true;
+			}
+			email = request.getParameter("email").toString().trim();
+			if (email.isEmpty()) {
+				errore = errore + "Campo email vuoto <br>";
+				datiErrati = true;
+			}
+			if (datiErrati) {
+				request.setAttribute("messaggio", errore);
+				updateList(request);
+				if (InputValidation.intValidation(request.getParameter("id").toString()) == "ok") {
+					id = Integer.parseInt(request.getParameter("id").trim());
+					request.setAttribute("messaggio", errore);
+					getServletContext().getRequestDispatcher("/UserServlet?mode=read&update=true&id="+id).forward(request, response);
+				} else {
+					getServletContext().getRequestDispatcher("/user/usermanager.jsp").forward(request, response);
+				}
+			} else {
+				if (InputValidation.intValidation(request.getParameter("id").toString()) == "ok") {
+					id = Integer.parseInt(request.getParameter("id").trim());
+					dto = new UserDTO (id, username,password,usertype,name,email);
+					ans = service.update(dto);
+					request.setAttribute("ans", ans);
+					updateList(request);
+					boolean newuser = Boolean.parseBoolean(request.getParameter("newuser"));
+					if (newuser) {
+						getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+					}
+					else {
+						getServletContext().getRequestDispatcher("/user/usermanager.jsp").forward(request, response);
+					}
+				} else {
+					updateList(request);
+					getServletContext().getRequestDispatcher("/user/usermanager.jsp").forward(request, response);
+				}
+			}
+			break;
+			/*username = request.getParameter("username");
 			password = request.getParameter("password");
 			usertype = request.getParameter("usertype");
 			name = request.getParameter("name");
@@ -101,13 +215,15 @@ public class UserServlet extends HttpServlet {
 			ans = service.update(dto);
 			updateList(request);
 			getServletContext().getRequestDispatcher("/user/usermanager.jsp").forward(request, response);
-			break;
+			break;*/
 
 		case "DELETE":
-			id = Integer.parseInt(request.getParameter("id"));
-			ans = service.delete(id);
-			request.setAttribute("ans", ans);
-			updateList(request);
+			if (InputValidation.intValidation(request.getParameter("id").toString()) == "ok") {
+				id = Integer.parseInt(request.getParameter("id").trim());
+				ans = service.delete(id);
+				request.setAttribute("ans", ans);
+				updateList(request);
+			}
 			getServletContext().getRequestDispatcher("/user/usermanager.jsp").forward(request, response);
 			break;
 		}
