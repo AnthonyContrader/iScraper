@@ -30,12 +30,21 @@ top: 28.3%;
 
 left: 68%;
 }
+.container3 {
+ position: absolute;
+top: 30.2%;
+left: 76%;
+}
 .image {
   display: block;
   .width: 100%;
   height: auto;
 }
-
+.image1 {
+  display: block;
+  width: 40%;
+  height: auto;
+}
 .overlay {
   position: absolute;
 
