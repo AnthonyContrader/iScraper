@@ -82,7 +82,7 @@
 		<img src="css/login1.png" alt="Avatar" class="image">
 		<div class="overlay">
 			<form class="login" action="LoginServlet" method="post">
-			<h3 style="text-align: center;"> Modulo di Login</h3>
+			<h3 style="text-align: center;"> Modulo di login</h3>
 				<p>${messaggio}</p>
 				<label for="user">Username: </label>
 				<input type="text" id="user"

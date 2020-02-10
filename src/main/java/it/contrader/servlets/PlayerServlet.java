@@ -319,6 +319,19 @@ public class PlayerServlet extends HttpServlet {
 //			try {
 //				team = request.getParameter("team");
 //			} catch (Exception e) {}
+			
+			int i=0;
+			List<PlayerDTO> listDTO = service.getAll();
+			for(PlayerDTO player:listDTO){
+				if(Integer.parseInt(request.getParameter("id"))==(player.getId())) {
+				i++;	
+				}
+			}
+			if(i==0) {
+				errore = errore + " ID  Giocatore non trovato <br>";
+				datiErrati = true;
+			}
+			
 			if (request.getParameter("id").isEmpty()) {
 				errore = errore + "Campo ID  Giocatore vuoto <br>";
 				datiErrati = true;
