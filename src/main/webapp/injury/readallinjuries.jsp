@@ -10,7 +10,7 @@
 </head>
 <body>
 	<%@ include file="../utilities/header.jsp"%>
-	<%@ include file="../utilities/navbar.jsp"%>
+	<%@ include file="../utilities/usernavbar.jsp"%>
 	
 	<div class="main">
 	<% 
