@@ -18,6 +18,7 @@ import it.contrader.dto.UserDTO;
 import it.contrader.service.PlayerService;
 
 import it.contrader.service.Service;
+import it.contrader.utils.InputValidation;
 
 public class PlayerServlet extends HttpServlet {
 	boolean t=false;
@@ -45,8 +46,18 @@ public class PlayerServlet extends HttpServlet {
 		PlayerDTO dto;
 		int id=0;
 		boolean ans;
+		String errore = new String("");
+		boolean datiErrati=false;
 		
-		
+		if (request.getAttribute("messplayer") != null) {
+			request.removeAttribute("messplayer");
+		}
+		if (request.getAttribute("messplayer2") != null) {
+			request.removeAttribute("messplayer2");
+		}
+		if (request.getAttribute("messplayer3") != null) {
+			request.removeAttribute("messplayer3");
+		}
 		 String player_name = null; 
 		 String player_surname = null;
 		 int age = 0; 
@@ -88,112 +99,242 @@ public class PlayerServlet extends HttpServlet {
 	
 	
 		case "INSERT":
-			
-			try {
+			if (InputValidation.checkLetters(request.getParameter("player_name").toString()).equals("")) {
+				errore = errore + "Campo nome giocatore ha ricevut dati invalidi <br>";
+				datiErrati = true;
+			}
+
+			try { 
 				player_name = request.getParameter("player_name");
 			} catch (Exception e) {}
+			
+			if (InputValidation.checkLetters(request.getParameter("player_surname").toString()).equals("")) {
+				errore = errore + "Campo cognome giocatore ha ricevut dati invalidi <br>";
+				datiErrati = true;
+			}
+
 			try {
 				player_surname = request.getParameter("player_surname");
 			} catch (Exception e) {}
+			
+			String newage = request.getParameter("age").toString();
+			if (newage.isEmpty()) {
+				errore = errore + "Campo Eta Giocatore vuoto <br>";
+				datiErrati = true;
+			}else if (InputValidation.checkAge(newage).equals("")) {
+				errore = errore + "Campo Eta giocatore ha ricevut dati invalidi <br>";
+				datiErrati = true;
+			}
+				
 			try {
 				age = Integer.parseInt(request.getParameter("age"));
 			} catch (Exception e) {}
+			
+			String string=(request.getParameter("actual_value").toString());
+			if(InputValidation.checkLetters(string).equals("ok")){
+				errore = errore + "Campo Valore attuale giocatore ha ricevut dati invalidi <br>";
+				datiErrati = true;
+			}
+			if (request.getParameter("actual_value").isEmpty()) {
+				errore = errore + "Campo Valore attuale Giocatore vuoto <br>";
+				datiErrati = true;
+			}
 			
 			try {
 				actualMarketValue = Integer.parseInt(request.getParameter("actual_value"));
 			} catch (Exception e) {}
 			
+			 string=(request.getParameter("previous_value").toString());
+			if(InputValidation.checkLetters(string).equals("ok")){
+				errore = errore + "Campo Valore precedente giocatore ha ricevut dati invalidi <br>";
+				datiErrati = true;
+			}
+			if (request.getParameter("previous_value").isEmpty()) {
+				errore = errore + "Campo Valore Precedente Giocatore vuoto <br>";
+				datiErrati = true;
+			}
+			
 			try {
 				previousMarketValue = Integer.parseInt(request.getParameter("previous_value"));
 			} catch (Exception e) {}
 			
+			
+			if (InputValidation.checkLetters(request.getParameter("position").toString()).equals("")) {
+				errore = errore + "Campo Posizione giocatore ha ricevut dati invalidi <br>";
+				datiErrati = true;
+			}
 			try {
 				position = request.getParameter("position"); 
 			} catch (Exception e) {}
+			
+			
+			if (InputValidation.checkLetters(request.getParameter("team").toString()).equals("")) {
+				errore = errore + "Campo Squadra giocatore ha ricevut dati invalidi <br>";
+				datiErrati = true;
+			}
 			try {
 				team = request.getParameter("team");
 			} catch (Exception e) {}
 			
-			
+			if (datiErrati) {
+				request.setAttribute("messplayer", errore);
+				updateList(request);
+				getServletContext().getRequestDispatcher("/player/playermanager.jsp").forward(request, response);
+			} else {
 			
 			dto = new PlayerDTO(player_name,player_surname,age,actualMarketValue,previousMarketValue,position,team);
-		System.out.println(dto);
+		//System.out.println(dto);
 			
 			ans = service.insert(dto); 
 			request.setAttribute("ans", ans);
 			updateList(request);
-			getServletContext().getRequestDispatcher("/player/playermanager.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/player/playermanager.jsp").forward(request, response);}
 		break;
 		
 		case "UPDATE":
 			
 			
 			updateList(request);
+			
+			if (InputValidation.checkLetters(request.getParameter("player_name").toString()).equals("")) {
+				errore = errore + "Campo nome giocatore ha ricevut dati invalidi <br>";
+				datiErrati = true;
+			}
 			try {
 				player_name = request.getParameter("player_name");
 			} catch (Exception e) {}
+			
+			if (InputValidation.checkLetters(request.getParameter("player_surname").toString()).equals("")) {
+				errore = errore + "Campo cognome giocatore ha ricevut dati invalidi <br>";
+				datiErrati = true;
+			}
 			try {
 				player_surname = request.getParameter("player_surname");
 			} catch (Exception e) {}
+			 newage = request.getParameter("age").toString();
+			if (newage.isEmpty()) {
+				errore = errore + "Campo Eta Giocatore vuoto <br>";
+				datiErrati = true;
+			}else if (InputValidation.checkAge(newage).equals("")) {
+				errore = errore + "Campo Eta giocatore ha ricevut dati invalidi <br>";
+				datiErrati = true;
+			}
 			try {
 				age = Integer.parseInt(request.getParameter("age"));
 			} catch (Exception e) {}
 			
+			 string=(request.getParameter("actual_value").toString());
+			if(InputValidation.checkLetters(string).equals("ok")){
+				errore = errore + "Campo Valore attuale giocatore ha ricevut dati invalidi <br>";
+				datiErrati = true;
+			}
+			if (request.getParameter("actual_value").isEmpty()) {
+				errore = errore + "Campo Valore attuale Giocatore vuoto <br>";
+				datiErrati = true;
+			}
+			
 			try {
 				actualMarketValue = Integer.parseInt(request.getParameter("actual_value"));
 			} catch (Exception e) {}
+			
+			 string=(request.getParameter("previous_value").toString());
+			if(InputValidation.checkLetters(string).equals("ok")){
+				errore = errore + "Campo Valore precedente giocatore ha ricevut dati invalidi <br>";
+				datiErrati = true;
+			}
+			if (request.getParameter("previous_value").isEmpty()) {
+				errore = errore + "Campo Valore Precedente Giocatore vuoto <br>";
+				datiErrati = true;
+			}
+			
 			try {
 				previousMarketValue = Integer.parseInt(request.getParameter("previous_value"));
 			} catch (Exception e) {}
 			
+			
+			if (InputValidation.checkLetters(request.getParameter("position").toString()).equals("")) {
+				errore = errore + "Campo Posizione giocatore ha ricevut dati invalidi <br>";
+				datiErrati = true;
+			}
 			try {
-				position = request.getParameter("position");
+				position = request.getParameter("position"); 
 			} catch (Exception e) {}
+			
+			
+			if (InputValidation.checkLetters(request.getParameter("team").toString()).equals("")) {
+				errore = errore + "Campo Squadra giocatore ha ricevut dati invalidi <br>";
+				datiErrati = true;
+			}
 			try {
 				team = request.getParameter("team");
 			} catch (Exception e) {}
 			
-			id = Integer.parseInt(request.getParameter("id"));
+			if (request.getParameter("id").isEmpty()) {
+				errore = errore + "Campo ID  Giocatore vuoto <br>";
+				datiErrati = true;
+			}
+			try {
+				id = Integer.parseInt(request.getParameter("id"));
+			} catch (Exception e) {}
+			
+			if (datiErrati) {
+				request.setAttribute("messplayer2", errore);
+				updateList(request);
+				getServletContext().getRequestDispatcher("/player/playermanager.jsp").forward(request, response);
+			} else {
+			
+			
+			
 			dto = new PlayerDTO(id,player_name,player_surname,age,actualMarketValue,previousMarketValue,position,team);
 			ans = service.update(dto);
 			updateList(request);
 			//String username = request.getParameter("username").toString();
-			getServletContext().getRequestDispatcher("/player/playermanager.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/player/playermanager.jsp").forward(request, response);}
 		break;
 		
 		case "DELETE":
 			
 		
+//			try {
+//				player_name = request.getParameter("player_name");
+//			} catch (Exception e) {}
+//			try {
+//				player_surname = request.getParameter("player_surname");
+//			} catch (Exception e) {}
+//			try {
+//				age = Integer.parseInt(request.getParameter("age"));
+//			} catch (Exception e) {}
+//			
+//			try {
+//				actualMarketValue = Integer.parseInt(request.getParameter("actual_value"));
+//			} catch (Exception e) {}
+//			try {
+//				previousMarketValue = Integer.parseInt(request.getParameter("previous_value"));
+//			} catch (Exception e) {}
+//			
+//			try {
+//				position = request.getParameter("position");
+//			} catch (Exception e) {}
+//			try {
+//				team = request.getParameter("team");
+//			} catch (Exception e) {}
+			if (request.getParameter("id").isEmpty()) {
+				errore = errore + "Campo ID  Giocatore vuoto <br>";
+				datiErrati = true;
+			}
 			try {
-				player_name = request.getParameter("player_name");
-			} catch (Exception e) {}
-			try {
-				player_surname = request.getParameter("player_surname");
-			} catch (Exception e) {}
-			try {
-				age = Integer.parseInt(request.getParameter("age"));
+				id = Integer.parseInt(request.getParameter("id"));
 			} catch (Exception e) {}
 			
-			try {
-				actualMarketValue = Integer.parseInt(request.getParameter("actual_value"));
-			} catch (Exception e) {}
-			try {
-				previousMarketValue = Integer.parseInt(request.getParameter("previous_value"));
-			} catch (Exception e) {}
-			
-			try {
-				position = request.getParameter("position");
-			} catch (Exception e) {}
-			try {
-				team = request.getParameter("team");
-			} catch (Exception e) {}
-			
-			id = Integer.parseInt(request.getParameter("id"));
-			System.out.println(id);
+			if (datiErrati) {
+				request.setAttribute("messplayer3", errore);
+				updateList(request);
+				getServletContext().getRequestDispatcher("/player/playermanager.jsp").forward(request, response);
+			} else {
 			ans = service.delete(id);
 			request.setAttribute("ans", ans);
 			updateList(request);
-			getServletContext().getRequestDispatcher("/player/playermanager.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/player/playermanager.jsp").forward(request, response);}
 		}
 	}
 }	

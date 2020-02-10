@@ -58,6 +58,7 @@
 <br>
 			
 		<form id="floatleft" action="PlayerServlet?mode=insert" method="post">
+		<p>${messplayer}</p>
 			<div class="row">
 				<div class="col-25">
 					<label for="date">Nome</label>
@@ -136,6 +137,7 @@
 <br>
 <br>
 		<form id="floatright" action="PlayerServlet?mode=update" method="post">
+		<p>${messplayer2}</p>
 			<div class="row">
 				<div class="col-25">
 					<label for="type">ID</label>
@@ -222,6 +224,7 @@
 		
 		<form id="floatright" style="margin-top: 5%;
 		margin-bottom: 1%;" action="PlayerServlet?mode=delete" method="post">
+			<p>${messplayer3}</p>
 			<div class="row">
 				<div class="col-25">
 					<label for="date">Player ID</label>
