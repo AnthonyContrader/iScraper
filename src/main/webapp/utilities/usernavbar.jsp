@@ -3,7 +3,7 @@
  	<a href="homeuser.jsp">Home</a> 
  	
 	
-	<a href="PlayerServlet?mode=playerList">Players</a>
+	<a href="PlayerServlet?mode=playerList">Giocatori</a>
 	<a href="TeamServlet?mode=teamList">Squadre</a>
 	<a href="StatsboxServlet?mode=statsboxList"> Statistiche</a>
 	<a href="InjuryServlet?mode=injuryList"> Infortuni</a>

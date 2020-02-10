@@ -9,11 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.sound.midi.Soundbank;
 
 import it.contrader.dto.PlayerDTO;
 
-import it.contrader.dto.UserDTO;
+
 
 import it.contrader.service.PlayerService;
 
@@ -21,6 +20,8 @@ import it.contrader.service.Service;
 import it.contrader.utils.InputValidation;
 
 public class PlayerServlet extends HttpServlet {
+	private static final long serialVersionUID=1;
+	
 	boolean t=false;
 	public void updateList(HttpServletRequest request) {
 		Service<PlayerDTO> service = new PlayerService();

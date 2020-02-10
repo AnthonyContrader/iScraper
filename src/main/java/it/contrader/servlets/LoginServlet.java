@@ -53,13 +53,13 @@ public class LoginServlet extends HttpServlet {
 			}
 			else {
 				//come nei vecchi controller, invoca il service
-				UserDTO dto = new UserDTO();
+				UserDTO dto = service.login(username, password);
 				try {
-					dto = service.login(username, password);
-					session.setAttribute("utente", dto.getUsertype().toString());
-					session.setAttribute("userId", dto.getId());
+					
 					if (dto != null) {
 						//se il login ha funzionato, salva l'utente nella sessione
+						session.setAttribute("utente", dto.getUsertype().toString());
+						session.setAttribute("userId", dto.getId());
 						session.setAttribute("user", dto);
 					}
 						else
@@ -83,10 +83,9 @@ public class LoginServlet extends HttpServlet {
 						break;
 					}
 				} catch (NullPointerException e) {
-					getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+					e.printStackTrace();
 				}
 			}
 		}
-		else getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 	}
 }

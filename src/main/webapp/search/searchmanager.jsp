@@ -14,6 +14,7 @@
 	<%@ include file="../utilities/navbar.jsp" %>
 	<div class="main">
 		<%
+		@SuppressWarnings("unchecked")
 		List<SearchDTO> list = (List<SearchDTO>) request.getAttribute("list");
 		String userId = session.getAttribute("userId").toString();
 		String formatted = new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date()).toString();

@@ -10,10 +10,11 @@
 </head>
 <body>
 	<%@ include file="../utilities/header.jsp"%>
-	<%@ include file="../utilities/navbar.jsp"%>
+	<%@ include file="../utilities/usernavbar.jsp"%>
 	
 	<div class="main">
 	<% 
+	@SuppressWarnings("unchecked")
 		List<TeamDTO> list = (List<TeamDTO>) request.getAttribute("list");
 	%>
 	<br>
@@ -36,6 +37,7 @@
 		<% } %>
 		</table>
 	<br>
+	</div>
 	<%@ include file="../utilities/footer.jsp"%>
 
 
