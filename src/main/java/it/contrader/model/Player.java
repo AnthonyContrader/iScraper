@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import org.springframework.data.annotation.Id;
+import javax.persistence.Id;
 
 import it.contrader.model.User.Usertype;
 import lombok.AllArgsConstructor;
@@ -28,7 +28,7 @@ public class Player {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	
 	private String player_name;
 	private String player_surname;

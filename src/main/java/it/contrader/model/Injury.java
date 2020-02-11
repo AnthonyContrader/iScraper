@@ -18,7 +18,7 @@ public class Injury {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	
 	private int severity;
 	private String description;

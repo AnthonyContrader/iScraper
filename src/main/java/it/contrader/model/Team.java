@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 public class Team {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	
 	private String name;
 	private int marketValue;
