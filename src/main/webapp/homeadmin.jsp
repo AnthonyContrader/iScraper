@@ -17,13 +17,8 @@
 </head>
 
 <body>
-	<%@include file="css/header.jsp"%>
-
-
-	<div class="navbar">
-		<a class="active" href="/homeadmin.jsp">Home</a> <a href=/user/getall>Users</a>
-		<a href="/user/logout" id="logout">Logout</a>
-	</div>
+	<%@include file="utilities/header.jsp"%>
+	<%@include file="utilities/navbar.jsp"%>
 
 	<div class="main">
 		<h1>Welcome ${user.getUsername()}</h1>

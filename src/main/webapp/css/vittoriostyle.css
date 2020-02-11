@@ -1,19 +1,48 @@
 /* Main Layout */
 html {
-  scroll-behavior: smooth;
+	scroll-behavior: smooth;
+
 }
+
 * {
 	font-family: sans-serif;
 }
-div.text{
-	clear:both;
+.body{
+	.background-image: url("main1.jpg");
+}
+#new{
+	.background-image: url("main1.jpg");
+
+background-repeat: no-repeat;
+
+background-attachment: fixed;
+
+background-position: center;
+
+    background-position-x: center;
+    background-position-y: center;
+
+.background-size: cover;
+}
+div.text {
+	clear: both;
 	margin-top: 3%;
 	margin-bottom: 3%;
 }
-
+.user1{
+	margin-left: 950px;
+position: relative;
+}
 .header {
 	text-align: center;
 	font-size: 800%;
+	font-family: sans-serif;
+	color: #00a990;
+}
+
+.subtitle {
+	text-align: center;
+	font-size: 300%;
 	font-family: sans-serif;
 	color: #00a990;
 }
@@ -36,7 +65,7 @@ div.text{
 	border-radius: 7px;
 	position: relative;
 	padding: 3px;
-	clear:both;
+	clear: both;
 	margin-top: 5%;
 	margin-bottom: 1%;
 }
@@ -56,39 +85,37 @@ h2 {
 }
 
 /*Login*/
-
-.log{
-	width:95%;
-	z-index:-1;
-	opacity:0.4;
-	position:absolute;
-
-	
+.log {
+	width: 95%;
+	z-index: -1;
+	opacity: 0.4;
+	position: absolute;
 }
-.login{
-	position:fixed;
-	heigth:50%;
-	width:20%;
-	margin-left:35.6%;
-	margin-right:44.4%;
-	margin-top:10%;
-	margin-bottom:auto;
-	z-index:1;
+
+.login {
+	position: fixed;
+	heigth: 50%;
+	width: 20%;
+	margin-left: 35.6%;
+	margin-right: 44.4%;
+	margin-top: 10%;
+	margin-bottom: auto;
+	z-index: 1;
 }
 
 .login input {
 	text-align: center;
 	float: center;
 	clear: both;
-	width:90%;
-	margin-left:5%;
-	margin-right:5%;
+	width: 90%;
+	margin-left: 5%;
+	margin-right: 5%;
 }
 
 .login label {
 	float: center;
 	clear: both;
-	width:100%;
+	width: 100%;
 	text-align: center;
 }
 
@@ -119,14 +146,25 @@ a:visited {
 }
 
 /*Tables*/
+
+ 
+table.statsbox {
+	border-collapse: collapse;
+	width: 100%;
+	float: left;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	overflow-x:scroll;
+	display:block;
+}
+
 table {
 	border-collapse: collapse;
 	width: 50%;
-	float:left;
-	border-radius:4px;
-    -moz-border-radius:4px;
+	float: left;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
 }
-
 
 th, td {
 	text-align: center;
@@ -140,59 +178,69 @@ tr:nth-child(even) {
 th {
 	background-color: #00a990;
 	color: #ffffff;
-	
 }
 
 a:hover {
 	color: #999999;
 }
 
-
 /*Forms*/
-
 select {
-  width: 100%;
-  padding: 14px 20px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #f2f2f2;
-  margin: 8px 0;
+	width: 100%;
+	padding: 14px 20px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	background-color: #f2f2f2;
+	margin: 8px 0;
 }
+
 select:hover {
-  background-color:  #00ccad;
+	background-color: #00ccad;
 }
 
-option{
-width: 100%;
-  background-color: #ffff;
-  color: #000000;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  cursor: pointer;
-	
+option {
+	width: 100%;
+	background-color: #ffff;
+	color: #000000;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	cursor: pointer;
 }
-
-
-
 
 input {
-  width: 80%;
-  background-color: #ffff;
-  color: #000000;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  cursor: pointer;
-  float:right;
+	width: 80%;
+	background-color: #ffff;
+	color: #000000;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	cursor: pointer;
+	float: right;
 }
+
+input.statstable {
+	display: inline-block;
+	text-align: center;
+	padding: 2px 2px;
+	margin: 0px;
+	float: left;
+}
+
+input.statsbox {
+	width: 100%;
+	padding: 10px 10px;
+	margin: 5%;
+	margin-right: 10%;
+	border-radius: 4px;
+}
+
 
 input:hover {
-  background-color:  #00ccad;
+	background-color: #00ccad;
 }
-
 
 res {
 	float: left;
@@ -201,7 +249,7 @@ res {
 	background-color: #00a990;
 	border-radius: 7px;
 	color: #ffffff;
-	text-align:center;
+	text-align: center;
 }
 
 form {
@@ -211,57 +259,112 @@ form {
 	padding: 20px;
 }
 
+form.statsbox {
+	width: 100%;
+	border-radius: 7px;
+	background-color: white;
+	padding: 10px;
+}
+
+.col-14 {
+	float: left;
+	width: 14%;
+	margin-top: 3%;
+	margin-left: 0.14%;
+}
+
+.col-19 {
+	float: left;
+	width: 19%;
+	margin-top: 3%;
+	margin-left: 0.19%
+}
+
+.col-30 {
+	float: left;
+	width: 30%;
+	margin-top: 0px;
+	margin-left: 0.33%
+}
+
+.col-66 {
+	float: left;
+	width: 66%;
+	margin-top: 0px;
+	margin-left: 0.66%
+}
+
 .col-25 {
-  float: left;
-  width: 25%;
-  margin-top: 6px;
+	float: left;
+	width: 25%;
+	margin-top: 6px;
 }
 
 .col-75 {
-  float: left;
-  width: 75%;
-  margin-top: 6px;
+	float: left;
+	width: 75%;
+	margin-top: 6px;
 }
 
 /* Clear floats after the columns */
 .row:after {
-  content: "";
-  display: table;
-  clear: both;
+	content: "";
+	display: table;
+	clear: both;
 }
 
 label {
-  padding: 12px 12px 12px 0;
-  display: inline-block;
+	padding: 12px 12px 12px 0;
+	display: inline-block;
 }
 
+label.user {
+	padding: 5% 5% 5% 5%;
+	display: inline-block;
+}
 
 button {
-  -webkit-transition-duration: 0.1s; /* Safari */
-  transition-duration: 0.1s;
-  background-color:  #00a990;
-  border: none;
-  color: white;
-  padding: 3% 3%;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 130%;
-  margin-left: 10%;
-  margin-right: 10%;
-  margin-top: 5%;
-  margin-bottom: 5%;
-  cursor: pointer;
-  border-radius: 7px;
-  width:80%;
+	-webkit-transition-duration: 0.1s; /* Safari */
+	transition-duration: 0.1s;
+	background-color: #00a990;
+	border: none;
+	color: white;
+	padding: 3% 3%;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 130%;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	cursor: pointer;
+	border-radius: 7px;
+	width: 80%;
 }
+
+button.statsbox {
+	margin-top: 0%;
+	margin-left: 18%;
+	margin-right: 0%;
+	margin-bottom: 10%;
+	padding: 5% 5%;
+}
+
+button.user {
+	margin-top: 0%;
+	margin-left: 0%;
+	margin-right: 0%;
+	margin-bottom: 0%;
+	padding: 3% 3%;
+}
+
+
 
 button:hover {
-  background-color:  #00ccad; 
-  color: white;
+	background-color: #00ccad;
+	color: white;
 }
-
-
 
 /*IDs*/
 #logout {
@@ -270,16 +373,19 @@ button:hover {
 }
 
 #floatleft {
-	float:left;
+	float: left;
 }
+
 #floatright {
-	float:right;
+	float: right;
 }
+
 #floattop {
-	float:top;
+	float: top;
 }
+
 #floatright {
-	float:bottom;
+	float: bottom;
 }
 
 /*Navigation bar*/
@@ -319,9 +425,11 @@ div.navbar a.active {
 
 /*Images*/
 .imgheader {
-	position: center; z-index : -1;
+	position: center;
+	z-index: -1;
 	opacity: .9;
-	z-index: -1; opacity : .9;
+	z-index: -1;
+	opacity: .9;
 	width: 8%;
 }
 }
