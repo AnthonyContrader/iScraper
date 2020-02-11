@@ -24,6 +24,7 @@ public class Injury {
 	private String description;
 	private int duration;
 	private String date;
+	
 	@ManyToOne 
 	private Player player;
 	

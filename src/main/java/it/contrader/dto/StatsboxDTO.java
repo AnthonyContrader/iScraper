@@ -1,28 +1,18 @@
-package it.contrader.model;
+package it.contrader.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
+import it.contrader.model.Player;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-@Entity
 
-public class Statsbox {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class StatsboxDTO {
 	private long id;
-	
-	@ManyToOne
 	private Player player;
-	
 	private int season;
 	private int caps;
 	private float contributions;

@@ -9,8 +9,6 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>SAMPLE</name>
-	<description>Sample Project</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -90,4 +88,6 @@
 			</plugin>
 		</plugins>
 	</build>
+	<name>iScraper</name>
+	<description>iScraper Project</description>
 </project>
