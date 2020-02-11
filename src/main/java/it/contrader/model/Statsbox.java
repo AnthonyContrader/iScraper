@@ -20,8 +20,7 @@ public class Statsbox {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	@ManyToOne
-	private Player player;
+	
 	private int season;
 	private int caps;
 	private float contributions;
@@ -34,4 +33,7 @@ public class Statsbox {
 	private float tackles; 
 	private float tacklesper; 
 	private float breaks; 
+	
+	@ManyToOne
+	private Player player;
 }
