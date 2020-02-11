@@ -16,12 +16,8 @@ import lombok.NoArgsConstructor;
 @Entity
 
 public class Statsbox {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
 	
-	@ManyToOne
-	private Player player;
+
 	
 	private int season;
 	private int caps;
@@ -35,4 +31,7 @@ public class Statsbox {
 	private float tackles; 
 	private float tacklesper; 
 	private float breaks; 
+	
+	@ManyToOne
+	private Player player;
 }
