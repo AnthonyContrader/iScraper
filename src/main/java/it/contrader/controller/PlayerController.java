@@ -16,7 +16,10 @@ import it.contrader.dto.PlayerDTO;
 import it.contrader.dto.UserDTO;
 import it.contrader.service.PlayerService;
 
-
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Controller
 @RequestMapping("/player")
@@ -126,7 +129,7 @@ public class PlayerController {
 		playerDTO.setPreviousMarketValue(previous_value);
 		playerDTO.setPosition(position);
 		playerDTO.setTeam(team);
-		playerDTO.setPlayer_id(idUpdate);
+		playerDTO.setId(idUpdate);
 		
 		
 		

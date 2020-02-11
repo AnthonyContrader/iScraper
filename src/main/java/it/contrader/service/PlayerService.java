@@ -3,6 +3,8 @@ package it.contrader.service;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +16,15 @@ import it.contrader.dto.PlayerDTO;
 import it.contrader.model.Player;
 
 import it.contrader.model.User;
+import it.contrader.model.User.Usertype;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@AllArgsConstructor
+
+@Data
+@Entity
 
 @Service
 public class PlayerService extends AbstractService<Player, PlayerDTO>{
