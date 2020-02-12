@@ -8,9 +8,8 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import it.contrader.model.Player;
-import it.contrader.model.Statsbox;
 import it.contrader.model.Team;
-import it.contrader.model.User;
+
 
 @Repository
 @Transactional
