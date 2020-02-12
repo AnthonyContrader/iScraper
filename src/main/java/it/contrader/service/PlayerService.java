@@ -14,16 +14,17 @@ import it.contrader.dao.PlayerRepository;
 import it.contrader.dto.PlayerDTO;
 
 import it.contrader.model.Player;
-import it.contrader.model.Team;
 
+import it.contrader.model.User;
+import it.contrader.model.User.Usertype;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 
-
-//@Entity
+@Data
+@Entity
 
 @Service
 public class PlayerService extends AbstractService<Player, PlayerDTO>{
@@ -39,9 +40,37 @@ public class PlayerService extends AbstractService<Player, PlayerDTO>{
 		// TODO Auto-generated constructor stub
 	}
 	
-	public List<PlayerDTO> findByTeam(Team team) {
-		return playerConverter.toDTOList(playerRepository.findByTeam(team));
+	public boolean insertPlayer(PlayerDTO playerDTO) {
+		return playerRepository.save(playerConverter.toEntity(playerDTO)) != null;
 	}
+	
+
+	
+	public boolean updatePlayer(PlayerDTO playerDTO) {
+		return playerRepository.save(playerConverter.toEntity(playerDTO)) != null;
+	}
+	
+	public void deletePlayerById(int id) {
+		playerRepository.deleteById(id);
+	}
+	
+	public List<PlayerDTO> getListPlayerDTO(){
+		List<Player> listPlayer = (List<Player>) playerRepository.findAll();
+		List<PlayerDTO> listPlayerDTO = playerConverter.toDTOList(listPlayer);
+		return listPlayerDTO;
+
+	}
+	
+	
+	
+	public PlayerDTO getPlayerDTObyId(int id) {
+		Player player = playerRepository.read(id);
+		PlayerDTO playerDTO = playerConverter.toDTO(player);
+		return playerDTO;
+	}
+	
+	
+	
 	
 	
 	

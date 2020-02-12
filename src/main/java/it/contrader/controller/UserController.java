@@ -1,6 +1,6 @@
 package it.contrader.controller;
 
-
+import javax.persistence.Entity;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import it.contrader.dto.UserDTO;
 import it.contrader.model.User.Usertype;
 import it.contrader.service.UserService;
-
 
 @Controller
 @RequestMapping("/user")
