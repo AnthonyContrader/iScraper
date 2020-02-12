@@ -14,7 +14,7 @@
 
 	<div class="main">
 		<br>
-		<% StatsboxDTO d = (StatsboxDTO) request.getAttribute("dto");%>
+		<% StatsboxDTO d = (StatsboxDTO) request.getSession().getAttribute("dto");%>
 		<table class="statsbox">
 		<tr>
 			<th> ID </th>
@@ -35,7 +35,7 @@
 		
 		<tr>
 			<td> <%=d.getId() %> </td>
-			<td> <%=d.getPlayer().toString() %> </td>
+			<td> <%=d.getPlayer().getId() %> </td>
 			<td> <%=d.getSeason() %> </td>
 			<td> <%=d.getCaps() %> </td>
 			<td> <%=d.getContributions() %> </td>

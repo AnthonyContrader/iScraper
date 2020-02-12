@@ -13,12 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import it.contrader.dto.UserDTO;
 import it.contrader.model.User.Usertype;
 import it.contrader.service.UserService;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-@AllArgsConstructor
-@NoArgsConstructor
-@Data
+
 
 @Controller
 @RequestMapping("/user")
