@@ -8,16 +8,13 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import it.contrader.model.Player;
+import it.contrader.model.Statsbox;
+import it.contrader.model.Team;
 import it.contrader.model.User;
 
 @Repository
 @Transactional
 public interface PlayerRepository extends CrudRepository<Player, Integer>{
 	
-	public List<Player> getAll();
-	public boolean insert(Player player);
-	public Player read(int id);
-	public boolean update(Player player);
-	public boolean delete(int id);
-
+	List<Player> findByTeam(Team team);
 }

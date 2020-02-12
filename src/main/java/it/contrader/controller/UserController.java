@@ -1,6 +1,6 @@
 package it.contrader.controller;
 
-import javax.persistence.Entity;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Entity
+
 @Controller
 @RequestMapping("/user")
 public class UserController {

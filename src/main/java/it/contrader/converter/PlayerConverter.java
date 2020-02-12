@@ -1,8 +1,13 @@
 package it.contrader.converter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import it.contrader.dto.PlayerDTO;
+import it.contrader.dto.StatsboxDTO;
 import it.contrader.dto.UserDTO;
 import it.contrader.model.Player;
+import it.contrader.model.Statsbox;
 import it.contrader.model.User;
 import lombok.ToString;
 import lombok.AllArgsConstructor;
@@ -34,6 +39,13 @@ public class PlayerConverter extends AbstractConverter<Player, PlayerDTO>{
 					entity.getTeam());
 		}
 		return playerDTO;
+	}
+	public List<PlayerDTO> toListDTO(List<Player> list) {
+		List<PlayerDTO> DTOlist = new ArrayList<PlayerDTO>();
+		for (Player s: list) {
+			DTOlist.add(this.toDTO(s));
+		}
+		return DTOlist;
 	}
 
 }

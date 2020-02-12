@@ -37,5 +37,5 @@ public class Player {
 	private String position;
 	
 	@ManyToOne
-	private String team;
+	private Team team;
 }
