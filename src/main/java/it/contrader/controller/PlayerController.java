@@ -33,13 +33,6 @@ public class PlayerController {
 		return "player/playermanager";
 	}
 	
-	
-
-	@GetMapping("/read")
-	public String read(HttpServletRequest request, @RequestParam("id") Long id) {
-		request.getSession().setAttribute("dto", playerService.read(id));
-		return "player/readplayer";
-	}
 	@GetMapping("/delete")
 	public String delete(HttpServletRequest request, @RequestParam("id") Long id) {
 		playerService.delete(id);
@@ -48,12 +41,24 @@ public class PlayerController {
 	}
 
 	
+
 	
-	
-	@RequestMapping(value = "/insertRedirect", method = RequestMethod.GET)
-	public String insertRedirect(HttpServletRequest request) {
+	@PostMapping("/update")
+	public String update(HttpServletRequest request, @RequestParam("id") Long id, @RequestParam("player_name") String player_name, @RequestParam("player_surname") String player_surname, @RequestParam("age") int age, @RequestParam("actual_value") int actual_value, @RequestParam("previous_value") int previous_value, @RequestParam("position") String position, @RequestParam("team") Team team) {
+
+		PlayerDTO dto = new PlayerDTO();
+		//dto.setId(id);
+		dto.setPlayer_name(player_name);
+		dto.setPlayer_surname(player_surname);
+		dto.setAge(age);
+		dto.setActualMarketValue(actual_value);
+		dto.setPreviousMarketValue(previous_value);
+		dto.setPosition(position);
+		dto.setTeam(team);
+		setAll(request);
 		return "player/playermanager";
 	}
+	
 	@PostMapping("/insert")
 	public String insert(HttpServletRequest request, @RequestParam("id") Long id, @RequestParam("player_name") String player_name, @RequestParam("player_surname") String player_surname, @RequestParam("age") int age, @RequestParam("actual_value") int actual_value, @RequestParam("previous_value") int previous_value, @RequestParam("position") String position, @RequestParam("team") Team team) {
 		PlayerDTO dto = new PlayerDTO();
@@ -66,36 +71,16 @@ public class PlayerController {
 		dto.setPosition(position);
 		dto.setTeam(team);
 		setAll(request);
-		return "player/playermanager";
+		return "playermanager";
 	}
 	
-	
-
-	@GetMapping("/preupdate")
-	public String preUpdate(HttpServletRequest request, @RequestParam("id") Long id) {
+	@GetMapping("/read")
+	public String read(HttpServletRequest request, @RequestParam("id") Long id) {
 		request.getSession().setAttribute("dto", playerService.read(id));
-		return "updateplayer";
-	}
-
-	
-	
-	@PostMapping("/update")
-	public String update(HttpServletRequest request, @RequestParam("id") Long id, @RequestParam("player_name") String player_name, @RequestParam("player_surname") String player_surname, @RequestParam("age") int age, @RequestParam("actual_value") int actual_value, @RequestParam("previous_value") int previous_value, @RequestParam("position") String position, @RequestParam("team") Team team) {
-
-		PlayerDTO dto = new PlayerDTO();
-		dto.setId(id);
-		dto.setPlayer_name(player_name);
-		dto.setPlayer_surname(player_surname);
-		dto.setAge(age);
-		dto.setActualMarketValue(actual_value);
-		dto.setPreviousMarketValue(previous_value);
-		dto.setPosition(position);
-		dto.setTeam(team);
-		setAll(request);
-		return "player/playermanager";
+		return "readplayer";
 	}
 	
-	
+
 	
 	private void setAll(HttpServletRequest request) {
 		request.getSession().setAttribute("list", playerService.getAll());

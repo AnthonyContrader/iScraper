@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import it.contrader.dto.StatsboxDTO;
-import it.contrader.dto.UserDTO;
+
 import it.contrader.model.Player;
-import it.contrader.model.User.Usertype;
+
 import it.contrader.service.StatsboxService;
 
 @Controller
