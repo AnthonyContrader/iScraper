@@ -69,26 +69,28 @@ public class PlayerController {
 	}
 	
 	@PostMapping("/insert")
-	public String insert(HttpServletRequest request, @RequestParam("id") Long id, @RequestParam("team_id") int team_id,@RequestParam("player_name") String player_name, @RequestParam("player_surname") String player_surname, @RequestParam("age") int age, @RequestParam("actual_value") int actual_value, @RequestParam("previous_value") int previous_value, @RequestParam("position") String position, @RequestParam("team") Team team) {
+	public String insert(HttpServletRequest request,@RequestParam("player_name") String player_name, @RequestParam("player_surname") String player_surname, @RequestParam("age") int age, @RequestParam("actual_value") int actual_value, @RequestParam("previous_value") int previous_value, @RequestParam("position") String position, @RequestParam("team") Team team,@RequestParam("team_id") int team_id ) {
 		PlayerDTO dto = new PlayerDTO();
-		dto.setId(id);
+		//dto.setId(id);
 		Team team1 = teamConverter.toEntity(teamService.read(team_id));
 		dto.setTeam(team1);
+		dto.setTeam_id(team_id);
 		dto.setPlayer_name(player_name);
 		dto.setPlayer_surname(player_surname);
 		dto.setAge(age);
 		dto.setActualMarketValue(actual_value);
 		dto.setPreviousMarketValue(previous_value);
 		dto.setPosition(position);
-		dto.setTeam(team);
+		//dto.setTeam(team);
+		playerService.insert(dto);
 		setAll(request);
-		return "playermanager";
+		return "player/playermanager";
 	}
 	
 	@GetMapping("/read")
 	public String read(HttpServletRequest request, @RequestParam("id") Long id) {
 		request.getSession().setAttribute("dto", playerService.read(id));
-		return "readplayer";
+		return "player/readplayer";
 	}
 	
 

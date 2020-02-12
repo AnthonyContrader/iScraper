@@ -18,7 +18,7 @@ public class PlayerConverter extends AbstractConverter<Player, PlayerDTO>{
 		// TODO Auto-generated method stub
 		Player player=null;
 		if(dto!=null) {
-			player= new Player(dto.getId(),dto.getTeam(),dto.getPlayer_name(), dto.getPlayer_surname(),dto.getAge(),dto.getActualMarketValue(),dto.getPreviousMarketValue(), dto.getPosition());}
+			player= new Player(dto.getId(),dto.getTeam(),dto.getPlayer_name(), dto.getPlayer_surname(),dto.getAge(),dto.getActualMarketValue(),dto.getPreviousMarketValue(), dto.getPosition(),dto.getTeam_id());}
 		
 		
 
@@ -31,9 +31,7 @@ public class PlayerConverter extends AbstractConverter<Player, PlayerDTO>{
 		
 		PlayerDTO playerDTO=null;
 		if(entity!=null) {
-			playerDTO=new PlayerDTO(entity.getId(),entity.getTeam(), entity.getPlayer_name(), entity.getPlayer_surname(), entity.getAge(), entity.getActualMarketValue(), entity.getPreviousMarketValue(), entity.getPosition() 
-					);
-		}
+			playerDTO=new PlayerDTO(entity.getId(),entity.getTeam(), entity.getPlayer_name(), entity.getPlayer_surname(), entity.getAge(), entity.getActualMarketValue(), entity.getPreviousMarketValue(), entity.getPosition(), entity.getTeam_id());}
 		return playerDTO;
 	}
 	public List<PlayerDTO> toListDTO(List<Player> list) {

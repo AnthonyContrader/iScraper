@@ -36,7 +36,7 @@
 			
 			<% for (PlayerDTO s : list) {%>
 			<tr>
-				<td> <a href=player/read&id=<%=s.getId()%>> <%=s.getId()%></a></td>
+				<td> <a href=read?id=<%=s.getId()%>> <%=s.getId()%></a></td>
 			
 				<td><%=s.getPlayer_name()%></td>
 				<td><%=s.getPlayer_surname()%></td>
@@ -53,7 +53,7 @@
 
 <br>
 			
-		<form id="floatleft" action="player/insert" method="post">
+		<form id="floatleft" action="insert" method="post">
 		
 			<div class="row">
 				<div class="col-25">
@@ -126,13 +126,22 @@
 						placeholder="inserisci la squadra">
 				</div>
 			</div>
+			<div class="row">
+				<div class="col-25">
+					<label for="type">Id squadra</label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="team_id" name="team_id"
+						placeholder="inserisci la team ID">
+				</div>
+			</div>
 
 			<button type="submit">Insert</button>
 		</form>
 
 <br>
 <br>
-		<form id="floatright" action="player/update" method="post">
+		<form id="floatright" action="update" method="post">
 	
 			<div class="row">
 				<div class="col-25">
@@ -219,7 +228,7 @@
 		
 		
 		<form id="floatright" style="margin-top: 5%;
-		margin-bottom: 1%;" action="player/delete" method="post">
+		margin-bottom: 1%;" action="delete" method="post">
 			
 			<div class="row">
 				<div class="col-25">

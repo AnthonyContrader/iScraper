@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link href="css/player.css" rel="stylesheet">
+<link href="/css/vittoriostyle.css" rel="stylesheet">
 <title>Read Player</title>
 </head>
 <body>
@@ -18,7 +18,7 @@
 
 		
 <%
-			PlayerDTO player = (PlayerDTO) request.getSession().getAttribute("list");
+			PlayerDTO player = (PlayerDTO) request.getSession().getAttribute("dto");
 		%>
 
 		<table id="newone">
@@ -41,7 +41,8 @@
 				<td><%=player.getActualMarketValue()%></td>
 				<td><%=player.getPreviousMarketValue()%></td>
 				<td><%=player.getPosition()%></td>
-				<td><%=player.getTeam()%></td>
+				<td><%=player.getTeam().getName()%></td>
+				
 			</tr>
 		</table>
 

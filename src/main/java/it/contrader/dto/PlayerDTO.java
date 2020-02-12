@@ -22,6 +22,6 @@ public class PlayerDTO {
 	private int actualMarketValue;
 	private int previousMarketValue;
 	private String position;
-	
+	private int team_id;
 	
 }
