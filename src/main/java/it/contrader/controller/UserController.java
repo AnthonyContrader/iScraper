@@ -16,10 +16,7 @@ import it.contrader.service.UserService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-@AllArgsConstructor
-@NoArgsConstructor
-@Data
-@Entity
+
 @Controller
 @RequestMapping("/user")
 public class UserController {
