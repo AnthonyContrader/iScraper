@@ -42,7 +42,7 @@
 		<tr>
 			<td> <a href=statsbox/read?id=<%=d.getId()%>> <%=d.getId() %> </a></td>
 			<td> <%=d.getPlayer().toString()%> </td>
-			<td> <%=d.getSeason()%> </td>
+			<td> <%=d.getSeason() %> </td>
 			<td> <%=d.getCaps() %> </td>
 			<td> <%=d.getContributions() %> </td>
 			<td> <%=d.getShotsper() %> </td>

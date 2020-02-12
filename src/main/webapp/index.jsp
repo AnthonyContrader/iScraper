@@ -18,7 +18,7 @@
 
 
 <body class="text-center">
-	<form class="login" action="/user/login" method="post">
+	<form class="login" action="" method="post">
 		<h1>SAMPLE LOGIN</h1>
 
 		<label for="inputUser" class="sr-only">Username</label> <input
@@ -34,4 +34,4 @@
 	</form>
 
 </body>
-</html>
+</html> 

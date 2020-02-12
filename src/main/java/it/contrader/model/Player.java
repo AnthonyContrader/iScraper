@@ -18,8 +18,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-@AllArgsConstructor
+
 @NoArgsConstructor
+@AllArgsConstructor
 @Data
 @Entity
 
@@ -37,5 +38,5 @@ public class Player {
 	private String position;
 	
 	@ManyToOne
-	private String team;
+	private Team team;
 }

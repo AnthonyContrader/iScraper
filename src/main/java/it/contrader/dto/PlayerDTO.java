@@ -1,6 +1,5 @@
 package it.contrader.dto;
 
-import it.contrader.model.Team;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,7 +12,7 @@ import lombok.ToString;
 
 
 public class PlayerDTO {
-	private long id;
+	private int id;
 	private String player_name;
 	private String player_surname;
 	private int age;
