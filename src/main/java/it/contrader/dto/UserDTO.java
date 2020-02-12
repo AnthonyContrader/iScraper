@@ -1,6 +1,6 @@
 package it.contrader.dto;
 
-
+import javax.persistence.Entity;
 
 import it.contrader.model.User.Usertype;
 import lombok.AllArgsConstructor;

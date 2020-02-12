@@ -1,9 +1,8 @@
 package it.contrader;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.boot.SpringApplication;
-@ComponentScan("it.contrader.repositories")
+
 @SpringBootApplication
 public class SpringWebApplication {
 
