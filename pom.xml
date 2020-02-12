@@ -9,6 +9,8 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
+	<name>SAMPLE</name>
+	<description>Sample Project</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -24,7 +26,7 @@
 	</properties>
 
 	<dependencies>
-	
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -33,8 +35,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-	
-		
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>com.jayway.jsonpath</groupId>
 			<artifactId>json-path-parent</artifactId>
@@ -65,7 +70,7 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>jexcelapi</groupId>
 			<artifactId>jxl</artifactId>
@@ -76,16 +81,7 @@
 			<artifactId>javax.ws.rs-api</artifactId>
 			<version>2.0</version>
 		</dependency>		
-<<<<<<< HEAD
-		
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-		</dependency>
-	</dependencies>
-=======
-		</dependencies>
->>>>>>> parent of 9c85f23... updates
+
 	<build>
 		<plugins>
 			<plugin>
@@ -94,6 +90,4 @@
 			</plugin>
 		</plugins>
 	</build>
-	<name>iScraper</name>
-	<description>iScraper Project</description>
-</project>
+</project> 
