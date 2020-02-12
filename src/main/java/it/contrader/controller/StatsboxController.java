@@ -9,14 +9,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import it.contrader.converter.PlayerConverter;
-import it.contrader.dao.PlayerRepository;
-import it.contrader.dto.PlayerDTO;
 import it.contrader.dto.StatsboxDTO;
 import it.contrader.dto.UserDTO;
 import it.contrader.model.Player;
 import it.contrader.model.User.Usertype;
-import it.contrader.service.PlayerService;
 import it.contrader.service.StatsboxService;
 
 @Controller
@@ -25,9 +21,6 @@ public class StatsboxController {
 	
 	@Autowired
 	private StatsboxService service;
-	@Autowired
-	private PlayerService playerservice;
-	private PlayerConverter playerconverter;
 
 	@GetMapping("/getall")
 	public String getAll(HttpServletRequest request) {
@@ -39,13 +32,13 @@ public class StatsboxController {
 	public String delete(HttpServletRequest request, @RequestParam("id") Long id) {
 		service.delete(id);
 		setAll(request);
-		return "statsbox/statsboxes";
+		return "statsboxes";
 	}
 
 	@GetMapping("/preupdate")
 	public String preUpdate(HttpServletRequest request, @RequestParam("id") Long id) {
 		request.getSession().setAttribute("dto", service.read(id));
-		return "statsbox/updatestats";
+		return "updatestats";
 	}
 
 	@PostMapping("/update")
@@ -68,15 +61,14 @@ public class StatsboxController {
 		dto.setBreaks(breaks);
 		service.update(dto);
 		setAll(request);
-		return "statsbox/statsboxes";
+		return "statsboxes";
 
 	}
 
 	@PostMapping("/insert")
-	public String insert(HttpServletRequest request, @RequestParam("player") int id_player, @RequestParam("season") int season, @RequestParam("caps") int caps, @RequestParam("contributions") float contributions, @RequestParam("shotsper") float shotsper, @RequestParam("keypass") float keypass, @RequestParam("passprec") float passprec, @RequestParam("dribbling") float dribbling, @RequestParam("foulssub") float foulssub, @RequestParam("foulscomm") float foulscomm, @RequestParam("tackles") float tackles, @RequestParam("tacklesper") float tacklesper, @RequestParam("breaks") float breaks) {
+	public String insert(HttpServletRequest request, @RequestParam("id") Long id, @RequestParam("player") Player player, @RequestParam("season") int season, @RequestParam("caps") int caps, @RequestParam("contributions") float contributions, @RequestParam("shotsper") float shotsper, @RequestParam("keypass") float keypass, @RequestParam("passprec") float passprec, @RequestParam("dribbling") float dribbling, @RequestParam("foulssub") float foulssub, @RequestParam("foulscomm") float foulscomm, @RequestParam("tackles") float tackles, @RequestParam("tacklesper") float tacklesper, @RequestParam("breaks") float breaks) {
 		StatsboxDTO dto = new StatsboxDTO();
-		
-		Player player = playerconverter.toEntity(playerservice.read(id_player));
+		dto.setId(id);
 		dto.setPlayer(player);
 		dto.setSeason(season);
 		dto.setCaps(caps);
@@ -91,13 +83,13 @@ public class StatsboxController {
 		dto.setTacklesper(tacklesper);
 		dto.setBreaks(breaks);
 		setAll(request);
-		return "statsbox/statsboxes";
+		return "statsboxes";
 	}
 
 	@GetMapping("/read")
 	public String read(HttpServletRequest request, @RequestParam("id") Long id) {
 		request.getSession().setAttribute("dto", service.read(id));
-		return "statsbox/readstats";
+		return "readstats";
 	}
 
 	private void setAll(HttpServletRequest request) {

@@ -39,9 +39,9 @@
 		
 		<% for ( StatsboxDTO d : list ) { %>
 		<tr>
-			<td> <a href=/statsbox/preupdate?id=<%=d.getId()%>> <input type=button class="statstable" value="NEW"></a></td>
-			<td> <a href=/statsbox/delete?id=<%=d.getId()%>> <input type=button class="statstable" value="X"></a></td>
-			<td> <a href=/statsbox/read?id=<%=d.getId()%>> <%=d.getId()%> </a></td>
+			<td> <a href=statsbox/preupdate?id=<%=d.getId()%>> <input type=button class="statstable" value="NEW"></a></td>
+			<td> <a href=statsbox/delete?id=<%=d.getId()%>> <input type=button class="statstable" value="X"></a></td>
+			<td> <a href=statsbox/read?id=<%=d.getId()%>> <%=d.getId()%> </a></td>
 			<td> <a> <%=d.getPlayer().getId() %> </a></td>
 			<td> <%=d.getSeason() %> </td>
 			<td> <%=d.getCaps() %> </td>
@@ -60,10 +60,10 @@
 		<% } %>
 		</table>
 		
-		<form id="floatbottom" class="statsbox" action="/statsbox/insert" method="post">
+		<form id="floatbottom" class="statsbox" action="StatsboxServlet?mode=insert" method="post">
 			<div class="row">
 				<div class="col-19">
-					<label for="player">Giocatore</label>
+					<label for="player_id">Giocatore</label>
 				</div>
 				<div class="col-14">
 					<input class="statsbox" type="text" id="player_id" name="player_id"

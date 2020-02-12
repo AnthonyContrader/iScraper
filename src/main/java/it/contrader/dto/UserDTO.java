@@ -10,11 +10,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-<<<<<<< HEAD
-
-=======
-@Entity
->>>>>>> parent of 584bdce... new
 
 public class UserDTO {
 

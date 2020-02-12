@@ -13,7 +13,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import it.contrader.dto.UserDTO;
 import it.contrader.model.User.Usertype;
 import it.contrader.service.UserService;
+<<<<<<< HEAD
 
+=======
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Entity
+>>>>>>> parent of 111cbef... @Entity fixed
 @Controller
 @RequestMapping("/user")
 public class UserController {
