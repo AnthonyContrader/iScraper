@@ -16,7 +16,7 @@
 		<%StatsboxDTO s = (StatsboxDTO) request.getAttribute("dto");%>
 
 
-		<form id="floatbottom" class="statsbox" action="StatsboxServlet?mode=update&id=<%=s.getId()%>" method="post">
+		<form id="floatbottom" class="statsbox" action="/statsbox/update?id=<%=s.getId()%>" method="post">
 			<div class="row">
 				<div class="col-19">
 					<label for="user">Giocatore</label>

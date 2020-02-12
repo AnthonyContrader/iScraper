@@ -60,7 +60,7 @@
 		<% } %>
 		</table>
 		
-		<form id="floatbottom" class="statsbox" action="StatsboxServlet?mode=insert" method="post">
+		<form id="floatbottom" class="statsbox" action="/statsbox/insert" method="post">
 			<div class="row">
 				<div class="col-19">
 					<label for="player_id">Giocatore</label>
