@@ -23,9 +23,9 @@ public class Player {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
 	@ManyToOne
 	private Team team;
+	
 	
 	private String player_name;
 	private String player_surname;

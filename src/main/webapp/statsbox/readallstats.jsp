@@ -5,7 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <link href="../css/vittoriostyle.css" rel="stylesheet">
-<title>Statistiche - Letturax</title>
+<title>Statistiche - Lettura</title>
 </head>
 <body>
 	<%@ include file="../utilities/header.jsp"%>
@@ -17,7 +17,7 @@
 		
 		<%
 		@SuppressWarnings("unchecked")
-		List<StatsboxDTO> list = (List<StatsboxDTO>) request.getAttribute("list");
+		List<StatsboxDTO> list = (List<StatsboxDTO>) request.getSession().getAttribute("list");
 		%>
 		
 		
@@ -41,7 +41,7 @@
 	<% for (StatsboxDTO d : list) {%>
 		<tr>
 			<td> <a href=statsbox/read?id=<%=d.getId()%>> <%=d.getId() %> </a></td>
-			<td> <%=d.getPlayer().toString()%> </td>
+			<td> <%=d.getPlayer().getId()%> </td>
 			<td> <%=d.getSeason() %> </td>
 			<td> <%=d.getCaps() %> </td>
 			<td> <%=d.getContributions() %> </td>
