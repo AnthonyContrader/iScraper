@@ -3,12 +3,14 @@ package it.contrader.converter;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import it.contrader.dto.StatsboxDTO;
 import it.contrader.dto.TeamDTO;
 import it.contrader.model.Statsbox;
 import it.contrader.model.Team;
 
-
+@Component
 public class TeamConverter extends AbstractConverter<Team, TeamDTO>{
 	
 	@Override
