@@ -5,7 +5,7 @@
 <html>
 <head> 
 <meta charset="ISO-8859-1">
-<link href="../css/vittoriostyle.css" rel="stylesheet">
+<link href="/css/player.css" rel="stylesheet">
 <title>Player Manager</title>
 </head>
 <body>

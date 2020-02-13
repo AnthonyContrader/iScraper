@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link href="/css/vittoriostyle.css" rel="stylesheet">
+<link href="/css/player.css" rel="stylesheet">
 <title>Read Player</title>
 </head>
 <body>
@@ -52,6 +52,6 @@
 
 	</div>
 
-	<%@ include file="../utilities/footer.jsp"%>
+	<%@ include file="../utilities/footer1.jsp"%>
 </body>
 </html>

@@ -30,6 +30,7 @@ public class UserController {
 		switch (userDTO.getUsertype()) {
 
 		case ADMIN:
+			
 			return "homeadmin";
 
 		case USER:
