@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import it.contrader.converter.PlayerConverter;
 import it.contrader.converter.TeamConverter;
 import it.contrader.dto.PlayerDTO;
+import it.contrader.dto.TeamDTO;
 import it.contrader.model.Player;
 import it.contrader.model.Team;
 import it.contrader.service.PlayerService;
@@ -51,8 +52,8 @@ public class PlayerController {
 
 	
 	@PostMapping("/update")
-	public String update(HttpServletRequest request, @RequestParam("id") Long id, @RequestParam("team_id") int team_id,@RequestParam("player_name") String player_name, @RequestParam("player_surname") String player_surname, @RequestParam("age") int age, @RequestParam("actual_value") int actual_value, @RequestParam("previous_value") int previous_value, @RequestParam("position") String position, @RequestParam("team") Team team) {
-
+	public String update(HttpServletRequest request, @RequestParam("id") Long id, @RequestParam("team_id") int team_id,@RequestParam("player_name") String player_name, @RequestParam("player_surname") String player_surname, @RequestParam("age") int age, @RequestParam("actual_value") int actual_value, @RequestParam("previous_value") int previous_value, @RequestParam("position") String position, @RequestParam("team") String team) {
+		Team team2=teamConverter.toEntity(teamService.findByName(team));
 		PlayerDTO dto = new PlayerDTO();
 		dto.setId(id);
 		dto.setPlayer_name(player_name);
@@ -62,18 +63,22 @@ public class PlayerController {
 		dto.setPreviousMarketValue(previous_value);
 		dto.setPosition(position);
 		Team team1 = teamConverter.toEntity(teamService.read(team_id));
-		dto.setTeam(team1);
-		dto.setTeam(team);
+		dto.setTeam(team2);
+		
 		setAll(request);
 		return "player/playermanager";
 	}
 	
 	@PostMapping("/insert")
-	public String insert(HttpServletRequest request,@RequestParam("player_name") String player_name, @RequestParam("player_surname") String player_surname, @RequestParam("age") int age, @RequestParam("actual_value") int actual_value, @RequestParam("previous_value") int previous_value, @RequestParam("position") String position, @RequestParam("team") Team team,@RequestParam("team_id") int team_id ) {
+	public String insert(HttpServletRequest request,@RequestParam("player_name") String player_name, @RequestParam("player_surname") String player_surname, @RequestParam("age") int age, @RequestParam("actual_value") int actual_value, @RequestParam("previous_value") int previous_value, @RequestParam("position") String position, @RequestParam("team") String team, @RequestParam("team_id") int team_id) {
 		PlayerDTO dto = new PlayerDTO();
+	//	TeamDTO teamDTO=new TeamDTO();
+		System.out.println(team);
+		//teamDTO.getName(team_id);
 		//dto.setId(id);
-		Team team1 = teamConverter.toEntity(teamService.read(team_id));
-		dto.setTeam(team1);
+		Team team2=teamConverter.toEntity(teamService.findByName(team));
+		//Team team1 = teamConverter.toEntity(teamService.read(team_id));
+		dto.setTeam(team2);
 		dto.setTeam_id(team_id);
 		dto.setPlayer_name(player_name);
 		dto.setPlayer_surname(player_surname);
@@ -81,7 +86,8 @@ public class PlayerController {
 		dto.setActualMarketValue(actual_value);
 		dto.setPreviousMarketValue(previous_value);
 		dto.setPosition(position);
-		//dto.setTeam(team);
+		//dto.setTeam(team2);
+		System.out.println(dto);
 		playerService.insert(dto);
 		setAll(request);
 		return "player/playermanager";

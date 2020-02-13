@@ -222,13 +222,21 @@
 						placeholder="inserisci la squadra">
 				</div>
 			</div>
-
+			<div class="row">
+				<div class="col-25">
+					<label for="type">Id squadra</label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="team_id" name="team_id"
+						placeholder="inserisci la team ID">
+				</div>
+			</div>
 			<button type="submit">Edit</button>
 		</form>
 		
 		
 		<form id="floatright" style="margin-top: 5%;
-		margin-bottom: 1%;" action="delete" method="post">
+		margin-bottom: 1%;" action="delete" >
 			
 			<div class="row">
 				<div class="col-25">
