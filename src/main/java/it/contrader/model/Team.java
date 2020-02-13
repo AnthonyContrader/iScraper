@@ -19,7 +19,8 @@ public class Team {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	
+	private int market_value;
 	private String name;
-	private int marketValue;
-	private int teamIndex;
+	private int team_index;
 }

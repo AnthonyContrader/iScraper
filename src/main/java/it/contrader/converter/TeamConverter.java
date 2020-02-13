@@ -17,7 +17,7 @@ public class TeamConverter extends AbstractConverter<Team, TeamDTO>{
 	public Team toEntity(TeamDTO teamDTO) {
 		Team team = null;
 		if (teamDTO != null) {
-			team = new Team(teamDTO.getId(), teamDTO.getName(), teamDTO.getMarketValue(), teamDTO.getTeamIndex());
+			team = new Team(teamDTO.getId(), teamDTO.getMarket_value(),  teamDTO.getName(),teamDTO.getTeam_index());
 		}
 		return team;
 	}
@@ -26,7 +26,8 @@ public class TeamConverter extends AbstractConverter<Team, TeamDTO>{
 	public TeamDTO toDTO(Team team) {
 		TeamDTO teamDTO = null;
 		if (team != null) {
-			teamDTO = new TeamDTO(team.getId(), team.getName(), team.getMarketValue(), team.getTeamIndex());
+			teamDTO = new TeamDTO(team.getId(), team.getName(), team.getMarket_value(), team.getTeam_index());
+			
 		}
 		return teamDTO;
 	}

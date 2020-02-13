@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 public class TeamDTO {
 	private long id;
 	private String name;
-	private int marketValue;
-	private int teamIndex;
+	private int market_value;
+	private int team_index;
 }
