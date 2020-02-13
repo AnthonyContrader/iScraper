@@ -30,51 +30,53 @@
 		<div class="overlay">
 
 
-			<form class="login1" action="user/insertuser"
-				method="post">
-				<h3 style="text-align: center;">Modulo di registrazione</h3>
-				<p>${messaggioCreazione}</p>
-				<div class="row">
-					<div class="col-25">
-						<label for="user">Username</label>
-					</div>
-					<div class="col-75">
-						<input type="text" id="user" name="register_username"
-							placeholder="inserisci username" value="">
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-25">
-						<label for="pass">Password</label>
-					</div>
-					<div class="col-75">
-						<input type="text" id="pass" name="register_password"
-							placeholder="inserisci password" value="">
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-25">
-						<label for="pass">Name</label>
-					</div>
-					<div class="col-75">
-						<input type="text" id="given_name" name="name"
-							placeholder="inserisci il tuo nome" value="">
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-25">
-						<label for="pass">E-mail</label>
-					</div>
-					<div class="col-75">
-						<input type="text" id="mail" name="email"
-							placeholder="inserisci la tua e-mail" value="">
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-75"></div>
-				</div>
-				<button type="submit">Insert</button>
-			</form>
+			<form id="login1" style="position: inherit;heigth: 50%;width: 55%;margin-left: 17.6%;margin-right: 64.4%;margin-top: 7%;margin-bottom: auto;z-index: 1;" action="/user/insertuser" method="post">
+		<div class="row">
+			<div class="col-25">
+				<label for="user">Username</label>
+			</div>
+			<div class="col-75">
+				<input type="text" id="user" name="username"
+					placeholder="inserisci username">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-25">
+				<label for="pass">Password</label>
+			</div>
+			<div class="col-75">
+				<input type="text" id="pass" name="password"
+					placeholder="inserisci password">
+			</div>
+		</div>
+			<div class="row">
+			<div class="col-25">
+				<label for="pass">Name</label>
+			</div>
+			<div class="col-75">
+				<input type="text" id="name" name="name"
+					placeholder="inserisci nome">
+			</div>
+		</div>
+			<div class="row">
+			<div class="col-25">
+				<label for="pass">Email</label>
+			</div>
+			<div class="col-75">
+				<input type="text" id="email" name="email"
+					placeholder="inserisci email">
+			</div>
+			</div>
+		
+					
+					
+
+				
+		
+		
+		<button id="type" name="usertype" value="USER" type="submit">Insert</button>
+	</form>
+
 		</div>
 	</div>
 	<div class="container">

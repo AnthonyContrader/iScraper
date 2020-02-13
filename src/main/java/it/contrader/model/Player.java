@@ -25,7 +25,7 @@ public class Player {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@ManyToOne
-    @JoinColumn(name="team_id", insertable = false, updatable = false) 
+   @JoinColumn(name="team_id", insertable = false, updatable = false) 
 	private Team team;
 	
 
