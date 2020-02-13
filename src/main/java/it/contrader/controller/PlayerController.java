@@ -3,6 +3,9 @@ package it.contrader.controller;
 
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +18,7 @@ import it.contrader.converter.PlayerConverter;
 import it.contrader.converter.TeamConverter;
 import it.contrader.dto.PlayerDTO;
 import it.contrader.dto.TeamDTO;
+import it.contrader.dto.UserDTO;
 import it.contrader.model.Player;
 import it.contrader.model.Team;
 import it.contrader.service.PlayerService;
@@ -37,8 +41,18 @@ public class PlayerController {
 
 	@GetMapping("/getall")
 	public String getAll(HttpServletRequest request) {
+		
 		setAll(request);
+	UserDTO userDTO=(UserDTO) request.getSession().getAttribute("user");
+	
+	String string= userDTO.getUsername();
+	if (string.equals("admin")){
 		return "player/playermanager";
+	} else {
+		return "player/playerusermanager";
+	}
+		
+		
 	}
 	
 	@GetMapping("/delete")
