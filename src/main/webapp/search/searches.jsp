@@ -37,13 +37,13 @@
 			for (SearchDTO s : list) {
 		%>
 			<tr>
-				<td><a href=SearchServlet?mode=read&id=<%=s.getId()%>><%=s.getSearch_date()%></a></td>
+				<td><a href="/search/readsearch?id=<%=s.getId()%>"><%=s.getSearch_date()%></a></td>
 				<td><%=s.getPlayer_index()%></td>
 				<td><%=s.getValue()%></td>
 				<td><%=s.getUser().getId()%></td>
 				<td><%=s.getPlayer().getId()%></td>
-				<td><a href=SearchServlet?mode=read&update=true&id=<%=s.getId()%>>Edit</a></td>
-				<td><a href=SearchServlet?mode=delete&id=<%=s.getId()%>>Delete</a>
+				<td><a href="/search/preupdate?id=<%=s.getId()%>">Edit</a></td>
+				<td><a href="/search/delete?id=<%=s.getId()%>">Delete</a>
 				</td>
 			</tr>
 			<%
@@ -53,7 +53,7 @@
 
 
 
-		<form id="floatright" action="SearchServlet?mode=insert" method="post">
+		<form id="floatright" action="/search/insert" method="post">
 			<p> ${messaggio} </p>
 			<div class="row">
 				<div class="col-25">
@@ -69,7 +69,7 @@
 					<label for="index">Indice</label>
 				</div>
 				<div class="col-75">
-					<input type="text" id="index" name="player_index"
+					<input type="text" id="index" name="index"
 						placeholder="inserisci l'indice del giocatore">
 				</div>
 			</div>
@@ -78,7 +78,7 @@
 					<label for="type">Valore</label>
 				</div>
 				<div class="col-75">
-					<input type="text" id="value" name="player_value"
+					<input type="text" id="value" name="value"
 						placeholder="inserisci il valore del giocatore">
 				</div>
 			</div>
@@ -87,7 +87,7 @@
 					<label for="type">Utente</label>
 				</div>
 				<div class="col-75">
-					<input type="text" id="user" name="user_id"
+					<input type="text" id="user" name="user"
 						placeholder="inserisci l'id dell'utente" value="<%=userDTO.getId()%>">
 				</div>
 			</div>
@@ -96,7 +96,7 @@
 					<label for="type">Giocatore</label>
 				</div>
 				<div class="col-75">
-					<input type="text" id="player" name="player_id"
+					<input type="text" id="player" name="player"
 						placeholder="inserisci l'id del giocatore">
 				</div>
 			</div>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="it.contrader.dto.SearchDTO"%>
+    pageEncoding="ISO-8859-1" import="it.contrader.dto.SearchDTO"
+    import="it.contrader.model.User" import="it.contrader.model.Player"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,16 +14,16 @@
 	<br>
 	<div class="main">
 	
-		<%SearchDTO s = (SearchDTO) request.getAttribute("dto"); %>
+		<%SearchDTO s = (SearchDTO) request.getSession().getAttribute("dto"); %>
 		
-		<form id="floatleft" action="SearchServlet?mode=update&id=<%=s.getID()%>" method="post">
+		<form id="floatleft" action="/search/update" method="post">
 			<p>${messaggio}</p>
 			<div class="row">
 				<div class="col-25">
 					<label for="date">Data</label>
 				</div>
 				<div class="col-75">
-					<input type="date" id="date" name="search_date" value=<%=s.getDate()%>>
+					<input type="date" id="date" name="search_date" value=<%=s.getSearch_date()%>>
 				</div>
 			</div>
 			<div class="row">
@@ -30,7 +31,7 @@
 					<label for="index">Indice</label>
 				</div>
 				<div class="col-75">
-					<input type="text" id="index" name="player_index" value=<%=s.getIndex()%>>
+					<input type="text" id="index" name="index" value=<%=s.getPlayer_index()%>>
 				</div>
 			</div>
 			<div class="row">
@@ -38,7 +39,7 @@
 					<label for="type">Valore</label>
 				</div>
 				<div class="col-75">
-					<input type="text" id="value" name="player_value" value=<%=s.getValue()%>>
+					<input type="text" id="value" name="value" value=<%=s.getValue()%>>
 				</div>
 			</div>
 			<div class="row">
@@ -46,7 +47,7 @@
 					<label for="type">Utente</label>
 				</div>
 				<div class="col-75">
-					<input type="text" id="user" name="user_id" value=<%=s.getUser()%>>
+					<input type="text" id="user" name="user" value=<%=s.getUser().getId()%>>
 				</div>
 			</div>
 			<div class="row">
@@ -54,9 +55,10 @@
 					<label for="type">Giocatore</label>
 				</div>
 				<div class="col-75">
-					<input type="text" id="player" name="player_id" value=<%=s.getPlayer()%>>
+					<input type="text" id="player" name="player" value=<%=s.getPlayer().getId()%>>
 				</div>
 			</div>
+			<input type="hidden" name="id" value =<%=s.getId()%>>
 			<button type="submit">Edit</button>
 		</form>
 	</div>

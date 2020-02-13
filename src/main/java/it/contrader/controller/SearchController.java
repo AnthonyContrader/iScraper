@@ -30,21 +30,21 @@ public class SearchController {
 	}
 	
 	@GetMapping("/delete")
-	public String delete(HttpServletRequest request, @RequestParam("id") int id) {
+	public String delete(HttpServletRequest request, @RequestParam("id") long id) {
 		service.delete(id);
 		setAll(request);
 		System.out.println(request.toString());
-		return "searches";
+		return "search/searches";
 	}
 	
 	@GetMapping("/preupdate")
-	public String preUpdate(HttpServletRequest request, @RequestParam("id") int id) {
+	public String preUpdate(HttpServletRequest request, @RequestParam("id") long id) {
 		request.getSession().setAttribute("dto", service.read(id));
-		return "updateuser";
+		return "search/updatesearch";
 	}
 	
 	@PostMapping("/update")
-	public String update(HttpServletRequest request, @RequestParam("id") int id, @RequestParam("search_date") Date search_date,
+	public String update(HttpServletRequest request, @RequestParam("id") long id, @RequestParam("search_date") Date search_date,
 			@RequestParam("value") int value, @RequestParam("index") int player_index, @RequestParam("user") User user,
 			@RequestParam("player") Player player) {
 		
@@ -57,27 +57,27 @@ public class SearchController {
 		dto.setPlayer(player);
 		service.update(dto);
 		setAll(request);
-		return "searches";
+		return "search/searches";
 	}
 	
 	@PostMapping("/insert")
-	public String insert(HttpServletRequest request, @RequestParam("search_date") Date search_date, @RequestParam("player_index") int player_index,
+	public String insert(HttpServletRequest request, @RequestParam("search_date") Date search_date, @RequestParam("index") int index,
 			@RequestParam("value") int value, @RequestParam("user") User user, @RequestParam("player") Player player) {
 		SearchDTO dto = new SearchDTO();
 		dto.setSearch_date(search_date);
-		dto.setPlayer_index(player_index);
+		dto.setPlayer_index(index);
 		dto.setValue(value);
 		dto.setUser(user);
 		dto.setPlayer(player);
 		service.insert(dto);
 		setAll(request);
-		return "searches";
+		return "search/searches";
 	}
 	
 	@GetMapping("/read")
-	public String read(HttpServletRequest request, @RequestParam("id") int id) {
+	public String read(HttpServletRequest request, @RequestParam("id") long id) {
 		request.getSession().setAttribute("dto", service.read(id));
-		return "readsearch";
+		return "search/readsearch";
 	}
 	
 	private void setAll(HttpServletRequest request) {
