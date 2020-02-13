@@ -23,16 +23,17 @@ public class SearchController {
 	@Autowired
 	private SearchService service;
 	
-	@GetMapping("getall")
+	@GetMapping("/getall")
 	public String getAll(HttpServletRequest request) {
 		setAll(request);
-		return "searches";
+		return "search/searches";
 	}
 	
 	@GetMapping("/delete")
 	public String delete(HttpServletRequest request, @RequestParam("id") int id) {
 		service.delete(id);
 		setAll(request);
+		System.out.println(request.toString());
 		return "searches";
 	}
 	
