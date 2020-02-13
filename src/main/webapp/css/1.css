@@ -1,0 +1,576 @@
+html {
+	scroll-behavior: smooth;
+
+}
+
+* {
+	font-family: sans-serif;
+}
+.body{
+	.background-image: url("main2.jpg")  
+	no-repeat center center fixed;;
+	  
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  .background-size: cover;
+}
+
+.container {
+  position: absolute;
+
+top: 29%;
+
+left: 61%;
+
+}
+.container2 {
+ position: absolute;
+top: 28.3%;
+
+left: 68%;
+}
+.container3 {
+ position: absolute;
+top: 30%;
+left: 76%;
+}
+.container4 {
+ position: absolute;
+top: 30%;
+left: 84%;
+}
+.image {
+  display: block;
+  .width: 100%;
+  height: auto;
+}
+.image1 {
+  display: block;
+  width: 40%;
+  height: auto;
+}
+.overlay {
+  position: absolute;
+
+.bottom: 0;
+
+left: 0;
+
+right: 0;
+
+background-image: url("backgroundform.jpg");
+    overflow: hidden;
+    width: 500px;
+    height: 500px;
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+    transform: scale(0);
+    -webkit-transition: .3s ease;
+    transition: .3s ease;
+
+
+}
+.overlay3 {
+  position: absolute;
+margin-left: -200px;
+.bottom: 0;
+
+left: 0;
+
+right: 0;
+
+background-image: url("backgroundform.jpg");
+    overflow: hidden;
+    width: 500px;
+    height: 500px;
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+    transform: scale(0);
+    -webkit-transition: .3s ease;
+    transition: .3s ease;
+
+
+}
+.overlay1 {
+  position: absolute;
+
+.bottom: 0;
+
+.margin-top: 50px;
+left: -300px;
+right: 0;
+
+background-image: url("backgroundform.jpg");
+    overflow: hidden;
+    width: 500px;
+    height: 500px;
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+    transform: scale(0);
+    -webkit-transition: .3s ease;
+    transition: .3s ease;
+
+
+}
+.container:hover .overlay {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+.container2:hover .overlay {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);}
+  
+  .container3:hover .overlay3 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);}
+  
+   .container4:hover .overlay1 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);}
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;}
+
+
+#new{
+	background-image: url("main1.jpg");
+
+background-repeat: no-repeat;
+
+background-attachment: fixed;
+
+background-position: center;
+
+    background-position-x: center;
+    background-position-y: center;
+
+.background-size: cover;
+}
+div.text {
+	clear: both;
+	margin-top: 3%;
+	margin-bottom: 3%;
+}
+
+.header {
+	text-align: center;
+	font-size: 800%;
+	font-family: sans-serif;
+	color: #00a990;
+}
+
+.subtitle {
+	text-align: center;
+	font-size: 300%;
+	font-family: sans-serif;
+	color: #00a990;
+}
+
+.main {
+	margin-right: 5%;
+	margin-left: 5%;
+	margin-bottom: 5%;
+	width: 90%;
+	font-size: 15px;
+	text-align: justify;
+}
+
+.footer {
+	text-align: center;
+	font-size: 70%;
+	background-color: #00a990;
+	color: #ffffff;
+	width: 100%;
+	border-radius: 7px;
+	position: relative;
+	padding: 3px;
+	clear: both;
+	margin-top: 5%;
+	margin-bottom: 1%;
+}
+
+/* headers */
+h1 {
+	position: center;
+	text-align: center;
+	size: 300%;
+	font-family: sans-serif;
+	color: #000000;
+}
+
+h2 {
+	font-family: sans-serif;
+	color: #000000;
+}
+
+/*Login*/
+.log {
+	width: 95%;
+	z-index: -1;
+	opacity: 0.4;
+	position: absolute;
+}
+
+.login {
+	position: inherit;
+heigth: 50%;
+width: 50%;
+margin-left: 17.6%;
+margin-right: 64.4%;
+margin-top: 7%;
+margin-bottom: auto;
+z-index: 1;
+}
+.login1 {
+	position: inherit;
+heigth: 50%;
+width: 55%;
+margin-left: 17.6%;
+margin-right: 64.4%;
+margin-top: 7%;
+margin-bottom: auto;
+z-index: 1;
+}
+.login input {
+	text-align: center;
+	float: center;
+	clear: both;
+	width: 90%;
+	margin-left: 5%;
+	margin-right: 5%;
+}
+
+.login label {
+	float: center;
+	clear: both;
+	width: 100%;
+	text-align: center;
+}
+
+/* Anchors */
+a {
+	text-decoration: none;
+}
+
+.a {
+	text-decoration: none;
+}
+
+a:link {
+	color: #000000;
+}
+
+.a:link {
+	color: #000000;
+}
+
+/* visited link */
+a:visited {
+	color: #000000;
+}
+
+.a:visited {
+	color: #000000;
+}
+
+/*Tables*/
+
+ 
+table.statsbox {
+	border-collapse: collapse;
+	width: 100%;
+	float: left;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	overflow-x:scroll;
+	display:block;
+}
+
+table {
+	border-collapse: collapse;
+	width: 50%;
+	float: left;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+}
+
+th, td {
+	text-align: center;
+	padding: 8px;
+}
+
+tr:nth-child(even) {
+	background-color: #f2f2f2
+}
+
+th {
+	background-color: #00a990;
+	color: #ffffff;
+}
+
+a:hover {
+	color: #999999;
+}
+
+/*Forms*/
+select {
+	width: 100%;
+	padding: 14px 20px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	background-color: #f2f2f2;
+	margin: 8px 0;
+}
+
+select:hover {
+	background-color: #00ccad;
+}
+
+option {
+	width: 100%;
+	background-color: #ffff;
+	color: #000000;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+input {
+	width: 80%;
+	background-color: #ffff;
+	color: #000000;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	cursor: pointer;
+	float: right;
+}
+
+input.statstable {
+	display: inline-block;
+	text-align: center;
+	padding: 2px 2px;
+	margin: 0px;
+	float: left;
+}
+
+input.statsbox {
+	width: 100%;
+	padding: 10px 10px;
+	margin: 5%;
+	margin-right: 10%;
+	border-radius: 4px;
+}
+
+
+input:hover {
+	background-color: #00ccad;
+}
+
+res {
+	float: left;
+	width: 25%;
+	margin-top: 3%;
+	background-color: #00a990;
+	border-radius: 7px;
+	color: #ffffff;
+	text-align: center;
+}
+
+form {
+	width: 35%;
+	border-radius: 7px;
+	background-color: #f2f2f2;
+	padding: 20px;
+}
+
+form.statsbox {
+	width: 100%;
+	border-radius: 7px;
+	background-color: white;
+	padding: 10px;
+}
+
+.col-14 {
+	float: left;
+	width: 14%;
+	margin-top: 3%;
+	margin-left: 0.14%;
+}
+
+.col-19 {
+	float: left;
+	width: 19%;
+	margin-top: 3%;
+	margin-left: 0.19%
+}
+
+.col-30 {
+	float: left;
+	width: 30%;
+	margin-top: 0px;
+	margin-left: 0.33%
+}
+
+.col-66 {
+	float: left;
+	width: 66%;
+	margin-top: 0px;
+	margin-left: 0.66%
+}
+
+.col-25 {
+	float: left;
+	width: 25%;
+	margin-top: 6px;
+}
+
+.col-75 {
+	float: left;
+	width: 75%;
+	margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+label {
+	padding: 12px 12px 12px 0;
+	display: inline-block;
+}
+
+label.user {
+	padding: 5% 5% 5% 5%;
+	display: inline-block;
+}
+
+button {
+	-webkit-transition-duration: 0.1s; /* Safari */
+	transition-duration: 0.1s;
+	background-color: #00a990;
+	border: none;
+	color: white;
+	padding: 3% 3%;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 130%;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	cursor: pointer;
+	border-radius: 7px;
+	width: 80%;
+}
+
+button.statsbox {
+	margin-top: 0%;
+	margin-left: 18%;
+	margin-right: 0%;
+	margin-bottom: 10%;
+	padding: 5% 5%;
+}
+
+button.user {
+	margin-top: 0%;
+	margin-left: 0%;
+	margin-right: 0%;
+	margin-bottom: 0%;
+	padding: 3% 3%;
+}
+
+
+
+button:hover {
+	background-color: #00ccad;
+	color: white;
+}
+
+/*IDs*/
+#logout {
+	float: right;
+	color: #ffffff;
+}
+
+#floatleft {
+	float: left;
+}
+
+#floatright {
+	float: right;
+}
+
+#floattop {
+	float: top;
+}
+
+#floatright {
+	float: bottom;
+}
+
+/*Navigation bar*/
+div.navbar {
+	background: #00a990;
+	overflow: hidden;
+	position: sticky;
+	width: 100%;
+	top: 0;
+	padding: 1px;
+	z-index: 2;
+	border-radius: 7px;
+	position: -webkit-sticky; /* Safari */
+}
+
+div.navbar a {
+	float: left;
+	display: block;
+	color: #ffffff;
+	text-align: center;
+	padding: 1% 2%;
+	text-decoration: none;
+	font-size: 17px;
+	border-radius: 7px;
+	background: #00a990;
+}
+
+div.navbar a:hover {
+	background: #00ccad;
+	color: #ffffff;
+}
+
+div.navbar a.active {
+	background: #00ccad;
+	color: #ffffff;
+}
+
+/*Images*/
+.imgheader {
+	position: center;
+	z-index: -1;
+	opacity: .9;
+	z-index: -1;
+	opacity: .9;
+	width: 8%;
+}
+}

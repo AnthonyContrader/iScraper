@@ -1,37 +1,100 @@
-
-<html lang="en">
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="Sample Login page">
-<meta name="author" content="Vittorio Valent">
+<link href="/css/1.css" rel="stylesheet">
 
-<title>Login</title>
-
-<!-- Bootstrap core CSS -->
-<link href="/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- Custom styles for this template -->
-<link href="/css/vittoriostyle.css" rel="stylesheet">
+<title>Iscraper Login</title>
 </head>
+<body id="new">
+	<div class="container4">
+		<img src="/css/question.png" alt="Avatar" class="image1">
+
+		<div class="overlay1">
+
+			<h3>Link "Info"</h3>
+		</div>
+	</div>
+
+	<div class="container3">
+		<img src="/css/fb.png" alt="Avatar" class="image1">
+
+		<div class="overlay3">
+
+			<h3>Facebook api</h3>
+		</div>
+	</div>
+	<div class="container2">
+		<img src="/css/adduser.png" alt="Avatar" class="image">
+
+		<div class="overlay">
 
 
-<body class="text-center">
-	<form class="login" action="/user/login" method="post">
-		<h1>SAMPLE LOGIN</h1>
+			<form class="login1" action="user/insertuser"
+				method="post">
+				<h3 style="text-align: center;">Modulo di registrazione</h3>
+				<p>${messaggioCreazione}</p>
+				<div class="row">
+					<div class="col-25">
+						<label for="user">Username</label>
+					</div>
+					<div class="col-75">
+						<input type="text" id="user" name="register_username"
+							placeholder="inserisci username" value="">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-25">
+						<label for="pass">Password</label>
+					</div>
+					<div class="col-75">
+						<input type="text" id="pass" name="register_password"
+							placeholder="inserisci password" value="">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-25">
+						<label for="pass">Name</label>
+					</div>
+					<div class="col-75">
+						<input type="text" id="given_name" name="name"
+							placeholder="inserisci il tuo nome" value="">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-25">
+						<label for="pass">E-mail</label>
+					</div>
+					<div class="col-75">
+						<input type="text" id="mail" name="email"
+							placeholder="inserisci la tua e-mail" value="">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-75"></div>
+				</div>
+				<button type="submit">Insert</button>
+			</form>
+		</div>
+	</div>
+	<div class="container">
+		<img src="/css/login1.png" alt="Avatar" class="image">
+		<div class="overlay">
+			<form class="login" action="/user/login" method="post">
 
-		<label for="inputUser" class="sr-only">Username</label> <input
-			type="text" name="username" id="inputUser" class="form-control"
-			placeholder="Username" required autofocus> <label
-			for="inputPassword" class="sr-only">Password</label> <input
-			type="password" name="password" id="inputPassword"
-			class="form-control" placeholder="Password" required> <input
-			type="hidden" name="richiesta" value="login">
+				<h3 style="text-align: center;">Modulo di login</h3>
+				<p>${messaggio}</p>
+				<label for="user">Username: </label> <input type="text" id="user"
+					name="username" placeholder="Insert username"> <label
+					for="pass">Password: </label> <input type="password" id="pass"
+					name="password" placeholder="Insert password">
+				<button type="submit" value="Login" name="pulsante">Login</button>
+			</form>
+		</div>
+	</div>
 
-		<button class="btn btn-lg btn-primary btn-block" type="submit">Log
-			in</button>
-	</form>
 
+
+	<script></script>
 </body>
-</html> 
+</html>
