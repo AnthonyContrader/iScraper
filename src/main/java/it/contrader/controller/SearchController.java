@@ -2,6 +2,8 @@ package it.contrader.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Date;
+import java.util.List;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import it.contrader.dto.SearchDTO;
+import it.contrader.dto.UserDTO;
 import it.contrader.model.User;
 import it.contrader.model.Player;
 import it.contrader.service.SearchService;
@@ -80,6 +83,24 @@ public class SearchController {
 	}
 	
 	private void setAll(HttpServletRequest request) {
-		request.getSession().setAttribute("list", service.getAll());
+		List<SearchDTO> searchesList = new ArrayList<SearchDTO>(service.getAll());
+		UserDTO user = new UserDTO();
+		user = (UserDTO) request.getSession().getAttribute("user");
+		switch (user.getUsertype()) {
+		
+		case ADMIN:
+			request.getSession().setAttribute("list", service.getAll());
+			break;
+		
+		case USER:
+			List<SearchDTO> userSearchesList = new ArrayList<SearchDTO>();
+			for(SearchDTO s : searchesList){
+				if (s.getUser().getId()==user.getId()) {
+					userSearchesList.add(s);
+				}
+			}
+			request.getSession().setAttribute("list", service.getAll());
+			break;
+		}
 	}
 }
