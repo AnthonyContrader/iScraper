@@ -1,7 +1,7 @@
-<%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import="java.util.List" import="java.util.Calendar"
-    import="it.contrader.dto.SearchDTO" import="it.contrader.dto.UserDTO"%>
+    import="it.contrader.dto.SearchDTO" import="it.contrader.dto.UserDTO"
+    import="java.text.SimpleDateFormat"%>
 <!DOCTYPE html>
 <html>
 <head>

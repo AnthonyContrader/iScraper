@@ -25,11 +25,11 @@
 				<th>Giocatore</th>
 			</tr>
 			<tr>
-				<td><%=s.getDate()%></td>
-				<td><%=s.getIndex()%></td>
+				<td><%=s.getSearch_date()%></td>
+				<td><%=s.getPlayer_index()%></td>
 				<td><%=s.getValue()%></td>
-				<td><%=s.getUser()%></td>
-				<td><%=s.getPlayer()%></td>
+				<td><%=s.getUser().getId()%></td>
+				<td><%=s.getPlayer().getId()%></td>
 			</tr>
 		</table>
 		
