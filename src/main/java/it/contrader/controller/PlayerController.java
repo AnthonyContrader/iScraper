@@ -66,7 +66,7 @@ public class PlayerController {
 
 	
 	@PostMapping("/update")
-	public String update(HttpServletRequest request, @RequestParam("id") Long id, @RequestParam("team_id") int team_id,@RequestParam("player_name") String player_name, @RequestParam("player_surname") String player_surname, @RequestParam("age") int age, @RequestParam("actual_value") int actual_value, @RequestParam("previous_value") int previous_value, @RequestParam("position") String position, @RequestParam("team") String team) {
+	public String update(HttpServletRequest request, @RequestParam("id") Long id,@RequestParam("player_name") String player_name, @RequestParam("player_surname") String player_surname, @RequestParam("age") int age, @RequestParam("actual_value") int actual_value, @RequestParam("previous_value") int previous_value, @RequestParam("position") String position, @RequestParam("team") String team) {
 		Team team2=teamConverter.toEntity(teamService.findByName(team));
 		PlayerDTO dto = new PlayerDTO();
 		dto.setId(id);
@@ -78,22 +78,22 @@ public class PlayerController {
 		dto.setPosition(position);
 	//	Team team1 = teamConverter.toEntity(teamService.read(team_id));
 		dto.setTeam(team2);
-		
+		dto.setTeam_id(1);
 		setAll(request);
 		return "player/playermanager";
 	}
 	
 	@PostMapping("/insert")
-	public String insert(HttpServletRequest request,@RequestParam("player_name") String player_name, @RequestParam("player_surname") String player_surname, @RequestParam("age") int age, @RequestParam("actual_value") int actual_value, @RequestParam("previous_value") int previous_value, @RequestParam("position") String position, @RequestParam("team") String team, @RequestParam("team_id") int team_id) {
+	public String insert(HttpServletRequest request,@RequestParam("player_name") String player_name, @RequestParam("player_surname") String player_surname, @RequestParam("age") int age, @RequestParam("actual_value") int actual_value, @RequestParam("previous_value") int previous_value, @RequestParam("position") String position, @RequestParam("team") String team) {
 		PlayerDTO dto = new PlayerDTO();
 	//	TeamDTO teamDTO=new TeamDTO();
-		System.out.println(team);
+		//\System.out.println(team);
 		//teamDTO.getName(team_id);
 		//dto.setId(id);
 		Team team2=teamConverter.toEntity(teamService.findByName(team));
 		//Team team1 = teamConverter.toEntity(teamService.read(team_id));
 		dto.setTeam(team2);
-		dto.setTeam_id(team_id);
+		dto.setTeam_id(1);
 		dto.setPlayer_name(player_name);
 		dto.setPlayer_surname(player_surname);
 		dto.setAge(age);
