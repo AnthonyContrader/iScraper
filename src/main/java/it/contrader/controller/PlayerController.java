@@ -76,7 +76,7 @@ public class PlayerController {
 		dto.setActualMarketValue(actual_value);
 		dto.setPreviousMarketValue(previous_value);
 		dto.setPosition(position);
-		Team team1 = teamConverter.toEntity(teamService.read(team_id));
+	//	Team team1 = teamConverter.toEntity(teamService.read(team_id));
 		dto.setTeam(team2);
 		
 		setAll(request);
