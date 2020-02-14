@@ -15,7 +15,7 @@
 	<div class="main">
 	<% 
 	@SuppressWarnings("unchecked")
-		List<TeamDTO> list = (List<TeamDTO>) request.getAttribute("list");
+		List<TeamDTO> list = (List<TeamDTO>) request.getSession().getAttribute("list");
 	%>
 	<br>
 		<table>
@@ -28,14 +28,28 @@
 		
 		<% for ( TeamDTO t : list ) { %>
 		<tr>
-			<td> <a href=TeamServlet?mode=read&id=<%=t.getId()%>> <%=t.getId()%> </a></td>
+			<td> <a href="team/read?id=<%=t.getId()%>"> <%=t.getId()%> </a></td>
 			<td> <%=t.getName()%> </td>
-			<td> <%=t.getMarketValue()%> </td>
-			<td> <%=t.getIndex()%> </td>
+			<td> <%=t.getMarket_value()%> </td>
+			<td> <%=t.getTeam_index()%> </td>
 			
 		</tr>
 		<% } %>
 		</table>
+		
+				<form id="floatright" action="/team/readbyname" method="get">
+			<p>${messaggio}</p>
+			<div class="row">
+				<div class="col-25">
+					<label for="name">Cerca per nome</label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="name" name="name"
+						placeholder="Nome squadra">
+				</div>
+			</div>
+			<button type="submit">Inserisci</button>
+		</form>
 	<br>
 	</div>
 	<%@ include file="../utilities/footer.jsp"%>

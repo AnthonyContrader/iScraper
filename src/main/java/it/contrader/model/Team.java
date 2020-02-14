@@ -1,5 +1,6 @@
 package it.contrader.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,5 +23,6 @@ public class Team {
 	
 	private int market_value;
 	private String name;
+	@Column(name="team_index")
 	private int team_index;
 }

@@ -29,7 +29,7 @@ public class TeamController {
 		if (userDTO.getUsertype().equals(Usertype.ADMIN)){
 			return "team/teammanager";
 		} else {
-			return "team/teamusermanager";
+			return "team/readallteams";
 		}
 			
 		}
@@ -77,6 +77,12 @@ public class TeamController {
 		@GetMapping("/read")
 		public String read(HttpServletRequest request, @RequestParam("id") Long id) {
 			request.getSession().setAttribute("dto", teamService.read(id));
+			return "team/readteams";
+		}
+		
+		@GetMapping("/readbyname")
+		public String read(HttpServletRequest request, @RequestParam("name") String name) {
+			request.getSession().setAttribute("dto", teamService.findByName(name));
 			return "team/readteams";
 		}
 		

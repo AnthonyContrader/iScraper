@@ -14,7 +14,7 @@
 
 	<div class="main">
 		<br>
-		<% TeamDTO t = (TeamDTO) request.getSession().getAttribute("dto");;%>
+		<% TeamDTO t = (TeamDTO) request.getSession().getAttribute("dto");%>
 		<table>
 		<tr>
 			<th> ID </th>
