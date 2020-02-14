@@ -23,14 +23,12 @@
 		UserDTO userDTO = (UserDTO)session.getAttribute("user");
 		String formatted = new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date()).toString();
 		%>
-
-		<br>
+		<%@ include file="../search/searchpanel.jsp" %>
 		<%if (userDTO.getUsertype().toString()=="ADMIN") {%>
-		 	<%@ include file="../search/adminsearchpanel.jsp"%>
 		 	<%@ include file="../search/insertsearch.jsp"%>
-		 <%} else if (userDTO.getUsertype().toString()=="USER") { %>
-		 	<%@ include file="../search/usersearchpanel.jsp"%>
-		 <%} %>
+		<%}%>
+		<br>
+		
 	</div>
 	<br>
 	<%@ include file="../utilities/footer.jsp"%>

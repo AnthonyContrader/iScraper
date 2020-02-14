@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="it.contrader.dto.SearchDTO"%>
+    pageEncoding="ISO-8859-1" 
+    import="it.contrader.dto.SearchDTO"
+    import="it.contrader.dto.UserDTO"
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +16,8 @@
 	<br>
 	
 	<div class="main">
-		<%SearchDTO s = (SearchDTO) request.getAttribute("dto");%>
+		<%UserDTO userDTO = (UserDTO)session.getAttribute("user");%>
+		<%SearchDTO s = (SearchDTO) request.getSession().getAttribute("dto");%>
 		
 		
 		<table>
@@ -21,14 +25,18 @@
 				<th>Date</th>
 				<th>Indice</th>
 				<th>Valore</th>
-				<th>Utente</th>
+				<%if (userDTO.getUsertype().toString()=="ADMIN") {%>
+				 	<th>Utente</th>
+				<%}%>
 				<th>Giocatore</th>
 			</tr>
 			<tr>
 				<td><%=s.getSearch_date()%></td>
 				<td><%=s.getPlayer_index()%></td>
 				<td><%=s.getValue()%></td>
-				<td><%=s.getUser().getId()%></td>
+				<%if (userDTO.getUsertype().toString()=="ADMIN") {%>
+					<td><%=s.getUser().getId()%></td>
+				<%}%>
 				<td><%=s.getPlayer().getId()%></td>
 			</tr>
 		</table>

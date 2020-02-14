@@ -89,7 +89,7 @@ public class SearchController {
 		switch (user.getUsertype()) {
 		
 		case ADMIN:
-			request.getSession().setAttribute("list", service.getAll());
+			request.getSession().setAttribute("list", searchesList);
 			break;
 		
 		case USER:
@@ -99,7 +99,7 @@ public class SearchController {
 					userSearchesList.add(s);
 				}
 			}
-			request.getSession().setAttribute("list", service.getAll());
+			request.getSession().setAttribute("list", userSearchesList);
 			break;
 		}
 	}
