@@ -29,6 +29,12 @@ div.text {
 	margin-top: 3%;
 	margin-bottom: 3%;
 }
+.subtitle {
+	text-align: center;
+	font-size: 300%;
+	font-family: sans-serif;
+	color: #00a990;
+}
 .user1{
 	margin-left: 950px;
 position: relative;
@@ -69,7 +75,20 @@ position: relative;
 	margin-top: 5%;
 	margin-bottom: 1%;
 }
-
+.footer1 {
+	text-align: center;
+	font-size: 70%;
+	background-color: #00a990;
+	color: #ffffff;
+	width: 100%;
+	border-radius: 7px;
+	.position: relative;
+	padding: 3px;
+	clear: both;
+	margin-top: 5%;
+	margin-bottom: 1%;
+	position:absolute;
+}
 /* headers */
 h1 {
 	position: center;

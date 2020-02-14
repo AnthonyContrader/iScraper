@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 
 public class SearchDTO {
 
-	private int id;
+	private long id;
 	
 	private Date search_date;
 	

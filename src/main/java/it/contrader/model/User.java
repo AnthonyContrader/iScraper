@@ -30,5 +30,9 @@ public class User {
 	private String password;
 
 	private Usertype usertype;
+	
+	private String name;
+	
+	private String email;
 
 }

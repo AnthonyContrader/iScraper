@@ -22,7 +22,7 @@ public class Search {
 	@Id
 	@Column(unique=true)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private long id;
 
 	private Date search_date;
 

@@ -30,6 +30,7 @@ public class UserController {
 		switch (userDTO.getUsertype()) {
 
 		case ADMIN:
+			
 			return "homeadmin";
 
 		case USER:
@@ -61,13 +62,15 @@ public class UserController {
 
 	@PostMapping("/update")
 	public String update(HttpServletRequest request, @RequestParam("id") Long id, @RequestParam("username") String username,
-			@RequestParam("password") String password, @RequestParam("usertype") Usertype usertype) {
+			@RequestParam("password") String password, @RequestParam("usertype") Usertype usertype,  @RequestParam("name") String name, @RequestParam("email") String email) {
 
 		UserDTO dto = new UserDTO();
 		dto.setId(id);
 		dto.setUsername(username);
 		dto.setPassword(password);
 		dto.setUsertype(usertype);
+		dto.setName(name);
+		dto.setEmail(email);
 		service.update(dto);
 		setAll(request);
 		return "users";
@@ -76,14 +79,31 @@ public class UserController {
 
 	@PostMapping("/insert")
 	public String insert(HttpServletRequest request, @RequestParam("username") String username,
-			@RequestParam("password") String password, @RequestParam("usertype") Usertype usertype) {
+			@RequestParam("password") String password, @RequestParam("usertype") Usertype usertype, @RequestParam("name") String name, @RequestParam("email") String email) {
+		UserDTO dto = new UserDTO();
+		dto.setUsertype(usertype);
+		dto.setUsername(username);
+		dto.setPassword(password);
+		dto.setUsertype(usertype);
+		dto.setName(name);
+		dto.setEmail(email);
+		service.insert(dto);
+		setAll(request);
+		return "users";
+	}
+	
+	@PostMapping("/insertuser")
+	public String insertUser(HttpServletRequest request, @RequestParam("username") String username,
+			@RequestParam("password") String password, @RequestParam("usertype") Usertype usertype, @RequestParam("name") String name, @RequestParam("email") String email) {
 		UserDTO dto = new UserDTO();
 		dto.setUsername(username);
 		dto.setPassword(password);
 		dto.setUsertype(usertype);
+		dto.setName(name);
+		dto.setEmail(email);
 		service.insert(dto);
 		setAll(request);
-		return "users";
+		return "index";
 	}
 
 	@GetMapping("/read")

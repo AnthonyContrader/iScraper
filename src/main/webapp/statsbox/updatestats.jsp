@@ -23,7 +23,7 @@
 				</div>
 				<div class="col-14">
 					<input class="statsbox" type="text" id="player_id" name="player_id"
-						value=<%s.getPlayerId(); %>>
+						value=<%s.getId(); %>>
 				</div>
 				<div class="col-19">
 					<label for="pass">Stagione</label>

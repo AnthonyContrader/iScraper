@@ -6,86 +6,105 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="User Management">
 <meta name="author" content="Vittorio Valent">
-<link href="/css/vittoriostyle.css" rel="stylesheet">
+<link href="/css/1.css" rel="stylesheet">
 <title>User Manager</title>
 
 </head>
 <body>
 	<%@ include file="./css/header.jsp"%>
 
-	<div class="navbar">
-		<a href="/homeadmin.jsp">Home</a> <a class="active"
-			href="/user/getall">Users</a> <a href="/user/logout" id="logout">Logout</a>
-	</div>
-	<div class="main">
+	<%@ include file="./utilities/navbar.jsp"%>
+	<%
+		List<UserDTO> list = (List<UserDTO>) request.getSession().getAttribute("list");
+	%>
+
+	<br>
+
+	<table>
+		<tr>
+			<th>Username</th>
+			<th>Password</th>
+			<th>Usertype</th>
+			<th>Name</th>
+			<th>Email</th>
+			<th></th>
+			<th></th>
+		</tr>
 		<%
-			List<UserDTO> list = (List<UserDTO>) request.getSession().getAttribute("list");
+			for (UserDTO u : list) {
 		%>
-
-		<br>
-
-		<table>
-			<tr>
-				<th>Username</th>
-				<th>Password</th>
-				<th>Usertype</th>
-				<th></th>
-				<th></th>
-			</tr>
-			<%
-				for (UserDTO u : list) {
-			%>
-			<tr>
-				<td><a href="/user/read?id=<%=u.getId()%>"> <%=u.getUsername()%>
-				</a></td>
-				<td><%=u.getPassword()%></td>
-				<td><%=u.getUsertype()%></td>
-				<td><a href="/user/preupdate?id=<%=u.getId()%>">Edit</a></td>
+		<tr>
+			<td><a href="/user/read?id=<%=u.getId()%>"> <%=u.getUsername()%>
+			</a></td>
+			<td><%=u.getPassword()%></td>
+			<td><%=u.getUsertype()%></td>
+			<td><%=u.getName()%></td>
+			<td><%=u.getEmail()%></td>
+			<td><a href="/user/preupdate?id=<%=u.getId()%>">Edit</a></td>
 
 
-				<td><a href="/user/delete?id=<%=u.getId()%>">Delete</a></td>
+			<td><a href="/user/delete?id=<%=u.getId()%>">Delete</a></td>
 
-			</tr>
-			<%
-				}
-			%>
-		</table>
+		</tr>
+		<%
+			}
+		%>
+	</table>
 
 
 
-		<form id="floatright" action="/user/insert" method="post">
-			<div class="row">
-				<div class="col-25">
-					<label for="user">Username</label>
-				</div>
-				<div class="col-75">
-					<input type="text" id="user" name="username"
-						placeholder="inserisci username">
-				</div>
+	<form id="floatright" action="/user/insert" method="post">
+		<div class="row">
+			<div class="col-25">
+				<label for="user">Username</label>
 			</div>
-			<div class="row">
-				<div class="col-25">
-					<label for="pass">Password</label>
-				</div>
-				<div class="col-75">
-					<input type="text" id="pass" name="password"
-						placeholder="inserisci password">
-				</div>
+			<div class="col-75">
+				<input type="text" id="user" name="username"
+					placeholder="inserisci username">
 			</div>
+		</div>
+		<div class="row">
+			<div class="col-25">
+				<label for="pass">Password</label>
+			</div>
+			<div class="col-75">
+				<input type="text" id="pass" name="password"
+					placeholder="inserisci password">
+			</div>
+		</div>
 			<div class="row">
-				<div class="col-25">
-					<label for="type">Usertype</label>
-				</div>
-				<div class="col-75">
-					<select id="type" name="usertype">
-						<option value="ADMIN">ADMIN</option>
-						<option value="USER">USER</option>
+			<div class="col-25">
+				<label for="pass">Name</label>
+			</div>
+			<div class="col-75">
+				<input type="text" id="name" name="name"
+					placeholder="inserisci nome">
+			</div>
+		</div>
+			<div class="row">
+			<div class="col-25">
+				<label for="pass">Email</label>
+			</div>
+			<div class="col-75">
+				<input type="text" id="email" name="email"
+					placeholder="inserisci email">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-25">
+				<label for="type">Usertype</label>
+			</div>
+			
+			<div class="col-75">
+				<select id="type" name="usertype">
+					<option value="ADMIN">ADMIN</option>
+					<option value="USER">USER</option>
 
-					</select>
-				</div>
+				</select>
 			</div>
-			<button type="submit">Insert</button>
-		</form>
+		</div>
+		<button type="submit">Insert</button>
+	</form>
 
 	</div>
 	<br>

@@ -20,7 +20,12 @@ public class TeamService extends AbstractService<Team,TeamDTO>{
 	@Autowired
 	private TeamRepository repository;
 	
-	public List<TeamDTO> findByName(String name) {
-		return converter.toListDTO(repository.findByName(name));
-	}
+	public TeamDTO findByName(String name) {
+		return converter.toDTO(repository.findByName(name));}
+//	public List<TeamDTO> findByName(String name) {
+//		return converter.toListDTO(repository.findByName(name));
+//	}
+//	public TeamDTO findByNameDTO(String name) {
+//		return converter.toDTO(repository.findByNameOne(name));
+//	}
 }

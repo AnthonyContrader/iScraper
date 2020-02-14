@@ -12,5 +12,7 @@ import org.springframework.stereotype.Repository;
 @Transactional
 public interface TeamRepository extends CrudRepository<Team, Long>{
 
-	List<Team> findByName(String name);
+	Team findByName(String name);
+	//List<Team> findByName(String name);
+	//Team findByNameOne(String name);
 }
