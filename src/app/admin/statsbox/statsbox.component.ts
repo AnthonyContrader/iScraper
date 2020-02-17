@@ -5,12 +5,12 @@ import { StatsboxDTO } from 'src/dto/statsboxdto';
 @Component({
   selector: 'app-statsbox',
   templateUrl: './statsbox.component.html',
-  styleUrls: ['./stasbox.component.css']
+  styleUrls: ['./statsbox.component.css']
 })
 export class StatsboxComponent implements OnInit {
 
   statsboxes: StatsboxDTO[];
-  statstoinsert: StatsboxDTO = new StatsboxDTO();
+  statsboxtoinsert: StatsboxDTO = new StatsboxDTO();
 
   constructor(private service: StatsboxService) { }
 
@@ -35,6 +35,6 @@ export class StatsboxComponent implements OnInit {
   }
 
   clear(){
-    this.statstoinsert = new StatsboxDTO();
+    this.statsboxtoinsert = new StatsboxDTO();
   }
 }

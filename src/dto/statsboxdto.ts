@@ -1,10 +1,10 @@
-import {Player} from './playerdto'
+import {PlayerDTO} from 'src/dto/playerdto'
 
 export class StatsboxDTO {
 
    id: number;
 
-   player: Player;
+   player: PlayerDTO;
 
    season: number;
 

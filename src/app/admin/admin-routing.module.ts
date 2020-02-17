@@ -8,6 +8,7 @@ import { WorkInProgressComponent } from './work-in-progress/work-in-progress.com
 import { PlayermanagementComponent } from './players/playermanagement/playermanagement.component';
 import { PlayerinsertComponent } from './players/playerinsert/playerinsert.component';
 import { PlayerupdateComponent } from './players/playerupdate/playerupdate.component';
+import { StatsboxComponent } from './statsbox/statsbox.component';
 
 /**
  * Modulo di routing dell'admin. Qui ci sono i percorsi che un admin può seguire:
@@ -28,7 +29,8 @@ const routes: Routes = [
     { path: 'players/playermanagement', component: PlayermanagementComponent},
     { path: 'players/playerinsert', component: PlayerinsertComponent},
     { path: 'players/playerupdate', component: PlayerupdateComponent},
-    { path: 'work-in-progress', component: WorkInProgressComponent}
+    { path: 'work-in-progress', component: WorkInProgressComponent},
+    { path: 'statsbox', component: StatsboxComponent}
   ]}
 ];
 

@@ -9,6 +9,7 @@ import { WorkInProgressComponent } from './work-in-progress/work-in-progress.com
 import { PlayermanagementComponent } from './players/playermanagement/playermanagement.component';
 import { PlayerinsertComponent } from './players/playerinsert/playerinsert.component';
 import { PlayerupdateComponent } from './players/playerupdate/playerupdate.component';
+import { StatsboxComponent } from './statsbox/statsbox.component';
 
 /**
  * Modulo dell'admin, qui vengono dichiarate le component che utilizza 
@@ -19,7 +20,7 @@ import { PlayerupdateComponent } from './players/playerupdate/playerupdate.compo
  * @see AdminRoutingModule
  */
 @NgModule({
-  declarations: [AdminDashboardComponent, UsersComponent, WorkInProgressComponent, PlayermanagementComponent, PlayerinsertComponent, PlayerupdateComponent],
+  declarations: [AdminDashboardComponent, UsersComponent, StatsboxComponent, WorkInProgressComponent, PlayermanagementComponent, PlayerinsertComponent, PlayerupdateComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
