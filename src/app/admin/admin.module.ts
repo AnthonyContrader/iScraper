@@ -6,6 +6,10 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { UsersComponent } from './users/users.component';
 import { WorkInProgressComponent } from './work-in-progress/work-in-progress.component';
 
+import { PlayermanagementComponent } from './players/playermanagement/playermanagement.component';
+import { PlayerinsertComponent } from './players/playerinsert/playerinsert.component';
+import { PlayerupdateComponent } from './players/playerupdate/playerupdate.component';
+
 /**
  * Modulo dell'admin, qui vengono dichiarate le component che utilizza 
  * l'admin. Questo modulo importa AdminRoutingModule.
@@ -15,7 +19,7 @@ import { WorkInProgressComponent } from './work-in-progress/work-in-progress.com
  * @see AdminRoutingModule
  */
 @NgModule({
-  declarations: [AdminDashboardComponent, UsersComponent, WorkInProgressComponent],
+  declarations: [AdminDashboardComponent, UsersComponent, WorkInProgressComponent, PlayermanagementComponent, PlayerinsertComponent, PlayerupdateComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
