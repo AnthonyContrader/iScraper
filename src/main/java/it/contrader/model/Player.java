@@ -29,7 +29,6 @@ public class Player {
 	private Team team;
 	
 
-	
 	private String player_name;
 	private String player_surname;
 	private int age;
