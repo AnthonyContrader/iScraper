@@ -5,6 +5,10 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { UsersComponent } from './users/users.component';
 import { WorkInProgressComponent } from './work-in-progress/work-in-progress.component';
 
+import { PlayermanagementComponent } from './players/playermanagement/playermanagement.component';
+import { PlayerinsertComponent } from './players/playerinsert/playerinsert.component';
+import { PlayerupdateComponent } from './players/playerupdate/playerupdate.component';
+
 /**
  * Modulo di routing dell'admin. Qui ci sono i percorsi che un admin può seguire:
  * appena fa il login viene caricato nel <router-outlet> di app-component il layout e nel 
@@ -21,6 +25,9 @@ const routes: Routes = [
   { path: 'admin-dashboard', component: AdminLayoutComponent, children:[
     { path: '', component: AdminDashboardComponent},
     { path: 'users', component: UsersComponent},
+    { path: 'players/playermanagement', component: PlayermanagementComponent},
+    { path: 'players/playerinsert', component: PlayerinsertComponent},
+    { path: 'players/playerupdate', component: PlayerupdateComponent},
     { path: 'work-in-progress', component: WorkInProgressComponent}
   ]}
 ];
