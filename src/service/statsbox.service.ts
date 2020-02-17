@@ -19,5 +19,9 @@ import { StatsboxDTO } from 'src/dto/statsboxdto';
   providedIn: 'root'
 })
 export class StatsboxService extends AbstractService<StatsboxDTO>{
-
+  
+  constructor(http: HttpClient) {
+    super(http);
+    this.type = 'statsbox';
+  }
 }
