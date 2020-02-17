@@ -54,6 +54,6 @@ public class PlayerController{
 	@RequestMapping(value="/findPlayer" , method= RequestMethod.GET)
 	public PlayerDTO findPlayer(@RequestParam(value="id") int id) {		
 		return playerService.read(id);
->>>>>>> 74c3a2127a363dfddf8fc34ae37eaef4ecfaf903
+
 	}
 }
