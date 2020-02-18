@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { StatsboxService } from 'src/service/statsbox.service';
 import { StatsboxDTO } from 'src/dto/statsboxdto';
+import { PlayerDTO } from 'src/dto/playerdto'
+import { PlayerService } from 'src/service/playerservice';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-statsbox',
@@ -11,11 +14,18 @@ export class StatsboxComponent implements OnInit {
 
   statsboxes: StatsboxDTO[];
   statsboxtoinsert: StatsboxDTO = new StatsboxDTO();
+  players: PlayerDTO[];
 
-  constructor(private service: StatsboxService) { }
+  constructor(private service: StatsboxService, private playerService: PlayerService) {
+   }
 
   ngOnInit() {
     this.getStats();
+    this.getPlayers();
+  }
+
+  getPlayers() {
+    this.playerService.getAll().subscribe(players => this.players = players);
   }
 
   getStats() {

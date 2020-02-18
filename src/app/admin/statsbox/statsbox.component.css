@@ -5,15 +5,15 @@
 /*Tables*/
 table {
 	border-collapse: collapse;
-	width: 100%;
+	max-width: 90%;
 	float: left;
 	border-radius: 4px;
 	-moz-border-radius: 4px;
+	overflow-x: scroll;
 }
 
 th, td {
 	text-align: center;
-	padding: 2px;
 }
 
 td{
@@ -34,12 +34,12 @@ a:hover {
 	color: #999999;
 }
 
-input, select{
+input, select, option{
     background-color: inherit;
     font-size: inherit;
 }
 
-input:hover,  input:active, input:focus{
+input:hover,  input:active, input:focus, option:hover{
     border: 2px solid crimson;
 }
 

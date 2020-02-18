@@ -1,9 +1,6 @@
 <div class="container">
   <div class="row mt-5">
-    <div class="col-md-1">
-
-    </div>
-    <div class="col-md-10">
+    <div class="col-md-3">
       <table>
         <tr>
           <th>
@@ -45,9 +42,9 @@
 
         </tr>
         <tr>
-          <td>
-            <input placeholder="giocatore" [(ngModel)]="statsboxtoinsert.player">
-          </td>
+          <select [(ngModel)]="statsboxtoinsert.player">
+            <option *ngFor="let player of players" [ngValue]="player">{{player.id}}</option>
+          </select>
           <td>
             <input placeholder="stagione" [(ngModel)]="statsboxtoinsert.season">
           </td>
@@ -90,7 +87,7 @@
         </tr>
         <tr *ngFor="let statsbox of statsboxes">
           <td>
-            <input [(ngModel)]="statsbox.player.id" >
+            <label>{{statsbox.player.id}}</label>
           </td>
           <td>
             <input [(ngModel)]="statsbox.season">
@@ -126,7 +123,7 @@
             <input [(ngModel)]="statsbox.breaks">
           </td>
           <td>
-            <button (click)=update(statsbox)>Save</button>
+            <button (click)="update(statsbox)">Save</button>
           </td>
           <td>
             <button (click)="delete(statsbox)">Delete</button>

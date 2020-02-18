@@ -25,12 +25,13 @@ import { logging } from 'protractor';
 @Injectable({
   providedIn: 'root'
 })
-export class PlayerService {
+export class PlayerService extends AbstractService<PlayerDTO>{
   feedback: string;
   private urlBase = environment.url;
 
-  constructor(private http: HttpClient) {
-    
+  constructor(http: HttpClient) {
+    super(http);
+    this.type="player";
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
