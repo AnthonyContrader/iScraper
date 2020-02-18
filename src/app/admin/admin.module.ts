@@ -7,8 +7,7 @@ import { UsersComponent } from './users/users.component';
 import { WorkInProgressComponent } from './work-in-progress/work-in-progress.component';
 
 import { PlayermanagementComponent } from './players/playermanagement/playermanagement.component';
-import { PlayerinsertComponent } from './players/playerinsert/playerinsert.component';
-import { PlayerupdateComponent } from './players/playerupdate/playerupdate.component';
+
 import { StatsboxComponent } from './statsbox/statsbox.component';
 
 /**
@@ -20,11 +19,12 @@ import { StatsboxComponent } from './statsbox/statsbox.component';
  * @see AdminRoutingModule
  */
 @NgModule({
-  declarations: [AdminDashboardComponent, UsersComponent, StatsboxComponent, WorkInProgressComponent, PlayermanagementComponent, PlayerinsertComponent, PlayerupdateComponent],
+  declarations: [AdminDashboardComponent, UsersComponent, StatsboxComponent, WorkInProgressComponent, PlayermanagementComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
     FormsModule
+    
   ]
 })
 export class AdminModule { }

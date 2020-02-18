@@ -1,13 +1,12 @@
 .sidenav {
-    height:94vh;
+    height:92vh;
     width: 100%;
-    
+    top: 0;
     left: 0;
     background-color: #1e282d;
     overflow-x: visible;
     transition: 0.5s;
     padding-top: 0;
-    margin-top:-10px;
   }
   
   

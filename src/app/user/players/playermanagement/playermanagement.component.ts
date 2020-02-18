@@ -13,7 +13,7 @@ import { TeamService } from 'src/service/teamservice';
 export class PlayermanagementComponent implements OnInit {
 
     
-   teams:TeamDTO[];
+  public teamInserts: Array<TeamDTO>;
         players: PlayerDTO[];
         playertoinsert: PlayerDTO = new PlayerDTO();
       team:TeamDTO;
@@ -24,11 +24,9 @@ export class PlayermanagementComponent implements OnInit {
       
         ngOnInit() {
           this.getPlayers();
-          this.getTeams();
+          
         }
-      getTeams(){
-        this.teamService.teamList().subscribe(teams=> this.teams=teams);
-      }
+      
         getPlayers() {
           this.service.playerList().subscribe(players => this.players = players);
         }
@@ -38,7 +36,6 @@ export class PlayermanagementComponent implements OnInit {
         }
       
         update(player: PlayerDTO) {
-          this.teamService.getTeambyName(player.team.name);
           this.service.updatePlayer(player).subscribe(() => this.getPlayers());
         }
       

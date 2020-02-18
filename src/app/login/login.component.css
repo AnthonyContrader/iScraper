@@ -13,6 +13,8 @@ img{
 }
 
 input, input:hover, input::selection, input:checked, input:focus{
+    
+   
     border: 0;
     background-color: darkorange;
     border-radius: 0;
@@ -22,8 +24,12 @@ input, input:hover, input::selection, input:checked, input:focus{
 }
 
 .container-fluid{
-    background-color: darkorange;
+    background-image: url("../../assets/image.jpg");
+    .background-color: darkorange;
     height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 input::placeholder{
     color: white;

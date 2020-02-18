@@ -42,8 +42,8 @@
 
         </tr>
         <tr>
-          <select [(ngModel)]="statsboxtoinsert.player" >
-            <option style="width: 150px;height: 26px;" *ngFor="let player of players" [ngValue]="player">{{player.id}}</option>
+          <select [(ngModel)]="statsboxtoinsert.player">
+            <option *ngFor="let player of players" [ngValue]="player">{{player.id}}</option>
           </select>
           <td>
             <input placeholder="stagione" [(ngModel)]="statsboxtoinsert.season">
