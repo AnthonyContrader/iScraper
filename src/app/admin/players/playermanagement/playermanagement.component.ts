@@ -3,6 +3,7 @@ import { PlayerDTO } from 'src/dto/playerdto';
 import { PlayerService } from 'src/service/playerservice';
 import { Router } from '@angular/router';
 import { TeamDTO } from 'src/dto/teamdto';
+import { TeamService } from 'src/service/teamservice';
 
 @Component({
   selector: 'app-playermanagement',
@@ -11,30 +12,40 @@ import { TeamDTO } from 'src/dto/teamdto';
 })
 export class PlayermanagementComponent implements OnInit {
 
-  public players: Array<PlayerDTO>;
+    
+  public teamInserts: Array<TeamDTO>;
+        players: PlayerDTO[];
+        playertoinsert: PlayerDTO = new PlayerDTO();
+      team:TeamDTO;
+      teamservice:TeamService;
+      
 
-  constructor(private playerService: PlayerService, private router: Router) { }
-
-  ngOnInit() {
-      this.playerService.playerList().subscribe((response) => {
-          this.players = response;
+        constructor(private service: PlayerService, private teamService:TeamService) { }
+      
+        ngOnInit() {
+          this.getPlayers();
           
-          console.log('La grandezza e\'' + this.players.length);
-      });
-  }
-
-    removeLink(id: number) {
-        
-        this.playerService.deletePlayer(id);
-     /**   this.router.navigateByUrl('/Client/clientManagement'); */
-    }
-    updateLink(id: number) {
-        
-        this.router.navigateByUrl('/players/playerupdate/' + id);
-    }
-
-    insertLink():any {
-        this.router.navigateByUrl('/players/playerinsert/');
-        console.log('clicked')
-    }
-}
+        }
+      
+        getPlayers() {
+          this.service.playerList().subscribe(players => this.players = players);
+        }
+      
+        delete(player: PlayerDTO) {
+          this.service.deletePlayer(player.id).subscribe(() => this.getPlayers());
+        }
+      
+        update(player: PlayerDTO) {
+          this.service.updatePlayer(player).subscribe(() => this.getPlayers());
+        }
+      
+        insert(player: PlayerDTO) {
+        //  this.teamservice.getTeambyName()
+          this.service.insertPlayer(this.playertoinsert).subscribe(() => this.getPlayers());
+        }
+      
+        clear(){
+          this.playertoinsert = new PlayerDTO();
+        }
+      }
+      

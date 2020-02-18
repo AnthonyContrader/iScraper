@@ -19,11 +19,34 @@
                 <div class="card-body card-block">
                      <form #f="ngForm">
                          <input type="hidden" name="id" [(ngModel)]="player.id" />
+                        
                         <div class="form-group">
-                            <label>PlayerName</label> <input class="au-input au-input--full" type="text" name="playerName"
-                                placeholder="PlayerName" [(ngModel)]="player.player_name">
-                        </div>
-                 <a href="/players/playermanagement" type="submit" class="btn btn-secondary btn-sm" (click)="update(f)">Update</a>
+                            <label>Id Giocatore</label> <input class="au-input au-input--full" type="text" name="playerName"
+                                placeholder="Id Giocatore" [(ngModel)]="player.id">   </div>
+
+                         <div class="form-group">
+                            <label>Nome</label> <input class="au-input au-input--full" type="text" name="playerName"
+                            placeholder="Nome" [(ngModel)]="player.player_name">   </div>
+                        <div class="form-group">
+                            <label>Cognome</label> <input class="au-input au-input--full" type="text" name="playerSurname"
+                            placeholder="Cognome" [(ngModel)]="player.player_surname">   </div>
+                        <div class="form-group">
+                            <label>Eta</label> <input class="au-input au-input--full" type="text" name="eta"
+                            placeholder="Eta" [(ngModel)]="player.age">  </div>
+                        <div class="form-group">
+                            <label>Valore Attuale</label> <input class="au-input au-input--full" type="text" name="Valore Attuale"
+                            placeholder="Valore Attuale" [(ngModel)]="player.actualMarketValue">   </div>
+                        <div class="form-group">
+                            <label>Posizione</label> <input class="au-input au-input--full" type="text" name="Posizione"
+                            placeholder="Posizione" [(ngModel)]="player.position">   </div>
+                        <div class="form-group">
+                        <label>Team</label> <input class="au-input au-input--full" type="text" name="team"
+                          placeholder="Team" [(ngModel)]="player.team.name">   </div>
+
+
+
+
+                 <a href="/admin-dashboard/players/playermanagement/" type="submit" class="btn btn-secondary btn-sm" (click)="update(f)">Update</a>
 
             </form>
 

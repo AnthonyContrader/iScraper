@@ -13,6 +13,7 @@ import { tap, catchError } from 'rxjs/operators';
 
 
 import { logging } from 'protractor';
+import { TeamDTO } from 'src/dto/teamdto';
 /**
  * I service sono decorati da @Injectable. 
  * Qui trovate, oltre ai metodi ereditati dall'Abstract,
@@ -28,6 +29,9 @@ import { logging } from 'protractor';
 export class PlayerService {
   feedback: string;
   private urlBase = environment.url;
+
+  //List<Player> findByT(team:TeamDTO);
+
 
   constructor(private http: HttpClient) {
     
@@ -47,22 +51,25 @@ export class PlayerService {
         );
 }
 
-  insertPlayer(player: PlayerDTO): void {
-      this.http.post('http://localhost:8080/player/insert', player).subscribe(() => console.log('Player inserted'));
+  insertPlayer(player: PlayerDTO) {
+   
+      return this.http.post('http://localhost:8080/player/insert', player) .pipe(tap((response) => console.log('Player'), catchError(this.handleError('error', {})))
+      );
   }
 
 
   readPlayer(id: number): Observable<PlayerDTO> {
-      return this.http.get<any>('http://localhost:8080/player/findplayer?id=' + id)
-          .pipe(tap((response) => console.log('Task'), catchError(this.handleError('error', {})))
-          );
+      return this.http.get<any>('http://localhost:8080/player/findplayer?id=' + id);
+       //   .pipe(tap((response) => console.log('Task'), catchError(this.handleError('error', {})))
+          
   }
 
   deletePlayer(id: number) {
-      this.http.delete('http://localhost:8080/Player/delete?id=' + id).subscribe(() => console.log('Player deleted'));
+     return this.http.delete('http://localhost:8080/player/delete?id=' + id);
   }
 
   updatePlayer(player: PlayerDTO) {
-      this.http.put('http://localhost:8080/player/update', player).subscribe(() => console.log('Player update'));
+      return this.http.put('http://localhost:8080/player/update', player);
   }
+  
 }

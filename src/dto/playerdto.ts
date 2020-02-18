@@ -12,6 +12,8 @@ export class PlayerDTO {
 	actualMarketValue:number;
 	previousMarketValue:number;
 	position:string;
-	team_id:number;
+	//team_id:number;
+	constructor(){};
+	
 //  userDTO: import("c:/Users/majorsky/Documents/iscraper-angular/src/dto/userdto").UserDTO;
 }
