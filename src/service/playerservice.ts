@@ -30,17 +30,9 @@ export class PlayerService extends AbstractService<PlayerDTO>{
   feedback: string;
   private urlBase = environment.url;
 
-<<<<<<< HEAD
   constructor(http: HttpClient) {
     super(http);
     this.type="player";
-=======
-  //List<Player> findByT(team:TeamDTO);
-
-
-  constructor(private http: HttpClient) {
-    
->>>>>>> 2868d4c72e83a48bfc16490bf7cc10dfbb1164fa
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
@@ -48,7 +40,7 @@ export class PlayerService extends AbstractService<PlayerDTO>{
           console.error(error);
           console.log('${operation} failed: ${error.message}');
           return of(result as T);
-      };
+      }
   }
 
   playerList(): Observable<Array<PlayerDTO>> {
