@@ -31,7 +31,7 @@ ngOnInit() {
  update(f: NgForm) {
       console.log(f.value);
       const userUpdate: UserDTO = JSON.parse(sessionStorage.getItem('user'));
-     // this.player.userD = userUpdate;
+     // this.player.userDTO = userUpdate;
       this.playerService.updatePlayer(this.player);
    //   this.router.navigateByUrl('/Client/clientManagement');
   }

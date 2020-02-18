@@ -20,12 +20,38 @@
                 <div class="card-header">NEW PLAYER</div>
                 <div class="card-body card-block">
                     <form #f="ngForm">
+                        
                         <div class="form-group">
-                            <label>PlayerName</label> <input class="au-input au-input--full" type="text" name="PlayerName"
-                                placeholder="PlayerName" [(ngModel)]="player.player_name">
+                            <label>Nome</label> <input class="au-input au-input--full" type="text" name="player_name"
+                                placeholder="Nome" [(ngModel)]="playerDTO.player_name">
                         </div>
-
-                        <a href="/player/playermanagement" type="submit" class="btn btn-secondary btn-sm" (click)="insertPlayer(f)">Insert</a>
+                        <div class="form-group">
+                            <label>Cognome</label> <input class="au-input au-input--full" type="text" name="player_surname"
+                                placeholder="Cognome" [(ngModel)]="playerDTO.player_surname">
+                        </div>
+                        <div class="form-group">
+                            <label>Eta</label> <input class="au-input au-input--full" type="text" name="age"
+                                placeholder="Eta" [(ngModel)]="playerDTO.age">
+                        </div>
+                        <div class="form-group">
+                            <label>Valore Attuale</label> <input class="au-input au-input--full" type="text" name="actualMarketValue"
+                                placeholder="Valore attuale" [(ngModel)]="playerDTO.actualMarketValue">
+                        </div>
+                        <div class="form-group">
+                            <label>Valore precedente</label> <input class="au-input au-input--full" type="text" name="previousMarketValue"
+                                placeholder="Valore Precedente" [(ngModel)]="playerDTO.previousMarketValue">
+                        </div>
+                        <div class="form-group">
+                            <label>Posizione</label> <input class="au-input au-input--full" type="text" name="position"
+                                placeholder="Posizione" [(ngModel)]="playerDTO.position">
+                        </div>
+                        <div class="form-group">
+                            <label>Squadra</label> <input class="au-input au-input--full" type="text" name="team"
+                                placeholder="Squadra" [(ngModel)]="playerDTO.team">
+                        </div>
+                      
+                    
+                        <a href="/admin-dashboard/players/playermanagement/" type="submit" class="btn btn-secondary btn-sm" (click)="insert(playerDTO)">Insert</a>
                     </form>
                 </div>
 

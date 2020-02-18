@@ -11,17 +11,35 @@ import { UserDTO } from 'src/dto/userdto';
   styleUrls: ['./playerinsert.component.css']
 })
 export class PlayerinsertComponent implements OnInit {
+  public playerDTO: PlayerDTO;
+  public user: UserDTO;
 
-  
-  public player: PlayerDTO;
-  constructor(private playerService: PlayerService, private router: Router) { }
+  constructor(private router: Router, private playerService: PlayerService) { }
 
   ngOnInit() {
-      const userInsert: UserDTO = JSON.parse(sessionStorage.getItem('user'));
-      this.player = new PlayerDTO();
+    
+    this.playerDTO = new PlayerDTO();
+    console.log(this.playerDTO.toString())
+
+    
   }
-  insertPlayer(f: NgForm) {
-      console.log('PLayer Id: ' + f.value.playerName);
-      this.playerService.insertPlayer(this.player);
+  insert(playerDTO: PlayerDTO) {
+    this.playerService.insertPlayer(playerDTO).subscribe();
   }
+  insertPlayer(){
+    //this.thingDTO.user = JSON.parse(sessionStorage.getItem("User")) as UserDTO;
+  //  this.labelDTO.user.idUser = parseInt(sessionStorage.getItem("idUser"));
+  //  console.log(this.labelDTO.user.idUser);
+   
+  this.playerService.insertPlayer(this.playerDTO).subscribe((data: any) => {
+    console.log(this.playerDTO.toString())
+    if(data != null)
+      alert("Inserimento effettuato");
+    else
+      alert("Inserimento fallito");
+
+      this.router.navigateByUrl("/player/playermanagement");
+  })
+}
+
 }
