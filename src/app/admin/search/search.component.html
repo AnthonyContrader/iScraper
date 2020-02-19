@@ -1,0 +1,82 @@
+<div class="container">
+    <div class="row mt-5">
+      <div class="col-md-1">
+      </div>
+      <div class="col-md-10">
+        <table>
+          <tr>
+            <th>
+              Date
+            </th>
+            <th>
+              Value
+            </th>
+            <th>
+              Index
+            </th>
+            <th>
+              User
+            </th>
+            <th>
+              Player
+            </th>
+            <th>
+              Edit
+            </th>
+            <th>
+              User
+            </th>
+          </tr>
+          <tr>
+            <td>
+              <input placeholder="search_date" [(ngModel)]="searchtoinsert.search_date">
+            </td>
+            <td>
+              <input placeholder="value" [(ngModel)]="searchtoinsert.value">
+            </td>
+            <td>
+              <input placeholder="player_index" [(ngModel)]="searchtoinsert.player_index">
+            </td>
+            <td>
+              <input placeholder="user" [(ngModel)]="searchtoinsert.user">
+            </td>
+            <td>
+              <input placeholder="player" [(ngModel)]="searchtoinsert.player">
+            </td>
+            <td>
+              <button (click)="insert(searchtoinsert)">Insert</button>
+            </td>
+            <td>
+              <button (click)="clear()">Clear</button>
+            </td>
+          </tr>
+          <tr *ngFor="let search of searches">
+            <input hidden [(ngModel)]="search.id">
+            <td>
+              <input [(ngModel)]="search.search_date">
+            </td>
+            <td>
+              <input [(ngModel)]="search.value">
+            </td>
+            <td>
+              <input [(ngModel)]="search.player_index">
+            </td>
+            <td>
+              <input [(ngModel)]="search.user.id">
+            </td>
+            <td>
+              <input [(ngModel)]="search.player.id">
+            </td>
+            <td>
+              <button (click)=update(search)>Save</button>
+            </td>
+            <td>
+              <button (click)="delete(search)">Delete</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-md-1">
+      </div>
+    </div>
+  </div>
