@@ -9,6 +9,7 @@ import { PlayermanagementComponent } from './players/playermanagement/playermana
 
 import { StatsboxComponent } from './statsbox/statsbox.component';
 import { TeamsComponent } from './teams/teams.component';
+import { SearchComponent } from './search/search.component';
 
 /**
  * Modulo di routing dell'admin. Qui ci sono i percorsi che un admin può seguire:
@@ -29,7 +30,8 @@ const routes: Routes = [
     { path: 'players/playermanagement', component: PlayermanagementComponent},
     { path: 'teams', component: TeamsComponent},
     { path: 'work-in-progress', component: WorkInProgressComponent},
-    { path: 'statsbox', component: StatsboxComponent}
+    { path: 'statsbox', component: StatsboxComponent},
+    { path: 'search', component: SearchComponent},
   ]}
 ];
 
