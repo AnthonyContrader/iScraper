@@ -42,4 +42,8 @@ public class User {
 
 	private Usertype usertype;
 	
+	private String name;
+	
+	private String email;
+	
 }

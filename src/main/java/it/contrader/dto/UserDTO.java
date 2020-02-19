@@ -28,5 +28,9 @@ public class UserDTO {
 
 	private Usertype usertype;
 	
+	private String name;
+	
+	private String email;
+	
 
 }
