@@ -1,40 +1,38 @@
 package it.contrader.model;
 
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Date;
 
-
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Entity
+public class Search {
 
-public class Player {
-	
 	@Id
+	@Column(unique=true)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	@ManyToOne
-	private Team team;
-	
+	private long id;
 
-	private String player_name;
-	private String player_surname;
-	private int age;
+	private Date search_date;
+
+	private int value;
+
+	private int player_index;
+
+	@ManyToOne
+	private  User user;
 	
-	private int actualMarketValue;
-	private int previousMarketValue;
-	private String position;
-//	private int team_id;
-	
+	@ManyToOne
+	private Player player;
 }

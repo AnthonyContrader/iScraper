@@ -1,16 +1,18 @@
 package it.contrader.dao;
 
+import java.util.List;
 import javax.transaction.Transactional;
-import it.contrader.model.Team;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import it.contrader.model.User;
+import it.contrader.model.Search;
+
 @Repository
 @Transactional
-public interface TeamRepository extends CrudRepository<Team, Long>{
+public interface SearchRepository extends CrudRepository<Search, Long> {
 
-	Team findByName(String name);
-	//List<Team> findByName(String name);
-	//Team findByNameOne(String name);
+	List<Search> findByUser(User user);
+	
 }

@@ -1,62 +1,96 @@
 package it.contrader.controller;
 
-import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import it.contrader.dto.PlayerDTO;
 import it.contrader.dto.TeamDTO;
-import it.contrader.service.PlayerService;
+import it.contrader.dto.UserDTO;
+import it.contrader.model.User.Usertype;
 import it.contrader.service.TeamService;
 
-@RestController
+
+@Controller
 @RequestMapping("/team")
-@CrossOrigin(origins = "http://localhost:4200")
 public class TeamController {
-	
 	
 		@Autowired
 		private TeamService teamService;
 
-
-
-		@Autowired
-		public TeamController(TeamService teamService) {
-			this.teamService = teamService;
+		@GetMapping("/getall")
+		public String getAll(HttpServletRequest request) {
+			
+			setAll(request);
+		UserDTO userDTO=(UserDTO) request.getSession().getAttribute("user");
+		
+		if (userDTO.getUsertype().equals(Usertype.ADMIN)){
+			return "team/teammanager";
+		} else {
+			return "team/readallteams";
+		}
+			
 		}
 		
-		@RequestMapping(value="/getall" , method= RequestMethod.GET)
-		public List<TeamDTO> showTeam() {		
-			return (List<TeamDTO>) teamService.getAll();
+		@GetMapping("/delete")
+		public String delete(HttpServletRequest request, @RequestParam("id") Long id) {
+			teamService.delete(id);
+			setAll(request);
+			return "team/teammanager";
 		}
 
-		@RequestMapping(value = "/delete", method = RequestMethod.DELETE)
-		public void delete(@RequestParam(value = "id") long id) {
-			this.teamService.delete(id);
+		@GetMapping("/preupdate")
+		public String preUpdate(HttpServletRequest request, @RequestParam("id") Long id) {
+			
+			request.getSession().setAttribute("dto", teamService.read(id));
+			return "team/updateteams";
 		}
 
-		@RequestMapping(value = "/update", method = RequestMethod.PUT)
-			public void update(@RequestBody TeamDTO teamDTO) {
-				teamService.update(teamDTO);
+		
+		@PostMapping("/update")
+		public String update(HttpServletRequest request, @RequestParam("id") Long id, @RequestParam("name") String name,@RequestParam("market_value") int market_value, @RequestParam("team_index") int team_index) {
+			TeamDTO dto = new TeamDTO();
+			dto.setId(id);
+			dto.setName(name);;
+			dto.setMarket_value(market_value);
+			dto.setTeam_index(team_index);
+			teamService.update(dto);
+			
+			setAll(request);
+			return "team/teammanager";
 		}
 		
-		@RequestMapping(value = "/insert", method = RequestMethod.POST)
-		public void insert(@RequestBody TeamDTO teamDTO) {
-			teamService.insert(teamDTO);
-		}
-		@RequestMapping(value="/findTeam" , method= RequestMethod.GET)
-		public TeamDTO findTeam(@RequestParam(value="id") int id) {		
-			return teamService.read(id);
-		}
-		@RequestMapping(value="/findTeambyName" , method= RequestMethod.GET)
-		public TeamDTO findTeambyName(@RequestParam(value="name") String name) {		
-			return teamService.findByName(name);
+		@PostMapping("/insert")
+		public String insert(HttpServletRequest request, @RequestParam("name") String name,@RequestParam("market_value") int market_value, @RequestParam("team_index") int team_index) {
+			TeamDTO dto = new TeamDTO();
+			
+			dto.setName(name);
+			dto.setMarket_value(market_value);
+			dto.setTeam_index(team_index);
+			teamService.insert(dto);
+			setAll(request);
+			return "team/teammanager";
 		}
 		
+		@GetMapping("/read")
+		public String read(HttpServletRequest request, @RequestParam("id") Long id) {
+			request.getSession().setAttribute("dto", teamService.read(id));
+			return "team/readteams";
+		}
+		
+		@GetMapping("/readbyname")
+		public String read(HttpServletRequest request, @RequestParam("name") String name) {
+			request.getSession().setAttribute("dto", teamService.findByName(name));
+			return "team/readteams";
+		}
+		
+
+		
+		private void setAll(HttpServletRequest request) {
+			request.getSession().setAttribute("list", teamService.getAll());
+		}
 	}
+

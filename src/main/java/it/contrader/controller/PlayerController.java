@@ -66,5 +66,6 @@ private TeamConverter teamConverter;
 	@RequestMapping(value="/findPlayer" , method= RequestMethod.GET)
 	public PlayerDTO findPlayer(@RequestParam(value="id") int id) {		
 		return playerService.read(id);
+
 	}
 }
