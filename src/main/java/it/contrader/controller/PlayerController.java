@@ -26,11 +26,12 @@ import it.contrader.service.UserService;
 @RequestMapping("/player")
 @CrossOrigin(origins = "http://localhost:4200")
 public class PlayerController{
-	private TeamService teamService;
+	
+	//private TeamService teamService;
 	@Autowired
 	private PlayerService playerService;
 
-private TeamConverter teamConverter;
+
 
 	@Autowired
 	public PlayerController(PlayerService playerService) {
@@ -49,13 +50,7 @@ private TeamConverter teamConverter;
 
 	@RequestMapping(value = "/update", method = RequestMethod.PUT)
 		public void update(@RequestBody PlayerDTO playerDTO) {
-		System.out.println(playerDTO.getTeam().getName());
-		TeamDTO teamDTO2=teamService.findByName(playerDTO.getTeam().getName());
-		Long id2=playerDTO.getTeam().getId();
-	teamDTO2.setId(id2);
-		playerDTO.setTeam(teamConverter.toEntity(teamDTO2));
-		
-		System.out.println(playerDTO.getTeam().toString());
+
 			playerService.update(playerDTO);
 	}
 	
@@ -68,4 +63,11 @@ private TeamConverter teamConverter;
 		return playerService.read(id);
 
 	}
+//	@RequestMapping(value="/findTeambyName" , method= RequestMethod.GET)
+//	public TeamDTO findTeam(@RequestParam(value="name") String name) {		
+//		return teamService.findByName(name);
+//		
+//	
+
+//	}
 }
