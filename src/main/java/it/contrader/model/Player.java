@@ -25,15 +25,15 @@ public class Player {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@ManyToOne
-   @JoinColumn(name="team_id", insertable = false, updatable = false) 
 	private Team team;
 	
 	private String player_name;
 	private String player_surname;
 	private int age;
+	
 	private int actualMarketValue;
 	private int previousMarketValue;
 	private String position;
-	private int team_id;
+//	private int team_id;
 	
 }
