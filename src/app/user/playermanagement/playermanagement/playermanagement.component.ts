@@ -28,20 +28,20 @@ export class PlayermanagementComponent implements OnInit {
         }
       
         getPlayers() {
-          this.service.playerList().subscribe(players => this.players = players);
+          this.service.getAll().subscribe(players => this.players = players);
         }
       
         delete(player: PlayerDTO) {
-          this.service.deletePlayer(player.id).subscribe(() => this.getPlayers());
+          this.service.delete(player.id).subscribe(() => this.getPlayers());
         }
       
         update(player: PlayerDTO) {
-          this.service.updatePlayer(player).subscribe(() => this.getPlayers());
+          this.service.update(player).subscribe(() => this.getPlayers());
         }
       
         insert(player: PlayerDTO) {
         //  this.teamservice.getTeambyName()
-          this.service.insertPlayer(this.playertoinsert).subscribe(() => this.getPlayers());
+          this.service.insert(this.playertoinsert).subscribe(() => this.getPlayers());
         }
       
         clear(){

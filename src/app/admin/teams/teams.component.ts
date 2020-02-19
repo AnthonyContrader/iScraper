@@ -23,23 +23,23 @@ export class TeamsComponent implements OnInit {
     this.getTeams();
   }
 getTeams(){
-  this.teamService.teamList().subscribe(teams=> this.teams=teams);
+  this.teamService.getAll().subscribe(teams=> this.teams=teams);
   console.log(this.teams);
 }
   
 
   delete(team: TeamDTO) {
-    this.teamService.deleteTeam(team.id).subscribe(() => this.getTeams());
+    this.teamService.delete(team.id).subscribe(() => this.getTeams());
   }
 
   update(team: TeamDTO) {
     
-    this.teamService.updateTeam(team).subscribe(() => this.getTeams());
+    this.teamService.update(team).subscribe(() => this.getTeams());
   }
 
   insert(team: TeamDTO) {
   //  this.teamservice.getTeambyName()
-    this.teamService.insertTeam(this.teamtoinsert).subscribe(() => this.getTeams());
+    this.teamService.insert(this.teamtoinsert).subscribe(() => this.getTeams());
   }
 
   clear(){
