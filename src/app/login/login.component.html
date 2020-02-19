@@ -1,8 +1,20 @@
 <div class="container-fluid">
+  <div class="box">
+	<a class="button" href="#popup1">Let me Pop up</a>
+</div>
+
+
   <div class="row">
+
+    
+
+
     <div class="col-md-7">
       <img src="../../assets/logo.svg" alt="logo">
     </div>
+
+    
+
     <div class="col-md-5">
       <form #f="ngForm">
         <p>Please insert username and password to Login or Sign Up</p>
@@ -15,6 +27,16 @@
         <button type="submit" (click)="login(f)">Login</button>
         <button type="submit">Sign Up</button>
       </form>
+
+      <div id="popup1" class="overlay">
+        <div class="popup">
+          <h2>Here i am</h2>
+          <a class="close" href="#">&times;</a>
+          <div class="content">
+            Thank to pop me out of that button, but now i'm done so you can close this window.
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
