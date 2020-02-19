@@ -8,8 +8,11 @@ import { WorkInProgressComponent } from './work-in-progress/work-in-progress.com
 import { UserRoutingModule } from './user-routing.module';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { UserLayoutComponent } from '../layout/user-layout/user-layout.component';
-import { PlayermanagementComponent } from './players/playermanagement/playermanagement.component';
+
 import { StatsboxComponent } from './statsbox/statsbox.component';
+import { TeamsComponent } from './teams/teams.component';
+import { PlayermanagementComponent } from './playermanagement/playermanagement/playermanagement.component';
+
 
 
 /**
@@ -21,7 +24,7 @@ import { StatsboxComponent } from './statsbox/statsbox.component';
  * @see USerRoutingModule
  */
 @NgModule({
-  declarations: [UserDashboardComponent,WorkInProgressComponent,PlayermanagementComponent,StatsboxComponent],
+  declarations: [UserDashboardComponent,WorkInProgressComponent,PlayermanagementComponent,StatsboxComponent,TeamsComponent],
   imports: [
     CommonModule,
     UserRoutingModule,

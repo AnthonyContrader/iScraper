@@ -1,0 +1,115 @@
+<div class="container" >
+    <div class="row mt-5">
+      <div class="col-md-1">
+      </div>
+  
+      
+      <div class="col-md-10" style="margin-right: 100px;">
+        <h3 style="text-align: center;color: bisque;background: darkorange; margin-left: 100px;">Lista squadre</h3>
+        <table style="background-color: black; margin-top: 20px; margin-left: 250px;">
+          <tr style="background: beige;">
+            <th style="text-align: center;">
+              Id
+            </th>
+            <th style="text-align: center;">
+             Nome
+            </th>
+            <th style="text-align: center;">
+              Valore mercato
+            </th>
+            <th style="text-align: center;">
+              Index squadra
+            </th>
+           
+           
+          </tr>
+          
+          <tr *ngFor="let team of teams">
+            <td>
+              <input [(ngModel)]="team.id">
+            </td>
+            <td>
+              <input [(ngModel)]="team.name">
+            </td>
+            <td>
+              <input [(ngModel)]="team.market_value">
+            </td>
+            <td>
+              <input [(ngModel)]="team.team_index">
+                
+            </td>
+            
+          
+          </tr>
+        </table>
+      </div>
+     
+      <div class="col-md-10" style="margin-right: 100px;">
+        <h3 style="text-align: center;color: bisque;background: darkorange; margin-left: 100px;">Aggiornamento teams</h3>
+        <table style="background-color: black; margin-top: 20px; margin-left: 250px;">
+          <tr style="text-align: center;color: bisque;">
+           
+              <th style="text-align: center;">
+                Nome
+              </th>
+              <th style="text-align: center;">
+                Valore mercato
+              </th>
+              <th style="text-align: center;">
+                Index squadra
+              </th>
+           
+          </tr>
+          <tr>
+           
+            <td>
+              <input placeholder="nome" [(ngModel)]="teamtoinsert.name">
+            </td>
+            <td>
+              <input placeholder="valore" [(ngModel)]="teamtoinsert.market_value">
+              
+            </td>
+            <td>
+              <input placeholder="index" [(ngModel)]="teamtoinsert.team_index">
+            </td>
+        
+           
+            
+            <td>
+              <button (click)="insert(teamtoinsert)">Insert</button>
+            </td>
+            <td>
+              <button (click)="clear()" style="padding-left: 12px; padding-right: 10px;">Clear  </button>
+  
+              
+            </td>
+          </tr>
+          <tr *ngFor="let team of teams">
+           
+            <td>
+              <input [(ngModel)]="team.name">
+            </td>
+            <td>
+              <input [(ngModel)]="team.market_value">
+                
+            </td>
+            <td mat-cell *matCellDef="team.market_value"> {{team.market_value}} </td>
+            <td>
+              <input [(ngModel)]="team.team_index">
+                
+            </td>
+           
+            <td>
+              <button (click)=update(team)>Save</button>
+            </td>
+            <td>
+              <button (click)="delete(team)">Delete</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-md-1">
+  
+      </div>
+    </div>
+  </div>

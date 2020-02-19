@@ -1,0 +1,49 @@
+import { Component, OnInit } from '@angular/core';
+import { TeamDTO } from 'src/dto/teamdto';
+import { TeamService } from 'src/service/teamservice';
+
+
+@Component({
+  selector: 'app-teams',
+  templateUrl: './teams.component.html',
+  styleUrls: ['./teams.component.css']
+})
+export class TeamsComponent implements OnInit {
+  teams:TeamDTO[];
+ 
+  teamtoinsert: TeamDTO = new TeamDTO();
+
+//service:TeamService;
+
+
+  constructor( private teamService:TeamService) { }
+
+  ngOnInit() {
+    
+    this.getTeams();
+  }
+getTeams(){
+  this.teamService.teamList().subscribe(teams=> this.teams=teams);
+  console.log(this.teams);
+}
+  
+
+  delete(team: TeamDTO) {
+    this.teamService.deleteTeam(team.id).subscribe(() => this.getTeams());
+  }
+
+  update(team: TeamDTO) {
+    
+    this.teamService.updateTeam(team).subscribe(() => this.getTeams());
+  }
+
+  insert(team: TeamDTO) {
+  //  this.teamservice.getTeambyName()
+    this.teamService.insertTeam(this.teamtoinsert).subscribe(() => this.getTeams());
+  }
+
+  clear(){
+    this.teamtoinsert = new TeamDTO();
+  }
+}
+

@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AdminLayoutComponent } from '../layout/admin-layout/admin-layout.component';
+
 import { UsersComponent } from '../admin/users/users.component';
 import { WorkInProgressComponent } from './work-in-progress/work-in-progress.component';
 import { UserLayoutComponent } from '../layout/user-layout/user-layout.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
-import { PlayermanagementComponent } from './players/playermanagement/playermanagement.component';
+
 import { StatsboxComponent } from './statsbox/statsbox.component';
+import { TeamsComponent } from './teams/teams.component';
+import { PlayermanagementComponent } from './playermanagement/playermanagement/playermanagement.component';
+
 
 
 
@@ -28,7 +31,8 @@ const routes: Routes = [
     { path: '', component: UserDashboardComponent},
     { path: 'user', component: UsersComponent},
     { path: 'playermanagement', component: PlayermanagementComponent},
-    { path: 'statsbox', component: StatsboxComponent}
+    { path: 'statsbox', component: StatsboxComponent},
+    { path: 'teams', component: TeamsComponent}
   ]}
 ];
 

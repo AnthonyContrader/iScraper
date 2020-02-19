@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PlayerDTO } from 'src/dto/playerdto';
 import { PlayerService } from 'src/service/playerservice';
-import { Router } from '@angular/router';
+
 import { TeamDTO } from 'src/dto/teamdto';
 import { TeamService } from 'src/service/teamservice';
 

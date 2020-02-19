@@ -22,12 +22,11 @@
                 <a [routerLink]="['/user-dashboard/playermanagement']"> <i class="fas fa-futbol" style="margin-right: 10px"> </i>
                     Players </a>
             </button>
-            <div class="collapsebtn" id="players" *ngIf="isPlayerCollapsed">
-                <button class="menubtn" style="padding-left: 40px; background-color: #334247;">
-                    <a [routerLink]="['/user-dashboard/playermanagement']"> <i class="fas fa-edit" style="margin-right: 10px">
-                        </i> Manage Players </a>
-                </button>
-            </div>
+            <button class="menubtn">
+                <a [routerLink]="['/user-dashboard/teams']"> <i class="fas fa-futbol" style="margin-right: 10px"> </i>
+                    Teams </a>
+            </button>
+            
         <button type="button" class="menubtn" data-toggle="collapsebtn" data-target="#statsboxes"
             (click)="statsboxcollapse()">
             <i class="fas fa-users" style="margin-right: 15px"></i>Statistiche

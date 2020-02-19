@@ -1,0 +1,52 @@
+<div class="container" >
+    <div class="row mt-5">
+      <div class="col-md-1">
+      </div>
+  
+      
+      <div class="col-md-10" style="margin-right: 100px;">
+        <h3 style="text-align: center;color: bisque;background: darkorange; margin-left: 100px;">Lista squadre</h3>
+        <table style="background-color: black; margin-top: 20px; margin-left: 250px;">
+          <tr style="background: beige;">
+            <th style="text-align: center;">
+              Id
+            </th>
+            <th style="text-align: center;">
+             Nome
+            </th>
+            <th style="text-align: center;">
+              Valore mercato
+            </th>
+            <th style="text-align: center;">
+              Index squadra
+            </th>
+           
+           
+          </tr>
+          
+          <tr *ngFor="let team of teams">
+            <td>
+              <input [(ngModel)]="team.id">
+            </td>
+            <td>
+              <input [(ngModel)]="team.name">
+            </td>
+            <td>
+              <input [(ngModel)]="team.market_value">
+            </td>
+            <td>
+              <input [(ngModel)]="team.team_index">
+                
+            </td>
+            
+          
+          </tr>
+        </table>
+      </div>
+     
+     
+      <div class="col-md-1">
+  
+      </div>
+    </div>
+  </div>
