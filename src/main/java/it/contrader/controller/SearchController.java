@@ -25,6 +25,11 @@ public class SearchController extends AbstractController<SearchDTO>{
 		return (List<SearchDTO>) service.getAll();
 	}
 	
+	@RequestMapping(value = "/postall", method= RequestMethod.POST)
+	public List<SearchDTO> postAll() {
+		return (List<SearchDTO>) service.getAll();
+	}
+	
 	/*@GetMapping("/getall")
 	public String getAll(HttpServletRequest request) {
 		setAll(request);
