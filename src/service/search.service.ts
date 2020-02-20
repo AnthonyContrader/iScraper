@@ -14,10 +14,17 @@ export class SearchService extends AbstractService<SearchDTO>{
 
   port: string = '8080';
   
-  constructor(http: HttpClient) { 
+  constructor(http: HttpClient) {
     super(http);
     this.type = 'search';
   }
+
+  postAll(dto: UserDTO): Observable<SearchDTO[]>{
+    let searchList: Observable<SearchDTO[]>; 
+    searchList = this.http.post<SearchDTO[]>('http://localhost:' + this.port + '/' + this.type + '/postall', SearchDTO);
+    return searchList;
+  }
+
     /*insert(dto: SearchDTO){
         dto.user.id = Number(dto.user.id);
         dto.player.id = Number(dto.player.id);
