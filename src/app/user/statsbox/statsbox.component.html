@@ -4,7 +4,10 @@
       <table>
         <tr>
           <th>
-            Giocatore
+            Nome
+          </th>
+          <th>
+            Cognome
           </th>
           <th>
             Stagione
@@ -31,6 +34,9 @@
             Falli subiti/90min
           </th>
           <th>
+            Falli commessi/90min
+          </th>
+          <th>
             Tackles/90min
           </th>
           <th>
@@ -41,92 +47,48 @@
           </th>
 
         </tr>
-        <tr>
-          <select [(ngModel)]="statsboxtoinsert.player">
-            <option *ngFor="let player of players" [ngValue]="player">{{player.id}}</option>
-          </select>
-          <td>
-            <input placeholder="stagione" [(ngModel)]="statsboxtoinsert.season">
-          </td>
-          <td>
-            <input placeholder="presenze" [(ngModel)]="statsboxtoinsert.caps">
-          </td>
-          <td>
-            <input placeholder="contribuzioni" [(ngModel)]="statsboxtoinsert.contributions">
-          </td>
-          <td>
-            <input placeholder="percentuale tiri" [(ngModel)]="statsboxtoinsert.shotsper">
-          </td>
-          <td>
-            <input placeholder="passaggi chiave" [(ngModel)]="statsboxtoinsert.keypass">
-          </td>
-          <td>
-            <input placeholder="precisione passaggi" [(ngModel)]="statsboxtoinsert.passprec">
-          </td>
-          <td>
-            <input placeholder="dribbling" [(ngModel)]="statsboxtoinsert.dribbling">
-          </td>
-          <td>
-            <input placeholder="falli subiti" [(ngModel)]="statsboxtoinsert.foulssub">
-          </td>
-          <td>
-            <input placeholder="tackles" [(ngModel)]="statsboxtoinsert.tackles">
-          </td>
-          <td>
-            <input placeholder="percentuale tackles" [(ngModel)]="statsboxtoinsert.tacklesper">
-          </td>
-          <td>
-            <input placeholder="chiusure" [(ngModel)]="statsboxtoinsert.breaks">
-          </td>
-          <td>
-            <button (click)="insert(statsboxtoinsert)">Insert</button>
-          </td>
-          <td>
-            <button (click)="clear()">Clear</button>
-          </td>
-        </tr>
         <tr *ngFor="let statsbox of statsboxes">
           <td>
-            <label>{{statsbox.player.id}}</label>
+            <label>{{statsbox.player.player_name}}</label>
           </td>
           <td>
-            <input [(ngModel)]="statsbox.season">
+            <label>{{statsbox.player.player_surname}}</label>
           </td>
           <td>
-            <input [(ngModel)]="statsbox.caps">
+            <label>{{statsbox.season}}</label>
           </td>
           <td>
-            <input [(ngModel)]="statsbox.contributions">
+            <label>{{statsbox.caps}}</label>
           </td>
           <td>
-            <input [(ngModel)]="statsbox.shotsper">
+            <label>{{statsbox.contributions}}</label>
           </td>
           <td>
-            <input [(ngModel)]="statsbox.keypass">
+            <label>{{statsbox.shotsper}}</label>
           </td>
           <td>
-            <input [(ngModel)]="statsbox.passprec">
+            <label>{{statsbox.keypass}}</label>
           </td>
           <td>
-            <input [(ngModel)]="statsbox.dribbling">
+            <label>{{statsbox.passprec}}</label>
           </td>
           <td>
-            <input [(ngModel)]="statsbox.foulssub">
+            <label>{{statsbox.dribbling}}</label>
           </td>
           <td>
-            <input [(ngModel)]="statsbox.tackles">
+            <label>{{statsbox.foulssub}}</label>
           </td>
           <td>
-            <input [(ngModel)]="statsbox.tacklesper">
+            <label>{{statsbox.foulscomm}}</label>
           </td>
           <td>
-            <input [(ngModel)]="statsbox.breaks">
+            <label>{{statsbox.tackles}}</label>
           </td>
           <td>
-            <button (click)="update(statsbox)">Save</button>
+            <label>{{statsbox.tacklesper}}</label>
           </td>
           <td>
-            <button (click)="delete(statsbox)">Delete</button>
+            <label>{{statsbox.breaks}}</label>
           </td>
         </tr>
       </table>

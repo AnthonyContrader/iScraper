@@ -1,6 +1,5 @@
 import { UserDTO } from './userdto';
 import { PlayerDTO } from './playerdto';
-import { NumberValueAccessor } from '@angular/forms';
 
 export class SearchDTO {
 

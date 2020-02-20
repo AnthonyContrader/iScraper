@@ -12,6 +12,10 @@ import { UserLayoutComponent } from '../layout/user-layout/user-layout.component
 import { StatsboxComponent } from './statsbox/statsbox.component';
 import { TeamsComponent } from './teams/teams.component';
 import { PlayermanagementComponent } from './playermanagement/playermanagement/playermanagement.component';
+import { InjuryComponent } from './injury/injury.component';
+
+import { SearchComponent } from './search/search.component';
+
 
 
 
@@ -24,7 +28,8 @@ import { PlayermanagementComponent } from './playermanagement/playermanagement/p
  * @see USerRoutingModule
  */
 @NgModule({
-  declarations: [UserDashboardComponent,WorkInProgressComponent,PlayermanagementComponent,StatsboxComponent,TeamsComponent],
+  declarations: [UserDashboardComponent,WorkInProgressComponent,PlayermanagementComponent,StatsboxComponent,TeamsComponent, InjuryComponent, SearchComponent],
+
   imports: [
     CommonModule,
     UserRoutingModule,
