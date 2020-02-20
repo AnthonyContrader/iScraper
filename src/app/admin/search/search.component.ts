@@ -17,6 +17,7 @@ export class SearchComponent implements OnInit {
   searchtoinsert: SearchDTO = new SearchDTO();
   players: PlayerDTO[];
   users: UserDTO[];
+  sessionUser: UserDTO;
 
   constructor(private searchService : SearchService,
     private playerService : PlayerService, private userService : UserService) { }
@@ -25,6 +26,7 @@ export class SearchComponent implements OnInit {
     this.getSearches();
     this.getPlayers();
     this.getUsers();
+    this.sessionUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
   getSearches(){
