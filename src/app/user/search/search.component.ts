@@ -16,7 +16,6 @@ export class SearchComponent implements OnInit {
   searches: SearchDTO[];
   searchtoinsert: SearchDTO = new SearchDTO();
   players: PlayerDTO[];
-  users: UserDTO[];
   sessionUser: UserDTO;
 
   constructor(private searchService : SearchService,
@@ -25,7 +24,6 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {
     this.getSearches();
     this.getPlayers();
-    this.getUsers();
     this.sessionUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
@@ -37,26 +35,17 @@ export class SearchComponent implements OnInit {
     this.playerService.getAll().subscribe(players => this.players = players);
   }
 
-  getUsers(){
-    this.userService.getAll().subscribe(users => this.users = users);
-  }
-
   delete(search: SearchDTO) {
     this.searchService.delete(search.id).subscribe(() => this.getSearches());
   }
 
-  update(search: SearchDTO) {
-    if((isNaN(search.value) ||search.value.toString.length>0) ||
-      (isNaN(search.player_index) || search.player_index.toString.length>0) ||
-      (isNaN(search.user.id) || search.user.id.toString.length>0) ||
-      (isNaN(search.player.id) || search.player.id.toString.length>0)) return null;
-    else this.searchService.update(search).subscribe(() => this.getSearches());
-  }
-
   insert(search: SearchDTO) {
-    if(isNaN(search.value) || isNaN(search.player_index) ||
-      isNaN(search.user.id) || isNaN(search.player.id)) return null;
-    else this.searchService.insert(search).subscribe(() => this.getSearches());
+    if(isNaN(search.value) || isNaN(search.player_index) || isNaN(search.player.id)) return null;
+    else {
+      search.user = new UserDTO;
+      search.user = this.sessionUser;
+      this.searchService.insert(search).subscribe(() => this.getSearches());
+    }
   }
 
   clear(){

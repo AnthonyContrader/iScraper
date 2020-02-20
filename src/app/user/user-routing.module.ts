@@ -10,6 +10,7 @@ import { StatsboxComponent } from './statsbox/statsbox.component';
 import { TeamsComponent } from './teams/teams.component';
 import { PlayermanagementComponent } from './playermanagement/playermanagement/playermanagement.component';
 import { InjuryComponent } from './injury/injury.component';
+import { SearchComponent } from './search/search.component';
 
 
 
@@ -34,7 +35,8 @@ const routes: Routes = [
     { path: 'playermanagement', component: PlayermanagementComponent},
     { path: 'statsbox', component: StatsboxComponent},
     { path: 'teams', component: TeamsComponent},
-    { path: 'injury', component: InjuryComponent}
+    { path: 'injury', component: InjuryComponent},
+    { path: 'search', component: SearchComponent},
   ]}
 ];
 

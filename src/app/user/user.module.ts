@@ -14,6 +14,9 @@ import { TeamsComponent } from './teams/teams.component';
 import { PlayermanagementComponent } from './playermanagement/playermanagement/playermanagement.component';
 import { InjuryComponent } from './injury/injury.component';
 
+import { SearchComponent } from './search/search.component';
+
+
 
 
 /**
@@ -25,7 +28,8 @@ import { InjuryComponent } from './injury/injury.component';
  * @see USerRoutingModule
  */
 @NgModule({
-  declarations: [UserDashboardComponent,WorkInProgressComponent,PlayermanagementComponent,StatsboxComponent,TeamsComponent, InjuryComponent],
+  declarations: [UserDashboardComponent,WorkInProgressComponent,PlayermanagementComponent,StatsboxComponent,TeamsComponent, InjuryComponent, SearchComponent],
+
   imports: [
     CommonModule,
     UserRoutingModule,

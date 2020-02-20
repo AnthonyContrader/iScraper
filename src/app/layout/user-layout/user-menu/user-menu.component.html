@@ -35,6 +35,25 @@
             (click)="statsboxcollapse()">
             <a [routerLink]="['/user-dashboard/injury']"><i class="fas fa-users" style="margin-right: 15px"></i>Infortuni</a>
         </button>
+<<<<<<< HEAD
+=======
+        <div class="collapsebtn" id="statsboxes" *ngIf="isStatsboxCollapsed">
+            <button class="menubtn" style="padding-left: 40px; background-color: #334247;">
+                <a [routerLink]="['/user-dashboard/statsbox']"> <i class="fas fa-edit" style="margin-right: 10px">
+                    </i> Gestisci Statistiche </a>
+            </button>
+        </div>
+            <button type="button" class="menubtn" data-toggle="collapsebtn" data-target="#search"
+                (click)="searchcollapse()">
+                <i class="fas fa-users" style="margin-right: 15px"></i>Researches
+            </button>
+            <div class="collapsebtn" id="searches" *ngIf="isSearchCollapsed">
+                <button class="menubtn" style="padding-left: 40px; background-color: #334247;">
+                    <a [routerLink]="['/user-dashboard/search']"> <i class="fas fa-edit" style="margin-right: 10px">
+                        </i> Manage Researches </a>
+                </button>
+            </div> 
+>>>>>>> 3b34bdda205ea154b5d58f206b80d97de2713ec0
             <button class="menubtn" (click)="logout()">
                 <i class="fas fa-sign-out-alt" style="margin-right: 15px"></i>Logout
             </button>
