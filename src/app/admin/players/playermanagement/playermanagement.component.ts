@@ -4,6 +4,7 @@ import { PlayerService } from 'src/service/playerservice';
 import { Router } from '@angular/router';
 import { TeamDTO } from 'src/dto/teamdto';
 import { TeamService } from 'src/service/teamservice';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-playermanagement',
@@ -18,9 +19,11 @@ export class PlayermanagementComponent implements OnInit {
         playertoinsert: PlayerDTO = new PlayerDTO();
       team:TeamDTO;
       teamservice:TeamService;
-      
-
-        constructor(private service: PlayerService, private teamService:TeamService) { }
+      name:string;
+      playerName:string;
+      nameInput:string;
+playersName:string[];
+        constructor(private service: PlayerService, private teamService:TeamService, ) { }
       
         ngOnInit() {
           this.getPlayers();
@@ -46,9 +49,19 @@ export class PlayermanagementComponent implements OnInit {
         //  this.teamservice.getTeambyName()
           this.service.insert(this.playertoinsert).subscribe(() => this.getPlayers());
         }
-      
+      findByName(nome:string){
+        this.service.findByName(nome).subscribe(players => this.players= players)
+      }
         clear(){
           this.playertoinsert = new PlayerDTO();
         }
+
+        getFromInput(nameForm: NgForm):void {
+           this.nameInput=nameForm.value;
+           console.log(nameForm.value);
+        }
+       
+
+
       }
       
