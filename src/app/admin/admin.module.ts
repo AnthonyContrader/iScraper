@@ -11,6 +11,7 @@ import { PlayermanagementComponent } from './players/playermanagement/playermana
 import { StatsboxComponent } from './statsbox/statsbox.component';
 import { TeamsComponent } from './teams/teams.component';
 import { SearchComponent } from './search/search.component'
+import { InjuryComponent } from './injury/injury.component';
 
 /**
  * Modulo dell'admin, qui vengono dichiarate le component che utilizza 
@@ -21,7 +22,7 @@ import { SearchComponent } from './search/search.component'
  * @see AdminRoutingModule
  */
 @NgModule({
-  declarations: [AdminDashboardComponent, UsersComponent, StatsboxComponent, WorkInProgressComponent, PlayermanagementComponent, TeamsComponent, SearchComponent],
+  declarations: [AdminDashboardComponent, InjuryComponent, UsersComponent, StatsboxComponent, WorkInProgressComponent, PlayermanagementComponent, TeamsComponent, SearchComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

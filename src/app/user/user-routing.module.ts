@@ -9,6 +9,7 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { StatsboxComponent } from './statsbox/statsbox.component';
 import { TeamsComponent } from './teams/teams.component';
 import { PlayermanagementComponent } from './playermanagement/playermanagement/playermanagement.component';
+import { InjuryComponent } from './injury/injury.component';
 
 
 
@@ -32,7 +33,8 @@ const routes: Routes = [
     { path: 'user', component: UsersComponent},
     { path: 'playermanagement', component: PlayermanagementComponent},
     { path: 'statsbox', component: StatsboxComponent},
-    { path: 'teams', component: TeamsComponent}
+    { path: 'teams', component: TeamsComponent},
+    { path: 'injury', component: InjuryComponent}
   ]}
 ];
 

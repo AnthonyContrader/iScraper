@@ -1,0 +1,82 @@
+<div class="container">
+    <div class="row mt-5">
+      <div class="col-md-3">
+        <table style="background-color: #fffdfda1;">
+          <tr>
+            <th>
+              Id
+            </th>
+            <th>
+              Gravità
+            </th>
+            <th>
+              Descrizione
+            </th>
+            <th>
+              Data         
+            </th>
+            <th>
+             Id giocatore
+            </th>
+            <th colspan="2">
+             Modifica/rimuovi
+            </th>
+          </tr>
+          <tr>
+            <td>
+              <label>       </label>
+            </td>
+            <td>
+              <input placeholder="Gravità" [(ngModel)]="injurytoinsert.severity">
+            </td>
+            <td>
+              <textarea placeholder="Descrizione" [(ngModel)]="injurytoinsert.description"></textarea>
+            </td>
+            <td>
+              <input placeholder="Data" [(ngModel)]="injurytoinsert.date">
+            </td>
+            <td>
+                <select [(ngModel)]="injurytoinsert.player" >
+                    <option style="width: 150px;height: 26px;" *ngFor="let player of players" [ngValue]="player">{{player.id}}</option>
+                </select>
+            </td>
+           
+            <td>
+              <button (click)="insert(injurytoinsert)">Insert</button>
+            </td>
+            <td>
+              <button (click)="clear()">Clear</button>
+            </td>
+          </tr>
+          <tr *ngFor="let injury of injuries">
+            <td>
+              <label>{{injury.id}}</label>
+            </td>
+            <td>
+              <input [(ngModel)]="injury.severity">
+            </td>
+            <td>
+              <textarea [(ngModel)]="injury.description"></textarea>
+            </td>
+            <td>
+              <input [(ngModel)]="injury.date">
+            </td>
+            <td>
+                <select [(ngModel)]="injury.player">
+                    <option *ngFor="let player of players" [ngValue]="player" [selected]="injury.player.id==player.id">{{player.id}}</option>
+                </select>
+            </td>
+            <td>
+              <button (click)="update(injury)">Save</button>
+            </td>
+            <td>
+              <button (click)="delete(injury)">Delete</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-md-1">
+  
+      </div>
+    </div>
+</div>
