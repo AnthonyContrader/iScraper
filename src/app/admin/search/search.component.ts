@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from 'src/service/search.service';
+import { UserService } from 'src/service/user.service';
+import { PlayerService } from 'src/service/playerservice';
 import { SearchDTO } from 'src/dto/searchdto';
+import { UserDTO } from 'src/dto/userdto';
+import { PlayerDTO } from 'src/dto/playerdto';
 
 @Component({
   selector: 'app-search',
@@ -11,27 +15,46 @@ export class SearchComponent implements OnInit {
 
   searches: SearchDTO[];
   searchtoinsert: SearchDTO = new SearchDTO();
+  players: PlayerDTO[];
+  users: UserDTO[];
 
-  constructor(private service : SearchService) { }
+  constructor(private searchService : SearchService,
+    private playerService : PlayerService, private userService : UserService) { }
 
   ngOnInit(): void {
     this.getSearches();
+    this.getPlayers();
+    this.getUsers();
   }
 
   getSearches(){
-    this.service.getAll().subscribe(searches => this.searches = searches);
+    this.searchService.getAll().subscribe(searches => this.searches = searches);
+  }
+
+  getPlayers(){
+    this.playerService.getAll().subscribe(players => this.players = players);
+  }
+
+  getUsers(){
+    this.userService.getAll().subscribe(users => this.users = users);
   }
 
   delete(search: SearchDTO) {
-    this.service.delete(search.id).subscribe(() => this.getSearches());
+    this.searchService.delete(search.id).subscribe(() => this.getSearches());
   }
 
   update(search: SearchDTO) {
-    this.service.update(search).subscribe(() => this.getSearches());
+    if((isNaN(search.value) ||search.value.toString.length>0) ||
+      (isNaN(search.player_index) || search.player_index.toString.length>0) ||
+      (isNaN(search.user.id) || search.user.id.toString.length>0) ||
+      (isNaN(search.player.id) || search.player.id.toString.length>0)) return null;
+    else this.searchService.update(search).subscribe(() => this.getSearches());
   }
 
   insert(search: SearchDTO) {
-    this.service.insert(search).subscribe(() => this.getSearches());
+    if(isNaN(search.value) || isNaN(search.player_index) ||
+      isNaN(search.user.id) || isNaN(search.player.id)) return null;
+    else this.searchService.insert(search).subscribe(() => this.getSearches());
   }
 
   clear(){
