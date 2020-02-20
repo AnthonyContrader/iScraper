@@ -1,32 +1,31 @@
 package it.contrader.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import java.sql.Date;
 import java.util.List;
-import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import it.contrader.dto.SearchDTO;
-import it.contrader.dto.UserDTO;
-import it.contrader.model.User;
-import it.contrader.model.Player;
 import it.contrader.service.SearchService;
 
-@Controller
-
+@RestController
 @RequestMapping("/search")
-public class SearchController {
+@CrossOrigin(origins = "http://localhost:4200")
+
+public class SearchController extends AbstractController<SearchDTO>{
 
 	@Autowired
 	private SearchService service;
 	
-	@GetMapping("/getall")
+	@RequestMapping(value = "/getall", method= RequestMethod.GET)
+	public List<SearchDTO> getAll() {
+		return (List<SearchDTO>) service.getAll();
+	}
+	
+	/*@GetMapping("/getall")
 	public String getAll(HttpServletRequest request) {
 		setAll(request);
 		return "search/searches";
@@ -102,5 +101,5 @@ public class SearchController {
 			request.getSession().setAttribute("list", userSearchesList);
 			break;
 		}
-	}
+	}*/
 }
