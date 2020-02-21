@@ -22,18 +22,21 @@ export class PlayermanagementComponent implements OnInit {
       name:string;
       playerName:string;
       nameInput:string;
+
       playersName: PlayerDTO[];
-      
+
       constructor(private service: PlayerService, private teamService:TeamService, ) { }
       
-        ngOnInit() {
+      ngOnInit() {
           this.getPlayers();
           this.getTeams();
         //  this.findByName(this.nameInput);
         }
+
         getTeams(){
-        this.teamService.getAll().subscribe(teams=> this.teams=teams);
-      }
+          this.teamService.getAll().subscribe(teams=> this.teams=teams);
+        }
+
         getPlayers() {
           this.service.getAll().subscribe(players => this.players = players);
         }
@@ -43,17 +46,17 @@ export class PlayermanagementComponent implements OnInit {
         }
       
         update(player: PlayerDTO) {
-        //  this.teamService.getTeambyName(player.team.name);
           this.service.update(player).subscribe(() => this.getPlayers());
         }
       
         insert(player: PlayerDTO) {
-        //  this.teamservice.getTeambyName()
           this.service.insert(this.playertoinsert).subscribe(() => this.getPlayers());
         }
+ 
       findByName(nome:string){
         this.service.findByName(nome).subscribe(playersName => this.playersName= playersName)
       }
+
         clear(){
           this.playertoinsert = new PlayerDTO();
         }
