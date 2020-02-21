@@ -14,20 +14,22 @@ import { NgForm } from '@angular/forms';
 export class PlayermanagementComponent implements OnInit {
 
     
-   teams:TeamDTO[];
-        players: PlayerDTO[];
-        playertoinsert: PlayerDTO = new PlayerDTO();
+      teams:TeamDTO[];
+      players: PlayerDTO[];
+      playertoinsert: PlayerDTO = new PlayerDTO();
       team:TeamDTO;
       teamservice:TeamService;
       name:string;
       playerName:string;
       nameInput:string;
-playersName:string[];
-        constructor(private service: PlayerService, private teamService:TeamService, ) { }
+      playersName: PlayerDTO[];
+      
+      constructor(private service: PlayerService, private teamService:TeamService, ) { }
       
         ngOnInit() {
           this.getPlayers();
           this.getTeams();
+        //  this.findByName(this.nameInput);
         }
         getTeams(){
         this.teamService.getAll().subscribe(teams=> this.teams=teams);
@@ -50,18 +52,23 @@ playersName:string[];
           this.service.insert(this.playertoinsert).subscribe(() => this.getPlayers());
         }
       findByName(nome:string){
-        this.service.findByName(nome).subscribe(players => this.players= players)
+        this.service.findByName(nome).subscribe(playersName => this.playersName= playersName)
       }
         clear(){
           this.playertoinsert = new PlayerDTO();
         }
 
         getFromInput(nameForm: NgForm):void {
-           this.nameInput=nameForm.value;
-           console.log(nameForm.value);
-        }
-       
-
+          this.nameInput=nameForm.value;
+          console.log(this.nameInput);
+          console.log(this.playersName);
+       }
+      
+       ngOnSubmit(){
+        console.log(this.findByName(this.nameInput));
+        this.findByName(this.nameInput);
+       // console.log(this.playersName);
+}
 
       }
       
