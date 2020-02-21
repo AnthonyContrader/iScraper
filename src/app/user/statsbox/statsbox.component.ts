@@ -15,6 +15,8 @@ export class StatsboxComponent implements OnInit {
   statsboxes: StatsboxDTO[];
   statsboxtoinsert: StatsboxDTO = new StatsboxDTO();
   players: PlayerDTO[];
+  name: string;
+  surname: string;
 
   constructor(private service: StatsboxService, private playerService: PlayerService) {
    }
@@ -42,6 +44,10 @@ export class StatsboxComponent implements OnInit {
 
   insert(statsbox: StatsboxDTO) {
     this.service.insert(statsbox).subscribe(() => this.getStats());
+  }
+
+  readByName() {
+    this.service.readByName(this.name, this.surname).subscribe(statsboxes => this.statsboxes = statsboxes);
   }
 
   clear(){

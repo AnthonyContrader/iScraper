@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AbstractService } from './abstractservice';
-import { UserDTO } from 'src/dto/userdto';
 import { HttpClient } from '@angular/common/http';
-import { LoginDTO } from 'src/dto/logindto';
+import { HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { StatsboxDTO } from 'src/dto/statsboxdto';
 
@@ -23,5 +22,9 @@ export class StatsboxService extends AbstractService<StatsboxDTO>{
   constructor(http: HttpClient) {
     super(http);
     this.type = 'statsbox';
+  }
+
+  readByName(name: string, surname: string): Observable<StatsboxDTO[]> {
+    return this.http.get<StatsboxDTO[]>('http://localhost:' + this.port + '/' + this.type + '/readByName', {params:{name,surname}})
   }
 }

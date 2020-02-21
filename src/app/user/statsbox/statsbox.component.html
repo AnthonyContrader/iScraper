@@ -92,6 +92,22 @@
           </td>
         </tr>
       </table>
+      <table>
+        <tr>
+          <td>
+            Cerca per:
+          </td>
+          <td>
+            <input placeholder="Nome" [(ngModel)]="name">
+          </td>
+          <td>
+            <input placeholder="Cognome" [(ngModel)]="surname">
+          </td>
+          <td>
+            <button (click)="readByName()"></button>
+          </td>
+        </tr>
+      </table>
     </div>
     <div class="col-md-1">
 
