@@ -5,6 +5,7 @@ import { PlayerService } from 'src/service/playerservice';
 import { SearchDTO } from 'src/dto/searchdto';
 import { UserDTO } from 'src/dto/userdto';
 import { PlayerDTO } from 'src/dto/playerdto';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-search',
@@ -14,6 +15,7 @@ import { PlayerDTO } from 'src/dto/playerdto';
 export class SearchComponent implements OnInit {
 
   searches: SearchDTO[];
+  obsSearches: Observable<SearchDTO[]>;
   searchtoinsert: SearchDTO = new SearchDTO();
   players: PlayerDTO[];
   users: UserDTO[];
@@ -30,8 +32,9 @@ export class SearchComponent implements OnInit {
   }
 
   getSearches(){
-    this.searchService.getAll().subscribe(searches => this.searches = searches);
+    this.searchService.postAll(this.sessionUser).subscribe(searches => this.searches = searches);
   }
+  
 
   getPlayers(){
     this.playerService.getAll().subscribe(players => this.players = players);
