@@ -2,6 +2,7 @@ package it.contrader.controller;
 
 import static org.mockito.Matchers.longThat;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,11 +64,37 @@ public class PlayerController{
 		return playerService.read(id);
 
 	}
-//	@RequestMapping(value="/findTeambyName" , method= RequestMethod.GET)
-//	public TeamDTO findTeam(@RequestParam(value="name") String name) {		
-//		return teamService.findByName(name);
+//	public List<PlayerDTO> findByName(String name){
 //		
-//	
-
+//		
+//		List<PlayerDTO>listaDtos=(List<PlayerDTO>) service.getAll();
+//	List<PlayerDTO> newList=new ArrayList<PlayerDTO>();
+//	for(PlayerDTO playerDTO:listaDtos) {
+//		if(playerDTO.getPlayer_name().equals(name)) {
+//			newList.add(playerDTO);
+//		}
+//		
 //	}
+//		
+//	return newList;
+//	
+//}
+
+	@RequestMapping(value="/findByName" , method= RequestMethod.GET)
+	public List<PlayerDTO> findByName(@RequestParam(value="name") String name) {	
+		List<PlayerDTO>listaDtos=(List<PlayerDTO>) playerService.getAll();
+		List<PlayerDTO> newList=new ArrayList<PlayerDTO>();
+		for(PlayerDTO playerDTO:listaDtos) {
+			if(playerDTO.getPlayer_name().equals(name)) {
+				newList.add(playerDTO);
+			}
+			
+		}
+		
+		
+		return newList;
+
+	}
+
+
 }
