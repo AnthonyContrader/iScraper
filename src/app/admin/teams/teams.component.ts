@@ -13,19 +13,16 @@ export class TeamsComponent implements OnInit {
  
   teamtoinsert: TeamDTO = new TeamDTO();
 
-//service:TeamService;
-
 
   constructor( private teamService:TeamService) { }
 
   ngOnInit() {
-    
-    this.getTeams();
+   this.getTeams();
   }
-getTeams(){
-  this.teamService.getAll().subscribe(teams=> this.teams=teams);
-  console.log(this.teams);
-}
+
+  getTeams(){
+    this.teamService.getAll().subscribe(teams=> this.teams=teams);
+  }
   
 
   delete(team: TeamDTO) {
@@ -33,12 +30,10 @@ getTeams(){
   }
 
   update(team: TeamDTO) {
-    
     this.teamService.update(team).subscribe(() => this.getTeams());
   }
 
   insert(team: TeamDTO) {
-  //  this.teamservice.getTeambyName()
     this.teamService.insert(this.teamtoinsert).subscribe(() => this.getTeams());
   }
 

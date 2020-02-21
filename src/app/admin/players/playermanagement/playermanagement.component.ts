@@ -13,11 +13,11 @@ import { TeamService } from 'src/service/teamservice';
 export class PlayermanagementComponent implements OnInit {
 
     
-   teams:TeamDTO[];
-        players: PlayerDTO[];
-        playertoinsert: PlayerDTO = new PlayerDTO();
-      team:TeamDTO;
-      teamservice:TeamService;
+    teams:TeamDTO[];
+    players: PlayerDTO[];
+    playertoinsert: PlayerDTO = new PlayerDTO();
+    team:TeamDTO;
+    teamservice:TeamService;
       
 
         constructor(private service: PlayerService, private teamService:TeamService) { }
@@ -26,9 +26,11 @@ export class PlayermanagementComponent implements OnInit {
           this.getPlayers();
           this.getTeams();
         }
+
         getTeams(){
-        this.teamService.getAll().subscribe(teams=> this.teams=teams);
-      }
+          this.teamService.getAll().subscribe(teams=> this.teams=teams);
+        }
+
         getPlayers() {
           this.service.getAll().subscribe(players => this.players = players);
         }
