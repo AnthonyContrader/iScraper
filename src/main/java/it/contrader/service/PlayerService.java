@@ -1,6 +1,7 @@
 package it.contrader.service;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import it.contrader.model.Team;
 @Service
 public class PlayerService extends AbstractService<Player, PlayerDTO>{
 
+	private PlayerService service;
 	@Autowired
 	private PlayerConverter playerConverter;
 	@Autowired
@@ -26,4 +28,6 @@ public class PlayerService extends AbstractService<Player, PlayerDTO>{
 	public List<PlayerDTO> findByTeam(Team team) {
 		return playerConverter.toDTOList(playerRepository.findByTeam(team));
 	}
+	
+
 }

@@ -1,9 +1,13 @@
 package it.contrader.controller;
 
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,6 +28,23 @@ public class SearchController extends AbstractController<SearchDTO>{
 	public List<SearchDTO> getAll() {
 		return (List<SearchDTO>) service.getAll();
 	}
+	
+	@RequestMapping(value = "/postall", method= RequestMethod.POST)
+	public List<SearchDTO> postAll() {
+		return (List<SearchDTO>) service.getAll();
+	}
+	
+	/*@RequestMapping(value = "/insert", method= RequestMethod.POST)
+	public SearchDTO insert(@RequestBody SearchDTO dto) {/*
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			dto.setSearch_date(new Date(format.parse(dto.getSearch_date().toString()).getTime()));
+		} catch (ParseException e) {
+			return null;
+		}
+		service.insert(dto);
+		return dto;
+	}*/
 	
 	/*@GetMapping("/getall")
 	public String getAll(HttpServletRequest request) {
