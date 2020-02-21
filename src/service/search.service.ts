@@ -23,6 +23,7 @@ export class SearchService extends AbstractService<SearchDTO>{
     let searchList: Observable<SearchDTO[]>; 
     searchList = this.http.post<SearchDTO[]>('http://localhost:' + this.port + '/' + this.type + '/postall', SearchDTO);
     return searchList;
+    //return this.http.post<SearchDTO[]>('http>//localhost:' + this.port + '/' + this.type + '/postall', SearchDTO);
   }
 
     /*insert(dto: SearchDTO){

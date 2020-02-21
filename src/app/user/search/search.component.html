@@ -16,21 +16,14 @@
           </div>
           <div class="tbody">
             <form #f="ngForm" class="tr">
-              <div class="td">
-                <input placeholder="search_date" #search_dateInput="ngModel"
-                  [(ngModel)]="searchtoinsert.search_date" minlength="10" maxlength="10" name="search_dateInput" required>
-                <div *ngIf="search_dateInput.touched && search_dateInput.invalid">
-                  <div *ngIf="search_dateInput.errors.required">Il campo è richiesto</div>
-                  <div *ngIf="search_dateInput.errors.minlength">Il campo deve contenere una data numerica estesa</div>
-                </div>
-              </div>
+              <div class="td"></div>
               <div class="td">
                 <input placeholder="value" #valueInput="ngModel" ngModel pattern="[0-9]{1,3}"
                   [(ngModel)]="searchtoinsert.value" minlength="1" name="valueInput" required>
                 <div *ngIf="valueInput.touched && valueInput.invalid">
                   <div *ngIf="valueInput.errors.required">Il campo è richiesto</div>
                   <div *ngIf="valueInput.errors.minlength">Inserire un valore valido</div>
-                  <div *ngIf="valueInput.errors.pattern">Inserire un valore numerico</div>
+                  <!--<div *ngIf="valueInput.errors.pattern">Inserire un valore numerico</div>-->
                 </div>
               </div>
               <div class="td">
@@ -59,7 +52,7 @@
             <div class="tr" *ngFor="let search of searches">
               <input hidden [(ngModel)]="search.id" readonly>
               <div class="td">
-                <input [(ngModel)]="search.search_date" readonly>
+                <input type="date" [(ngModel)]="search.search_date" readonly>
               </div>
               <div class="td">
                 <input [(ngModel)]="search.value" readonly>
