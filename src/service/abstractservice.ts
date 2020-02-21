@@ -24,7 +24,7 @@ export abstract class AbstractService<DTO> implements Service<DTO> {
     }
 
     read(id: number): Observable<DTO> {
-        return this.http.get<DTO>('http://localhost:' + this.port + '/' + this.type + '/read?id=' + id);
+        return this.http.get<DTO>('http://localhost:' + this.port + '/' + this.type + '/findPlayer?id=' + id);
     }
 
     delete(id: number): Observable<any> {
@@ -40,7 +40,7 @@ export abstract class AbstractService<DTO> implements Service<DTO> {
 
     }
     findByName(nome:string):Observable<any>{
-         return this.http.get<DTO>('http://localhost:' + this.port + '/' + this.type + '/findBy?name=' + nome);
+         return this.http.get<DTO>('http://localhost:' + this.port + '/' + this.type + '/findByName?name=' + nome);
     }
 
 }
