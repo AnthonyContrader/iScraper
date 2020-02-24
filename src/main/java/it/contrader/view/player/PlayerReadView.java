@@ -4,18 +4,17 @@ import com.mysql.cj.util.StringUtils;
 import it.contrader.controller.PlayerController;
 import it.contrader.controller.Request;
 import it.contrader.main.MainDispatcher;
+import it.contrader.service.PlayerService;
 import it.contrader.view.View;
 
 import java.util.Scanner;
 
 public class PlayerReadView implements View{
 
-	private PlayerController playerController;
+	private PlayerService service= new PlayerService();
 	private Request request;
 	
-	public PlayerReadView() {
-		this.playerController = new PlayerController();
-	}
+	
 	
 	
 	@Override
@@ -30,7 +29,7 @@ public class PlayerReadView implements View{
 		System.out.println("Inserisci l'ID dell'player da visualizare: ");
 		String playerId = getInput();
 		if (playerId != null && StringUtils.isStrictlyNumeric(playerId)) {
-			System.out.println(playerController.readPlayer(Integer.parseInt(playerId)).toString());
+			System.out.println(service.readPlayer(Integer.parseInt(playerId)).toString());
 			
 		} else {
 			System.out.println("Valore inserito errato");

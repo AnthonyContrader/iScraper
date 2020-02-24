@@ -4,6 +4,7 @@ import it.contrader.controller.PlayerController;
 import it.contrader.controller.Request;
 import it.contrader.main.MainDispatcher;
 import it.contrader.model.Player;
+import it.contrader.service.PlayerService;
 import it.contrader.view.View;
 
 import java.util.ArrayList;
@@ -12,15 +13,15 @@ import java.util.Scanner;
 
 
 public class GetPlayersView implements View {
-
-	private PlayerController playerController;
+private PlayerService service= new PlayerService();
+	//private PlayerController playerController;
 	private Request request;
 	
-	public  GetPlayersView() {
-	
-		this.playerController = new PlayerController();
-	}
-	
+//	public  GetPlayersView() {
+//	
+//		this.playerController = new PlayerController();
+//	}
+//	
 	
 	@Override
 	public void showResults(Request request) {
@@ -33,7 +34,7 @@ public class GetPlayersView implements View {
 		// TODO Auto-generated method stub
 		//System.out.println("Sei sicuro di stampare intera lista? yes per si ");
 		System.out.println("Player Id-----------Nome------------Cognome-----------Eta----------Valore Attuale Mercato--------Valore Precedente Mercato--------Ruolo");
-		ArrayList<Player> lista= new ArrayList<Player>(playerController.getPlayers());
+		ArrayList<Player> lista= new ArrayList<Player>(service.getAllPlayers());
 		for(Player player:lista) {
 			System.out.println(player);
 		}

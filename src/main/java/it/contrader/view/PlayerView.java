@@ -3,8 +3,12 @@ package it.contrader.view;
 
 import it.contrader.controller.Request;
 import it.contrader.dto.PlayerDTO;
+import it.contrader.dto.UserDTO;
 import it.contrader.main.MainDispatcher;
+import it.contrader.model.Player;
+import it.contrader.service.PlayerService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -12,9 +16,9 @@ public class PlayerView extends AbstractView{
 	
 		private Request request;
 		private String choice;
-
+		private PlayerService service;
 		public PlayerView() {
-			
+			service= new PlayerService();
 		}
 
 		/**
@@ -22,17 +26,13 @@ public class PlayerView extends AbstractView{
 		 */
 		@Override
 		public void showResults(Request request) {
-//			if (request != null) {
+
 				System.out.println("\n--------------------------------------------------------- Players Section -------------------------------------------------------\n");
-//		
-//				
-//				
-//				@SuppressWarnings("unchecked")
-//				List<PlayerDTO> players = (List<PlayerDTO>) request.get("player");
-//				for (PlayerDTO p: players)
-//					System.out.println(p);
-//				System.out.println();
-		//	}
+				System.out.println("Player Id-----------Nome------------Cognome-----------Eta----------Valore Attuale Mercato--------Valore Precedente Mercato--------Ruolo");
+				ArrayList<Player> lista= new ArrayList<Player>(service.getAllPlayers());
+				for(Player player:lista) {
+					System.out.println(player);
+				}
 		}
 
 		/**

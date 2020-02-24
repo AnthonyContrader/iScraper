@@ -14,7 +14,7 @@ public class PlayerController implements Controller{
 
 	private static String sub_package = "player.";
 	private PlayerService playerService;
-	private PlayerConverter playerConverter;
+	
 	
 	 int player_id;
 	 String player_name;
@@ -23,36 +23,13 @@ public class PlayerController implements Controller{
 	 int actualMarketValue;
 	 int previousMarketValue;
 	 private String position;
-	 private final String mode = "INSERT";
+//	 private final String mode = "INSERT";
 	
 	public  PlayerController() {
 		// TODO Auto-generated constructor stub
 		this.playerService=new PlayerService();
 				
-			
 	}
-	
-	public List<Player> getPlayers(){
-		return this.playerService.getAllPlayers();
-	}
-	
-//	public boolean insertPlayer(Player player) {
-//		return this.playerService.insertPlayer(player);
-//	}
-	
-	public Player readPlayer(int player_id) {
-		return this.playerService.readPlayer(player_id);
-	}
-	
-	public boolean updatePlayer(Player player) {
-		return this.playerService.updatePlayer(playerConverter.toTDO(player));
-	}
-	public boolean deletePlayer(int id) {
-		return this.playerService.deletePlayer(id);
-		
-		
-	}
-	
 	
 	@Override
 	public void doControl(Request request) {
@@ -77,7 +54,6 @@ public class PlayerController implements Controller{
 			actualMarketValue = Integer.parseInt(request.get("actualMarketValue").toString());
 			previousMarketValue = Integer.parseInt(request.get("previousMarketValue").toString());
 			position = request.get("position").toString();
-			
 			
 			//costruisce l'oggetto user da inserire
 			PlayerDTO playertoinsert = new PlayerDTO(player_id, player_name, player_surname, age, actualMarketValue, previousMarketValue, position);
@@ -146,7 +122,6 @@ public class PlayerController implements Controller{
 				break;
 			}
 		}
-
 		
 	}
 	

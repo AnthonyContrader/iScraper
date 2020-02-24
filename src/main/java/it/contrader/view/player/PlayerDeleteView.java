@@ -4,18 +4,17 @@ import com.mysql.cj.util.StringUtils;
 import it.contrader.controller.PlayerController;
 import it.contrader.controller.Request;
 import it.contrader.main.MainDispatcher;
+import it.contrader.service.PlayerService;
 import it.contrader.view.View;
 
 import java.util.Scanner;
 
 public class PlayerDeleteView implements View {
 
-	private PlayerController playerController;
+	private PlayerService service=new PlayerService();
 	private Request request;
 
-	public PlayerDeleteView() {
-		this.playerController = new PlayerController();
-	}
+	
 
 	@Override
 	public void showResults(Request request) {
@@ -29,7 +28,7 @@ public class PlayerDeleteView implements View {
 		String playerId = getInput();
 
 		if (playerId != null && StringUtils.isStrictlyNumeric(playerId)) {
-			playerController.deletePlayer(Integer.parseInt(playerId));
+			service.deletePlayer(Integer.parseInt(playerId));
 			// System.out.println("Player removed");
 
 		} else {
