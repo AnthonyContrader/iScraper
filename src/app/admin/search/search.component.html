@@ -33,7 +33,7 @@
             </div>
             <div class="td">
               <input placeholder="player_index" #player_indexInput="ngModel" ngModel pattern="[0-9]{1,3}"
-                [ngModel]="searchtoinsert.player_index" minlength="1" name="player_indexInput" required>
+                [(ngModel)]="searchtoinsert.player_index" minlength="1" name="player_indexInput" required>
               <div *ngIf="player_indexInput.touched && player_indexInput.invalid">
                 <div *ngIf="player_indexInput.errors.required">Il campo è richiesto</div>
                 <div *ngIf="player_indexInput.errors.minlength">Inserire un valore valido</div>

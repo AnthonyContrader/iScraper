@@ -54,12 +54,7 @@ export class SearchComponent implements OnInit {
       (isNaN(search.player_index) || search.player_index.toString().trim().length==0) ||
       (isNaN(search.user.id) || search.user.id.toString().trim().length==0) ||
       (isNaN(search.player.id) || search.player.id.toString().trim().length==0)) return null;
-    else {
-      if (Object.prototype.toString.call(search.search_date) === "[object Date]"
-        && !isNaN(search.search_date.getTime()))
-        this.searchService.update(search).subscribe(() => this.getSearches());
-      else return null;
-    }
+    else this.searchService.update(search).subscribe(() => this.getSearches());
   }
 
   insert(search: SearchDTO) {
@@ -70,12 +65,7 @@ export class SearchComponent implements OnInit {
       (isNaN(search.player_index) || search.player_index.toString().trim().length==0) ||
       (isNaN(search.user.id) || search.user.id.toString().trim().length==0) ||
       (isNaN(search.player.id) || search.player.id.toString().trim().length==0)) return null;
-      else {
-        if (Object.prototype.toString.call(search.search_date) === "[object Date]"
-          && !isNaN(search.search_date.getTime()))
-          this.searchService.insert(search).subscribe(() => this.getSearches());
-        else return null;
-      }
+      else this.searchService.insert(search).subscribe(() => this.getSearches());
       break;
     
     default:

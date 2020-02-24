@@ -23,7 +23,7 @@
                 <div *ngIf="valueInput.touched && valueInput.invalid">
                   <div *ngIf="valueInput.errors.required">Il campo è richiesto</div>
                   <div *ngIf="valueInput.errors.minlength">Inserire un valore valido</div>
-                  <!--<div *ngIf="valueInput.errors.pattern">Inserire un valore numerico</div>-->
+                  <div *ngIf="valueInput.errors.pattern">Inserire un valore numerico</div>
                 </div>
               </div>
               <div class="td">
