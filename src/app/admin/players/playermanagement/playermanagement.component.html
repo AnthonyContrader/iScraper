@@ -126,7 +126,7 @@
         
         <tr *ngFor="let player of players">
           <td>
-            <input [(ngModel)]="player.player_name">
+            <input placeholder="nome"  [(ngModel)]="player.player_name">
           </td>
           <td>
             <input [(ngModel)]="player.player_surname">
@@ -181,12 +181,12 @@
   <form #nameForm="ngForm" (ngSubmit)=" getFromInput(nameForm)" style="width: 250px;margin-top: 20px;margin-left: 300px;">
     <div class="panel panel-primary">
       <div class="panel-heading">
-        <h3 class="panel-title">Insert name</h3>
+        <h3 class="panel-title">Ricerca nome</h3>
       </div>
       <div class="panel-body">
   
         <div class="form-group">
-          <label for="name">Name</label>
+          <label for="name">Nome</label>
           <input id="name" type="text" class="form-control"
                  name="name" [(ngModel)]="name">
         </div>
@@ -203,56 +203,45 @@
 
   <table style="background-color: black; margin-top: 20px; ">
     <tr style="background: beige;">
-      <th style="text-align: center;" placeholder="posizione">
-        Nome
-      </th>
-      <th style="text-align: center;">
-        Cognome
-      </th>
-      <th style="text-align: center;">
-        Eta
-      </th>
-      <th style="text-align: center;">
-        Valore Attuale
-      </th>
-      <th style="text-align: center;">
-        Valore Precedente
-      </th>
-      <th style="text-align: center;">
-        Posizione
-      </th>
-      <th style="text-align: center;">
-        Squadra
-      </th>
+     
      
     </tr>
     
     <tr *ngFor="let player of playersName">
       <td>
-        <input [(ngModel)]="player.player_name">
+        <label style="color: white;">{{"Nome"}}</label>
+        <input  placeholder="cognome"[(ngModel)]= "player.player_name">
       </td>
       <td>
-        <input [(ngModel)]="player.player_surname">
+        <label style="color: white;">{{"Cognome"}}</label>
+        <input  placeholder="cognome" [(ngModel)]="player.player_surname">
       </td>
       <td>
-        <input [(ngModel)]="player.age">
+        <label style="color: white;">{{"Eta"}}</label>
+        <input  placeholder="cognome" [(ngModel)]="player.age">
           
       </td>
       <td>
-        <input [(ngModel)]="player.actualMarketValue">
+        <label style="color: white;">{{"Valore attuale"}}</label>
+        <input  placeholder="cognome" [(ngModel)]="player.actualMarketValue">
       </td>
       <td>
-        <input [(ngModel)]="player.previousMarketValue">
+        <label style="color: white;">{{"Valore precedente"}}</label>
+        <input  placeholder="cognome" [(ngModel)]="player.previousMarketValue">
       </td>
       <td>
-        <input [(ngModel)]="player.position">
+        <label style="color: white;">{{"Posizione"}}</label>
+        <input  placeholder="cognome" [(ngModel)]="player.position">
           
       </td>
-      <td>
-        <input [(ngModel)]="player.team.name">
+      <td> 
+        <label style="color: white;">{{"Squadra"}}</label>
+        <input  placeholder="cognome" [(ngModel)]="player.team.name">
           
       </td>
     
     </tr>
   </table>
+
+  
 </div>
