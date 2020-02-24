@@ -178,9 +178,9 @@
   </div>
 
 
-  <form #nameForm="ngForm" (ngSubmit)=" getFromInput(nameForm)" style="width: 250px;margin-top: 20px;margin-left: 300px;">
+  <form #nameForm="ngForm" (ngSubmit)=" getFromInput(nameForm)" style="width: 250px;margin-top: 20px;margin-left: 400px;">
     <div class="panel panel-primary">
-      <div class="panel-heading">
+      <div class="panel-heading" style="background: darkorange;">
         <h3 class="panel-title">Ricerca nome</h3>
       </div>
       <div class="panel-body">
@@ -193,7 +193,7 @@
 
       </div>
       <div class="panel-footer">
-        <button class="btn btn-primary" (click)="findByName(name)">Show</button>
+        <button class="btn btn-primary" style="background: #f4cd32;color: black;" (click)="findByName(name)">Show</button>
       </div>
     </div>
   </form>
