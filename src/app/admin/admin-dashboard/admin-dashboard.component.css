@@ -1,5 +1,9 @@
 p {
     font-size: 14px;
+    color: whitesmoke;
+}
+h1 {
+    color: whitesmoke;
 }
 #new{
     width: 150px;height: 26px;

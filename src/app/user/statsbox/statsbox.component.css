@@ -21,12 +21,8 @@ td{
 }
 
 
-tr:nth-child(even) {
-	background-color: #ffdb99;
-}
-
 th {
-	background-color: darkorange;
+	background-color: #1C1F26;
 	color: #ffffff;
 }
 

@@ -1,20 +1,17 @@
-.sidenav {
-    height:92vh;
+.upnav {
     width: 100%;
-    top: 0;
-    left: 0;
-    background-color: #1e282d;
-    overflow-x: visible;
+    background-color: #1C1F26;
     transition: 0.5s;
-    padding-top: 0;
+    overflow: hidden;
   }
   
-  
+
+
   .menubtn{
       width: 100%;
-      text-align: left;
-      background-color: #263238;
-      color: #f1f1f1;
+      text-align: center;
+      background-color: #1C1F26;
+      color:  #1C1F26;
       border: none;
       padding-left: 20px;
       padding-top: 10px;
@@ -24,18 +21,15 @@
   
   a{
       text-decoration: none;
-      color: white;
+      color: #1C1F26;
   }
   
-  button:focus {
-      background-color: #334247;
-  }
   
   button:hover, a:hover {
-  background-color: #334247;
-  color: darkorange;
+    color: #F4CD32;
   }
 
   *{
       font-size: 16px;
+      text-shadow: -0.5px 0  #F4CD32, 0 0.5px  #F4CD32, 0.5px 0  #F4CD32, 0 -0.5px  #F4CD32;
   }

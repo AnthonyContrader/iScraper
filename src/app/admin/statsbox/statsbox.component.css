@@ -21,13 +21,9 @@ td{
 }
 
 
-tr:nth-child(even) {
-	background-color: #ffdb99;
-}
-
 th {
-	background-color: darkorange;
-	color: #ffffff;
+	background-color:#1C1F26;
+	color: #F4CD32;
 }
 
 a:hover {

@@ -3,7 +3,7 @@ form{
     width: 55%;
     padding: 10px;
     border-radius:0;
-    border-color: crimson;
+    border-color: #F4CD32;
 }
 
 img{
@@ -16,7 +16,7 @@ input, input:hover, input::selection, input:checked, input:focus{
     
    
     border: 0;
-    background-color: darkorange;
+    background-color: #F4CD32;
     border-radius: 0;
     color: white;
     border-bottom: 1px solid crimson;
@@ -24,8 +24,7 @@ input, input:hover, input::selection, input:checked, input:focus{
 }
 
 .container-fluid{
-    background-image: url("../../assets/image.jpg");
-    .background-color: darkorange;
+    background-color: #242632;
     height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
@@ -36,14 +35,14 @@ input::placeholder{
 }
 .form-control{
 border: none;
-background-color: darkorange;
+background-color: #F4CD32;
 color: white;
 border-bottom: 1px solid white;
 }
 
 .login{
 border: none;
-background-color: darkorange;
+background-color: #F4CD32;
 color: white;
 border: 1px solid white;
 border-radius: 2px;

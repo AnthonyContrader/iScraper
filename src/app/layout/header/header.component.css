@@ -1,19 +1,20 @@
 
 #header{
-    background-color: darkorange;
-    .height:54px;
+    background-color: #1C1F26;
+    height:54px;
 }
 .searchContainer {
-    margin-top: 10px;
+    margin-top: 0.5%;
     display: inline-block;
-    width:100%;
+    width:60%;
     height: auto;
     padding: auto;
-    margin-left:10px;
+    margin-left: 20%;
+    margin-right: 20%;
     border: 0;
     border-radius: 21px;
     overflow: hidden;
-  background-color: white;
+    background-color:#242632;
   }
   
   
@@ -24,34 +25,41 @@
   }
   
   .searchBox {
-    border: 0;
+    border-color: #F4CD32;
+    border-width: 0.5px;
+    border-radius: 21px;
     padding: 0.5rem;
-    background-color: white;
+    background-color: #242632;
+    color:white;
     font-size: 12px;
+    width:100%;
+  }
+
+  .profilepic {
+    width:50px;
+    height:50px;
   }
   
-  .searchButton {
-      height: 70%;
-      margin-top:7px;
-    background: white;
-    border: 2px solid darkorange;
-    color: darkorange;
-    border-radius: 15px;
-  
+  .profile {
+    padding-top:0;
   }
+
+  .logo {
+    height:100%;
+    margin-left: 10px;
+    overflow: visible;
+  }
+
   
+
   p{
-      font-size: 19px;
+      font-size: 12px;
       color: #f1f1f1;
       margin-left: 0px;
       padding-left: 5px;
       padding-top: 12px;
       height: inherit;
       width: 100%;
-      background-color: #1e282d !important;
+      background-color: #1C1F26;
   }
   
-  i:hover{
-    background-color: crimson;
-
-  }

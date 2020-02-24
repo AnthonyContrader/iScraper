@@ -20,14 +20,9 @@ td{
     font-size: 16px;
 }
 
-
-tr:nth-child(even) {
-	background-color: #ffdb99;
-}
-
 th {
-	background-color: darkorange;
-	color: #ffffff;
+	background-color: #242632;
+	color: #F4CD32;
 }
 
 a:hover {

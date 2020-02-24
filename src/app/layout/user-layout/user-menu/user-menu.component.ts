@@ -46,8 +46,8 @@ export class UserMenuComponent implements OnInit {
     }
     else { this.isStatsboxCollapsed = false; }
   }
-  searchcollapse(){
-    if(this.isSearchCollapsed === false){
+  searchcollapse() {
+    if (this.isSearchCollapsed === false) {
       this.isSearchCollapsed = true;
     }
     else { this.isSearchCollapsed = false; }
