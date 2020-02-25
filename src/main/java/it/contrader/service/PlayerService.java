@@ -19,7 +19,7 @@ import it.contrader.model.Team;
 @Service
 public class PlayerService extends AbstractService<Player, PlayerDTO>{
 
-	private PlayerService service;
+	
 	@Autowired
 	private PlayerConverter playerConverter;
 	@Autowired
