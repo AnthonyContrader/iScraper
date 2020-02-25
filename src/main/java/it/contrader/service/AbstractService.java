@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 
 import it.contrader.converter.Converter;
+import it.contrader.model.User.Usertype;
 
 
 /**
@@ -21,6 +22,8 @@ import it.contrader.converter.Converter;
  */
 public abstract class AbstractService<Entity,DTO> implements ServiceDTO<DTO> {
 	
+		
+	
 	@Autowired
 	protected CrudRepository<Entity,Long> repository;
 	@Autowired
@@ -28,6 +31,7 @@ public abstract class AbstractService<Entity,DTO> implements ServiceDTO<DTO> {
 	
 	@Override
 	public DTO insert(DTO dto) {
+	
 		return converter.toDTO(repository.save(converter.toEntity(dto)));
 	}
 

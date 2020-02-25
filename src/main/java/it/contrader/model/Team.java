@@ -23,6 +23,6 @@ public class Team {
 	
 	private int market_value;
 	private String name;
-//	@Column(name="team_index")
+
 	private int team_index;
 }
