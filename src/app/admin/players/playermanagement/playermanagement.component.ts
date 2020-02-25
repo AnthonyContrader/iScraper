@@ -22,7 +22,6 @@ export class PlayermanagementComponent implements OnInit {
       name:string;
       playerName:string;
       nameInput:string;
-
       playersName: PlayerDTO[];
 
       constructor(private service: PlayerService, private teamService:TeamService, ) { }

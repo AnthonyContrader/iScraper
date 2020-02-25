@@ -1,3 +1,6 @@
+
+
+
 <div class="container-fluid">
   <div class="box">
 	
@@ -9,13 +12,13 @@
     
 
 
-    <div class="col-md-8">
-      <img src="../../assets/logo-09.svg" alt="logo">
+    <div class="col-md-7">
+      <img src="../../assets/logo.svg" alt="logo">
     </div>
 
     
 
-    <div class="col-md-4">
+    <div class="col-md-5">
       <form #f="ngForm">
         <p>Please insert username and password to Login or Sign Up</p>
         <div class="form-group">
@@ -24,11 +27,38 @@
         <div class="form-group">
           <input class="form-control" type="password" id="pass" name="password" placeholder="Password" ngModel>
         </div>
-        <button type="submit" (click)="login(f)" style="margin-right:20%">Login</button>
-        <button type="submit" style="background-color:#00A093">Sign Up</button>
+        <button type="submit" (click)="login(f)">Login</button>
+      
+        <a href="#popup1" class="btn"style="background-color: #f4cd32;padding: 1px;color: black;border-radius: inherit;margin-left: 10px;margin-top: -2px;border: 1px solid #fffceb;">Sign up</a>
       </form>
 
+<div id="popup1" class="popup" style="background: #625d5d;">
+  <a href="#" class="close">&times;</a>
+ 
+  <form #f="ngForm" style="margin-top: 0;">
+    <p>Please insert username, password, email and name to Sign Up</p>
+    <div class="form-group">
+      <input class="form-control" type="text" id="user" name="username" placeholder="Username" [(ngModel)]="usertoinsert.username">
+    </div>
+    <div class="form-group">
+      <input class="form-control" type="password" id="pass" name="password" placeholder="Password" [(ngModel)]="usertoinsert.password">
+    </div>
+    <div class="form-group">
+      <input class="form-control" type="text" id="email" name="email" placeholder="email" [(ngModel)]="usertoinsert.email">
+    </div>
+    <div class="form-group">
+      <input class="form-control" type="text" id="name" name="name" placeholder="Nome" [(ngModel)]="usertoinsert.name">
+    </div>
+ 
+    <td>
+        <button (click)="insert(usertoinsert)" >Insert</button>
+      </td>
       
+    </form>
+
+
+</div>
+<a href="#" class="close-popup"></a>
       
     </div>
   </div>
