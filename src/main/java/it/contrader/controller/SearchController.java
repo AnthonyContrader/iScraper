@@ -1,9 +1,10 @@
 package it.contrader.controller;
 
-import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+//import java.sql.Date;
+//import java.text.ParseException;
+//import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import it.contrader.dto.UserDTO;
 import it.contrader.dto.SearchDTO;
 import it.contrader.service.SearchService;
+import it.contrader.service.UserService;
 
 @RestController
 @RequestMapping("/search")
@@ -24,14 +27,38 @@ public class SearchController extends AbstractController<SearchDTO>{
 	@Autowired
 	private SearchService service;
 	
+	@Autowired
+	private UserService userService;
+	
 	@RequestMapping(value = "/getall", method= RequestMethod.GET)
 	public List<SearchDTO> getAll() {
 		return (List<SearchDTO>) service.getAll();
 	}
 	
 	@RequestMapping(value = "/postall", method= RequestMethod.POST)
-	public List<SearchDTO> postAll() {
-		return (List<SearchDTO>) service.getAll();
+	public List<SearchDTO> postAll(@RequestBody UserDTO dto) {
+		UserDTO userChecking = userService.findByUsernameAndPassword(dto.getUsername(), dto.getPassword());
+		List<SearchDTO> searchList = (List<SearchDTO>) service.getAll();
+		if (userChecking!=null && userChecking.equals(dto)) {
+			switch (dto.getUsertype().toString().toUpperCase()) {
+			
+			case "ADMIN":
+				return searchList;
+			
+			case "USER":
+				List<SearchDTO> sendingList = new ArrayList<SearchDTO>();
+				for(SearchDTO s : searchList) {
+					if (s.getUser().getId()==dto.getId()) {
+						sendingList.add(s);
+					}
+				}
+				return sendingList;
+			
+			default:
+				return null;
+			}
+		} else return null;
+		
 	}
 	
 	/*@RequestMapping(value = "/insert", method= RequestMethod.POST)
