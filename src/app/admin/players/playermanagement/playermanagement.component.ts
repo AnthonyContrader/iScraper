@@ -24,7 +24,7 @@ export class PlayermanagementComponent implements OnInit {
       nameInput:string;
       playersName: PlayerDTO[];
 
-      constructor(private service: PlayerService, private teamService:TeamService, ) { }
+      constructor(private service: PlayerService, private teamService:TeamService ) { }
       
       ngOnInit() {
           this.getPlayers();

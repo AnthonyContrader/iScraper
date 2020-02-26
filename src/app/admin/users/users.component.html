@@ -16,6 +16,12 @@
             Usertype
           </th>
           <th>
+            Name
+          </th>
+          <th>
+            Email
+          </th>
+          <th>
             Edit
           </th>
           <th>
@@ -36,6 +42,12 @@
             </select>
           </td>
           <td>
+            <input placeholder="name" [(ngModel)]="usertoinsert.name">
+          </td>
+          <td>
+            <input placeholder="email" [(ngModel)]="usertoinsert.email">
+          </td>
+          <td>
             <button (click)="insert(usertoinsert)">Insert</button>
           </td>
           <td >
@@ -49,6 +61,7 @@
           <td>
             <input [(ngModel)]="user.password">
           </td>
+          
           <td>
 
             <select [(ngModel)]="user.usertype">
@@ -56,6 +69,12 @@
               <option [selected]="user.usertype===1" value="USER">USER</option>
 
             </select>
+          </td>
+          <td>
+            <input [(ngModel)]="user.name">
+          </td>
+          <td>
+            <input [(ngModel)]="user.email">
           </td>
           <td>
             <button (click)=update(user)>Save</button>

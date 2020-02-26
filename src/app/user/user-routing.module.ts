@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { UsersComponent } from '../admin/users/users.component';
+
 import { WorkInProgressComponent } from './work-in-progress/work-in-progress.component';
 import { UserLayoutComponent } from '../layout/user-layout/user-layout.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
@@ -31,7 +31,7 @@ const routes: Routes = [
   { path: 'user-dashboard', component: UserLayoutComponent, children:[
     { path: 'user/work-in-progress', component:WorkInProgressComponent},
     { path: '', component: UserDashboardComponent},
-    { path: 'user', component: UsersComponent},
+  
     { path: 'playermanagement', component: PlayermanagementComponent},
     { path: 'statsbox', component: StatsboxComponent},
     { path: 'teams', component: TeamsComponent},
