@@ -19,7 +19,7 @@
               <div class="td"></div>
               <div class="td">
                 <input placeholder="value" #valueInput="ngModel" ngModel pattern="[0-9]{1,3}"
-                  [(ngModel)]="searchtoinsert.value" minlength="1" name="valueInput" required>
+                  [(ngModel)]="searchtoinsert.value" minlength="1" maxlength="3" name="valueInput" required>
                 <div *ngIf="valueInput.touched && valueInput.invalid">
                   <div *ngIf="valueInput.errors.required">Il campo è richiesto</div>
                   <div *ngIf="valueInput.errors.minlength">Inserire un valore valido</div>
@@ -28,7 +28,7 @@
               </div>
               <div class="td">
                 <input placeholder="player_index" #player_indexInput="ngModel" ngModel pattern="[0-9]{1,3}"
-                  [(ngModel)]="searchtoinsert.player_index" minlength="1" name="player_indexInput" required>
+                  [(ngModel)]="searchtoinsert.player_index" minlength="1" maxlength="3" name="player_indexInput" required>
                 <div *ngIf="player_indexInput.touched && player_indexInput.invalid">
                   <div *ngIf="player_indexInput.errors.required">Il campo è richiesto</div>
                   <div *ngIf="player_indexInput.errors.minlength">Inserire un valore valido</div>
@@ -39,7 +39,7 @@
                 <select #playerInput="ngModel" [(ngModel)]="searchtoinsert.player" name="playerInput" required>
                   <option [ngValue]="undefined" selected>Select</option>
                   <option style="width: 100%;height: 26px;" *ngFor="let player of players"
-                    [ngValue]="player">{{player.id}}</option>
+                    [ngValue]="player">{{player.player_name}} {{player.player_surname}}</option>
                 </select>
               </div>
               <div class="td">
@@ -61,7 +61,12 @@
                 <input [(ngModel)]="search.player_index" readonly>
               </div>
               <div class="td">
-                <input [(ngModel)]="search.player.id" readonly>
+                <select #playerInput="ngModel" [(ngModel)]="search.player.id" name="playerInput" required>
+                  <option style="width: 100%;height: 26px;" *ngFor="let player of players"
+                    [ngValue]="player.id" ng-select="search.player.id === player.id">
+                      {{player.player_name}} {{player.player_surname}}
+                    </option>
+                </select>
               </div>
               <div class="td">
                 <button (click)="delete(search)">Delete</button>
