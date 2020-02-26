@@ -44,14 +44,14 @@
               <select #userInput="ngModel" [(ngModel)]="searchtoinsert.user" name="userInput" required >
                 <option [ngValue]="undefined" selected>Select</option>
                 <option style="width: 100%;height: 26px;" *ngFor="let user of users"
-                  [ngValue]="user">{{user.id}}</option>
+                  [ngValue]="user">{{user.username}}</option>
               </select>
             </div>
             <div class="td">
               <select #playerInput="ngModel" [(ngModel)]="searchtoinsert.player" name="playerInput" required>
                 <option [ngValue]="undefined" selected>Select</option>
                 <option style="width: 100%;height: 26px;" *ngFor="let player of players"
-                  [ngValue]="player">{{player.id}}</option>
+                  [ngValue]="player">{{player.player_name}} {{player.player_surname}}</option>
               </select>
             </div>
             <div class="td">
@@ -73,10 +73,20 @@
               <input [(ngModel)]="search.player_index">
             </div>
             <div class="td">
-              <input [(ngModel)]="search.user.id">
+              <select #userInput="ngModel" [(ngModel)]="search.user.id" name="userInput" required>
+                <option style="width: 100%; height: 26px;" *ngFor="let user of users"
+                [ngValue]="user.id" ng-select="search.user === user">
+                  {{user.username}}
+                </option>
+              </select>
             </div>
             <div class="td">
-              <input [(ngModel)]="search.player.id">
+              <select #playerInput="ngModel" [(ngModel)]="search.player.id" name="playerInput" required>
+                <option style="width: 100%;height: 26px;" *ngFor="let player of players"
+                  [ngValue]="player.id" ng-select="search.player.id === player.id">
+                    {{player.player_name}} {{player.player_surname}}
+                  </option>
+              </select>
             </div>
             <div class="td">
               <button (click)="update(search)">Save</button>

@@ -13,10 +13,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  searches: SearchDTO[];
+  searches: SearchDTO[] = [];
   searchtoinsert: SearchDTO = new SearchDTO();
-  players: PlayerDTO[];
-  users: UserDTO[];
+  players: PlayerDTO[] = [];
+  users: UserDTO[] = [];
   sessionUser: UserDTO;
 
   constructor(private searchService : SearchService, private playerService : PlayerService,
@@ -28,6 +28,7 @@ export class SearchComponent implements OnInit {
   }
 
   getSearches(){
+    this.clearLists();
     if (this.sessionUser==null || this.sessionUser.usertype.toString().toUpperCase()!='ADMIN') this.router.navigate(['/login']);
     this.searchService.postAll(this.sessionUser).subscribe(searches => this.searches = searches);
     this.getPlayers();
@@ -76,5 +77,11 @@ export class SearchComponent implements OnInit {
 
   clear(){
     this.searchtoinsert = new SearchDTO();
+  }
+
+  clearLists(){
+    this.searches.length = 0;
+    this.players.length = 0;
+    this.users.length = 0;
   }
 }  
