@@ -49,6 +49,7 @@ export class SearchComponent implements OnInit {
     else {
       search.user = new UserDTO;
       search.user = this.sessionUser;
+      search.search_date = new Date();
       this.searchService.insert(search).subscribe(() => this.getSearches());
     }
   }
