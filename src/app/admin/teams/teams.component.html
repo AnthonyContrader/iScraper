@@ -46,11 +46,9 @@
      
       <div class="col-md-10" style="margin-right: 100px;">
         <h3 style="text-align: center;color: bisque;background: darkorange; margin-left: 100px;">Aggiornamento squadre</h3>
-        <table style="background-color: black; margin-top: 20px; margin-left: 175px;">
+        <table style="background-color: black; margin-top: 20px; margin-left: 270px;">
           <tr style="text-align: center;color: bisque;">
-            <th style="text-align: center;">
-              Id
-            </th>
+           
               <th style="text-align: center;">
                 Nome
               </th>
@@ -64,9 +62,7 @@
           </tr>
           <tr>
            
-            <td>
-              <input placeholder="id" [(ngModel)]="teamtoinsert.id">
-            </td>
+          
             
             <td>
               <input placeholder="nome" [(ngModel)]="teamtoinsert.name">
@@ -91,9 +87,7 @@
             </td>
           </tr>
           <tr *ngFor="let team of teams">
-            <td>
-              <input [(ngModel)]="team.id">
-            </td>
+           
             <td>
               <input [(ngModel)]="team.name">
             </td>

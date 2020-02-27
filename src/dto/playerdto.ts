@@ -13,5 +13,5 @@ export class PlayerDTO {
 	previousMarketValue:number;
 	position:string;
 	//team_id:number;
-	constructor(){};
+	
 }

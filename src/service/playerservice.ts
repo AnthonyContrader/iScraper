@@ -32,5 +32,7 @@ export class PlayerService extends AbstractService<PlayerDTO>{
     super(http);
     this.type = 'player';
   }
-  
+  findByName(nome:string):Observable<any>{
+    return this.http.get<PlayerDTO>('http://localhost:' + this.port + '/' + this.type + '/findByName?name=' + nome);
+}
 }

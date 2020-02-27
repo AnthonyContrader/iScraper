@@ -7,6 +7,6 @@ export class TeamDTO {
 
 	team_index:number;
 
-	constructor(){};
+	
 
 }

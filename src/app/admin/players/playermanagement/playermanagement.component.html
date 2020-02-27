@@ -6,8 +6,11 @@
     
     <div class="col-md-10" style="margin-right: 100px;">
       <h3 style="text-align: center;color: bisque;background: darkorange; margin-left: 100px;">Lista giocatori</h3>
-      <table style="background-color: black; margin-top: 20px;">
+      <table style="background-color: black; margin-top: 20px;margin-left: -80px;">
         <tr style="background: beige;">
+          <th style="text-align: center;">
+            Id
+          </th>
           <th style="text-align: center;">
             Nome
           </th>
@@ -33,6 +36,10 @@
         </tr>
         
         <tr *ngFor="let player of players">
+
+          <td>
+            <input [(ngModel)]="player.id">
+          </td>
           <td>
             <input [(ngModel)]="player.player_name">
           </td>
@@ -208,6 +215,10 @@
     </tr>
     
     <tr *ngFor="let player of playersName">
+      <td>
+        <label style="color: white;">{{"Id"}}</label>
+        <input  placeholder="id"[(ngModel)]= "player.id">
+      </td>
       <td>
         <label style="color: white;">{{"Nome"}}</label>
         <input  placeholder="cognome"[(ngModel)]= "player.player_name">
