@@ -23,6 +23,7 @@ export class PlayermanagementComponent implements OnInit {
       playerName:string;
       nameInput:string;
       playersName: PlayerDTO[];
+      playersValue:PlayerDTO;
 
       constructor(private service: PlayerService, private teamService:TeamService ) { }
       
@@ -51,23 +52,30 @@ export class PlayermanagementComponent implements OnInit {
         insert(player: PlayerDTO) {
           this.service.insert(this.playertoinsert).subscribe(() => this.getPlayers());
         }
- 
-      findByName(nome:string){
-        this.service.findByName(nome).subscribe(playersName => this.playersName= playersName)
+        orderByValue(){
+          this.clear();
+          this.service.orderByValue().subscribe(playersValue => this.playersValue= playersValue);
+        }
+       findByName(nome:string){
+        this.clear();
+        this.service.findByName(nome).subscribe(playersName => this.playersName= playersName);
       }
-
+      
         clear(){
           this.playertoinsert = new PlayerDTO();
+
+          this.playersValue= null;
+          this.playersName= null;
         }
 
-        getFromInput(nameForm: NgForm):void {
-          this.nameInput=nameForm.value;
-          console.log(this.nameInput);
-          console.log(this.playersName);
-       }
+     //   getFromInput(nameForm: NgForm):void {
+     //     this.nameInput=nameForm.value;
+  
+    //  }
       
        ngOnSubmit(){
-        console.log(this.findByName(this.nameInput));
+        this.clear();
+        this.orderByValue();
         this.findByName(this.nameInput);
        // console.log(this.playersName);
 }

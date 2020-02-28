@@ -35,4 +35,7 @@ export class PlayerService extends AbstractService<PlayerDTO>{
   findByName(nome:string):Observable<any>{
     return this.http.get<PlayerDTO>('http://localhost:' + this.port + '/' + this.type + '/findByName?name=' + nome);
 }
+  orderByValue():Observable<PlayerDTO>{
+    return this.http.get<PlayerDTO>('http://localhost:' + this.port + '/' + this.type + '/orderByValue');
+  }
 }
