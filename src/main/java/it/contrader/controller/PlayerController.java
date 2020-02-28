@@ -1,8 +1,11 @@
 package it.contrader.controller;
 
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.mockito.Matchers.longThat;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -103,5 +106,24 @@ public class PlayerController extends AbstractController<PlayerDTO>{
 
 	}
 
+	@RequestMapping(value="/orderByValue" , method= RequestMethod.GET)
+	public List<PlayerDTO> orderByValue() {	
+		List<PlayerDTO>listaDtos=(List<PlayerDTO>) playerService.getAll();
+		List<PlayerDTO> newList=new ArrayList<PlayerDTO>();
+		for(PlayerDTO playerDTO:listaDtos) {
+			
+				newList.add(playerDTO);
+			}
+		 Collections.sort(newList, new Comparator<PlayerDTO>() {
+		        @Override public int compare(PlayerDTO p1, PlayerDTO p2) {
+		            return p1.getActualMarketValue() - p2.getActualMarketValue(); // Ascending
+		        }
 
+		    });
+		
+		return newList;
+
+	}
+	
+	
 }
