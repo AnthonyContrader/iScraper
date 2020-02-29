@@ -13,7 +13,7 @@ import { NgForm } from '@angular/forms';
 })
 export class PlayermanagementComponent implements OnInit {
 
-    
+      nome:string;
       teams:TeamDTO[];
       players: PlayerDTO[];
       playertoinsert: PlayerDTO = new PlayerDTO();
@@ -21,15 +21,19 @@ export class PlayermanagementComponent implements OnInit {
       teamservice:TeamService;
       name:string;
       playerName:string;
-      nameInput:string;
+     
       playersName: PlayerDTO[];
-      playersValue:PlayerDTO;
+      playersValue:PlayerDTO[];
+      playerOrder:PlayerDTO;
+      option:string[] =["Valore Precedente","Valore attuale","Eta", "Squadra", "ID"];
+     playersToEdit:PlayerDTO [];
 
       constructor(private service: PlayerService, private teamService:TeamService ) { }
       
       ngOnInit() {
           this.getPlayers();
           this.getTeams();
+          this.service.getAll().subscribe(playersToEdit => this.playersToEdit = playersToEdit);
         //  this.findByName(this.nameInput);
         }
 
@@ -52,13 +56,17 @@ export class PlayermanagementComponent implements OnInit {
         insert(player: PlayerDTO) {
           this.service.insert(this.playertoinsert).subscribe(() => this.getPlayers());
         }
-        orderByValue(){
+        order(nome:string){
           this.clear();
-          this.service.orderByValue().subscribe(playersValue => this.playersValue= playersValue);
+          this.service.order(nome).subscribe(playersValue => this.playersValue= playersValue);
+          this.service.order(nome).subscribe(players => this.players = players);
         }
        findByName(nome:string){
         this.clear();
         this.service.findByName(nome).subscribe(playersName => this.playersName= playersName);
+        this.service.findByName(nome).subscribe(players => this.players = players);
+       
+        console.log(nome.toString());
       }
       
         clear(){
@@ -68,17 +76,7 @@ export class PlayermanagementComponent implements OnInit {
           this.playersName= null;
         }
 
-     //   getFromInput(nameForm: NgForm):void {
-     //     this.nameInput=nameForm.value;
-  
-    //  }
-      
-       ngOnSubmit(){
-        this.clear();
-        this.orderByValue();
-        this.findByName(this.nameInput);
-       // console.log(this.playersName);
-}
+    
 
       }
       

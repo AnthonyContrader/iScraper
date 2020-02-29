@@ -1,12 +1,35 @@
+
 <div class="container" >
   <div class="row mt-5">
-    <div class="col-md-1">
-    </div>
+    <div class="col-md-10">
+    
 
     
+
+
+    
+
     <div class="col-md-10" style="margin-right: 100px;">
-      <h3 style="text-align: center;color: bisque;background: darkorange; margin-left: 100px;">Lista giocatori</h3>
-      <table style="background-color: black; margin-top: 20px;margin-left: -80px;">
+      <h3 style="text-align: center;color: bisque;background: darkorange; margin-left: 250px;">Lista giocatori
+        <td>
+         <button class="btn btn-primary" style="background: #f4cd32; color: black; padding: 1; font-size: 12px; margin-top: -20px; margin-right: 5px;margin-left: 5px; ;" (click)="findByName(name)">Cerca nome</button>
+        </td>
+
+        <td> <input id="name" type="text" class="form-control"
+         name="name" [(ngModel)]="name" style="height: 30px;">  </td>
+         
+          <td>
+            <button class="btn btn-primary" style="background: #f4cd32; color: black; padding: 1; font-size: 12px; margin-left: 10px; margin-right: 5px; float:right; " (click)="order(nome)">Ordina</button>
+          </td>
+          <td>
+          <select id="nome" name="nome" [(ngModel)]="nome" style="width: 170px; height: 30px; border-radius: 3px;color: black;font-size: 14px; float:right; margin-right: 10px;">
+            <option *ngFor="let nome of option" class="form-control" [ngValue]="nome">{{nome}}</option>
+          </select></td>
+         
+      
+        
+        </h3>
+      <table style="background-color: black; margin-top: 20px;margin-left: -35px;">
         <tr style="background: beige;">
           <th style="text-align: center;">
             Id
@@ -70,8 +93,8 @@
     </div>
    
     <div class="col-md-10" style="margin-right: 100px;">
-      <h3 style="text-align: center;color: bisque;background: darkorange; margin-left: 100px;">Aggiornamento giocatori</h3>
-      <table style="background-color: black; margin-top: 20px;">
+      <h3 style="text-align: center;color: bisque;background: darkorange; margin-left: 250px;">Aggiornamento giocatori</h3>
+      <table style="background-color: black; margin-top: 20px; margin-left: 50px;">
         <tr style="text-align: center;color: bisque;">
           <th style="text-align: center;">
             Nome
@@ -131,7 +154,7 @@
           </td>
         </tr>
         
-        <tr *ngFor="let player of players">
+        <tr *ngFor="let player of playersToEdit">
           <td>
             <input placeholder="nome"  [(ngModel)]="player.player_name">
           </td>
@@ -179,8 +202,8 @@
    
     
   </div>
-
-
+</div>
+<!----
   <form #nameForm="ngForm"  style="width: 250px;margin-top: 20px;margin-left: 400px;">
     <div class="panel panel-primary">
       <div class="panel-heading" style="background: darkorange;">
@@ -190,14 +213,29 @@
   
         <div class="form-group">
           <label for="name">Nome</label>
-          <input id="name" type="text" class="form-control"
-                 name="name" [(ngModel)]="name">
+          
+                 <td>
+                  <button class="btn btn-primary" style="background: #f4cd32; color: black; padding: 1; font-size: 12px;margin-top: -27px; margin-right: 5px;" (click)="findByName(name)">Cerca nome</button>
+                 </td>
+
+                 <td> <input id="name" type="text" class="form-control"
+                  name="name" [(ngModel)]="name"> </td>
+                 
         </div>
 
       </div>
       <div class="panel-footer">
-        <button class="btn btn-primary" style="background: #f4cd32;color: black; padding: 1;font-size: 12px;" (click)="findByName(name)">Cerca nome</button>
-        <button class="btn btn-primary" style="background: #f4cd32;color: black; padding: 1;font-size: 12px; margin-left: 4px;" (click)="orderByValue()">Ordina per valore</button>
+        
+        <label >Ordina per:
+          <td>
+            <button class="btn btn-primary" style="background: #f4cd32;color: black; padding: 1;font-size: 12px; margin-left: -10px; margin-right:5px; " (click)="order(nome)">Ordina</button>
+          </td>
+          <td>
+          <select id="nome" name="nome" [(ngModel)]="nome" style="width: 170px; height: 30px;">
+            <option *ngFor="let nome of option" class="form-control" [ngValue]="nome">{{nome}}</option>
+          </select></td>
+         
+      </label>
       </div>
     </div>
   </form>
@@ -205,7 +243,7 @@
 
 
 
-  <table style="background-color: black; margin-top: 20px; ">
+  <table style="background-color: black; margin-top: 20px; margin-left: -250px;">
     <tr style="background: beige;">
      
      
@@ -251,14 +289,15 @@
     </tr>
   </table>
 
-  
-
-
-  <table style="background-color: black; margin-top: 20px; ">
+    <table style="background-color: black; margin-top: 20px;margin-left: -250px; ">
     <tr style="background: beige;">
      
      
     </tr>
+    
+
+
+
     
     <tr *ngFor="let player of playersValue">
       <td>
@@ -300,9 +339,7 @@
     </tr>
   </table>
 
-  <div class="col-md-1">
+-->
 
-     
-     
-  </div>
+  
 </div>
