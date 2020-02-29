@@ -94,13 +94,18 @@ public class PlayerController extends AbstractController<PlayerDTO>{
 	public List<PlayerDTO> findByName(@RequestParam(value="name") String name) {	
 		List<PlayerDTO>listaDtos=(List<PlayerDTO>) playerService.getAll();
 		List<PlayerDTO> newList=new ArrayList<PlayerDTO>();
+		if(name.equals("")|| name.equals(null)){
+			return listaDtos;
+		}
 		for(PlayerDTO playerDTO:listaDtos) {
 			if(playerDTO.getPlayer_name().equals(name)) {
 				newList.add(playerDTO);
 			}
 			
 		}
-		
+		if(newList.size()==0) {
+			return listaDtos;
+		}
 		
 		return newList;
 
@@ -125,5 +130,89 @@ public class PlayerController extends AbstractController<PlayerDTO>{
 
 	}
 	
+	@RequestMapping(value="/order",  method= RequestMethod.GET)
+	public List<PlayerDTO> order(@RequestParam("nome") String nome) {
+		
+		List<PlayerDTO>listaDtos=(List<PlayerDTO>) playerService.getAll();
+		List<PlayerDTO> newList=new ArrayList<PlayerDTO>();
+		switch (nome.toUpperCase()) {
+		case "VALORE ATTUALE":
+			
+			for(PlayerDTO playerDTO:listaDtos) {
+				
+					newList.add(playerDTO);
+				}
+			 Collections.sort(newList, new Comparator<PlayerDTO>() {
+			        @Override public int compare(PlayerDTO p1, PlayerDTO p2) {
+			            return p1.getActualMarketValue() - p2.getActualMarketValue(); // Ascending
+			        }
+
+			    });
+			
+			
+			break;
+			
+		case "VALORE PRECEDENTE":
+			
+			for(PlayerDTO playerDTO:listaDtos) {
+				
+					newList.add(playerDTO);
+				}
+			 Collections.sort(newList, new Comparator<PlayerDTO>() {
+			        @Override public int compare(PlayerDTO p1, PlayerDTO p2) {
+			            return p1.getPreviousMarketValue() - p2.getPreviousMarketValue(); // Ascending
+			        }
+
+			    });
+			 
+				break;
+				
+				
+			case "ETA":
+			
+			for(PlayerDTO playerDTO:listaDtos) {
+				
+					newList.add(playerDTO);
+				}
+			 Collections.sort(newList, new Comparator<PlayerDTO>() {
+			        @Override public int compare(PlayerDTO p1, PlayerDTO p2) {
+			            return p1.getAge() - p2.getAge(); // Ascending
+			        }
+
+			    });
+			 
+				break;
+			case "SQUADRA":
+				
+				for(PlayerDTO playerDTO:listaDtos) {
+					
+						newList.add(playerDTO);
+					}
+				 Collections.sort(newList, new Comparator<PlayerDTO>() {
+				        @Override public int compare(PlayerDTO p1, PlayerDTO p2) {
+				            return p1.getTeam().getName().compareTo(p2.getTeam().getName()); // Ascending
+				        }
+
+				    });
+				 
+					break;
+			case "ID":
+				
+				for(PlayerDTO playerDTO:listaDtos) {
+					
+						newList.add(playerDTO);
+					}
+				 Collections.sort(newList, new Comparator<PlayerDTO>() {
+				        @Override public int compare(PlayerDTO p1, PlayerDTO p2) {
+				            return (int) (p1.getId() - p2.getId()); // Ascending
+				        }
+
+				    });
+				 
+					break;
+					
+		
+		}return newList;
+	}
 	
 }
