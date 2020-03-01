@@ -1,11 +1,16 @@
 package it.contrader.model;
 
 
+import static org.hamcrest.CoreMatchers.nullValue;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+
 import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
@@ -36,5 +41,5 @@ public class Player {
 	private int previousMarketValue;
 	private String position;
 
-	
+
 }

@@ -211,7 +211,9 @@ public class PlayerController extends AbstractController<PlayerDTO>{
 				 
 					break;
 					
-		
+					default:
+						
+						newList=new ArrayList<PlayerDTO>(listaDtos);
 		}return newList;
 	}
 	
