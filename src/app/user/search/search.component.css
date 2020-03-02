@@ -1,16 +1,19 @@
 .table
 {
 	display:table;
-	border-collapse:separate;
-    border-spacing:2px;
-    width: 85%;
+	border-collapse:collapse;
+    float: left;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	width: 100%;
+	color: white;
 }
 .thead
 {
 	display:table-header-group;
-	color:white;
+	color: #F4CD32;
 	font-weight:bold;
-	background-color:grey;
+	background-color: #1C1F26;
 }
 .tbody
 {
@@ -19,14 +22,48 @@
 .tr
 {
 	display:table-row;
+	padding:2px;
 }
 .td
 {
 	display:table-cell;
 	border:1px solid black;
-	padding:1px;
+	padding: 2px;
+	font-size: 16px;
 }
 .tr.editing .td INPUT
 {
 	width:100px;
+}
+
+*{
+    text-align: center;
+}
+
+option {
+	color:black;
+}
+
+
+
+th {
+	background-color: #1C1F26;
+	color: #F4CD32;
+}
+
+a:hover {
+	color: #999999;
+}
+
+input, select{
+    background-color: inherit;
+    font-size: inherit;
+}
+
+input:hover,  input:active, input:focus{
+    border: 2px solid #65B26B;
+}
+
+button:hover{
+    background-color: #65B26B;
 }

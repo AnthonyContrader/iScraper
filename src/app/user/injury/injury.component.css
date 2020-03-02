@@ -5,15 +5,15 @@
 /*Tables*/
 table {
 	border-collapse: collapse;
-	max-width: 90%;
+	width: 100%;
 	float: left;
 	border-radius: 4px;
 	-moz-border-radius: 4px;
-	overflow-x: scroll;
 }
 
 th, td {
 	text-align: center;
+	padding: 2px;
 }
 
 td{
@@ -21,24 +21,33 @@ td{
 }
 
 
+
 th {
 	background-color: #1C1F26;
-	color: #ffffff;
+	color: #F4CD32;
 }
 
 a:hover {
 	color: #999999;
 }
 
-input, select, option, textarea{
+input, select, textarea{
     background-color: inherit;
     font-size: inherit;
 }
 
-input:hover,  input:active, input:focus, option:hover, textarea:hover{
+input:hover,  input:active, input:focus{
     border: 2px solid #65B26B;
 }
 
 button:hover{
     background-color: #65B26B;
+}
+
+textarea {
+	border-width:2px;
+	border-bottom-color: whitesmoke;
+	border-right-color: whitesmoke;
+	text-align: center;
+	font-size: small;
 }

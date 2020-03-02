@@ -1,7 +1,8 @@
 <div class="container">
   <div class="row mt-5">
+    <h3 style="color:whitesmoke">Statistiche</h3>
     <div class="col-md-3">
-      <table>
+      <table Style="color:white">
         <tr>
           <th>
             Nome
@@ -49,50 +50,55 @@
         </tr>
         <tr *ngFor="let statsbox of statsboxes">
           <td>
-            <label>{{statsbox.player.player_name}}</label>
+            {{statsbox.player.player_name}}
           </td>
           <td>
-            <label>{{statsbox.player.player_surname}}</label>
+             {{statsbox.player.player_surname}} 
           </td>
           <td>
-            <label>{{statsbox.season}}</label>
+             {{statsbox.season}} 
           </td>
           <td>
-            <label>{{statsbox.caps}}</label>
+             {{statsbox.caps}} 
           </td>
           <td>
-            <label>{{statsbox.contributions}}</label>
+             {{statsbox.contributions}} 
           </td>
           <td>
-            <label>{{statsbox.shotsper}}</label>
+             {{statsbox.shotsper}} 
           </td>
           <td>
-            <label>{{statsbox.keypass}}</label>
+             {{statsbox.keypass}} 
           </td>
           <td>
-            <label>{{statsbox.passprec}}</label>
+             {{statsbox.passprec}} 
           </td>
           <td>
-            <label>{{statsbox.dribbling}}</label>
+             {{statsbox.dribbling}} 
           </td>
           <td>
-            <label>{{statsbox.foulssub}}</label>
+             {{statsbox.foulssub}} 
           </td>
           <td>
-            <label>{{statsbox.foulscomm}}</label>
+             {{statsbox.foulscomm}} 
           </td>
           <td>
-            <label>{{statsbox.tackles}}</label>
+             {{statsbox.tackles}} 
           </td>
           <td>
-            <label>{{statsbox.tacklesper}}</label>
+             {{statsbox.tacklesper}} 
           </td>
           <td>
-            <label>{{statsbox.breaks}}</label>
+             {{statsbox.breaks}} 
           </td>
         </tr>
       </table>
-      <table>
+      <table style="color:white">
+        <tr>
+        </tr>
+          <td>
+            
+          </td>
         <tr>
           <td>
             Cerca per:
@@ -104,7 +110,7 @@
             <input placeholder="Cognome" [(ngModel)]="surname">
           </td>
           <td>
-            <button (click)="readByName()"></button>
+            <button (click)="readByName()"> Cerca </button>
           </td>
         </tr>
       </table>

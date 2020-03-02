@@ -1,7 +1,11 @@
 <div class="container">
     <div class="row mt-5">
-      <div class="col-md-3">
-        <table style="background-color: #fffdfda1;">
+      <h3 style="color:whitesmoke; text-align: center;"> Infortuni</h3>
+      <div class="col-md-1">
+
+      </div>
+      <div class="col-md-10">
+        <table style="color:white">
           <tr>
             <th>
               Id
@@ -21,19 +25,19 @@
           </tr>
           <tr *ngFor="let injury of injuries">
             <td>
-              <label>{{injury.id}} </label>
+               {{injury.id}}  
             </td>
             <td>
-              <label>{{injury.severity}} </label>
+               {{injury.severity}}  
             </td>
             <td>
-              <label>{{injury.description}} </label>
+               {{injury.description}}  
             </td>
             <td>
-              <label>{{injury.date}} </label>
+               {{injury.date}}  
             </td>
             <td>
-              <label>{{injury.player.id}} </label>
+               {{injury.player.id}}  
             </td>
         </table>
       </div>

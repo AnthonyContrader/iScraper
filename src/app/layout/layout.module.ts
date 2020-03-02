@@ -2,11 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 import { AdminMenuComponent } from './admin-layout/admin-menu/admin-menu.component';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent } from './admin-header/header.component';
 import { RouterModule } from '@angular/router';
 import { UserLayoutComponent } from './user-layout/user-layout.component';
 import { WorkInProgressComponent } from './user-layout/work-in-progress/work-in-progress.component';
 import { UserMenuComponent } from './user-layout/user-menu/user-menu.component';
+import { UserHeaderComponent } from './user-header/user-header.component';
 
 
 /**
@@ -19,7 +20,7 @@ import { UserMenuComponent } from './user-layout/user-menu/user-menu.component';
  * @see AdminLayoutComponent
  */
 @NgModule({
-  declarations: [AdminLayoutComponent, AdminMenuComponent, HeaderComponent, WorkInProgressComponent,UserLayoutComponent,UserMenuComponent],
+  declarations: [AdminLayoutComponent, AdminMenuComponent, HeaderComponent, WorkInProgressComponent,UserLayoutComponent,UserMenuComponent, UserHeaderComponent],
   imports: [
     CommonModule,
     RouterModule

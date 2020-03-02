@@ -1,11 +1,12 @@
 <div class="container">
   <div class="row mt-5">
+    <h3 style="color:whitesmoke"> Giocatori </h3>
     <div class="col-md-1">
 
     </div>
     <div class="col-md-10">
-      <table style="margin-top: 20px;">
-        <tr style="background: beige;">
+      <table style="color:white">
+        <tr>
           <th style="text-align: center;">
             Nome
           </th>
@@ -27,35 +28,30 @@
           <th style="text-align: center;">
             Squadra
           </th>
-         
         </tr>
         
         <tr *ngFor="let player of players">
           <td>
-            <input [(ngModel)]="player.player_name">
+             {{player.player_name}}
           </td>
           <td>
-            <input [(ngModel)]="player.player_surname">
+             {{player.player_surname}}
           </td>
           <td>
-            <input [(ngModel)]="player.age">
-              
+             {{player.age}}
           </td>
           <td>
-            <input [(ngModel)]="player.actualMarketValue">
+             {{player.actualMarketValue}}
           </td>
           <td>
-            <input [(ngModel)]="player.previousMarketValue">
+             {{player.previousMarketValue}}
           </td>
           <td>
-            <input [(ngModel)]="player.position">
-              
+             {{player.position}}
           </td>
           <td>
-            <input [(ngModel)]="player.team.name">
-              
+             {{player.team.name}}
           </td>
-        
         </tr>
       </table>
     </div>

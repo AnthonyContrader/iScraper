@@ -29,13 +29,13 @@ import { SearchComponent } from './search/search.component';
  */
 const routes: Routes = [
   { path: 'user-dashboard', component: UserLayoutComponent, children:[
-    { path: 'user/work-in-progress', component:WorkInProgressComponent},
+    { path: 'work-in-progress', component:WorkInProgressComponent},
     { path: '', component: UserDashboardComponent},
   
     { path: 'playermanagement', component: PlayermanagementComponent},
     { path: 'statsbox', component: StatsboxComponent},
     { path: 'teams', component: TeamsComponent},
-    { path: 'injury', component: InjuryComponent},
+    { path: 'injuries', component: InjuryComponent},
     { path: 'search', component: SearchComponent},
   ]}
 ];

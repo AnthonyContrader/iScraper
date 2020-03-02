@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-md-1">
+      <a [routerLink]="['/user-dashboard']"><img class="logo" src="../../../assets/logo-09.svg"></a>
+    </div>
+    <div class="col-md-11">
+      <div class="row no-gutters">
+        <div class="col-md-10">
+          <div class="searchContainer">
+            <input class="searchBox" type="search" name="search" placeholder="Ricerca...">
+          </div>
+      </div>
+      <div class="row no-gutters">
+          <div class="col-md-11" style="text-align: center">
+              <app-user-menu></app-user-menu>
+          </div>
+          <div class="col-md-1">
+            <p class="profile"><img src="../../../assets/user.svg" class="profilepic"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
