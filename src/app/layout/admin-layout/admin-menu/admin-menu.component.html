@@ -1,10 +1,5 @@
 <div class="upnav">  
     <div class="row-sm-1">
-        <div class="col-sm-3">    
-            <button class="menubtn">
-                <a [routerLink]="['/admin-dashboard']"> Dashboard </a>
-            </button>
-        </div>
         <div class="col-sm-3">
             <button class="menubtn">
                 <a [routerLink]="['/admin-dashboard/work-in-progress']">Account</a>
@@ -21,28 +16,28 @@
             </button>
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm-2 col-sm-offset-1">
-            <button class="menubtn">
-                <a [routerLink]="['/admin-dashboard/teams']">Squadre</a>
-            </button>
-        </div>
-        <div class="col-sm-2">
+    <div class="col-sm-3">
+        <button class="menubtn">
+            <a [routerLink]="['/admin-dashboard/teams']">Squadre</a>
+        </button>
+    </div>
+    <div class="row-sm-1">
+        <div class="col-sm-3">
             <button class="menubtn">
                 <a [routerLink]="['/admin-dashboard/statsbox']">Statistiche</a>
             </button>
         </div>
-        <div class="col-sm-2">
+        <div class="col-sm-3">
             <button class="menubtn">
                 <a [routerLink]="['/admin-dashboard/injuries']">Infortuni</a>
             </button>
         </div>
-        <div class="col-sm-2">
+        <div class="col-sm-3">
             <button class="menubtn">
                 <a [routerLink]="['/admin-dashboard/search']">Ricerche</a>
             </button>
         </div> 
-        <div class="col-sm-2">
+        <div class="col-sm-3">
             <button class="menubtn" (click)="logout()">
                 <i class="fas fa-sign-out-alt" style="margin-right: 10px"></i>Logout
             </button>

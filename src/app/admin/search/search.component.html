@@ -3,6 +3,7 @@
     <div class="col-md-1">
     </div>
     <div class="col-md-10">
+      <div class="h3" style="color:whitesmoke"> Ricerche </div>
       <div class="table">
         <div class="thead">
           <div class="tr">
@@ -74,7 +75,7 @@
             </div>
             <div class="td">
               <select #userInput="ngModel" [(ngModel)]="search.user.id" name="userInput" required>
-                <option style="width: 100%; height: 26px;" *ngFor="let user of users"
+                <option style="width: 100%; height: 26px; color:black" *ngFor="let user of users"
                 [ngValue]="user.id" ng-select="search.user === user">
                   {{user.username}}
                 </option>

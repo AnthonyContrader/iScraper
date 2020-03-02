@@ -21,7 +21,7 @@ input, input:hover, input::selection, input:checked, input:focus{
     background-color: #F4CD32;
     border-radius: 0;
     color: white;
-    border-bottom: 1px solid crimson;
+    border-bottom: 1px solid #65B26B;
     margin: 0px; 
 }
 
